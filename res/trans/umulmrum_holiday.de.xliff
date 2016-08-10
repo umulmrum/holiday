@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="umulmrum_holiday.en.xliff">
+    <body>
+      <trans-unit id="umulmrum_holiday.all_saints_day">
+        <source>all_saints_day</source>
+        <target>Allerheiligen</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.ascension">
+        <source>ascension</source>
+        <target>Christi Himmelfahrt</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.assumption_day">
+        <source>assumption_day</source>
+        <target>Mariä Himmelfahrt</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.augsburger_friedensfest">
+        <source>augsburger_friedensfest</source>
+        <target>Augsburger Friedensfest</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.christmas_day">
+        <source>christmas_day</source>
+        <target>1. Weihnachtsfeiertag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.corpus_christi">
+        <source>corpus_christi</source>
+        <target>Fronleichnam</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.easter_monday">
+        <source>easter_monday</source>
+        <target>Ostermontag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.easter_sunday">
+        <source>easter_sunday</source>
+        <target>Ostersonntag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.epiphany">
+        <source>epiphany</source>
+        <target>Heilige drei Könige</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.german_unity_day">
+        <source>german_unity_day</source>
+        <target>Tag der Deutschen Einheit</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.good_friday">
+        <source>good_friday</source>
+        <target>Karfreitag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.labor_day">
+        <source>labor_day</source>
+        <target>Tag der Arbeit</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.new_year">
+        <source>new_year</source>
+        <target>Neujahr</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.reformation_day">
+        <source>reformation_day</source>
+        <target>Reformationstag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.repentance_and_prayer_day">
+        <source>repentance_and_prayer_day</source>
+        <target>Buß- und Bettag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.second_christmas_day">
+        <source>second_christmas_day</source>
+        <target>Zweiter Weihnachtsfeiertag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.sunday">
+        <source>sunday</source>
+        <target>Sonntag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.whit_monday">
+        <source>whit_monday</source>
+        <target>Pfingstmontag</target>
+      </trans-unit>
+      <trans-unit id="umulmrum_holiday.whit_sunday">
+        <source>whit_sunday</source>
+        <target>Pfingstsonntag</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
