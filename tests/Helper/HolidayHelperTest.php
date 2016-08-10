@@ -4,13 +4,11 @@ namespace umulmrum\Holiday\Helper;
 
 use DateTime;
 use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
-use umulmrum\Holiday\Provider\Weekday\WeekdayInitializer;
-use umulmrum\Holiday\Provider\Weekday\Weekdays;
+use umulmrum\Holiday\Provider\Weekday\Sundays;
 
 class HolidayHelperTest extends HolidayTestCase
 {
@@ -49,8 +47,8 @@ class HolidayHelperTest extends HolidayTestCase
         $holidayList2->add(new Holiday(HolidayName::SUNDAY, new DateTime('2016-01-10')));
         $holidayList2->add(new Holiday(HolidayName::SUNDAY, new DateTime('2016-01-17')));
         $holidayList2->add(new Holiday(HolidayName::SUNDAY, new DateTime('2016-02-01')));
-        $holidayCalculatorMock->calculateHolidaysForYear(2016, new BadenWuerttemberg(), $this->getTimezone())->willReturn($holidayList1);
-        $holidayCalculatorMock->calculateHolidaysForYear(2016, new Weekdays(Weekday::SUNDAY), $this->getTimezone())->willReturn($holidayList2);
+        $holidayCalculatorMock->calculateHolidaysForYear(2016, BadenWuerttemberg::ID, $this->getTimezone())->willReturn($holidayList1);
+        $holidayCalculatorMock->calculateHolidaysForYear(2016, Sundays::ID, $this->getTimezone())->willReturn($holidayList2);
         $this->holidayHelper = new HolidayHelper($holidayCalculatorMock->reveal());
     }
 
@@ -59,7 +57,7 @@ class HolidayHelperTest extends HolidayTestCase
      */
     private function whenIsDayAHolidayIsCalled($date)
     {
-        $this->actualResult = $this->holidayHelper->isDayAHoliday($date, new BadenWuerttemberg());
+        $this->actualResult = $this->holidayHelper->isDayAHoliday($date, BadenWuerttemberg::ID);
     }
 
     /**
@@ -108,7 +106,7 @@ class HolidayHelperTest extends HolidayTestCase
      */
     private function whenGetHolidaysForMonthIsCalled($year, $month)
     {
-        $this->actualResult = $this->holidayHelper->getHolidaysForMonth($year, $month, new BadenWuerttemberg(), $this->getTimezone());
+        $this->actualResult = $this->holidayHelper->getHolidaysForMonth($year, $month, BadenWuerttemberg::ID, $this->getTimezone());
     }
 
     /**
@@ -174,7 +172,7 @@ class HolidayHelperTest extends HolidayTestCase
      */
     private function whenGetHolidaysByNameIsCalled($year, $holidayName)
     {
-        $this->actualResult = $this->holidayHelper->getHolidaysByName($year, $holidayName, new BadenWuerttemberg(), $this->getTimezone());
+        $this->actualResult = $this->holidayHelper->getHolidaysByName($year, $holidayName, BadenWuerttemberg::ID, $this->getTimezone());
     }
 
     /**
@@ -217,7 +215,7 @@ class HolidayHelperTest extends HolidayTestCase
         $this->actualResult = $this->holidayHelper->getNoWorkDaysForTimespan(
             new DateTime($firstDay, $this->getTimezone()),
             new DateTime($lastDay, $this->getTimezone()),
-            new BadenWuerttemberg()
+            BadenWuerttemberg::ID
         );
     }
 

@@ -55,6 +55,34 @@ $formattedHolidays = (new DateFormatter())->formatList($holidays);
 
 This results in an array of date strings that can be echoed or computed further.
 
+There is also a `HolidayHelper` class that simplifies some common holiday
+computations. This example can be substituted by this:
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\Formatter\DateFormatter;
+use umulmrum\Holiday\Helper\HolidayHelper;
+use umulmrum\Holiday\Provider\Germany\Bavaria;
+use umulmrum\Holiday\Provider\Germany\GermanyHolidayInitializer;
+
+// Get a HolidayCalculator object and initalize it with holiday providers.
+$holidayCalculator = new HolidayCalculator(new GermanyHolidayInitializer());
+// Get a HolidayHelper object and initalize it with the HolidayCalculator.
+$holidayHelper = new HolidayHelper($holidayCalculator);
+$holidays = $holidayHelper->getHolidaysForMonth(2016, 12, Bavaria::ID);
+// Optionally format the results
+$formattedHolidays = (new DateFormatter())->formatList($holidays);
+
+```
+
+
+
+
+
 The usage normally follows this pattern:
 
 - compute all holidays for a given year and a holiday provider (e.g. a region)
@@ -66,8 +94,7 @@ The usage normally follows this pattern:
 - format the result using a formatter.
   A few formatters are provided in this library, more can be added freely.
   
-There is also a `HolidayHelper` class that simplifies some common holiday
-computations.
+
 
 Supported Countries
 -------------------
@@ -76,8 +103,8 @@ Currently only Germany is supported, but you can easily create your own holiday 
 existing code, it should be self-explanatory. I will happily merge pull requests (see below).
 
 
-Notices for German Holidays
----------------------------
+Notices on German Holidays
+--------------------------
 
 Easter Sunday/Ostersonntag and Whit Sunday/Pfingstsonntag are not public holidays in most states.
 
@@ -89,9 +116,6 @@ as a partial holiday, so you might want to add your logic that filters this date
 In Bavaria schools are closed on Assumption Day and on Repentance and Prayer Day
 
 Corpus Christi/Fronleichnam is a public holiday in some communities in Saxony and Thuringia.
-
-Uncovered Holidays in Germany
------------------------------
 
 Regional holidays with traditionally (but not publicly) limited opening hours are not considered yet (e.g. carnival days).
 
