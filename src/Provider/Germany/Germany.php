@@ -64,7 +64,7 @@ class Germany implements HolidayProviderInterface
     }
 
     /**
-     * @param int $year
+     * @param int          $year
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -75,7 +75,7 @@ class Germany implements HolidayProviderInterface
     }
 
     /**
-     * @param int $year
+     * @param int          $year
      * @param DateTimeZone $timezone
      *
      * @return Holiday

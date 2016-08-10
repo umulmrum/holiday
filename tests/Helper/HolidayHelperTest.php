@@ -25,8 +25,8 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getIsDayAHolidayData
      *
-     * @param string                   $date
-     * @param bool                     $expectedResult
+     * @param string $date
+     * @param bool   $expectedResult
      */
     public function it_should_tell_if_a_day_is_a_holiday($date, $expectedResult)
     {
@@ -53,7 +53,7 @@ class HolidayHelperTest extends HolidayTestCase
     }
 
     /**
-     * @param DateTime                 $date
+     * @param DateTime $date
      */
     private function whenIsDayAHolidayIsCalled($date)
     {
@@ -89,9 +89,9 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getGetHolidaysForMonthData
      *
-     * @param int                      $year
-     * @param int                      $month
-     * @param array                    $expectedResult
+     * @param int   $year
+     * @param int   $month
+     * @param array $expectedResult
      */
     public function it_should_calculate_a_list_of_all_holidays_in_a_given_month($year, $month, $expectedResult)
     {
@@ -101,8 +101,8 @@ class HolidayHelperTest extends HolidayTestCase
     }
 
     /**
-     * @param int                      $year
-     * @param int                      $month
+     * @param int $year
+     * @param int $month
      */
     private function whenGetHolidaysForMonthIsCalled($year, $month)
     {
@@ -155,9 +155,9 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getGetHolidaysByNameData
      *
-     * @param int                      $year
-     * @param string                   $holidayName
-     * @param array                    $expectedResult
+     * @param int    $year
+     * @param string $holidayName
+     * @param array  $expectedResult
      */
     public function it_should_calculate_correct_holidays_for_a_holiday_name($year, $holidayName, array $expectedResult)
     {
@@ -167,8 +167,8 @@ class HolidayHelperTest extends HolidayTestCase
     }
 
     /**
-     * @param int                      $year
-     * @param string                   $holidayName
+     * @param int    $year
+     * @param string $holidayName
      */
     private function whenGetHolidaysByNameIsCalled($year, $holidayName)
     {
@@ -195,9 +195,9 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getGetNoWorkdaysForTimespanData
      *
-     * @param string                   $firstDay
-     * @param string                   $lastDay
-     * @param array                    $expectedResult
+     * @param string $firstDay
+     * @param string $lastDay
+     * @param array  $expectedResult
      */
     public function it_should_calculate_correct_no_work_days_for_a_timespan($firstDay, $lastDay, array $expectedResult)
     {

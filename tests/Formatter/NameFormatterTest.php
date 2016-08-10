@@ -22,7 +22,7 @@ class NameFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatData
      *
-     * @param string $name
+     * @param string     $name
      * @param int|string $expectedResult
      */
     public function it_should_format_single_values($name, $expectedResult)
@@ -71,7 +71,7 @@ class NameFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatTranslatedData
      *
-     * @param string $name
+     * @param string     $name
      * @param int|string $expectedResult
      */
     public function it_should_format_single_values_with_translation($name, $expectedResult)
@@ -88,7 +88,7 @@ class NameFormatterTest extends HolidayTestCase
     private function givenAFormatterWithTranslator(array $names, array $expectedResults)
     {
         $translator = $this->prophesize('\umulmrum\Holiday\Translator\TranslatorInterface');
-        for ($i = 0; $i < $count = count($names); $i++) {
+        for ($i = 0; $i < $count = count($names); ++$i) {
             $translator->translateName(new Holiday($names[$i], new DateTime('2016-01-01')))->willReturn($expectedResults[$i]);
         }
         $this->formatter = new NameFormatter($translator->reveal());
@@ -111,7 +111,7 @@ class NameFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatListData
      *
-     * @param string[] $names
+     * @param string[]                  $names
      * @param int|string|int[]|string[] $expectedResult
      */
     public function it_should_format_list_values($names, $expectedResult)
@@ -125,7 +125,7 @@ class NameFormatterTest extends HolidayTestCase
      * @param string[] $names
      */
     private function whenFormatListIsCalled(array $names)
-{
+    {
         $holidayList = new HolidayList();
         foreach ($names as $name) {
             $holidayList->add(new Holiday($name, new DateTime('2016-01-01')));
@@ -152,4 +152,3 @@ class NameFormatterTest extends HolidayTestCase
         ];
     }
 }
-

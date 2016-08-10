@@ -1,8 +1,6 @@
 <?php
 
-
 namespace umulmrum\Holiday\Translator;
-
 
 use DateTime;
 use Symfony\Component\Translation\TranslatorInterface;

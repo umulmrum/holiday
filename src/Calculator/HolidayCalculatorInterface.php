@@ -9,8 +9,9 @@ interface HolidayCalculatorInterface
 {
     /**
      * Calculates all holidays for a given $year in the desired $location.
-     * @param int $year
-     * @param string $region The alias for the region. This is what the getId() method of the holiday provider for this region returns.
+     *
+     * @param int          $year
+     * @param string       $region   The alias for the region. This is what the getId() method of the holiday provider for this region returns.
      * @param DateTimeZone $timezone
      *
      * @return HolidayList

@@ -14,7 +14,7 @@ trait ChristianHolidaysTrait
     private $easterCache = [];
 
     /**
-     * @param int $year
+     * @param int          $year
      * @param DateTimeZone $timezone
      *
      * @return DateTime
@@ -37,8 +37,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -49,8 +49,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -63,8 +63,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -77,8 +77,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -91,8 +91,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -118,8 +118,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -132,8 +132,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -146,8 +146,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -158,8 +158,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -170,8 +170,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -182,8 +182,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -197,8 +197,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -209,8 +209,8 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday

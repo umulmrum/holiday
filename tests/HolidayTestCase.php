@@ -1,8 +1,6 @@
 <?php
 
-
 namespace umulmrum\Holiday;
-
 
 use DateTimeZone;
 use PHPUnit_Framework_TestCase;

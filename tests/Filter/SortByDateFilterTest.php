@@ -44,7 +44,7 @@ class SortByDateFilterTest extends HolidayTestCase
     {
         $holidayList = new HolidayList();
         foreach ($holidays as $index => $holiday) {
-            $holidayList->add(new Holiday('name' . $index, new DateTime($holiday)));
+            $holidayList->add(new Holiday('name'.$index, new DateTime($holiday)));
         }
         $this->actualResult = $this->filter->filter($holidayList);
     }

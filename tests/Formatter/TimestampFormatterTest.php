@@ -23,7 +23,7 @@ class TimestampFormatterTest extends HolidayTestCase
      * @dataProvider getFormatData
      *
      * @param string $date
-     * @param int $expectedResult
+     * @param int    $expectedResult
      */
     public function it_should_format_single_values($date, $expectedResult)
     {
@@ -76,7 +76,7 @@ class TimestampFormatterTest extends HolidayTestCase
      * @dataProvider getFormatListData
      *
      * @param string[] $dates
-     * @param int[] $expectedResult
+     * @param int[]    $expectedResult
      */
     public function it_should_format_list_values($dates, $expectedResult)
     {
@@ -128,4 +128,3 @@ class TimestampFormatterTest extends HolidayTestCase
         ];
     }
 }
-

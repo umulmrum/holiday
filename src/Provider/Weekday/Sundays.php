@@ -1,8 +1,6 @@
 <?php
 
-
 namespace umulmrum\Holiday\Provider\Weekday;
-
 
 use umulmrum\Holiday\Constant\Weekday;
 

@@ -5,7 +5,6 @@ namespace umulmrum\Holiday\Helper;
 use DateTime;
 use DateTimeZone;
 use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
-use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
@@ -35,8 +34,9 @@ class HolidayHelper
 
     /**
      * Returns if the given date is a holiday in the given region.
-     * @param DateTime                 $dateTime
-     * @param string                   $region
+     *
+     * @param DateTime $dateTime
+     * @param string   $region
      *
      * @return bool true if the day is a holiday, else false
      *
@@ -55,9 +55,10 @@ class HolidayHelper
 
     /**
      * Returns all holidays for the given month in the given region.
-     * @param int $year
-     * @param int $month
-     * @param string $region
+     *
+     * @param int          $year
+     * @param int          $month
+     * @param string       $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
@@ -78,9 +79,10 @@ class HolidayHelper
     /**
      * Returns all holidays with the given name for the given year in the given region. Note that holiday names are
      * not necessarily unique, and therefore a HolidayList object is returned.
-     * @param int $year
-     * @param string $holidayName
-     * @param string $region
+     *
+     * @param int          $year
+     * @param string       $holidayName
+     * @param string       $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
@@ -97,16 +99,16 @@ class HolidayHelper
 
     /**
      * Returns all days in the given timespan and the region in which normally employees do not need to work.
+     *
      * @param DateTime $firstDay
      * @param DateTime $lastDay
-     * @param string $region
-     * @param array $noWorkWeekdays
+     * @param string   $region
+     * @param array    $noWorkWeekdays
      *
      * @return HolidayList
      */
     public function getNoWorkDaysForTimespan(DateTime $firstDay, DateTime $lastDay, $region, array $noWorkWeekdays = [])
     {
-
         $noWork = [];
         if (count($noWorkWeekdays) > 0) {
             $noWork = $noWorkWeekdays;
@@ -116,10 +118,8 @@ class HolidayHelper
             ];
         }
 
-
         $startYear = (int) $firstDay->format('Y');
         $endYear = (int) $lastDay->format('Y');
-
 
         if ($startYear === $endYear) {
             $holidays = [];
@@ -137,7 +137,7 @@ class HolidayHelper
         } else {
             $holidays = [];
             $holidays[] = $this->getNoWorkDaysForTimespan($firstDay, new DateTime(sprintf('%s-12-31', $startYear), $firstDay->getTimezone()), $region, $noWork);
-            for ($year = $startYear + 1; $year < $endYear; $year++) {
+            for ($year = $startYear + 1; $year < $endYear; ++$year) {
                 $holidays[] = $this->getNoWorkDaysForTimespan(
                     new DateTime(sprintf('%s-01-01', $year), $firstDay->getTimezone()),
                     new DateTime(sprintf('%s-12-31', $year), $firstDay->getTimezone()),
@@ -153,6 +153,7 @@ class HolidayHelper
 
     /**
      * Returns a merged list of all the HolidayList objects given.
+     *
      * @param HolidayList[] $holidayLists
      *
      * @return HolidayList

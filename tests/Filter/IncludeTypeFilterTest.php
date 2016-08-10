@@ -24,8 +24,8 @@ class IncludeTypeFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param HolidayList $holidayList
-     * @param int $filterType
-     * @param array $expectedResult
+     * @param int         $filterType
+     * @param array       $expectedResult
      */
     public function it_should_filter_holidays(HolidayList $holidayList, $filterType, array $expectedResult)
     {
@@ -41,7 +41,7 @@ class IncludeTypeFilterTest extends HolidayTestCase
 
     /**
      * @param HolidayList $holidayList
-     * @param int $filterType
+     * @param int         $filterType
      */
     private function whenFilterIsCalled(HolidayList $holidayList, $filterType)
     {

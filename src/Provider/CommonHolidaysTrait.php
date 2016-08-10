@@ -11,8 +11,8 @@ use umulmrum\Holiday\Model\Holiday;
 trait CommonHolidaysTrait
 {
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday
@@ -23,8 +23,8 @@ trait CommonHolidaysTrait
     }
 
     /**
-     * @param int $year
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday

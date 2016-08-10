@@ -12,9 +12,9 @@ use umulmrum\Holiday\Model\Holiday;
 trait WeekdayTrait
 {
     /**
-     * @param int $year
-     * @param int $weekday
-     * @param int $additionalType
+     * @param int          $year
+     * @param int          $weekday
+     * @param int          $additionalType
      * @param DateTimeZone $timezone
      *
      * @return Holiday[]

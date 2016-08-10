@@ -1,8 +1,6 @@
 <?php
 
-
 namespace umulmrum\Holiday\Constant;
-
 
 class Weekday
 {

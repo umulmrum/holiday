@@ -13,7 +13,7 @@ interface HolidayProviderInterface
     public function getId();
 
     /**
-     * @param int $year
+     * @param int          $year
      * @param DateTimeZone $timezone
      *
      * @return HolidayList

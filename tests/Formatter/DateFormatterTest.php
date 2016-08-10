@@ -23,9 +23,9 @@ class DateFormatterTest extends HolidayTestCase
      * @dataProvider getFormatData
      *
      * @param string|null $defaultFormat
-     * @param string $date
+     * @param string      $date
      * @param string|null $format
-     * @param int|string $expectedResult
+     * @param int|string  $expectedResult
      */
     public function it_should_format_single_values($defaultFormat, $date, $format, $expectedResult)
     {
@@ -47,7 +47,7 @@ class DateFormatterTest extends HolidayTestCase
     }
 
     /**
-     * @param string $dateString
+     * @param string      $dateString
      * @param string|null $format
      */
     private function whenFormatIsCalled($dateString, $format)
@@ -114,9 +114,9 @@ class DateFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatListData
      *
-     * @param string|null $defaultFormat
-     * @param string[] $dates
-     * @param string|null $format
+     * @param string|null               $defaultFormat
+     * @param string[]                  $dates
+     * @param string|null               $format
      * @param int|string|int[]|string[] $expectedResult
      */
     public function it_should_format_list_values($defaultFormat, $dates, $format, $expectedResult)
@@ -127,7 +127,7 @@ class DateFormatterTest extends HolidayTestCase
     }
 
     /**
-     * @param string[] $dates
+     * @param string[]    $dates
      * @param string|null $format
      */
     private function whenFormatListIsCalled(array $dates, $format)
@@ -205,4 +205,3 @@ class DateFormatterTest extends HolidayTestCase
         ];
     }
 }
-
