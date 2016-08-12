@@ -184,19 +184,20 @@ class HolidayHelper
     }
 
     /**
-     * @param HolidayList              $holidayList
+     * @param HolidayList $holidayList
      * @param TranslatorInterface|null $translator
+     * @param DateHelper $dateHelper
      *
      * @return string
      */
-    public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null)
+    public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null, DateHelper $dateHelper = null)
     {
-        $calendarFormatter = new ICalendarFormatter($translator);
+        $calendarFormatter = new ICalendarFormatter($translator, $dateHelper);
         $content = [];
         $content[] = $calendarFormatter->getHeader();
         $content = array_merge($content, $calendarFormatter->formatList($holidayList));
         $content[] = $calendarFormatter->getFooter();
 
-        return implode(ICalendarFormatter::LINE_ENDING, $content);
+        return implode(ICalendarFormatter::LINE_ENDING, $content) . ICalendarFormatter::LINE_ENDING;
     }
 }

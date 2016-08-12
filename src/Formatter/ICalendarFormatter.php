@@ -2,8 +2,8 @@
 
 namespace umulmrum\Holiday\Formatter;
 
-use DateTime;
 use DateTimeZone;
+use umulmrum\Holiday\Helper\DateHelper;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\NullTranslator;
@@ -16,16 +16,26 @@ class ICalendarFormatter implements HolidayFormatterInterface
      * @var TranslatorInterface
      */
     private $translator;
+    /**
+     * @var DateHelper
+     */
+    private $dateHelper;
 
     /**
      * @param TranslatorInterface|null $translator
+     * @param DateHelper $dateHelper
      */
-    public function __construct(TranslatorInterface $translator = null)
+    public function __construct(TranslatorInterface $translator = null, DateHelper $dateHelper = null)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();
         } else {
             $this->translator = $translator;
+        }
+        if (null === $dateHelper) {
+            $this->dateHelper = new DateHelper();
+        } else {
+            $this->dateHelper = $dateHelper;
         }
     }
 
@@ -43,6 +53,9 @@ class ICalendarFormatter implements HolidayFormatterInterface
     public function formatList(HolidayList $holidayList, array $options = [])
     {
         $result = [];
+        /**
+         * @var Holiday
+         */
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->getEvent($holiday);
         }
@@ -60,7 +73,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
             'VERSION:2.0',
             'PRODID:umulmrum/holiday',
             'CALSCALE:GREGORIAN',
-        ]).self::LINE_ENDING;
+        ]);
     }
 
     /**
@@ -70,7 +83,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
      */
     private function getEvent(Holiday $holiday)
     {
-        $dtstamp = new DateTime('now', new DateTimeZone('UTC'));
+        $dtstamp = $this->dateHelper->getCurrentDate(new DateTimeZone('UTC'));
 
         return implode(self::LINE_ENDING, [
             'BEGIN:VEVENT',
@@ -88,6 +101,6 @@ class ICalendarFormatter implements HolidayFormatterInterface
      */
     public function getFooter()
     {
-        return 'END:VCALENDAR'.self::LINE_ENDING;
+        return 'END:VCALENDAR';
     }
 }
