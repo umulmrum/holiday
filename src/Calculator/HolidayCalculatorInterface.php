@@ -3,6 +3,7 @@
 namespace umulmrum\Holiday\Calculator;
 
 use DateTimeZone;
+use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Model\HolidayList;
 
 interface HolidayCalculatorInterface
@@ -15,6 +16,8 @@ interface HolidayCalculatorInterface
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
+     *
+     * @throws HolidayException
      */
     public function calculateHolidaysForYear($year, $region, DateTimeZone $timezone = null);
 }

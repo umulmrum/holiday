@@ -48,7 +48,7 @@ class IncludeTimespanFilter implements HolidayFilterInterface
          * @var Holiday $holiday
          */
         $newList = new HolidayList();
-        foreach ($holidayList->getList() as $name => $holidays) {
+        foreach ($holidayList->getList() as $holidays) {
             foreach ($holidays as $holiday) {
                 $timestamp = $holiday->getTimestamp();
                 if ($timestamp >= $firstDay && $timestamp < $lastDayPlusOne) {

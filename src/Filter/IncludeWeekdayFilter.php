@@ -35,7 +35,7 @@ class IncludeWeekdayFilter implements HolidayFilterInterface
          * @var Holiday $holiday
          */
         $newList = new HolidayList();
-        foreach ($holidayList->getList() as $index => $holidays) {
+        foreach ($holidayList->getList() as $holidays) {
             foreach ($holidays as $holiday) {
                 if ((int) $holiday->getFormattedDate('w') === $weekday) {
                     $newList->add($holiday);

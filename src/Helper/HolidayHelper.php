@@ -4,6 +4,7 @@ namespace umulmrum\Holiday\Helper;
 
 use DateTime;
 use DateTimeZone;
+use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\Exception\HolidayException;
@@ -11,8 +12,12 @@ use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
 use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\Filter\IncludeUniqueDateFilter;
 use umulmrum\Holiday\Filter\SortByDateFilter;
+use umulmrum\Holiday\Formatter\ICalendarFormatter;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
+use umulmrum\Holiday\Provider\Weekday\WeekdayInitializer;
+use umulmrum\Holiday\Translator\TranslatorInterface;
 
 /**
  * HolidayHelper provides helper methods that ease holiday calculations for common use cases.
@@ -56,12 +61,14 @@ class HolidayHelper
     /**
      * Returns all holidays for the given month in the given region.
      *
-     * @param int          $year
-     * @param int          $month
-     * @param string       $region
+     * @param int $year
+     * @param int $month
+     * @param string $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
+     *
+     * @throws HolidayException
      */
     public function getHolidaysForMonth($year, $month, $region, DateTimeZone $timezone = null)
     {
@@ -80,12 +87,14 @@ class HolidayHelper
      * Returns all holidays with the given name for the given year in the given region. Note that holiday names are
      * not necessarily unique, and therefore a HolidayList object is returned.
      *
-     * @param int          $year
-     * @param string       $holidayName
-     * @param string       $region
+     * @param int $year
+     * @param string $holidayName
+     * @param string $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
+     *
+     * @throws HolidayException
      */
     public function getHolidaysByName($year, $holidayName, $region, DateTimeZone $timezone = null)
     {
@@ -102,19 +111,20 @@ class HolidayHelper
      *
      * @param DateTime $firstDay
      * @param DateTime $lastDay
-     * @param string   $region
-     * @param array    $noWorkWeekdays
+     * @param string $region
+     * @param HolidayProviderInterface[] $noWorkWeekdayProviders
      *
      * @return HolidayList
+     *
+     * @throws HolidayException
      */
-    public function getNoWorkDaysForTimespan(DateTime $firstDay, DateTime $lastDay, $region, array $noWorkWeekdays = [])
+    public function getNoWorkDaysForTimespan(DateTime $firstDay, DateTime $lastDay, $region, array $noWorkWeekdayProviders = [])
     {
-        $noWork = [];
-        if (count($noWorkWeekdays) > 0) {
-            $noWork = $noWorkWeekdays;
+        if (count($noWorkWeekdayProviders) > 0) {
+            $noWork = $noWorkWeekdayProviders;
         } else {
             $noWork = [
-                Weekday::SUNDAY,
+                new Sundays(),
             ];
         }
 
@@ -124,6 +134,10 @@ class HolidayHelper
         if ($startYear === $endYear) {
             $holidays = [];
             $holidays[] = $this->holidayCalculator->calculateHolidaysForYear($startYear, $region, $firstDay->getTimezone());
+            $temporaryHolidayCalculator = new HolidayCalculator(new WeekdayInitializer());
+            foreach ($noWork as $noWorkDays) {
+                $holidays[] = $temporaryHolidayCalculator->calculateHolidaysForYear($startYear, $noWorkDays->getId(), $firstDay->getTimezone());
+            }
             $holidays[] = $this->holidayCalculator->calculateHolidaysForYear($startYear, Sundays::ID, $firstDay->getTimezone());
 
             $holidayList = $this->mergeHolidayLists($holidays);
@@ -148,7 +162,7 @@ class HolidayHelper
             $holidayList = $this->mergeHolidayLists($holidays);
         }
 
-        return $holidayList;
+        return (new SortByDateFilter())->filter($holidayList);
     }
 
     /**
@@ -168,5 +182,22 @@ class HolidayHelper
         }
 
         return (new SortByDateFilter())->filter($newList);
+    }
+
+    /**
+     * @param HolidayList $holidayList
+     * @param TranslatorInterface|null $translator
+     *
+     * @return string
+     */
+    public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null)
+    {
+        $calendarFormatter = new ICalendarFormatter($translator);
+        $content = [];
+        $content[] = $calendarFormatter->getHeader();
+        $content = array_merge($content, $calendarFormatter->formatList($holidayList));
+        $content[] = $calendarFormatter->getFooter();
+
+        return implode(ICalendarFormatter::LINE_ENDING, $content);
     }
 }

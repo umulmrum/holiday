@@ -3,6 +3,8 @@
 namespace umulmrum\Holiday\Provider\Weekday;
 
 use DateTimeZone;
+use umulmrum\Holiday\Constant\HolidayType;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 abstract class Weekdays implements HolidayProviderInterface
@@ -27,6 +29,6 @@ abstract class Weekdays implements HolidayProviderInterface
      */
     public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
     {
-        return $this->getWeekdays($year, $this->weekday, $timezone);
+        return new HolidayList($this->getWeekdays($year, $this->weekday, HolidayType::OTHER, $timezone));
     }
 }

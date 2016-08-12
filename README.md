@@ -10,7 +10,7 @@ Requirements
 ------------
 
 - PHP >= 5.4
-- Symfony translator
+- Symfony translator in any version
 
 That's it really.
 
@@ -79,10 +79,6 @@ $formattedHolidays = (new DateFormatter())->formatList($holidays);
 
 ```
 
-
-
-
-
 The usage normally follows this pattern:
 
 - compute all holidays for a given year and a holiday provider (e.g. a region)
@@ -93,9 +89,32 @@ The usage normally follows this pattern:
   A few filters are provided in this library, more can be added freely.
 - format the result using a formatter.
   A few formatters are provided in this library, more can be added freely.
+
+Filters
+-------
+
+Filters can be used to narrow down or transform holiday lists. There are
+some predefined filters, but custom ones can be created by implementing
+the `HolidayFilterInterface`.
+When implementing custom filters, it is suggested that you use a prefix
+"Include" in the class name for all filters that preserve some holidays,
+e.g. the `IncludeWeekdayFilter` preserves all holidays on a specific weekday.
+Equally the prefix "Exclude" should be used for all filters that remove
+some holidays.
+
+Formatters
+----------
+
+Formatters can be used to format holidays and holiday lists. There are
+some predefined formatters, but custom ones can be created by implementing
+the `HolidayFormatterInterface`.
+
+Translations
+------------
+
+Some formatters can be initialized with an optional translator. See the
+`TranslatorInterface` and the translation files under `res/trans`.
   
-
-
 Supported Countries
 -------------------
 
@@ -106,28 +125,34 @@ existing code, it should be self-explanatory. I will happily merge pull requests
 Notices on German Holidays
 --------------------------
 
-Easter Sunday/Ostersonntag and Whit Sunday/Pfingstsonntag are not public holidays in most states.
+- Easter Sunday/Ostersonntag and Whit Sunday/Pfingstsonntag are not public holidays in most states.
+- Every sunday is a public holiday in Hesse.
+- Assumption/Mariä Himmelfahrt is a public holiday in about 1700 of about 2000 communities in Bavaria. This is implemented
+  as a partial holiday, so you might want to add your logic that filters this date.
+- In Bavaria schools are closed on Assumption Day and on Repentance and Prayer Day. There is no special handling of
+  this "behavior".
+- Corpus Christi/Fronleichnam is a public holiday in some communities in Saxony and Thuringia.
+- Regional holidays with traditionally (but not publicly) limited opening hours are not considered yet (e.g. carnival days).
+- Some ports at the German Ocean celebrate some holidays as "High Holidays". It is generally not allowed to work on these days,
+and work time ends at 12 o'clock the day before. This is not considered yet.
+- Also there are some quiet days that are not public holidays in various states. This is also not considered yet.
 
-Each sunday is a public holiday in Hesse.
+Notice on Holidays Way in the Past or Future
+--------------------------------------------
 
-Assumption/Mariä Himmelfahrt is a public holiday in about 1700 of about 2000 communities in Bavaria. This is implemented
-as a partial holiday, so you might want to add your logic that filters this date.
+If computing holidays for past years, be aware that they may not be accurate.
+All holidays were introduced at some point, so this lib might return holidays
+for years in which they really weren't in existence, as well as omit holidays
+that haven't been celebrated for a long time.
 
-In Bavaria schools are closed on Assumption Day and on Repentance and Prayer Day
-
-Corpus Christi/Fronleichnam is a public holiday in some communities in Saxony and Thuringia.
-
-Regional holidays with traditionally (but not publicly) limited opening hours are not considered yet (e.g. carnival days).
-
-Some ports at the German Ocean celebrate some holidays as "High Holidays". It is generally not allowed to work on these days,
-and work time ends at 12 o'clock the day before.
-
-Also there are some quiet days that are not public holidays in various states.
+Likewise holidays might of course change in the future, so there is no
+point in calculating them for the year 5000 (but if you ever wondered:
+Easter Sunday will be on March 30, 5000).
 
 Contribution
 ------------
 
-Contributions are highly welcome. Please follow a few little rules when submitting a PR:
+Contributions are highly welcome. Please follow these rules when submitting a PR:
 
 - mimic existing code for style and structure
 - add unit tests for all of your code

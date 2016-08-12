@@ -9,9 +9,8 @@ use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\NullTranslator;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
-class ICalendarFormatter implements HolidayFormatterInterface
+class JsonFormatter implements HolidayFormatterInterface
 {
-    const LINE_ENDING = "\r\n";
     /**
      * @var TranslatorInterface
      */
@@ -34,7 +33,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
      */
     public function format(Holiday $holiday, array $options = [])
     {
-        return $this->getEvent($holiday);
+        return json_encode($this->getEvent($holiday), JSON_PRETTY_PRINT);
     }
 
     /**
@@ -50,20 +49,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
             $result[] = $this->getEvent($holiday);
         }
 
-        return $result;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHeader()
-    {
-        return implode(self::LINE_ENDING, [
-            'BEGIN:VCALENDAR',
-            'VERSION:2.0',
-            'PRODID:umulmrum/holiday',
-            'CALSCALE:GREGORIAN',
-        ]).self::LINE_ENDING;
+        return json_encode($result, JSON_PRETTY_PRINT);
     }
 
     /**
@@ -73,24 +59,13 @@ class ICalendarFormatter implements HolidayFormatterInterface
      */
     private function getEvent(Holiday $holiday)
     {
-        $dtstamp = new DateTime('now', new DateTimeZone('UTC'));
-
-        return implode(self::LINE_ENDING, [
-            'BEGIN:VEVENT',
-            sprintf('UID:%s-%s', $holiday->getName(), $holiday->getFormattedDate('Y-m-d')),
-            sprintf('DTSTAMP:%s', $dtstamp->format('Ymd\TGis\ZO')),
-            sprintf('CREATED:%s', $dtstamp->format('Ymd\TGis\ZO')),
-            'SUMMARY:'.$this->translator->translateName($holiday),
-            'DTSTART;VALUE=DATE:'.$holiday->getFormattedDate('Ymd'),
-            'END:VEVENT',
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getFooter()
-    {
-        return 'END:VCALENDAR'.self::LINE_ENDING;
+        return [
+            'name' => $holiday->getName(),
+            'translatedName' => $this->translator->translateName($holiday),
+            'timestamp' => $holiday->getTimestamp(),
+            'formattedDate' => $holiday->getFormattedDate('Ymd\TGis\ZO'),
+            'type' => $holiday->getType(),
+            // TODO format type (with translation)
+        ];
     }
 }

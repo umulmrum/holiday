@@ -3,6 +3,7 @@
 namespace umulmrum\Holiday\Model;
 
 use Countable;
+use DateTime;
 
 class HolidayList implements Countable
 {
@@ -15,6 +16,9 @@ class HolidayList implements Countable
      */
     private $count = 0;
 
+    /**
+     * @param Holiday[] $holidays
+     */
     public function __construct(array $holidays = [])
     {
         foreach ($holidays as $holiday) {
@@ -22,6 +26,12 @@ class HolidayList implements Countable
         }
     }
 
+    /**
+     * Adds a holiday to the list. If there already is a holiday with the same name and date, then the holiday will
+     * not be added a second time, but its types will be added to the existing one.
+     *
+     * @param Holiday $holiday
+     */
     public function add(Holiday $holiday)
     {
         $name = $holiday->getName();
@@ -46,6 +56,18 @@ class HolidayList implements Countable
             $this->holidayList[$name][] = $holiday;
             ++$this->count;
         }
+    }
+
+    private function getByNameAndDate($name, DateTime $dateTime)
+    {
+        $timestamp = $dateTime->getTimestamp();
+        foreach ($this->holidayList as $holiday) {
+            if ($name === $holiday->getName() && $timestamp === $holiday->getTimestamp()) {
+                return $holiday;
+            }
+        }
+
+        return null;
     }
 
     /**

@@ -10,7 +10,7 @@ use umulmrum\Holiday\Model\HolidayList;
 class SortByDateFilterTest extends HolidayTestCase
 {
     /**
-     * @var SortByDateFilterTest
+     * @var SortByDateFilter
      */
     private $filter;
     /**
@@ -55,7 +55,7 @@ class SortByDateFilterTest extends HolidayTestCase
         foreach ($this->actualResult->getFlatArray() as $result) {
             $resultDates[] = $result->getFormattedDate('Y-m-d');
         }
-        $this->assertEquals($expectedResult, $resultDates);
+        self::assertEquals($expectedResult, $resultDates);
     }
 
     /**

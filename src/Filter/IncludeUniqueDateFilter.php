@@ -34,7 +34,7 @@ class IncludeUniqueDateFilter implements HolidayFilterInterface
          * @var Holiday $holiday
          */
         $newList = new HolidayList();
-        foreach ($holidayList->getList() as $index => $holidays) {
+        foreach ($holidayList->getList() as $holidays) {
             foreach ($holidays as $holiday) {
                 if (!isset($foundTimestamps[$holiday->getTimestamp()])) {
                     $newList->add($holiday);

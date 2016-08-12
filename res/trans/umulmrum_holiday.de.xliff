@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" target-language="de" datatype="plaintext" original="umulmrum_holiday.en.xliff">
     <body>
@@ -12,7 +12,7 @@
       </trans-unit>
       <trans-unit id="umulmrum_holiday.assumption_day">
         <source>assumption_day</source>
-        <target>Mariä Himmelfahrt</target>
+        <target>MariÃ¤ Himmelfahrt</target>
       </trans-unit>
       <trans-unit id="umulmrum_holiday.augsburger_friedensfest">
         <source>augsburger_friedensfest</source>
@@ -20,7 +20,7 @@
       </trans-unit>
       <trans-unit id="umulmrum_holiday.christmas_day">
         <source>christmas_day</source>
-        <target>1. Weihnachtsfeiertag</target>
+        <target>Erster Weihnachtsfeiertag</target>
       </trans-unit>
       <trans-unit id="umulmrum_holiday.corpus_christi">
         <source>corpus_christi</source>
@@ -36,7 +36,7 @@
       </trans-unit>
       <trans-unit id="umulmrum_holiday.epiphany">
         <source>epiphany</source>
-        <target>Heilige drei Könige</target>
+        <target>Heilige drei KÃ¶nige</target>
       </trans-unit>
       <trans-unit id="umulmrum_holiday.german_unity_day">
         <source>german_unity_day</source>
@@ -60,7 +60,7 @@
       </trans-unit>
       <trans-unit id="umulmrum_holiday.repentance_and_prayer_day">
         <source>repentance_and_prayer_day</source>
-        <target>Buß- und Bettag</target>
+        <target>BuÃŸ- und Bettag</target>
       </trans-unit>
       <trans-unit id="umulmrum_holiday.second_christmas_day">
         <source>second_christmas_day</source>
