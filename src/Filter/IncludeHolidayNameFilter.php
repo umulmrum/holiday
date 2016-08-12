@@ -31,14 +31,12 @@ class IncludeHolidayNameFilter implements HolidayFilterInterface
             $holidayList = $this->chainedFilter->filter($holidayList, $options);
         }
         $holidayName = $options[self::PARAM_HOLIDAY_NAME];
-        /**
-         * @var Holiday[] $tempList
-         */
-        $tempList = $holidayList->getList()[$holidayName];
         $newList = new HolidayList();
 
-        foreach ($tempList as $holiday) {
-            $newList->add($holiday);
+        foreach ($holidayList->getList() as $holiday) {
+            if ($holidayName === $holiday->getName()) {
+                $newList->add($holiday);
+            }
         }
 
         return $newList;

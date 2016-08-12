@@ -27,7 +27,7 @@ class SortByDateFilter implements HolidayFilterInterface
         if (null !== $this->chainedFilter) {
             $holidayList = $this->chainedFilter->filter($holidayList, $options);
         }
-        $flatList = $holidayList->getFlatArray();
+        $flatList = $holidayList->getList();
         usort($flatList, function ($o1, $o2) {
             return $o1->getTimestamp() > $o2->getTimestamp();
         });

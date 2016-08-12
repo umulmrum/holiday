@@ -52,7 +52,7 @@ class HolidayListTest extends HolidayTestCase
      */
     private function thenTheListShouldContainCertainHolidays(array $expectedValue)
     {
-        self::assertEquals($expectedValue, $this->holidayList->getFlatArray());
+        self::assertEquals($expectedValue, $this->holidayList->getList());
     }
 
     /**

@@ -44,7 +44,7 @@ class NameFormatter implements HolidayFormatterInterface
         /**
          * @var Holiday $holiday
          */
-        foreach ($holidayList->getFlatArray() as $holiday) {
+        foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->translator->translateName($holiday);
         }
 

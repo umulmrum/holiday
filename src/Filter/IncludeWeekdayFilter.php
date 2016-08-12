@@ -31,15 +31,11 @@ class IncludeWeekdayFilter implements HolidayFilterInterface
             $holidayList = $this->chainedFilter->filter($holidayList, $options);
         }
         $weekday = $options[self::PARAM_WEEK_DAY];
-        /**
-         * @var Holiday $holiday
-         */
+
         $newList = new HolidayList();
-        foreach ($holidayList->getList() as $holidays) {
-            foreach ($holidays as $holiday) {
-                if ((int) $holiday->getFormattedDate('w') === $weekday) {
-                    $newList->add($holiday);
-                }
+        foreach ($holidayList->getList() as $holiday) {
+            if ((int) $holiday->getFormattedDate('w') === $weekday) {
+                $newList->add($holiday);
             }
         }
 

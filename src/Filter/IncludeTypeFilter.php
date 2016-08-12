@@ -31,10 +31,7 @@ class IncludeTypeFilter implements HolidayFilterInterface
             $holidayList = $this->chainedFilter->filter($holidayList, $options);
         }
         $holidayType = $options[self::PARAM_HOLIDAY_TYPE];
-        /**
-         * @var Holiday[] $tempList
-         */
-        $tempList = $holidayList->getFlatArray();
+        $tempList = $holidayList->getList();
         $newList = new HolidayList();
 
         foreach ($tempList as $holiday) {

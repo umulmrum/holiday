@@ -60,7 +60,7 @@ class IncludeTimespanFilterTest extends HolidayTestCase
     private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult)
     {
         $resultDates = [];
-        foreach ($this->actualResult->getFlatArray() as $result) {
+        foreach ($this->actualResult->getList() as $result) {
             $resultDates[] = $result->getFormattedDate('Y-m-d');
         }
         $this->assertEquals($expectedResult, $resultDates);

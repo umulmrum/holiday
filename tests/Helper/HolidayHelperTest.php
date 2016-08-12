@@ -135,7 +135,7 @@ class HolidayHelperTest extends HolidayTestCase
     private function thenItShouldReturnAListOfHolidays($expectedResult)
     {
         $actualResult = [];
-        foreach ($this->actualResult->getFlatArray() as $holiday) {
+        foreach ($this->actualResult->getList() as $holiday) {
             $actualResult[] = $holiday->getFormattedDate('Y-m-d');
         }
         self::assertEquals($expectedResult, $actualResult);

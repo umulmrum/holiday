@@ -176,7 +176,7 @@ class HolidayHelper
     {
         $newList = new HolidayList();
         foreach ($holidayLists as $holidayList) {
-            foreach ($holidayList->getFlatArray() as $holiday) {
+            foreach ($holidayList->getList() as $holiday) {
                 $newList->add($holiday);
             }
         }

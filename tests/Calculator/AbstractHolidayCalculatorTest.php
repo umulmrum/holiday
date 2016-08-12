@@ -63,7 +63,7 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
     protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult)
     {
         $actualResult = [];
-        foreach ($this->actualResult->getFlatArray() as $actualHoliday) {
+        foreach ($this->actualResult->getList() as $actualHoliday) {
             $actualResult[] = $actualHoliday->getFormattedDate('Y-m-d');
         }
         sort($actualResult);

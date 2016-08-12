@@ -8,13 +8,9 @@ use DateTime;
 class HolidayList implements Countable
 {
     /**
-     * @var Holiday[][]
+     * @var Holiday[]
      */
     private $holidayList = [];
-    /**
-     * @var
-     */
-    private $count = 0;
 
     /**
      * @param Holiday[] $holidays
@@ -34,44 +30,33 @@ class HolidayList implements Countable
      */
     public function add(Holiday $holiday)
     {
-        $name = $holiday->getName();
-        if (isset($this->holidayList[$name])) {
-            /**
-             * @var Holiday $tempHoliday
-             */
-            $found = false;
-            foreach ($this->holidayList[$name] as $index => $tempHoliday) {
-                if ($tempHoliday->getTimestamp() === $holiday->getTimestamp()) {
-                    $this->holidayList[$name][$index] = new Holiday($name, $holiday->getDate(), $holiday->getType() | $tempHoliday->getType());
-                    $found = true;
-                    break;
-                }
-            }
-            if (!$found) {
-                $this->holidayList[$name][] = $holiday;
-                ++$this->count;
-            }
+        if (-1 !== $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getDate())) {
+            $this->holidayList[$index] = new Holiday($holiday->getName(), $holiday->getDate(), $holiday->getType() | $this->holidayList[$index]->getType());
         } else {
-            $this->holidayList[$name] = [];
-            $this->holidayList[$name][] = $holiday;
-            ++$this->count;
+            $this->holidayList[] = $holiday;
         }
-    }
-
-    private function getByNameAndDate($name, DateTime $dateTime)
-    {
-        $timestamp = $dateTime->getTimestamp();
-        foreach ($this->holidayList as $holiday) {
-            if ($name === $holiday->getName() && $timestamp === $holiday->getTimestamp()) {
-                return $holiday;
-            }
-        }
-
-        return null;
     }
 
     /**
-     * @return array
+     * @param string $name
+     * @param DateTime $dateTime
+     *
+     * @return int
+     */
+    private function getIndexByNameAndDate($name, DateTime $dateTime)
+    {
+        $timestamp = $dateTime->getTimestamp();
+        foreach ($this->holidayList as $index => $holiday) {
+            if ($name === $holiday->getName() && $timestamp === $holiday->getTimestamp()) {
+                return $index;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * @return Holiday[]
      */
     public function getList()
     {
@@ -79,28 +64,10 @@ class HolidayList implements Countable
     }
 
     /**
-     * @return Holiday[]
-     */
-    public function getFlatArray()
-    {
-        $flattenedArray = [];
-        /**
-         * @var Holiday[] $holidaysByName
-         */
-        foreach ($this->holidayList as $holidaysByName) {
-            foreach ($holidaysByName as $holidays) {
-                $flattenedArray[] = $holidays;
-            }
-        }
-
-        return $flattenedArray;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function count()
     {
-        return $this->count;
+        return count($this->holidayList);
     }
 }

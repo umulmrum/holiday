@@ -40,7 +40,7 @@ class DateFormatter implements HolidayFormatterInterface
         /**
          * @var Holiday $holiday
          */
-        foreach ($holidayList->getFlatArray() as $holiday) {
+        foreach ($holidayList->getList() as $holiday) {
             $result[] = $holiday->getFormattedDate($format);
         }
 

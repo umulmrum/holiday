@@ -44,16 +44,12 @@ class IncludeTimespanFilter implements HolidayFilterInterface
         $lastDayPlusOne = clone $options[self::PARAM_LAST_DAY];
         $lastDayPlusOne->add(new DateInterval('P1D'));
         $lastDayPlusOne = $lastDayPlusOne->getTimestamp();
-        /**
-         * @var Holiday $holiday
-         */
+
         $newList = new HolidayList();
-        foreach ($holidayList->getList() as $holidays) {
-            foreach ($holidays as $holiday) {
-                $timestamp = $holiday->getTimestamp();
-                if ($timestamp >= $firstDay && $timestamp < $lastDayPlusOne) {
-                    $newList->add($holiday);
-                }
+        foreach ($holidayList->getList() as $holiday) {
+            $timestamp = $holiday->getTimestamp();
+            if ($timestamp >= $firstDay && $timestamp < $lastDayPlusOne) {
+                $newList->add($holiday);
             }
         }
 
