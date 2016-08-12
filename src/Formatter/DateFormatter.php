@@ -37,9 +37,6 @@ class DateFormatter implements HolidayFormatterInterface
         $format = $this->getFormat($options);
         $result = [];
 
-        /**
-         * @var Holiday $holiday
-         */
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $holiday->getFormattedDate($format);
         }

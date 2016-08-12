@@ -38,7 +38,7 @@ class HolidayList implements Countable
     }
 
     /**
-     * @param string $name
+     * @param string   $name
      * @param DateTime $dateTime
      *
      * @return int

@@ -6,7 +6,6 @@ use DateTime;
 use DateTimeZone;
 use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
-use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
 use umulmrum\Holiday\Filter\IncludeTimespanFilter;
@@ -61,9 +60,9 @@ class HolidayHelper
     /**
      * Returns all holidays for the given month in the given region.
      *
-     * @param int $year
-     * @param int $month
-     * @param string $region
+     * @param int          $year
+     * @param int          $month
+     * @param string       $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
@@ -87,9 +86,9 @@ class HolidayHelper
      * Returns all holidays with the given name for the given year in the given region. Note that holiday names are
      * not necessarily unique, and therefore a HolidayList object is returned.
      *
-     * @param int $year
-     * @param string $holidayName
-     * @param string $region
+     * @param int          $year
+     * @param string       $holidayName
+     * @param string       $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
@@ -109,9 +108,9 @@ class HolidayHelper
     /**
      * Returns all days in the given timespan and the region in which normally employees do not need to work.
      *
-     * @param DateTime $firstDay
-     * @param DateTime $lastDay
-     * @param string $region
+     * @param DateTime                   $firstDay
+     * @param DateTime                   $lastDay
+     * @param string                     $region
      * @param HolidayProviderInterface[] $noWorkWeekdayProviders
      *
      * @return HolidayList
@@ -185,7 +184,7 @@ class HolidayHelper
     }
 
     /**
-     * @param HolidayList $holidayList
+     * @param HolidayList              $holidayList
      * @param TranslatorInterface|null $translator
      *
      * @return string

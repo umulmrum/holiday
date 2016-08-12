@@ -4,7 +4,6 @@ namespace umulmrum\Holiday\Filter;
 
 use DateInterval;
 use DateTime;
-use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeTimespanFilter implements HolidayFilterInterface

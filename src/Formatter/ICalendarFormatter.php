@@ -43,9 +43,6 @@ class ICalendarFormatter implements HolidayFormatterInterface
     public function formatList(HolidayList $holidayList, array $options = [])
     {
         $result = [];
-        /**
-         * @var Holiday $holiday
-         */
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->getEvent($holiday);
         }

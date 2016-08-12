@@ -2,8 +2,6 @@
 
 namespace umulmrum\Holiday\Formatter;
 
-use DateTime;
-use DateTimeZone;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\NullTranslator;
@@ -42,9 +40,6 @@ class JsonFormatter implements HolidayFormatterInterface
     public function formatList(HolidayList $holidayList, array $options = [])
     {
         $result = [];
-        /**
-         * @var Holiday $holiday
-         */
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->getEvent($holiday);
         }

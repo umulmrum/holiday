@@ -217,8 +217,8 @@ class HolidayHelperTest extends HolidayTestCase
      *
      * @param string $firstDay
      * @param string $lastDay
-     * @param array $noWorkWeekdaysProviders
-     * @param array $expectedResult
+     * @param array  $noWorkWeekdaysProviders
+     * @param array  $expectedResult
      */
     public function it_should_calculate_correct_no_work_days_for_a_timespan($firstDay, $lastDay, array $noWorkWeekdaysProviders, array $expectedResult)
     {
@@ -230,7 +230,7 @@ class HolidayHelperTest extends HolidayTestCase
     /**
      * @param string $firstDay
      * @param string $lastDay
-     * @param array $noWorkWeekdaysProvider
+     * @param array  $noWorkWeekdaysProvider
      */
     private function whenGetNoWorkdaysForTimespanIsCalled($firstDay, $lastDay, array $noWorkWeekdaysProvider)
     {

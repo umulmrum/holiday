@@ -2,7 +2,6 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeWeekdayFilter implements HolidayFilterInterface
