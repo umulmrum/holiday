@@ -104,7 +104,7 @@ class JsonFormatterTest extends HolidayTestCase
      * @dataProvider getFormatTranslatedData
      *
      * @param Holiday $holiday
-     * @param string $expectedResult
+     * @param string  $expectedResult
      */
     public function it_should_format_single_values_with_translation(Holiday $holiday, $expectedResult)
     {
@@ -150,7 +150,7 @@ class JsonFormatterTest extends HolidayTestCase
      * @dataProvider getFormatListData
      *
      * @param HolidayList $holidayList
-     * @param string $expectedResult
+     * @param string      $expectedResult
      */
     public function it_should_format_list_values(HolidayList $holidayList, $expectedResult)
     {

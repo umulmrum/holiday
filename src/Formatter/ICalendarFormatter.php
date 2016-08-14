@@ -32,7 +32,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
 
     /**
      * @param TranslatorInterface|null $translator
-     * @param DateHelper $dateHelper
+     * @param DateHelper               $dateHelper
      */
     public function __construct(TranslatorInterface $translator = null, DateHelper $dateHelper = null)
     {
@@ -62,9 +62,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
     public function formatList(HolidayList $holidayList, array $options = [])
     {
         $result = [];
-        /**
-         * @var Holiday
-         */
+
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->getEvent($holiday);
         }

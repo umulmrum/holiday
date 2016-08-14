@@ -15,7 +15,6 @@ use DateTime;
 use DateTimeZone;
 use Prophecy\Prophecy\ObjectProphecy;
 use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\Formatter\ICalendarFormatter;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -426,7 +425,7 @@ class HolidayHelperTest extends HolidayTestCase
      * @dataProvider getGetHolidayListInICalendarFormatDat
      *
      * @param HolidayList $holidayList
-     * @param string $expectedResult
+     * @param string      $expectedResult
      */
     public function it_should_calculate_correct_icalendar_format_for_holidays(HolidayList $holidayList, $expectedResult)
     {
@@ -469,30 +468,28 @@ class HolidayHelperTest extends HolidayTestCase
             [
                 new HolidayList(),
                 "BEGIN:VCALENDAR\r\n"
-                . "VERSION:2.0\r\n"
-                . "PRODID:umulmrum/holiday\r\n"
-                . "CALSCALE:GREGORIAN\r\n"
-                . "END:VCALENDAR\r\n",
+                ."VERSION:2.0\r\n"
+                ."PRODID:umulmrum/holiday\r\n"
+                ."CALSCALE:GREGORIAN\r\n"
+                ."END:VCALENDAR\r\n",
             ],
             [
                 new HolidayList([
                     new Holiday('name', new DateTime('2016-03-11', $this->getTimezone())),
                 ]),
                 "BEGIN:VCALENDAR\r\n"
-                . "VERSION:2.0\r\n"
-                . "PRODID:umulmrum/holiday\r\n"
-                . "CALSCALE:GREGORIAN\r\n"
-                . "BEGIN:VEVENT\r\n"
-                . "UID:name-2016-03-11\r\n"
-                . "DTSTAMP:20160808T120342Z+0000\r\n"
-                . "CREATED:20160808T120342Z+0000\r\n"
-                . "SUMMARY:My Holiday\r\n"
-                . "DTSTART;VALUE=DATE:20160311\r\n"
-                . "END:VEVENT\r\n"
-                . "END:VCALENDAR\r\n",
+                ."VERSION:2.0\r\n"
+                ."PRODID:umulmrum/holiday\r\n"
+                ."CALSCALE:GREGORIAN\r\n"
+                ."BEGIN:VEVENT\r\n"
+                ."UID:name-2016-03-11\r\n"
+                ."DTSTAMP:20160808T120342Z+0000\r\n"
+                ."CREATED:20160808T120342Z+0000\r\n"
+                ."SUMMARY:My Holiday\r\n"
+                ."DTSTART;VALUE=DATE:20160311\r\n"
+                ."END:VEVENT\r\n"
+                ."END:VCALENDAR\r\n",
             ],
         ];
     }
-
-
 }

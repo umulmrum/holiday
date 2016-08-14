@@ -50,6 +50,7 @@ class JsonFormatter implements HolidayFormatterInterface
     public function formatList(HolidayList $holidayList, array $options = [])
     {
         $result = [];
+
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->getEvent($holiday);
         }
@@ -88,7 +89,7 @@ class JsonFormatter implements HolidayFormatterInterface
             if (($type & $counter) !== 0) {
                 $typeList[] = $counter;
             }
-            $type &= ~ $counter;
+            $type &= ~$counter;
             $counter <<= 1;
         }
         if (0 === count($typeList)) {
@@ -100,6 +101,7 @@ class JsonFormatter implements HolidayFormatterInterface
 
     /**
      * @param int[] $typeList
+     *
      * @return string[]
      */
     private function getTypeNames(array $typeList)

@@ -49,6 +49,7 @@ class NameFormatter implements HolidayFormatterInterface
     public function formatList(HolidayList $holidayList, array $options = [])
     {
         $result = [];
+
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->translator->translateName($holiday);
         }

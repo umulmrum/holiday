@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Helper;
 
-
 use DateTime;
 use DateTimeZone;
 
