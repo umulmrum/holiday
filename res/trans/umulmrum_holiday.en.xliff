@@ -1,4 +1,12 @@
 <?xml version="1.0"?>
+<!--
+ This file is part of the umulmrum/holiday package.
+
+ (c) 2016 Stefan Kruppa
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+ -->
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="en.xliff">
     <body>
