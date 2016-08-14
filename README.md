@@ -10,7 +10,8 @@ Requirements
 ------------
 
 - PHP >= 5.4
-- Symfony translator in any version
+
+- Symfony translator in any version is recommended for translations
 
 That's it really.
 

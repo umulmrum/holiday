@@ -116,6 +116,7 @@ class HolidayHelper
 
     /**
      * Returns all days in the given timespan and the region in which normally employees do not need to work.
+     * Be aware that this method is quite heavy-weight if multiple no-work days for multiple years are requested.
      *
      * @param DateTime                   $firstDay
      * @param DateTime                   $lastDay
