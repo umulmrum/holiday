@@ -20,14 +20,14 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
 
     /**
      * @test
-     * @dataProvider getTranslateData
+     * @dataProvider getTranslateNameData
      *
      * @param string $name
      */
     public function it_should_send_names_to_the_translator($name)
     {
         $this->givenASymfonyBridgeTranslator();
-        $this->whenTranslateIsCalled($name);
+        $this->whenTranslateNameIsCalled($name);
         $this->thenTheSymfonyTranslatorShouldBeCalled($name);
     }
 
@@ -40,7 +40,7 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
     /**
      * @param $name
      */
-    private function whenTranslateIsCalled($name)
+    private function whenTranslateNameIsCalled($name)
     {
         $this->translator->translateName(new Holiday($name, new DateTime('2016-01-01')));
     }
@@ -51,6 +51,39 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
     private function thenTheSymfonyTranslatorShouldBeCalled($name)
     {
         $this->symfonyTranslator->trans($name, [], 'umulmrum_holiday')->shouldHaveBeenCalled();
+    }
+
+    /**
+     * @return array
+     */
+    public function getTranslateNameData()
+    {
+        return [
+            [
+                'name',
+            ],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider getTranslateData
+     *
+     * @param string $name
+     */
+    public function it_should_send_arbitrary_strings_to_the_translator($name)
+    {
+        $this->givenASymfonyBridgeTranslator();
+        $this->whenTranslateIsCalled($name);
+        $this->thenTheSymfonyTranslatorShouldBeCalled($name);
+    }
+
+    /**
+     * @param $name
+     */
+    private function whenTranslateIsCalled($name)
+    {
+        $this->translator->translate($name);
     }
 
     /**

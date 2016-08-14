@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the umulmrum/holiday package.
+ *
+ * (c) 2016 Stefan Kruppa
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace umulmrum\Holiday\Translator;
 
 use Symfony\Component\Translation\TranslatorInterface as SymfonyTranslatorInterface;
@@ -26,5 +35,13 @@ class SymfonyBridgeTranslator implements TranslatorInterface
     public function translateName(Holiday $holiday)
     {
         return $this->translator->trans($holiday->getName(), [], 'umulmrum_holiday');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function translate($string)
+    {
+        return $this->translator->trans($string, [], 'umulmrum_holiday');
     }
 }

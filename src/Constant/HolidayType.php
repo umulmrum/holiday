@@ -1,7 +1,19 @@
 <?php
 
+/*
+ * This file is part of the umulmrum/holiday package.
+ *
+ * (c) 2016 Stefan Kruppa
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace umulmrum\Holiday\Constant;
 
+/**
+ * @codeCoverageIgnore
+ */
 class HolidayType
 {
     /**
@@ -33,4 +45,14 @@ class HolidayType
      * A holiday of type PARTIAL_AREA_ONLY is not celebrated in the whole region.
      */
     const PARTIAL_AREA_ONLY = 32;
+
+    public static $NAME = [
+        self::OTHER => 'other',
+        self::OFFICIAL => 'official',
+        self::DAY_OFF => 'day_off',
+        self::RELIGIOUS => 'religious',
+        self::TRADITIONAL => 'traditional',
+        self::NO_WORK_DAY => 'no_work_day',
+        self::PARTIAL_AREA_ONLY => 'partial_area_only',
+    ];
 }

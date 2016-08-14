@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the umulmrum/holiday package.
+ *
+ * (c) 2016 Stefan Kruppa
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace umulmrum\Holiday\Formatter;
 
 use DateTimeZone;
@@ -88,8 +97,8 @@ class ICalendarFormatter implements HolidayFormatterInterface
         return implode(self::LINE_ENDING, [
             'BEGIN:VEVENT',
             sprintf('UID:%s-%s', $holiday->getName(), $holiday->getFormattedDate('Y-m-d')),
-            sprintf('DTSTAMP:%s', $dtstamp->format('Ymd\TGis\ZO')),
-            sprintf('CREATED:%s', $dtstamp->format('Ymd\TGis\ZO')),
+            sprintf('DTSTAMP:%s', $dtstamp->format('Ymd\THis\ZO')),
+            sprintf('CREATED:%s', $dtstamp->format('Ymd\THis\ZO')),
             'SUMMARY:'.$this->translator->translateName($holiday),
             'DTSTART;VALUE=DATE:'.$holiday->getFormattedDate('Ymd'),
             'END:VEVENT',

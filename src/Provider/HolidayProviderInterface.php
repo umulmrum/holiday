@@ -1,10 +1,22 @@
 <?php
 
+/*
+ * This file is part of the umulmrum/holiday package.
+ *
+ * (c) 2016 Stefan Kruppa
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace umulmrum\Holiday\Provider;
 
 use DateTimeZone;
 use umulmrum\Holiday\Model\HolidayList;
 
+/**
+ * @codeCoverageIgnore
+ */
 interface HolidayProviderInterface
 {
     /**

@@ -1,80 +1,132 @@
 <?xml version="1.0"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="umulmrum_holiday.en.xliff">
+  <file source-language="en" datatype="plaintext" original="en.xliff">
     <body>
-      <trans-unit id="umulmrum_holiday.all_saints_day">
+      <trans-unit id="all_saints_day">
         <source>all_saints_day</source>
         <target>All Saints Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.ascension">
+      <trans-unit id="ascension">
         <source>ascension</source>
         <target>Ascension</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.assumption_day">
+      <trans-unit id="assumption_day">
         <source>assumption_day</source>
         <target>Assumption Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.augsburger_friedensfest">
+      <trans-unit id="augsburger_friedensfest">
         <source>augsburger_friedensfest</source>
         <target>Augsburger Friedensfest</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.christmas_day">
+      <trans-unit id="christmas_day">
         <source>christmas_day</source>
         <target>Christmas Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.corpus_christi">
+      <trans-unit id="corpus_christi">
         <source>corpus_christi</source>
         <target>Corpus Christi</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.easter_monday">
+      <trans-unit id="day_off">
+        <source>day_off</source>
+        <target>Day Off</target>
+      </trans-unit>
+      <trans-unit id="easter_monday">
         <source>easter_monday</source>
         <target>Easter Monday</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.easter_sunday">
+      <trans-unit id="easter_sunday">
         <source>easter_sunday</source>
         <target>Easter Sunday</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.epiphany">
+      <trans-unit id="epiphany">
         <source>epiphany</source>
         <target>Epiphany</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.german_unity_day">
+      <trans-unit id="friday">
+        <source>friday</source>
+        <target>Friday</target>
+      </trans-unit>
+      <trans-unit id="german_unity_day">
         <source>german_unity_day</source>
         <target>German Unity Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.good_friday">
+      <trans-unit id="good_friday">
         <source>good_friday</source>
         <target>Good Friday</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.labor_day">
+      <trans-unit id="labor_day">
         <source>labor_day</source>
         <target>Labor Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.new_year">
+      <trans-unit id="monday">
+        <source>monday</source>
+        <target>Monday</target>
+      </trans-unit>
+      <trans-unit id="new_year">
         <source>new_year</source>
         <target>New Year</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.reformation_day">
+      <trans-unit id="no_work_day">
+        <source>no_work_day</source>
+        <target>No work day</target>
+      </trans-unit>
+      <trans-unit id="official">
+        <source>official</source>
+        <target>Official</target>
+      </trans-unit>
+      <trans-unit id="other">
+        <source>other</source>
+        <target>Other</target>
+      </trans-unit>
+      <trans-unit id="partial_area_only">
+        <source>partial_area_only</source>
+        <target>Partial area only</target>
+      </trans-unit>
+      <trans-unit id="reformation_day">
         <source>reformation_day</source>
         <target>Reformation Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.repentance_and_prayer_day">
+      <trans-unit id="religious">
+        <source>religious</source>
+        <target>Religious</target>
+      </trans-unit>
+      <trans-unit id="repentance_and_prayer_day">
         <source>repentance_and_prayer_day</source>
         <target>Repentance and Prayer Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.second_christmas_day">
+      <trans-unit id="saturday">
+        <source>saturday</source>
+        <target>Saturday</target>
+      </trans-unit>
+      <trans-unit id="second_christmas_day">
         <source>second_christmas_day</source>
         <target>Second Christmas Day</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.sunday">
+      <trans-unit id="sunday">
         <source>sunday</source>
         <target>Sunday</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.whit_monday">
+      <trans-unit id="thursday">
+        <source>thursday</source>
+        <target>Thursday</target>
+      </trans-unit>
+      <trans-unit id="traditional">
+        <source>traditional</source>
+        <target>Traditional</target>
+      </trans-unit>
+      <trans-unit id="tuesday">
+        <source>tuesday</source>
+        <target>Tuesday</target>
+      </trans-unit>
+      <trans-unit id="wednesday">
+        <source>wednesday</source>
+        <target>Wednesday</target>
+      </trans-unit>
+      <trans-unit id="whit_monday">
         <source>whit_monday</source>
         <target>Whit Monday</target>
       </trans-unit>
-      <trans-unit id="umulmrum_holiday.whit_sunday">
+      <trans-unit id="whit_sunday">
         <source>whit_sunday</source>
         <target>Whit Sunday</target>
       </trans-unit>
