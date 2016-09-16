@@ -74,10 +74,6 @@
         <source>new_year</source>
         <target>Neujahr</target>
       </trans-unit>
-      <trans-unit id="no_work_day">
-        <source>no_work_day</source>
-        <target>Ruhetag</target>
-      </trans-unit>
       <trans-unit id="official">
         <source>official</source>
         <target>Gesetzlich</target>

@@ -38,7 +38,7 @@ trait WeekdayTrait
         $holidays = [];
 
         while ($day->getTimestamp() < $endDate = $end->getTimestamp()) {
-            $holidays[] = new Holiday($weekdayName, clone $day, HolidayType::NO_WORK_DAY | $additionalType);
+            $holidays[] = new Holiday($weekdayName, clone $day, HolidayType::DAY_OFF | $additionalType);
             $day->add(new DateInterval('P7D'));
         }
 
