@@ -4,7 +4,7 @@
         backupGlobals="true"
         backupStaticAttributes="false"
         cacheTokens="false"
-        colors="true"
+        colors="false"
         convertErrorsToExceptions="true"
         convertNoticesToExceptions="true"
         convertWarningsToExceptions="true"
@@ -22,9 +22,9 @@
         timeoutForMediumTests="10"
         timeoutForLargeTests="60"
         verbose="false">
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
+    <testsuites>
+        <testsuite name="All">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
