@@ -18,6 +18,9 @@
     "require": {
         "php": "~5.4|~7.0"
     },
+    "require-dev": {
+        "symfony/translation": "@stable"
+    },
     "autoload": {
       "psr-4": {
         "umulmrum\\Holiday\\": "src"
