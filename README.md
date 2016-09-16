@@ -6,6 +6,8 @@ Holiday is a library that computes holidays in a very flexible way. It is possib
 criteria and format them in different ways. It is easy to add more holiday providers, filters and formatters, so even
 if this library does not perfectly fit your needs, you can simply extend it.
 
+[![Latest Stable Version](https://poser.pugx.org/umulmrum/holiday/v/stable)](https://packagist.org/packages/umulmrum/holiday) [![Latest Unstable Version](https://poser.pugx.org/umulmrum/holiday/v/unstable)](https://packagist.org/packages/umulmrum/holiday) [![License](https://poser.pugx.org/umulmrum/holiday/license)](https://packagist.org/packages/umulmrum/holiday)
+
 Requirements
 ------------
 
