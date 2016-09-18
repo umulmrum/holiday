@@ -23,12 +23,8 @@
     },
     "autoload": {
       "psr-4": {
-        "umulmrum\\Holiday\\": "src"
-      }
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "umulmrum\\Holiday\\": "tests"
-      }
+        "umulmrum\\Holiday\\": ["src", "tests"]
+      },
+      "exclude-from-classmap": ["/tests/"]
     }
 }
