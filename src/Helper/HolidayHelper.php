@@ -49,7 +49,7 @@ class HolidayHelper
      * Returns if the given date is a holiday in the given region.
      *
      * @param DateTime $dateTime
-     * @param string   $region
+     * @param string $region
      *
      * @return bool true if the day is a holiday, else false
      *
@@ -57,7 +57,7 @@ class HolidayHelper
      */
     public function isDayAHoliday(DateTime $dateTime, $region)
     {
-        $holidayList = $this->holidayCalculator->calculateHolidaysForYear((int) $dateTime->format('Y'), $region, $dateTime->getTimezone());
+        $holidayList = $this->holidayCalculator->calculateHolidaysForYear((int)$dateTime->format('Y'), $region, $dateTime->getTimezone());
         $filteredHolidays = (new IncludeTimespanFilter())->filter($holidayList, [
             IncludeTimespanFilter::PARAM_FIRST_DAY => $dateTime,
             IncludeTimespanFilter::PARAM_LAST_DAY => $dateTime,
@@ -69,9 +69,9 @@ class HolidayHelper
     /**
      * Returns all holidays for the given month in the given region.
      *
-     * @param int          $year
-     * @param int          $month
-     * @param string       $region
+     * @param int $year
+     * @param int $month
+     * @param string $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
@@ -82,7 +82,7 @@ class HolidayHelper
     {
         $holidayList = $this->holidayCalculator->calculateHolidaysForYear($year, $region, $timezone);
         $date = new DateTime(sprintf('%s-%s-01', $year, $month), $timezone);
-        $lastDayOfMonth = (int) $date->format('t');
+        $lastDayOfMonth = (int)$date->format('t');
         $filteredHolidays = (new IncludeTimespanFilter())->filter($holidayList, [
             IncludeTimespanFilter::PARAM_FIRST_DAY => $date,
             IncludeTimespanFilter::PARAM_LAST_DAY => new DateTime(sprintf('%s-%s-%s', $year, $month, $lastDayOfMonth), $timezone),
@@ -95,9 +95,9 @@ class HolidayHelper
      * Returns all holidays with the given name for the given year in the given region. Note that holiday names are
      * not necessarily unique, and therefore a HolidayList object is returned.
      *
-     * @param int          $year
-     * @param string       $holidayName
-     * @param string       $region
+     * @param int $year
+     * @param string $holidayName
+     * @param string $region
      * @param DateTimeZone $timezone
      *
      * @return HolidayList
@@ -118,9 +118,9 @@ class HolidayHelper
      * Returns all days in the given timespan and the region in which normally employees do not need to work.
      * Be aware that this method is quite heavy-weight if multiple no-work days for multiple years are requested.
      *
-     * @param DateTime                   $firstDay
-     * @param DateTime                   $lastDay
-     * @param string                     $region
+     * @param DateTime $firstDay
+     * @param DateTime $lastDay
+     * @param string $region
      * @param HolidayProviderInterface[] $noWorkWeekdayProviders
      *
      * @return HolidayList
@@ -137,8 +137,8 @@ class HolidayHelper
             ];
         }
 
-        $startYear = (int) $firstDay->format('Y');
-        $endYear = (int) $lastDay->format('Y');
+        $startYear = (int)$firstDay->format('Y');
+        $endYear = (int)$lastDay->format('Y');
 
         if ($startYear === $endYear) {
             $holidays = [];
@@ -151,12 +151,11 @@ class HolidayHelper
 
             $holidayList = $this->mergeHolidayLists($holidays);
             $holidayList = (
-                new IncludeTimespanFilter(
-                new IncludeUniqueDateFilter(
-                )))->filter($holidayList, [
-                IncludeTimespanFilter::PARAM_FIRST_DAY => $firstDay,
-                IncludeTimespanFilter::PARAM_LAST_DAY => $lastDay,
-            ]);
+            new IncludeTimespanFilter(
+                new IncludeUniqueDateFilter()))->filter($holidayList, [
+                    IncludeTimespanFilter::PARAM_FIRST_DAY => $firstDay,
+                    IncludeTimespanFilter::PARAM_LAST_DAY => $lastDay,
+                ]);
         } else {
             $holidays = [];
             $holidays[] = $this->getNoWorkDaysForTimespan($firstDay, new DateTime(sprintf('%s-12-31', $startYear), $firstDay->getTimezone()), $region, $noWork);
@@ -194,9 +193,9 @@ class HolidayHelper
     }
 
     /**
-     * @param HolidayList              $holidayList
+     * @param HolidayList $holidayList
      * @param TranslatorInterface|null $translator
-     * @param DateHelper               $dateHelper
+     * @param DateHelper $dateHelper
      *
      * @return string
      */
@@ -208,6 +207,44 @@ class HolidayHelper
         $content = array_merge($content, $calendarFormatter->formatList($holidayList));
         $content[] = $calendarFormatter->getFooter();
 
-        return implode(ICalendarFormatter::LINE_ENDING, $content).ICalendarFormatter::LINE_ENDING;
+        return implode(ICalendarFormatter::LINE_ENDING, $content) . ICalendarFormatter::LINE_ENDING;
     }
+
+    /**
+     * Returns if the given date is a work day in the given region.
+     *
+     * @param DateTime $dateTime
+     * @param string $region
+     *
+     * @return bool true if the day is a work day, else false
+     *
+     * @throws HolidayException
+     */
+    public function isDayAWorkDay(DateTime $dateTime, $region)
+    {
+        $holidayList = $this->holidayCalculator->calculateHolidaysForYear((int)$dateTime->format('Y'), $region, $dateTime->getTimezone());
+        $filteredHolidays = (new IncludeTimespanFilter())->filter($holidayList, [
+            IncludeTimespanFilter::PARAM_FIRST_DAY => $dateTime,
+            IncludeTimespanFilter::PARAM_LAST_DAY => $dateTime,
+        ]);
+
+
+        $workDay = true;
+        // TODO: make weekend days work day status a region depended, for now assuming that weekend are not work days
+        if ($dateTime->format('N') > 5) {
+            $workDay = false;
+        }
+
+
+        if (count($filteredHolidays) > 0) {
+            foreach ($filteredHolidays->getList() as $holiday) {
+                if ($holiday->getType() == 2 || $holiday->getType() == 6) {
+                    $workDay = false;
+                }
+            }
+        }
+        return $workDay;
+
+    }
+
 }
