@@ -14,6 +14,7 @@ namespace umulmrum\Holiday\Provider;
 use Prophecy\Prophecy\ObjectProphecy;
 use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Calculator\HolidayCalculator;
 
 class HolidayInitializerChainTest extends HolidayTestCase
 {
@@ -26,7 +27,7 @@ class HolidayInitializerChainTest extends HolidayTestCase
      */
     private $holidayCalculatorMock;
     /**
-     * @var ObjectProphecy[]
+     * @var HolidayInitializerInterface[]|ObjectProphecy[]
      */
     private $holidayInitializersMocks;
     /**
@@ -61,7 +62,7 @@ class HolidayInitializerChainTest extends HolidayTestCase
         $this->holidayInitializersMocks = [];
         $this->revealedHolidayInitializersMocks = [];
         for ($i = 0; $i < $count; ++$i) {
-            $this->holidayInitializersMocks[] = $this->prophesize('\umulmrum\Holiday\Provider\HolidayInitializerInterface');
+            $this->holidayInitializersMocks[] = $this->prophesize(HolidayInitializerInterface::class);
         }
         foreach ($this->holidayInitializersMocks as $holidayInitializerMock) {
             $this->revealedHolidayInitializersMocks[] = $holidayInitializerMock->reveal();
@@ -70,12 +71,17 @@ class HolidayInitializerChainTest extends HolidayTestCase
 
     private function whenInitializeHolidaysIsCalled()
     {
-        $this->holidayCalculatorMock = $this->prophesize('\umulmrum\Holiday\Calculator\HolidayCalculator');
+        $this->holidayCalculatorMock = $this->prophesize(HolidayCalculator::class);
         $this->holidayInitializerChain->initializeHolidays($this->holidayCalculatorMock->reveal());
     }
 
     private function thenAllGivenInitializersShouldRun()
     {
+        if (0 === count($this->holidayInitializersMocks)) {
+            $this->assertTrue(true);
+
+            return;
+        }
         foreach ($this->holidayInitializersMocks as $holidayInitializerMock) {
             $holidayInitializerMock->initializeHolidays($this->holidayCalculatorMock)->shouldHaveBeenCalled();
         }

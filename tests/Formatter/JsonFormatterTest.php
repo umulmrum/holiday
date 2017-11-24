@@ -16,6 +16,7 @@ use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Translator\TranslatorInterface;
 
 class JsonFormatterTest extends HolidayTestCase
 {
@@ -115,7 +116,7 @@ class JsonFormatterTest extends HolidayTestCase
 
     private function givenAFormatterWithTranslator()
     {
-        $translator = $this->prophesize('\umulmrum\Holiday\Translator\TranslatorInterface');
+        $translator = $this->prophesize(TranslatorInterface::class);
         $translator->translateName(new Holiday('name', new DateTime('2016-03-17', $this->getTimezone()), 6))->willReturn('Very name');
         $translator->translate('day_off')->willReturn('Day off');
         $translator->translate('religious')->willReturn('Religious');

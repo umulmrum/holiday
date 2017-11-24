@@ -22,6 +22,7 @@ use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
 use umulmrum\Holiday\Provider\Weekday\Saturdays;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 use umulmrum\Holiday\Translator\TranslatorInterface;
+use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 
 class HolidayHelperTest extends HolidayTestCase
 {
@@ -54,7 +55,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function givenAHolidayHelper()
     {
-        $holidayCalculatorMock = $this->prophesize('\umulmrum\Holiday\Calculator\HolidayCalculatorInterface');
+        $holidayCalculatorMock = $this->prophesize(HolidayCalculatorInterface::class);
         $holidayList1 = new HolidayList();
         $holidayList1->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2016-01-01')));
         $holidayList1->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2016-01-03')));
@@ -437,7 +438,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function givenATranslator()
     {
-        $this->translator = $this->prophesize('\umulmrum\Holiday\Translator\TranslatorInterface');
+        $this->translator = $this->prophesize(TranslatorInterface::class);
         $this->translator->translateName(new Holiday('name', new DateTime('2016-03-11', $this->getTimezone())))->willReturn('My Holiday');
     }
 
@@ -446,7 +447,7 @@ class HolidayHelperTest extends HolidayTestCase
      */
     private function whenGetHolidayListInICalendarFormatIsCalled($holidayList)
     {
-        $dateHelper = $this->prophesize('\umulmrum\Holiday\Helper\DateHelper');
+        $dateHelper = $this->prophesize(DateHelper::class);
         $dateHelper->getCurrentDate(new DateTimeZone('UTC'))->willReturn(new DateTime('20160808T120342', new DateTimeZone('UTC')));
         $this->actualResult = $this->holidayHelper->getHolidayListInICalendarFormat($holidayList, $this->translator->reveal(), $dateHelper->reveal());
     }

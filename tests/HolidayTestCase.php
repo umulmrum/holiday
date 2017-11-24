@@ -12,9 +12,9 @@
 namespace umulmrum\Holiday;
 
 use DateTimeZone;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class HolidayTestCase extends PHPUnit_Framework_TestCase
+class HolidayTestCase extends TestCase
 {
     protected function setUp()
     {

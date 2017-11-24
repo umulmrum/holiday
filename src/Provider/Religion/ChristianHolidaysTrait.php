@@ -37,7 +37,7 @@ trait ChristianHolidaysTrait
          * We do not use easter_days in orderto avoid timezone surprises, see https://secure.php.net/manual/en/function.easter-date.php
          */
         $base = new DateTime(sprintf('%s-03-21', $year), $timezone);
-        $days = easter_days($year);
+        $days = \easter_days($year);
 
         $easterDate = $base->add(new DateInterval("P{$days}D"));
         $this->easterCache[$year] = clone $easterDate;

@@ -15,6 +15,7 @@ use DateTime;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Translator\TranslatorInterface;
 
 class NameFormatterTest extends HolidayTestCase
 {
@@ -96,7 +97,7 @@ class NameFormatterTest extends HolidayTestCase
      */
     private function givenAFormatterWithTranslator(array $names, array $expectedResults)
     {
-        $translator = $this->prophesize('\umulmrum\Holiday\Translator\TranslatorInterface');
+        $translator = $this->prophesize(TranslatorInterface::class);
         for ($i = 0; $i < $count = count($names); ++$i) {
             $translator->translateName(new Holiday($names[$i], new DateTime('2016-01-01')))->willReturn($expectedResults[$i]);
         }

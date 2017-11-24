@@ -42,7 +42,7 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
 
     private function givenASymfonyBridgeTranslator()
     {
-        $this->symfonyTranslator = $this->prophesize('\Symfony\Component\Translation\TranslatorInterface');
+        $this->symfonyTranslator = $this->prophesize(TranslatorInterface::class);
         $this->translator = new SymfonyBridgeTranslator($this->symfonyTranslator->reveal());
     }
 
