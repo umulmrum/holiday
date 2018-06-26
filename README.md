@@ -137,20 +137,21 @@ Notices on German Holidays
 - Corpus Christi/Fronleichnam is a public holiday in some communities in Saxony and Thuringia.
 - Regional holidays with traditionally (but not publicly) limited opening hours are not considered yet (e.g. carnival days).
 - Some ports at the German Ocean celebrate some holidays as "High Holidays". It is generally not allowed to work on these days,
-and work time ends at 12 o'clock the day before. This is not considered yet.
+  and work time ends at 12 o'clock the day before. This is not considered yet.
 - Also there are some quiet days that are not public holidays in various states. This is also not considered yet.
+- New states of Germany are treated as if they had always been part of the Federal Republic of Germany. For years
+  before 1990 holidays are therefore not correct.
 
 Notice on Holidays Way in the Past or Future
 --------------------------------------------
 
-If computing holidays for past years, be aware that they may not be accurate.
-All holidays were introduced at some point, so this lib might return holidays
-for years in which they really weren't in existence, as well as omit holidays
-that haven't been celebrated for a long time.
+If computing holidays for past years, be aware that they may not be accurate. All holidays were introduced at some 
+point, so this lib might return holidays for years in which they really were not in existence, as well as omit holidays
+that haven't been celebrated for a long time. This lib aims to be accurate for "recent" years at least, approximately 
+for years after World War II.
 
-Likewise holidays might of course change in the future, so there is no
-point in calculating them for the year 5000 (but if you ever wondered:
-Easter Sunday will be on March 30, 5000).
+Likewise holidays might of course change in the future, so there is no point in calculating them for the year 5000 
+(but in case you wondered: Easter Sunday will be on March 30, 5000).
 
 Contribution
 ------------
