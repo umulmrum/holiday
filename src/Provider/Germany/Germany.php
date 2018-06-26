@@ -80,7 +80,7 @@ class Germany implements HolidayProviderInterface
      */
     private function getGermanUnityDay($year, DateTimeZone $timezone = null)
     {
-        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new DateTime(sprintf('%s-10-03', $year)), HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone);
+        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new DateTime(sprintf('%s-10-03', $year), $timezone), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
     /**
@@ -91,6 +91,6 @@ class Germany implements HolidayProviderInterface
      */
     private function getOldGermanUnityDay($year, DateTimeZone $timezone = null)
     {
-        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new DateTime(sprintf('%s-06-17', $year)), HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone);
+        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new DateTime(sprintf('%s-06-17', $year), $timezone), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 }
