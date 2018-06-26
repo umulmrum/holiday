@@ -12,9 +12,13 @@
 namespace umulmrum\Holiday\Provider\Germany;
 
 use DateTimeZone;
+use umulmrum\Holiday\Constant\HolidayType;
+use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class Hamburg extends Germany
 {
+    use ChristianHolidaysTrait;
+
     const ID = 'DE-HH';
 
     /**
@@ -30,6 +34,11 @@ class Hamburg extends Germany
      */
     public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
     {
-        return parent::calculateHolidaysForYear($year, $timezone);
+        $holidays = parent::calculateHolidaysForYear($year, $timezone);
+        if ($year >= 2018) {
+            $holidays->add($this->getReformationDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        }
+
+        return $holidays;
     }
 }
