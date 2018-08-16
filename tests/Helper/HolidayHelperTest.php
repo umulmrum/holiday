@@ -15,6 +15,7 @@ use DateTime;
 use DateTimeZone;
 use Prophecy\Prophecy\ObjectProphecy;
 use umulmrum\Holiday\Constant\HolidayName;
+use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -57,18 +58,18 @@ class HolidayHelperTest extends HolidayTestCase
     {
         $holidayCalculatorMock = $this->prophesize(HolidayCalculatorInterface::class);
         $holidayList1 = new HolidayList();
-        $holidayList1->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2016-01-01')));
-        $holidayList1->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2016-01-03')));
-        $holidayList1->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2016-01-05')));
-        $holidayList1->add(new Holiday(HolidayName::ALL_SAINTS_DAY, new DateTime('2016-11-01')));
+        $holidayList1->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2016-01-01'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidayList1->add(new Holiday(HolidayName::SUNDAY, new DateTime('2016-01-03')));
+        $holidayList1->add(new Holiday(HolidayName::EPIPHANY, new DateTime('2016-01-06'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidayList1->add(new Holiday(HolidayName::ALL_SAINTS_DAY, new DateTime('2016-11-01'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidayList2 = new HolidayList();
         $holidayList2->add(new Holiday(HolidayName::SUNDAY, new DateTime('2016-01-10')));
         $holidayList2->add(new Holiday(HolidayName::SUNDAY, new DateTime('2016-01-17')));
         $holidayList2->add(new Holiday(HolidayName::SUNDAY, new DateTime('2016-02-01')));
         $holidayList3 = new HolidayList();
         $holidayList3->add(new Holiday(HolidayName::SUNDAY, new DateTime('2015-11-30')));
-        $holidayList3->add(new Holiday(HolidayName::SUNDAY, new DateTime('2015-12-25')));
-        $holidayList3->add(new Holiday(HolidayName::SUNDAY, new DateTime('2015-12-26')));
+        $holidayList3->add(new Holiday(HolidayName::SUNDAY, new DateTime('2015-12-25'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidayList3->add(new Holiday(HolidayName::SUNDAY, new DateTime('2015-12-26'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidayList4 = new HolidayList();
         $holidayList4->add(new Holiday(HolidayName::SUNDAY, new DateTime('2015-11-29')));
         $holidayList4->add(new Holiday(HolidayName::SUNDAY, new DateTime('2015-12-06')));
@@ -80,13 +81,13 @@ class HolidayHelperTest extends HolidayTestCase
         $holidayList5->add(new Holiday(HolidayName::SATURDAY, new DateTime('2015-12-05')));
         $holidayList5->add(new Holiday(HolidayName::SATURDAY, new DateTime('2015-12-12')));
         $holidayList5->add(new Holiday(HolidayName::SATURDAY, new DateTime('2015-12-19')));
-        $holidayList5->add(new Holiday(HolidayName::SATURDAY, new DateTime('2015-12-26')));
+        $holidayList5->add(new Holiday(HolidayName::SATURDAY, new DateTime('2015-12-26'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidayList6 = new HolidayList();
-        $holidayList6->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2017-01-01')));
+        $holidayList6->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2017-01-01'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidayList6->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2017-01-13')));
         $holidayList6->add(new Holiday(HolidayName::NEW_YEAR, new DateTime('2017-02-05')));
         $holidayList7 = new HolidayList();
-        $holidayList7->add(new Holiday(HolidayName::SUNDAY, new DateTime('2017-01-01')));
+        $holidayList7->add(new Holiday(HolidayName::SUNDAY, new DateTime('2017-01-01'), HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidayList7->add(new Holiday(HolidayName::SUNDAY, new DateTime('2017-01-08')));
         $holidayList7->add(new Holiday(HolidayName::SUNDAY, new DateTime('2017-01-15')));
         $holidayCalculatorMock->calculateHolidaysForYear(2015, BadenWuerttemberg::ID, $this->getTimezone())->willReturn($holidayList3);
@@ -180,7 +181,7 @@ class HolidayHelperTest extends HolidayTestCase
                 [
                     '2016-01-01',
                     '2016-01-03',
-                    '2016-01-05',
+                    '2016-01-06',
                 ],
             ],
             [
@@ -254,25 +255,10 @@ class HolidayHelperTest extends HolidayTestCase
         $this->thenItShouldReturnAListOfHolidays($expectedResult);
     }
 
-    /**
-     * @param string $firstDay
-     * @param string $lastDay
-     * @param array  $noWorkWeekdaysProvider
-     */
-    private function whenGetNoWorkdaysForTimespanIsCalled($firstDay, $lastDay, array $noWorkWeekdaysProvider)
-    {
-        $this->actualResult = $this->holidayHelper->getNoWorkDaysForTimespan(
-            new DateTime($firstDay, $this->getTimezone()),
-            new DateTime($lastDay, $this->getTimezone()),
-            BadenWuerttemberg::ID,
-            $noWorkWeekdaysProvider
-        );
-    }
-
-    public function getGetNoWorkdaysForTimespanData()
+    public function getGetNoWorkdaysForTimespanData(): array
     {
         return [
-            [
+            'sunday-in-short-timespan' => [
                 '2016-01-01',
                 '2016-01-02',
                 [],
@@ -280,7 +266,7 @@ class HolidayHelperTest extends HolidayTestCase
                     '2016-01-01',
                 ],
             ],
-            [
+            'sundays-in-same-year' => [
                 '2016-01-01',
                 '2016-01-11',
                 [
@@ -289,11 +275,23 @@ class HolidayHelperTest extends HolidayTestCase
                 [
                     '2016-01-01',
                     '2016-01-03',
-                    '2016-01-05',
+                    '2016-01-06',
                     '2016-01-10',
                 ],
             ],
-            [
+            'sundays-in-month-with-working-holidays' => [
+                '2016-10-01',
+                '2016-10-31',
+                [],
+                [
+                    '2016-10-02',
+                    '2016-10-09',
+                    '2016-10-16',
+                    '2016-10-23',
+                    '2016-10-30',
+                ],
+            ],
+            'sundays-over-two-years' => [
                 '2015-12-01',
                 '2016-01-02',
                 [],
@@ -307,21 +305,7 @@ class HolidayHelperTest extends HolidayTestCase
                     '2016-01-01',
                 ],
             ],
-            [
-                '2015-12-01',
-                '2016-01-02',
-                [],
-                [
-                    '2015-12-06',
-                    '2015-12-13',
-                    '2015-12-20',
-                    '2015-12-25',
-                    '2015-12-26',
-                    '2015-12-27',
-                    '2016-01-01',
-                ],
-            ],
-            [
+            'weekends-over-two-years' => [
                 '2015-12-01',
                 '2016-01-02',
                 [
@@ -342,7 +326,7 @@ class HolidayHelperTest extends HolidayTestCase
                     '2016-01-02',
                 ],
             ],
-            [
+            'sundays-over-multiple-years' => [
                 '2015-12-01',
                 '2017-02-05',
                 [],
@@ -355,12 +339,11 @@ class HolidayHelperTest extends HolidayTestCase
                     '2015-12-27',
                     '2016-01-01',
                     '2016-01-03',
-                    '2016-01-05',
+                    '2016-01-06',
                     '2016-01-10',
                     '2016-01-17',
                     '2016-01-24',
                     '2016-01-31',
-                    '2016-02-01',
                     '2016-02-07',
                     '2016-02-14',
                     '2016-02-21',
@@ -411,7 +394,6 @@ class HolidayHelperTest extends HolidayTestCase
                     '2016-12-25',
                     '2017-01-01',
                     '2017-01-08',
-                    '2017-01-13',
                     '2017-01-15',
                     '2017-01-22',
                     '2017-01-29',
@@ -419,6 +401,16 @@ class HolidayHelperTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    private function whenGetNoWorkdaysForTimespanIsCalled(string $firstDay, string $lastDay, array $noWorkWeekdaysProvider): void
+    {
+        $this->actualResult = $this->holidayHelper->getNoWorkDaysForTimespan(
+            new DateTime($firstDay, $this->getTimezone()),
+            new DateTime($lastDay, $this->getTimezone()),
+            BadenWuerttemberg::ID,
+            $noWorkWeekdaysProvider
+        );
     }
 
     /**
