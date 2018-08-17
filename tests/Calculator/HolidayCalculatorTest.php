@@ -30,22 +30,18 @@ class HolidayCalculatorTest extends HolidayTestCase
      * @test
      * @expectedException \umulmrum\Holiday\Exception\HolidayException
      */
-    public function it_throws_an_exception_if_country_not_found()
+    public function it_throws_an_exception_if_country_not_found(): void
     {
         $this->givenAHolidayCalculatorWithoutInitialization();
         $this->whenICallCalculateHolidaysForYear(2019, Germany::ID);
     }
 
-    private function givenAHolidayCalculatorWithoutInitialization()
+    private function givenAHolidayCalculatorWithoutInitialization(): void
     {
         $this->holidayCalculator = new HolidayCalculator();
     }
 
-    /**
-     * @param int    $year
-     * @param string $location
-     */
-    private function whenICallCalculateHolidaysForYear($year, $location)
+    private function whenICallCalculateHolidaysForYear(int $year, string $location): void
     {
         $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year, $location);
     }

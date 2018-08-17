@@ -25,7 +25,7 @@ interface TranslatorInterface
      *
      * @return string
      */
-    public function translateName(Holiday $holiday);
+    public function translateName(Holiday $holiday): string;
 
     /**
      * Translates an arbitrary string.
@@ -34,5 +34,5 @@ interface TranslatorInterface
      *
      * @return string
      */
-    public function translate($string);
+    public function translate(string $string): string;
 }

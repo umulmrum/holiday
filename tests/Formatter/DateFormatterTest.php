@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Formatter;
 
-use DateTime;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -23,7 +22,7 @@ class DateFormatterTest extends HolidayTestCase
      */
     private $formatter;
     /**
-     * @var int|string|int[]|string[]
+     * @var string|string[]
      */
     private $actualResult;
 
@@ -36,17 +35,14 @@ class DateFormatterTest extends HolidayTestCase
      * @param string|null $format
      * @param int|string  $expectedResult
      */
-    public function it_should_format_single_values($defaultFormat, $date, $format, $expectedResult)
+    public function it_should_format_single_values(?string $defaultFormat, string $date, ?string $format, string $expectedResult): void
     {
         $this->givenAFormatter($defaultFormat);
         $this->whenFormatIsCalled($date, $format);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    /**
-     * @param string|null $defaultFormat
-     */
-    private function givenAFormatter($defaultFormat = null)
+    private function givenAFormatter(?string $defaultFormat = null): void
     {
         if (null === $defaultFormat) {
             $this->formatter = new DateFormatter();
@@ -55,13 +51,9 @@ class DateFormatterTest extends HolidayTestCase
         }
     }
 
-    /**
-     * @param string      $dateString
-     * @param string|null $format
-     */
-    private function whenFormatIsCalled($dateString, $format)
+    private function whenFormatIsCalled(string $dateString, ?string $format): void
     {
-        $holiday = new Holiday('name', new DateTime($dateString));
+        $holiday = new Holiday('name', new \DateTime($dateString));
         if (null === $format) {
             $this->actualResult = $this->formatter->format($holiday);
         } else {
@@ -73,17 +65,14 @@ class DateFormatterTest extends HolidayTestCase
     }
 
     /**
-     * @param int|string|int[]|string[] $expectedResult
+     * @param string|string[] $expectedResult
      */
-    private function thenAFormattedResultShouldBeReturned($expectedResult)
+    private function thenAFormattedResultShouldBeReturned($expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    /**
-     * @return array
-     */
-    public function getFormatData()
+    public function getFormatData(): array
     {
         return [
             [
@@ -126,9 +115,9 @@ class DateFormatterTest extends HolidayTestCase
      * @param string|null               $defaultFormat
      * @param string[]                  $dates
      * @param string|null               $format
-     * @param int|string|int[]|string[] $expectedResult
+     * @param string|string[]           $expectedResult
      */
-    public function it_should_format_list_values($defaultFormat, $dates, $format, $expectedResult)
+    public function it_should_format_list_values(?string $defaultFormat, array $dates, ?string $format, $expectedResult): void
     {
         $this->givenAFormatter($defaultFormat);
         $this->whenFormatListIsCalled($dates, $format);
@@ -139,11 +128,11 @@ class DateFormatterTest extends HolidayTestCase
      * @param string[]    $dates
      * @param string|null $format
      */
-    private function whenFormatListIsCalled(array $dates, $format)
+    private function whenFormatListIsCalled(array $dates, ?string $format): void
     {
         $holidayList = new HolidayList();
         foreach ($dates as $date) {
-            $holidayList->add(new Holiday('name', new DateTime($date)));
+            $holidayList->add(new Holiday('name', new \DateTime($date)));
         }
         if (null === $format) {
             $this->actualResult = $this->formatter->formatList($holidayList);
@@ -155,10 +144,7 @@ class DateFormatterTest extends HolidayTestCase
         }
     }
 
-    /**
-     * @return array
-     */
-    public function getFormatListData()
+    public function getFormatListData(): array
     {
         return [
             [

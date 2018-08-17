@@ -16,32 +16,32 @@ namespace umulmrum\Holiday\Constant;
  */
 class HolidayName
 {
-    const NEW_YEAR = 'new_year';
-    const LABOR_DAY = 'labor_day';
+    public const NEW_YEAR = 'new_year';
+    public const LABOR_DAY = 'labor_day';
 
-    const EPIPHANY = 'epiphany';
-    const GOOD_FRIDAY = 'good_friday';
-    const EASTER_SUNDAY = 'easter_sunday';
-    const EASTER_MONDAY = 'easter_monday';
-    const ASCENCION = 'ascension';
-    const WHIT_SUNDAY = 'whit_sunday';
-    const WHIT_MONDAY = 'whit_monday';
-    const CORPUS_CHRISTI = 'corpus_christi';
-    const ASSUMPTION_DAY = 'assumption_day';
-    const REFORMATION_DAY = 'reformation_day';
-    const ALL_SAINTS_DAY = 'all_saints_day';
-    const REPENTANCE_AND_PRAYER_DAY = 'repentance_and_prayer_day';
-    const CHRISTMAS_DAY = 'christmas_day';
-    const SECOND_CHRISTMAS_DAY = 'second_christmas_day';
+    public const EPIPHANY = 'epiphany';
+    public const GOOD_FRIDAY = 'good_friday';
+    public const EASTER_SUNDAY = 'easter_sunday';
+    public const EASTER_MONDAY = 'easter_monday';
+    public const ASCENSION = 'ascension';
+    public const WHIT_SUNDAY = 'whit_sunday';
+    public const WHIT_MONDAY = 'whit_monday';
+    public const CORPUS_CHRISTI = 'corpus_christi';
+    public const ASSUMPTION_DAY = 'assumption_day';
+    public const REFORMATION_DAY = 'reformation_day';
+    public const ALL_SAINTS_DAY = 'all_saints_day';
+    public const REPENTANCE_AND_PRAYER_DAY = 'repentance_and_prayer_day';
+    public const CHRISTMAS_DAY = 'christmas_day';
+    public const SECOND_CHRISTMAS_DAY = 'second_christmas_day';
 
-    const SUNDAY = 'sunday';
-    const MONDAY = 'monday';
-    const TUESDAY = 'tuesday';
-    const WEDNESDAY = 'wednesday';
-    const THURSDAY = 'thursday';
-    const FRIDAY = 'friday';
-    const SATURDAY = 'saturday';
+    public const SUNDAY = 'sunday';
+    public const MONDAY = 'monday';
+    public const TUESDAY = 'tuesday';
+    public const WEDNESDAY = 'wednesday';
+    public const THURSDAY = 'thursday';
+    public const FRIDAY = 'friday';
+    public const SATURDAY = 'saturday';
 
-    const AUGSBURGER_FRIEDENSFEST = 'augsburger_friedensfest';
-    const GERMAN_UNITY_DAY = 'german_unity_day';
+    public const AUGSBURGER_FRIEDENSFEST = 'augsburger_friedensfest';
+    public const GERMAN_UNITY_DAY = 'german_unity_day';
 }

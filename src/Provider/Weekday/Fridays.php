@@ -15,12 +15,9 @@ use umulmrum\Holiday\Constant\Weekday;
 
 class Fridays extends Weekdays
 {
-    const ID = 'FRIDAYS';
+    public const ID = 'FRIDAYS';
 
-    /**
-     * @return string
-     */
-    public function getId()
+    public function getId(): string
     {
         return self::ID;
     }

@@ -11,8 +11,6 @@
 
 namespace umulmrum\Holiday\Model;
 
-use DateTime;
-
 class Holiday
 {
     /**
@@ -20,7 +18,7 @@ class Holiday
      */
     private $name;
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     private $date;
     /**
@@ -28,51 +26,34 @@ class Holiday
      */
     private $type;
 
-    /**
-     * @param string   $name
-     * @param DateTime $date
-     * @param int      $type
-     */
-    public function __construct($name, DateTime $date, $type = 0)
+    public function __construct(string $name, \DateTime $date, int $type = 0)
     {
         $this->name = $name;
         $this->date = $date;
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getDate()
+    public function getDate(): \DateTime
     {
         return clone $this->date;
     }
 
-    /**
-     * @return int
-     */
-    public function getTimestamp()
+    public function getTimestamp(): int
     {
         return $this->date->getTimestamp();
     }
 
-    public function getFormattedDate($format)
+    public function getFormattedDate(string $format): string
     {
         return $this->date->format($format);
     }
 
-    /**
-     * @return int
-     */
-    public function getType()
+    public function getType(): int
     {
         return $this->type;
     }

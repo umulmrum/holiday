@@ -11,8 +11,6 @@
 
 namespace Model;
 
-use DateInterval;
-use DateTime;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 
@@ -31,26 +29,26 @@ class HolidayTest extends HolidayTestCase
      * @test
      * @dataProvider getDateTimeData
      *
-     * @param DateTime $dateTime
+     * @param \DateTime $dateTime
      */
-    public function it_returns_the_correct_date(DateTime $dateTime)
+    public function it_returns_the_correct_date(\DateTime $dateTime): void
     {
         $this->givenAHoliday($dateTime);
         $this->whenGetDateIsCalled();
         $this->thenThisDateShouldBeReturned($dateTime);
     }
 
-    private function givenAHoliday(DateTime $dateTime)
+    private function givenAHoliday(\DateTime $dateTime): void
     {
         $this->holiday = new Holiday('name', $dateTime);
     }
 
-    private function whenGetDateIsCalled()
+    private function whenGetDateIsCalled(): void
     {
         $this->actualResult = $this->holiday->getDate();
     }
 
-    private function thenThisDateShouldBeReturned(DateTime $dateTime)
+    private function thenThisDateShouldBeReturned(\DateTime $dateTime): void
     {
         $this->assertEquals($dateTime, $this->actualResult);
     }
@@ -59,9 +57,9 @@ class HolidayTest extends HolidayTestCase
      * @test
      * @dataProvider getDateTimeData
      *
-     * @param DateTime $dateTime
+     * @param \DateTime $dateTime
      */
-    public function it_is_immutable(DateTime $dateTime)
+    public function it_is_immutable(\DateTime $dateTime): void
     {
         $this->givenAHoliday($dateTime);
         $this->whenGetDateIsCalled();
@@ -70,57 +68,51 @@ class HolidayTest extends HolidayTestCase
         $this->thenThisDateShouldBeReturned($dateTime);
     }
 
-    private function whenTheResultIsModified()
+    private function whenTheResultIsModified(): void
     {
-        $this->actualResult->add(new DateInterval('P1D'));
+        $this->actualResult->add(new \DateInterval('P1D'));
     }
 
-    /**
-     * @return array
-     */
-    public function getDateTimeData()
+    public function getDateTimeData(): array
     {
         return [
             [
-                new DateTime('1917-01-01'),
-                new DateTime('1970-01-01'),
-                new DateTime('2000-02-29'),
+                new \DateTime('1917-01-01'),
+                new \DateTime('1970-01-01'),
+                new \DateTime('2000-02-29'),
             ],
         ];
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
+    public function getData(): array
     {
         return [
             [
-                new DateTime('100-01-01'),
+                new \DateTime('100-01-01'),
                 100,
                 1,
                 1,
             ],
             [
-                new DateTime('1917-01-01'),
+                new \DateTime('1917-01-01'),
                 1917,
                 1,
                 1,
             ],
             [
-                new DateTime('1970-01-01'),
+                new \DateTime('1970-01-01'),
                 1970,
                 1,
                 1,
             ],
             [
-                new DateTime('2000-02-29'),
+                new \DateTime('2000-02-29'),
                 2000,
                 2,
                 29,
             ],
             [
-                new DateTime('3100-05-23'),
+                new \DateTime('3100-05-23'),
                 3100,
                 5,
                 23,
@@ -134,38 +126,29 @@ class HolidayTest extends HolidayTestCase
      *
      * @param string $name
      */
-    public function it_should_return_the_correct_name($name)
+    public function it_should_return_the_correct_name(string $name): void
     {
         $this->givenANamedHoliday($name);
         $this->whenGetNameIsCalled();
         $this->thenTheCorrectNameShouldBeReturned($name);
     }
 
-    /**
-     * @param string $name
-     */
-    private function givenANamedHoliday($name)
+    private function givenANamedHoliday(string $name): void
     {
-        $this->holiday = new Holiday($name, new DateTime('2001-04-12'));
+        $this->holiday = new Holiday($name, new \DateTime('2001-04-12'));
     }
 
-    private function whenGetNameIsCalled()
+    private function whenGetNameIsCalled(): void
     {
         $this->actualResult = $this->holiday->getName();
     }
 
-    /**
-     * @param string $expectedResult
-     */
-    private function thenTheCorrectNameShouldBeReturned($expectedResult)
+    private function thenTheCorrectNameShouldBeReturned(string $expectedResult): void
     {
         $this->assertEquals($expectedResult, $this->actualResult);
     }
 
-    /**
-     * @return array
-     */
-    public function getNameData()
+    public function getNameData(): array
     {
         return [
             ['name'],

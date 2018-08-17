@@ -26,5 +26,5 @@ interface HolidayFilterInterface
      *
      * @return HolidayList
      */
-    public function filter(HolidayList $holidayList, array $options = []);
+    public function filter(HolidayList $holidayList, array $options = []): HolidayList;
 }

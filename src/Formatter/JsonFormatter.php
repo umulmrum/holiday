@@ -24,9 +24,6 @@ class JsonFormatter implements HolidayFormatterInterface
      */
     private $translator;
 
-    /**
-     * @param TranslatorInterface|null $translator
-     */
     public function __construct(TranslatorInterface $translator = null)
     {
         if (null === $translator) {
@@ -39,7 +36,7 @@ class JsonFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = [])
+    public function format(Holiday $holiday, array $options = []): string
     {
         return json_encode($this->getEvent($holiday), JSON_PRETTY_PRINT);
     }
@@ -58,12 +55,7 @@ class JsonFormatter implements HolidayFormatterInterface
         return json_encode($result, JSON_PRETTY_PRINT);
     }
 
-    /**
-     * @param Holiday $holiday
-     *
-     * @return array
-     */
-    private function getEvent(Holiday $holiday)
+    private function getEvent(Holiday $holiday): array
     {
         return [
             'name' => $holiday->getName(),
@@ -75,12 +67,7 @@ class JsonFormatter implements HolidayFormatterInterface
         ];
     }
 
-    /**
-     * @param int $type
-     *
-     * @return array
-     */
-    private function getTypeList($type)
+    private function getTypeList(int $type): array
     {
         $typeList = [];
 
@@ -99,12 +86,7 @@ class JsonFormatter implements HolidayFormatterInterface
         return $typeList;
     }
 
-    /**
-     * @param int[] $typeList
-     *
-     * @return string[]
-     */
-    private function getTypeNames(array $typeList)
+    private function getTypeNames(array $typeList): array
     {
         $translatedList = [];
         foreach ($typeList as $type) {

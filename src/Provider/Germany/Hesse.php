@@ -11,9 +11,9 @@
 
 namespace umulmrum\Holiday\Provider\Germany;
 
-use DateTimeZone;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Constant\Weekday;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 use umulmrum\Holiday\Provider\CommonHolidaysTrait;
 use umulmrum\Holiday\Provider\Weekday\WeekdayTrait;
@@ -24,12 +24,12 @@ class Hesse extends Germany
     use CommonHolidaysTrait;
     use WeekdayTrait;
 
-    const ID = 'DE-HE';
+    public const ID = 'DE-HE';
 
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): string
     {
         return self::ID;
     }
@@ -37,7 +37,7 @@ class Hesse extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
         $sundays = $this->getWeekdays($year, Weekday::SUNDAY, HolidayType::DAY_OFF, $timezone);

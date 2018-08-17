@@ -11,8 +11,6 @@
 
 namespace umulmrum\Holiday\Provider\Germany;
 
-use DateTime;
-use DateTimeZone;
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\HolidayList;
@@ -26,12 +24,12 @@ class Germany implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    const ID = 'DE';
+    public const ID = 'DE';
 
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): string
     {
         return self::ID;
     }
@@ -39,7 +37,7 @@ class Germany implements HolidayProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = new HolidayList();
         $holidays->add($this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
@@ -72,25 +70,13 @@ class Germany implements HolidayProviderInterface
         return $holidays;
     }
 
-    /**
-     * @param int          $year
-     * @param DateTimeZone $timezone
-     *
-     * @return Holiday
-     */
-    private function getGermanUnityDay($year, DateTimeZone $timezone = null)
+    private function getGermanUnityDay(int $year, \DateTimeZone $timezone = null): Holiday
     {
-        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new DateTime(sprintf('%s-10-03', $year), $timezone), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new \DateTime(sprintf('%s-10-03', $year), $timezone), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
-    /**
-     * @param int          $year
-     * @param DateTimeZone $timezone
-     *
-     * @return Holiday
-     */
-    private function getOldGermanUnityDay($year, DateTimeZone $timezone = null)
+    private function getOldGermanUnityDay(int $year, \DateTimeZone $timezone = null): Holiday
     {
-        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new DateTime(sprintf('%s-06-17', $year), $timezone), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return new Holiday(HolidayName::GERMAN_UNITY_DAY, new \DateTime(sprintf('%s-06-17', $year), $timezone), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 }

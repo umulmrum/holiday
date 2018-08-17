@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use DateTime;
 use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
@@ -36,27 +35,23 @@ class IncludeWeekdayFilterTest extends HolidayTestCase
      * @param int      $weekday
      * @param array    $expectedResult
      */
-    public function it_should_filter_holidays(array $holidays, $weekday, array $expectedResult)
+    public function it_should_filter_holidays(array $holidays, int $weekday, array $expectedResult): void
     {
         $this->givenAnIncludeWeekDayFilter();
         $this->whenFilterIsCalled($holidays, $weekday);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAnIncludeWeekDayFilter()
+    private function givenAnIncludeWeekDayFilter(): void
     {
         $this->filter = new IncludeWeekdayFilter();
     }
 
-    /**
-     * @param array $holidays
-     * @param int   $weekday
-     */
-    private function whenFilterIsCalled(array $holidays, $weekday)
+    private function whenFilterIsCalled(array $holidays, int $weekday): void
     {
         $holidayList = new HolidayList();
         foreach ($holidays as $holiday) {
-            $holidayList->add(new Holiday('name', new DateTime($holiday)));
+            $holidayList->add(new Holiday('name', new \DateTime($holiday)));
         }
         $options = [
             IncludeWeekdayFilter::PARAM_WEEK_DAY => $weekday,
@@ -64,7 +59,7 @@ class IncludeWeekdayFilterTest extends HolidayTestCase
         $this->actualResult = $this->filter->filter($holidayList, $options);
     }
 
-    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult)
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
     {
         $resultDates = [];
         foreach ($this->actualResult->getList() as $result) {
@@ -73,10 +68,7 @@ class IncludeWeekdayFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
+    public function getData(): array
     {
         return [
             [

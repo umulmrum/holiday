@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use DateTime;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -36,37 +35,32 @@ class IncludeTimespanFilterTest extends HolidayTestCase
      * @param string   $lastDay
      * @param array    $expectedResult
      */
-    public function it_should_filter_holidays(array $holidays, $firstDay, $lastDay, array $expectedResult)
+    public function it_should_filter_holidays(array $holidays, string $firstDay, string $lastDay, array $expectedResult): void
     {
         $this->givenAnIncludeTimespanFilter();
         $this->whenFilterIsCalled($holidays, $firstDay, $lastDay);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAnIncludeTimespanFilter()
+    private function givenAnIncludeTimespanFilter(): void
     {
         $this->filter = new IncludeTimespanFilter();
     }
 
-    /**
-     * @param array  $holidays
-     * @param string $firstDay
-     * @param string $lastDay
-     */
-    private function whenFilterIsCalled(array $holidays, $firstDay, $lastDay)
+    private function whenFilterIsCalled(array $holidays, string $firstDay, string $lastDay): void
     {
         $holidayList = new HolidayList();
         foreach ($holidays as $holiday) {
-            $holidayList->add(new Holiday('name', new DateTime($holiday)));
+            $holidayList->add(new Holiday('name', new \DateTime($holiday)));
         }
         $options = [
-            IncludeTimespanFilter::PARAM_FIRST_DAY => new DateTime($firstDay),
-            IncludeTimespanFilter::PARAM_LAST_DAY => new DateTime($lastDay),
+            IncludeTimespanFilter::PARAM_FIRST_DAY => new \DateTime($firstDay),
+            IncludeTimespanFilter::PARAM_LAST_DAY => new \DateTime($lastDay),
         ];
         $this->actualResult = $this->filter->filter($holidayList, $options);
     }
 
-    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult)
+    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult): void
     {
         $resultDates = [];
         foreach ($this->actualResult->getList() as $result) {
@@ -75,10 +69,7 @@ class IncludeTimespanFilterTest extends HolidayTestCase
         $this->assertEquals($expectedResult, $resultDates);
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
+    public function getData(): array
     {
         return [
             [

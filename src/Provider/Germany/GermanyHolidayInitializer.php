@@ -19,7 +19,7 @@ class GermanyHolidayInitializer implements HolidayInitializerInterface
     /**
      * {@inheritdoc}
      */
-    public function initializeHolidays(HolidayCalculator $holidayCalculator)
+    public function initializeHolidays(HolidayCalculator $holidayCalculator): void
     {
         $holidayCalculator->addHolidayProvider(new Germany());
         $holidayCalculator->addHolidayProvider(new BadenWuerttemberg());

@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Model;
 
-use DateTime;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\HolidayTestCase;
 
@@ -30,7 +29,7 @@ class HolidayListTest extends HolidayTestCase
      * @param Holiday   $holiday
      * @param Holiday[] $expectedHolidays
      */
-    public function it_should_add_a_holiday(array $presetHolidays, Holiday $holiday, array $expectedHolidays)
+    public function it_should_add_a_holiday(array $presetHolidays, Holiday $holiday, array $expectedHolidays): void
     {
         $this->givenAHolidayList($presetHolidays);
         $this->whenAddHolidayIsCalled($holiday);
@@ -40,7 +39,7 @@ class HolidayListTest extends HolidayTestCase
     /**
      * @param Holiday[] $presetHolidays
      */
-    private function givenAHolidayList(array $presetHolidays)
+    private function givenAHolidayList(array $presetHolidays): void
     {
         $this->holidayList = new HolidayList();
         foreach ($presetHolidays as $holiday) {
@@ -48,10 +47,7 @@ class HolidayListTest extends HolidayTestCase
         }
     }
 
-    /**
-     * @param Holiday $holiday
-     */
-    private function whenAddHolidayIsCalled(Holiday $holiday)
+    private function whenAddHolidayIsCalled(Holiday $holiday): void
     {
         $this->holidayList->add($holiday);
     }
@@ -59,7 +55,7 @@ class HolidayListTest extends HolidayTestCase
     /**
      * @param Holiday[] $expectedValue
      */
-    private function thenTheListShouldContainCertainHolidays(array $expectedValue)
+    private function thenTheListShouldContainCertainHolidays(array $expectedValue): void
     {
         self::assertEquals($expectedValue, $this->holidayList->getList());
     }
@@ -67,13 +63,13 @@ class HolidayListTest extends HolidayTestCase
     /**
      * @return array
      */
-    public function getAddHolidayData()
+    public function getAddHolidayData(): array
     {
-        $holiday1 = new Holiday('name1', new DateTime('2003-02-06'), HolidayType::OFFICIAL);
-        $holiday2 = new Holiday('name2', new DateTime('2003-04-07'), HolidayType::OFFICIAL);
-        $holiday2a = new Holiday('name2', new DateTime('2003-04-07'), HolidayType::RELIGIOUS);
-        $holiday2b = new Holiday('name2', new DateTime('2003-04-07'), HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
-        $holiday2c = new Holiday('name2', new DateTime('2003-12-12'), HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
+        $holiday1 = new Holiday('name1', new \DateTime('2003-02-06'), HolidayType::OFFICIAL);
+        $holiday2 = new Holiday('name2', new \DateTime('2003-04-07'), HolidayType::OFFICIAL);
+        $holiday2a = new Holiday('name2', new \DateTime('2003-04-07'), HolidayType::RELIGIOUS);
+        $holiday2b = new Holiday('name2', new \DateTime('2003-04-07'), HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
+        $holiday2c = new Holiday('name2', new \DateTime('2003-12-12'), HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
 
         return [
             [

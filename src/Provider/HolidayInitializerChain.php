@@ -30,10 +30,7 @@ class HolidayInitializerChain implements HolidayInitializerInterface
         }
     }
 
-    /**
-     * @param HolidayInitializerInterface $holidayInitializer
-     */
-    private function addHolidayInitializer(HolidayInitializerInterface $holidayInitializer)
+    private function addHolidayInitializer(HolidayInitializerInterface $holidayInitializer): void
     {
         $this->holidayInitializers[] = $holidayInitializer;
     }
@@ -41,7 +38,7 @@ class HolidayInitializerChain implements HolidayInitializerInterface
     /**
      * {@inheritdoc}
      */
-    public function initializeHolidays(HolidayCalculator $holidayCalculator)
+    public function initializeHolidays(HolidayCalculator $holidayCalculator): void
     {
         foreach ($this->holidayInitializers as $holidayInitializer) {
             $holidayInitializer->initializeHolidays($holidayCalculator);

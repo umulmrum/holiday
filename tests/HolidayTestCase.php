@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday;
 
-use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 
 class HolidayTestCase extends TestCase
@@ -23,8 +22,8 @@ class HolidayTestCase extends TestCase
         date_default_timezone_set('UTC');
     }
 
-    protected function getTimezone()
+    protected function getTimezone(): \DateTimeZone
     {
-        return new DateTimeZone('UTC');
+        return new \DateTimeZone('UTC');
     }
 }

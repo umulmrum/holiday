@@ -11,20 +11,20 @@
 
 namespace umulmrum\Holiday\Provider\Germany;
 
-use DateTimeZone;
 use umulmrum\Holiday\Constant\HolidayType;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class Hamburg extends Germany
 {
     use ChristianHolidaysTrait;
 
-    const ID = 'DE-HH';
+    public const ID = 'DE-HH';
 
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): string
     {
         return self::ID;
     }
@@ -32,7 +32,7 @@ class Hamburg extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
         if ($year >= 2018) {

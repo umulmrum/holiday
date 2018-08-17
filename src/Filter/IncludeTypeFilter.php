@@ -15,16 +15,13 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeTypeFilter implements HolidayFilterInterface
 {
-    const PARAM_HOLIDAY_TYPE = 'include_type_filter.holiday_type';
+    public const PARAM_HOLIDAY_TYPE = 'include_type_filter.holiday_type';
 
     /**
      * @var HolidayFilterInterface
      */
     private $chainedFilter;
 
-    /**
-     * @param HolidayFilterInterface $chainedFilter
-     */
     public function __construct(HolidayFilterInterface $chainedFilter = null)
     {
         $this->chainedFilter = $chainedFilter;
@@ -33,7 +30,7 @@ class IncludeTypeFilter implements HolidayFilterInterface
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = [])
+    public function filter(HolidayList $holidayList, array $options = []): HolidayList
     {
         if (null !== $this->chainedFilter) {
             $holidayList = $this->chainedFilter->filter($holidayList, $options);

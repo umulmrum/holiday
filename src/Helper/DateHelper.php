@@ -11,8 +11,6 @@
 
 namespace umulmrum\Holiday\Helper;
 
-use DateTime;
-use DateTimeZone;
 
 /**
  * DateHelper is a simple encapsulation for getting the current date.
@@ -22,13 +20,8 @@ use DateTimeZone;
  */
 class DateHelper
 {
-    /**
-     * @param DateTimeZone $timeZone
-     *
-     * @return DateTime
-     */
-    public function getCurrentDate(DateTimeZone $timeZone)
+    public function getCurrentDate(\DateTimeZone $timeZone): \DateTime
     {
-        return new DateTime('now', $timeZone);
+        return new \DateTime('now', $timeZone);
     }
 }

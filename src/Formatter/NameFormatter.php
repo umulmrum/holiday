@@ -23,9 +23,6 @@ class NameFormatter implements HolidayFormatterInterface
      */
     private $translator;
 
-    /**
-     * @param TranslatorInterface|null $translator
-     */
     public function __construct(TranslatorInterface $translator = null)
     {
         if (null === $translator) {
@@ -38,7 +35,7 @@ class NameFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = [])
+    public function format(Holiday $holiday, array $options = []): string
     {
         return  $this->translator->translateName($holiday);
     }

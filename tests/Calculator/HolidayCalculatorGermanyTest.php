@@ -29,13 +29,14 @@ use umulmrum\Holiday\Provider\Germany\SaxonyAnhalt;
 use umulmrum\Holiday\Provider\Germany\Saxony;
 use umulmrum\Holiday\Provider\Germany\SchleswigHolstein;
 use umulmrum\Holiday\Provider\Germany\Thuringia;
+use umulmrum\Holiday\Provider\HolidayInitializerInterface;
 
 class HolidayCalculatorGermanyTest extends AbstractHolidayCalculatorTest
 {
     /**
      * {@inheritdoc}
      */
-    protected function getHolidayInitializer()
+    protected function getHolidayInitializer(): HolidayInitializerInterface
     {
         return new GermanyHolidayInitializer();
     }
@@ -43,7 +44,7 @@ class HolidayCalculatorGermanyTest extends AbstractHolidayCalculatorTest
     /**
      * {@inheritdoc}
      */
-    public function getData()
+    public function getData(): array
     {
         return [
             [
@@ -529,7 +530,7 @@ class HolidayCalculatorGermanyTest extends AbstractHolidayCalculatorTest
     /**
      * @test
      */
-    public function it_computes_the_correct_holidays_if_manually_initialized()
+    public function it_computes_the_correct_holidays_if_manually_initialized(): void
     {
         $this->givenAHolidayCalculatorWithManualInitialization();
         $this->whenICallCalculateHolidaysForYear(2019, Germany::ID);
@@ -550,7 +551,7 @@ class HolidayCalculatorGermanyTest extends AbstractHolidayCalculatorTest
         ]);
     }
 
-    private function givenAHolidayCalculatorWithManualInitialization()
+    private function givenAHolidayCalculatorWithManualInitialization(): void
     {
         $this->holidayCalculator = new HolidayCalculator();
         $this->holidayCalculator->addHolidayProvider(new Germany());

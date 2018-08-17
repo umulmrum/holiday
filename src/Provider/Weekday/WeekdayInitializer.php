@@ -19,7 +19,7 @@ class WeekdayInitializer implements HolidayInitializerInterface
     /**
      * {@inheritdoc}
      */
-    public function initializeHolidays(HolidayCalculator $holidayCalculator)
+    public function initializeHolidays(HolidayCalculator $holidayCalculator): void
     {
         $holidayCalculator->addHolidayProvider(new Sundays());
         $holidayCalculator->addHolidayProvider(new Mondays());

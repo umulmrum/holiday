@@ -117,16 +117,20 @@ Translations
 
 Some formatters can be initialized with an optional translator. See the
 `TranslatorInterface` and the translation files under `res/trans`.
-  
+ 
+Supported Calendars
+-------------------
+
+Currently only the Gregorian calendar is supported, for years < 10000.
+ 
 Supported Countries
 -------------------
 
 Currently only Germany is supported, but you can easily create your own holiday providers. Just have a look at the
 existing code, it should be self-explanatory. I will happily merge pull requests (see below).
 
-
-Notices on German Holidays
---------------------------
+Notes on German Holidays
+------------------------
 
 - Easter Sunday/Ostersonntag and Whit Sunday/Pfingstsonntag are not public holidays in most states.
 - Every sunday is a public holiday in Hesse.
@@ -142,16 +146,24 @@ Notices on German Holidays
 - New states of Germany are treated as if they had always been part of the Federal Republic of Germany. For years
   before 1990 holidays are therefore not correct.
 
-Notice on Holidays Way in the Past or Future
---------------------------------------------
+Notes on Christian Holidays
+---------------------------
+
+- Only holidays of Western churches are taken into account.
+- Only the most important holidays are taken into account, as interpreted by me (which is most likely far from accurate; 
+  please feel free to contribute changes).
+
+Note on Holidays Way in the Past or Future
+------------------------------------------
 
 If computing holidays for past years, be aware that they may not be accurate. All holidays were introduced at some 
 point, so this lib might return holidays for years in which they really were not in existence, as well as omit holidays
 that haven't been celebrated for a long time. This lib aims to be accurate for "recent" years at least, approximately 
 for years after World War II.
 
-Likewise holidays might of course change in the future, so there is no point in calculating them for the year 5000 
-(but in case you wondered: Easter Sunday will be on March 30, 5000).
+Likewise holidays might of course change in the future. Also, Easter date calculation will change in the far future due 
+to astronomical reasons. So there is no point in calculating holidays for the year 5000 (but in case you wondered: 
+Easter Sunday will be on March 30, 5000).
 
 Contribution
 ------------

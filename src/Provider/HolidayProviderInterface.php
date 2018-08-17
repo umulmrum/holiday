@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Provider;
 
-use DateTimeZone;
 use umulmrum\Holiday\Model\HolidayList;
 
 /**
@@ -27,15 +26,15 @@ interface HolidayProviderInterface
      *
      * @return string
      */
-    public function getId();
+    public function getId(): string;
 
     /**
      * Calculates holidays for the given year.
      *
      * @param int          $year
-     * @param DateTimeZone $timezone
+     * @param \DateTimeZone $timezone
      *
      * @return HolidayList
      */
-    public function calculateHolidaysForYear($year, DateTimeZone $timezone = null);
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList;
 }

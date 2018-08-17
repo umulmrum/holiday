@@ -41,7 +41,7 @@ class HolidayInitializerChainTest extends HolidayTestCase
      *
      * @param int $count
      */
-    public function it_should_initialize_the_passed_chain($count)
+    public function it_should_initialize_the_passed_chain(int $count): void
     {
         $this->givenMockedInitializers($count);
         $this->givenAHolidayInitializerChain();
@@ -49,15 +49,12 @@ class HolidayInitializerChainTest extends HolidayTestCase
         $this->thenAllGivenInitializersShouldRun();
     }
 
-    private function givenAHolidayInitializerChain()
+    private function givenAHolidayInitializerChain(): void
     {
         $this->holidayInitializerChain = new HolidayInitializerChain($this->revealedHolidayInitializersMocks);
     }
 
-    /**
-     * @param int $count
-     */
-    private function givenMockedInitializers($count)
+    private function givenMockedInitializers(int $count): void
     {
         $this->holidayInitializersMocks = [];
         $this->revealedHolidayInitializersMocks = [];
@@ -69,15 +66,15 @@ class HolidayInitializerChainTest extends HolidayTestCase
         }
     }
 
-    private function whenInitializeHolidaysIsCalled()
+    private function whenInitializeHolidaysIsCalled(): void
     {
         $this->holidayCalculatorMock = $this->prophesize(HolidayCalculator::class);
         $this->holidayInitializerChain->initializeHolidays($this->holidayCalculatorMock->reveal());
     }
 
-    private function thenAllGivenInitializersShouldRun()
+    private function thenAllGivenInitializersShouldRun(): void
     {
-        if (0 === count($this->holidayInitializersMocks)) {
+        if (0 === \count($this->holidayInitializersMocks)) {
             $this->assertTrue(true);
 
             return;
@@ -85,12 +82,10 @@ class HolidayInitializerChainTest extends HolidayTestCase
         foreach ($this->holidayInitializersMocks as $holidayInitializerMock) {
             $holidayInitializerMock->initializeHolidays($this->holidayCalculatorMock)->shouldHaveBeenCalled();
         }
+        $this->assertTrue(true);
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
+    public function getData(): array
     {
         return [
             [

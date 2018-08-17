@@ -19,9 +19,9 @@ class TimestampFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = [])
+    public function format(Holiday $holiday, array $options = []): string
     {
-        return $holiday->getTimestamp();
+        return (string) $holiday->getTimestamp();
     }
 
     /**
@@ -32,7 +32,7 @@ class TimestampFormatter implements HolidayFormatterInterface
         $result = [];
 
         foreach ($holidayList->getList() as $holiday) {
-            $result[] = $holiday->getTimestamp();
+            $result[] = (string) $holiday->getTimestamp();
         }
 
         return $result;

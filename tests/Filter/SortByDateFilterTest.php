@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use DateTime;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -34,31 +33,28 @@ class SortByDateFilterTest extends HolidayTestCase
      * @param string[] $holidays
      * @param array    $expectedResult
      */
-    public function it_should_filter_holidays(array $holidays, array $expectedResult)
+    public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenASortByDateFilter();
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenASortByDateFilter()
+    private function givenASortByDateFilter(): void
     {
         $this->filter = new SortByDateFilter();
     }
 
-    /**
-     * @param array $holidays
-     */
-    private function whenFilterIsCalled(array $holidays)
+    private function whenFilterIsCalled(array $holidays): void
     {
         $holidayList = new HolidayList();
         foreach ($holidays as $index => $holiday) {
-            $holidayList->add(new Holiday('name'.$index, new DateTime($holiday)));
+            $holidayList->add(new Holiday('name'.$index, new \DateTime($holiday)));
         }
         $this->actualResult = $this->filter->filter($holidayList);
     }
 
-    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult)
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
     {
         $resultDates = [];
         foreach ($this->actualResult->getList() as $result) {
@@ -67,10 +63,7 @@ class SortByDateFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
+    public function getData(): array
     {
         return [
             [

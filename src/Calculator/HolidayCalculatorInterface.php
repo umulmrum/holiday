@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Calculator;
 
-use DateTimeZone;
 use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Model\HolidayList;
 
@@ -25,11 +24,11 @@ interface HolidayCalculatorInterface
      *
      * @param int          $year
      * @param string       $region   The alias for the region. This is what the getId() method of the holiday provider for this region returns.
-     * @param DateTimeZone $timezone
+     * @param \DateTimeZone $timezone
      *
      * @return HolidayList
      *
      * @throws HolidayException
      */
-    public function calculateHolidaysForYear($year, $region, DateTimeZone $timezone = null);
+    public function calculateHolidaysForYear($year, $region, \DateTimeZone $timezone = null): HolidayList;
 }

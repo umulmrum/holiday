@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Formatter;
 
-use DateTime;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -23,7 +22,7 @@ class TimestampFormatterTest extends HolidayTestCase
      */
     private $formatter;
     /**
-     * @var int|int[]
+     * @var string|string[]
      */
     private $actualResult;
 
@@ -32,7 +31,7 @@ class TimestampFormatterTest extends HolidayTestCase
      * @dataProvider getFormatData
      *
      * @param string $date
-     * @param int    $expectedResult
+     * @param string $expectedResult
      */
     public function it_should_format_single_values($date, $expectedResult)
     {
@@ -51,12 +50,12 @@ class TimestampFormatterTest extends HolidayTestCase
      */
     private function whenFormatIsCalled($date)
     {
-        $holiday = new Holiday('name', new DateTime($date));
+        $holiday = new Holiday('name', new \DateTime($date));
         $this->actualResult = $this->formatter->format($holiday);
     }
 
     /**
-     * @param int|int[] $expectedResult
+     * @param string|string[] $expectedResult
      */
     private function thenAFormattedResultShouldBeReturned($expectedResult)
     {
@@ -71,11 +70,11 @@ class TimestampFormatterTest extends HolidayTestCase
         return [
             [
                 '2016-01-01',
-                1451606400,
+                '1451606400',
             ],
             [
                 '1970-01-01',
-                0,
+                '0',
             ],
         ];
     }
@@ -85,7 +84,7 @@ class TimestampFormatterTest extends HolidayTestCase
      * @dataProvider getFormatListData
      *
      * @param string[] $dates
-     * @param int[]    $expectedResult
+     * @param string[] $expectedResult
      */
     public function it_should_format_list_values($dates, $expectedResult)
     {
@@ -101,7 +100,7 @@ class TimestampFormatterTest extends HolidayTestCase
     {
         $holidayList = new HolidayList();
         foreach ($dates as $date) {
-            $holidayList->add(new Holiday('name', new DateTime($date)));
+            $holidayList->add(new Holiday('name', new \DateTime($date)));
         }
         $this->actualResult = $this->formatter->formatList($holidayList);
     }

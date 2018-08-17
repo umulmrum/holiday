@@ -11,7 +11,7 @@
 
 namespace umulmrum\Holiday\Calculator;
 
-use DateTimeZone;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayInitializerInterface;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Exception\HolidayException;
@@ -31,14 +31,6 @@ class HolidayCalculator implements HolidayCalculatorInterface
      */
     private $initialized = false;
 
-    public function addHolidayProvider(HolidayProviderInterface $holidayProvider)
-    {
-        $this->holidayProviders[$holidayProvider->getId()] = $holidayProvider;
-    }
-
-    /**
-     * @param HolidayInitializerInterface $holidayInitializer
-     */
     public function __construct(HolidayInitializerInterface $holidayInitializer = null)
     {
         if (null === $holidayInitializer) {
@@ -48,7 +40,12 @@ class HolidayCalculator implements HolidayCalculatorInterface
         }
     }
 
-    private function init()
+    public function addHolidayProvider(HolidayProviderInterface $holidayProvider): void
+    {
+        $this->holidayProviders[$holidayProvider->getId()] = $holidayProvider;
+    }
+
+    private function init(): void
     {
         if ($this->initialized) {
             return;
@@ -61,10 +58,10 @@ class HolidayCalculator implements HolidayCalculatorInterface
      *
      * @throws HolidayException
      */
-    public function calculateHolidaysForYear($year, $region, DateTimeZone $timezone = null)
+    public function calculateHolidaysForYear($year, $region, \DateTimeZone $timezone = null): HolidayList
     {
         $this->init();
-        if (!isset($this->holidayProviders[$region])) {
+        if (false === isset($this->holidayProviders[$region])) {
             throw new HolidayException('Invalid location alias: '.$region);
         }
         $holidays = $this->holidayProviders[$region]->calculateHolidaysForYear($year, $timezone);

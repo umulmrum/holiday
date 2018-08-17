@@ -11,8 +11,8 @@
 
 namespace umulmrum\Holiday\Provider\Germany;
 
-use DateTimeZone;
 use umulmrum\Holiday\Constant\HolidayType;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 use umulmrum\Holiday\Provider\CommonHolidaysTrait;
 
@@ -21,12 +21,12 @@ class BadenWuerttemberg extends Germany
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    const ID = 'DE-BW';
+    public const ID = 'DE-BW';
 
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): string
     {
         return self::ID;
     }
@@ -34,7 +34,7 @@ class BadenWuerttemberg extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
 

@@ -11,23 +11,18 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use DateInterval;
-use DateTime;
 use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeTimespanFilter implements HolidayFilterInterface
 {
-    const PARAM_FIRST_DAY = 'include_timespan_filter.first_day';
-    const PARAM_LAST_DAY = 'include_timespan_filter.last_day';
+    public const PARAM_FIRST_DAY = 'include_timespan_filter.first_day';
+    public const PARAM_LAST_DAY = 'include_timespan_filter.last_day';
 
     /**
      * @var HolidayFilterInterface
      */
     private $chainedFilter;
 
-    /**
-     * @param HolidayFilterInterface $chainedFilter
-     */
     public function __construct(HolidayFilterInterface $chainedFilter = null)
     {
         $this->chainedFilter = $chainedFilter;
@@ -36,21 +31,21 @@ class IncludeTimespanFilter implements HolidayFilterInterface
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = [])
+    public function filter(HolidayList $holidayList, array $options = []): HolidayList
     {
         if (null !== $this->chainedFilter) {
             $holidayList = $this->chainedFilter->filter($holidayList, $options);
         }
 
         /**
-         * @var DateTime $firstDay
+         * @var \DateTime $firstDay
          */
         $firstDay = $options[self::PARAM_FIRST_DAY]->getTimestamp();
         /**
-         * @var DateTime $lastDayPlusOne
+         * @var \DateTime $lastDayPlusOne
          */
         $lastDayPlusOne = clone $options[self::PARAM_LAST_DAY];
-        $lastDayPlusOne->add(new DateInterval('P1D'));
+        $lastDayPlusOne->add(new \DateInterval('P1D'));
         $lastDayPlusOne = $lastDayPlusOne->getTimestamp();
 
         $newList = new HolidayList();

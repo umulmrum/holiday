@@ -23,9 +23,9 @@ interface HolidayFormatterInterface
      * @param Holiday $holiday
      * @param array   $options
      *
-     * @return int|string
+     * @return string
      */
-    public function format(Holiday $holiday, array $options = []);
+    public function format(Holiday $holiday, array $options = []): string;
 
     /**
      * Formats a list of Holiday objects. Implementations may be configured using the $options array (depending completely
@@ -34,7 +34,7 @@ interface HolidayFormatterInterface
      * @param HolidayList $holidayList
      * @param array       $options
      *
-     * @return int[]|string[]
+     * @return string|string[]
      */
     public function formatList(HolidayList $holidayList, array $options = []);
 }

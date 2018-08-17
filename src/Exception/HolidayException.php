@@ -11,11 +11,9 @@
 
 namespace umulmrum\Holiday\Exception;
 
-use Exception;
-
 /**
  * @codeCoverageIgnore
  */
-class HolidayException extends Exception
+class HolidayException extends \Exception
 {
 }

@@ -15,16 +15,13 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeWeekdayFilter implements HolidayFilterInterface
 {
-    const PARAM_WEEK_DAY = 'include_week_day_filter.week_day';
+    public const PARAM_WEEK_DAY = 'include_week_day_filter.week_day';
 
     /**
      * @var HolidayFilterInterface
      */
     private $chainedFilter;
 
-    /**
-     * @param HolidayFilterInterface $chainedFilter
-     */
     public function __construct(HolidayFilterInterface $chainedFilter = null)
     {
         $this->chainedFilter = $chainedFilter;
@@ -33,7 +30,7 @@ class IncludeWeekdayFilter implements HolidayFilterInterface
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = [])
+    public function filter(HolidayList $holidayList, array $options = []): HolidayList
     {
         if (null !== $this->chainedFilter) {
             $holidayList = $this->chainedFilter->filter($holidayList, $options);

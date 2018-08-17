@@ -11,10 +11,8 @@
 
 namespace umulmrum\Holiday\Model;
 
-use Countable;
-use DateTime;
 
-class HolidayList implements Countable
+class HolidayList implements \Countable
 {
     /**
      * @var Holiday[]
@@ -37,7 +35,7 @@ class HolidayList implements Countable
      *
      * @param Holiday $holiday
      */
-    public function add(Holiday $holiday)
+    public function add(Holiday $holiday): void
     {
         if (-1 !== $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getDate())) {
             $this->holidayList[$index] = new Holiday($holiday->getName(), $holiday->getDate(), $holiday->getType() | $this->holidayList[$index]->getType());
@@ -46,13 +44,7 @@ class HolidayList implements Countable
         }
     }
 
-    /**
-     * @param string   $name
-     * @param DateTime $dateTime
-     *
-     * @return int
-     */
-    private function getIndexByNameAndDate($name, DateTime $dateTime)
+    private function getIndexByNameAndDate($name, \DateTime $dateTime): int
     {
         $timestamp = $dateTime->getTimestamp();
         foreach ($this->holidayList as $index => $holiday) {
@@ -67,7 +59,7 @@ class HolidayList implements Countable
     /**
      * @return Holiday[]
      */
-    public function getList()
+    public function getList(): array
     {
         return $this->holidayList;
     }
@@ -77,6 +69,6 @@ class HolidayList implements Countable
      */
     public function count()
     {
-        return count($this->holidayList);
+        return \count($this->holidayList);
     }
 }

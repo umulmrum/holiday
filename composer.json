@@ -16,7 +16,6 @@
         }
     ],
     "require": {
-        "ext-calendar": "*",
         "php": "~7.1"
     },
     "require-dev": {

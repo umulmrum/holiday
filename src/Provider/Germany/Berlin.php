@@ -11,16 +11,16 @@
 
 namespace umulmrum\Holiday\Provider\Germany;
 
-use DateTimeZone;
+use umulmrum\Holiday\Model\HolidayList;
 
 class Berlin extends Germany
 {
-    const ID = 'DE-BE';
+    public const ID = 'DE-BE';
 
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): string
     {
         return self::ID;
     }
@@ -28,7 +28,7 @@ class Berlin extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         return parent::calculateHolidaysForYear($year, $timezone);
     }

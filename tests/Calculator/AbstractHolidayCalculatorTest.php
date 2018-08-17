@@ -34,42 +34,28 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
      * @param string $location
      * @param array  $expectedResult
      */
-    public function it_computes_the_correct_holidays($year, $location, array $expectedResult)
+    public function it_computes_the_correct_holidays(int $year, string $location, array $expectedResult): void
     {
         $this->givenAHolidayCalculator();
         $this->whenICallCalculateHolidaysForYear($year, $location);
         $this->thenTheCorrectHolidaysShouldBeCalculated($expectedResult);
     }
 
-    /**
-     * @return array
-     */
-    abstract public function getData();
+    abstract public function getData(): array;
 
-    private function givenAHolidayCalculator()
+    private function givenAHolidayCalculator(): void
     {
         $this->holidayCalculator = new HolidayCalculator($this->getHolidayInitializer());
     }
 
-    /**
-     * @return HolidayInitializerInterface
-     */
-    abstract protected function getHolidayInitializer();
+    abstract protected function getHolidayInitializer(): HolidayInitializerInterface;
 
-    /**
-     * @param int    $year
-     * @param string $location
-     * @param string $zip
-     */
-    protected function whenICallCalculateHolidaysForYear($year, $location)
+    protected function whenICallCalculateHolidaysForYear(int $year, string $location): void
     {
         $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year, $location);
     }
 
-    /**
-     * @param array $expectedResult
-     */
-    protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult)
+    protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult): void
     {
         $actualResult = [];
         foreach ($this->actualResult->getList() as $actualHoliday) {
