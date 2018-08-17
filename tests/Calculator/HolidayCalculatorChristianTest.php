@@ -14,7 +14,7 @@ final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new ChristianHolidays(),
+            ChristianHolidays::class,
         ];
     }
 

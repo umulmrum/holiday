@@ -21,7 +21,7 @@ class HolidayProviderSaxonyAnhaltTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new SaxonyAnhalt(),
+            SaxonyAnhalt::class,
         ];
     }
 

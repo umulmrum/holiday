@@ -117,7 +117,7 @@ class HolidayHelper
             $noWork = $noWorkWeekdayProviders;
         } else {
             $noWork = [
-                new Sundays(),
+                Sundays::class,
             ];
         }
 

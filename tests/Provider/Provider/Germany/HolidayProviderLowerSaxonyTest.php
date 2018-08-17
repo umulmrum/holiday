@@ -21,7 +21,7 @@ class HolidayProviderLowerSaxonyTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new LowerSaxony(),
+            LowerSaxony::class,
         ];
     }
 

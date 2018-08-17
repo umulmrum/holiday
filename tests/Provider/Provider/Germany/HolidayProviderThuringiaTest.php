@@ -21,7 +21,7 @@ class HolidayProviderThuringiaTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new Thuringia(),
+            Thuringia::class,
         ];
     }
 

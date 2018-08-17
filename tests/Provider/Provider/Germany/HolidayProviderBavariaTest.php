@@ -21,7 +21,7 @@ class HolidayProviderBavariaTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new Bavaria(),
+            Bavaria::class,
         ];
     }
 

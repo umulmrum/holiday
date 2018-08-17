@@ -21,7 +21,7 @@ class HolidayProviderSaxonyTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new Saxony(),
+            Saxony::class,
         ];
     }
 

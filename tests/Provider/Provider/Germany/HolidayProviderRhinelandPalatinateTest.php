@@ -21,7 +21,7 @@ class HolidayProviderRhinelandPalatinateTest extends AbstractHolidayCalculatorTe
     protected function getHolidayProviders(): array
     {
         return [
-            new RhinelandPalatinate(),
+            RhinelandPalatinate::class,
         ];
     }
 

@@ -21,7 +21,7 @@ class HolidayProviderHamburgTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new Hamburg(),
+            Hamburg::class,
         ];
     }
 

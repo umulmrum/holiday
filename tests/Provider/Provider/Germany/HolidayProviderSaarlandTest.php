@@ -21,7 +21,7 @@ class HolidayProviderSaarlandTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new Saarland(),
+            Saarland::class,
         ];
     }
 

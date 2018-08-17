@@ -21,7 +21,7 @@ class HolidayProviderNorthrineWestphaliaTest extends AbstractHolidayCalculatorTe
     protected function getHolidayProviders(): array
     {
         return [
-            new NorthRhineWestphalia(),
+            NorthRhineWestphalia::class,
         ];
     }
 

@@ -11,9 +11,7 @@
 
 namespace umulmrum\Holiday\Calculator;
 
-use umulmrum\Holiday\Provider\Germany\Germany;
 use umulmrum\Holiday\Provider\Germany\SchleswigHolstein;
-use umulmrum\Holiday\Provider\Germany\Thuringia;
 
 class HolidayProviderSchleswigHolsteinTest extends AbstractHolidayCalculatorTest
 {
@@ -23,7 +21,7 @@ class HolidayProviderSchleswigHolsteinTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new SchleswigHolstein(),
+            SchleswigHolstein::class,
         ];
     }
 

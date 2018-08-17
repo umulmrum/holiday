@@ -21,7 +21,7 @@ class HolidayProviderMecklenburgVorpommernTest extends AbstractHolidayCalculator
     protected function getHolidayProviders(): array
     {
         return [
-            new MecklenburgVorpommern(),
+            MecklenburgVorpommern::class,
         ];
     }
 

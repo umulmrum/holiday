@@ -21,7 +21,7 @@ class HolidayProviderHesseTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new Hesse(),
+            Hesse::class,
         ];
     }
 

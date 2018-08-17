@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Calculator;
 
-use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Model\HolidayList;
 
 /**

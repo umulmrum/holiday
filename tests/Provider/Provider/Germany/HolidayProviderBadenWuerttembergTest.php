@@ -21,7 +21,7 @@ class HolidayProviderBadenWuerttembergTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            new BadenWuerttemberg(),
+            BadenWuerttemberg::class,
         ];
     }
 

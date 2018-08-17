@@ -287,7 +287,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function givenHolidayCalculatorForBadenWuerttemberg(): void
     {
-        $this->holidayCalculatorMock = new HolidayCalculator(new BadenWuerttemberg());
+        $this->holidayCalculatorMock = new HolidayCalculator(BadenWuerttemberg::class);
     }
 
     public function getGetNoWorkdaysForTimespanData(): array
@@ -305,7 +305,7 @@ class HolidayHelperTest extends HolidayTestCase
                 '2016-01-01',
                 '2016-01-11',
                 [
-                    new Sundays(),
+                    Sundays::class,
                 ],
                 [
                     '2016-01-01',
@@ -345,8 +345,8 @@ class HolidayHelperTest extends HolidayTestCase
                 '2015-12-01',
                 '2016-01-02',
                 [
-                    new Saturdays(),
-                    new Sundays(),
+                    Saturdays::class,
+                    Sundays::class,
                 ],
                 [
                     '2015-12-05',
@@ -366,8 +366,8 @@ class HolidayHelperTest extends HolidayTestCase
                 '2015-12-02',
                 '2016-01-05',
                 [
-                    new Tuesdays(),
-                    new Thursdays(),
+                    Tuesdays::class,
+                    Thursdays::class,
                 ],
                 [
                     '2015-12-03',

@@ -13,61 +13,98 @@ namespace umulmrum\Holiday\Calculator;
 
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Provider\Germany\Berlin;
+use umulmrum\Holiday\Provider\Germany\Brandenburg;
 use umulmrum\Holiday\Provider\Germany\Germany;
+use umulmrum\Holiday\Provider\Germany\Hesse;
+use umulmrum\Holiday\Provider\Germany\Saxony;
+use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 class HolidayCalculatorTest extends HolidayTestCase
 {
-    /**
-     * @var HolidayCalculator
-     */
-    private $holidayCalculator;
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
 
     /**
-     * @test
+     * @dataProvider provideDataForTestConstructForValidArgument
+     *
+     * @param string|HolidayProviderInterface[] $argument
      */
-    public function it_computes_the_correct_holidays_if_manually_initialized(): void
+    public function testConstructForValidArgument($argument): void
     {
-        $this->givenAHolidayCalculatorWithManualInitialization();
-        $this->whenICallCalculateHolidaysForYear(2019);
-        $this->thenTheCorrectHolidaysShouldBeCalculated([
-            '2019-01-01',
-            '2019-04-19',
-            '2019-04-21',
-            '2019-04-22',
-            '2019-05-01',
-            '2019-05-30',
-            '2019-06-09',
-            '2019-06-10',
-            '2019-10-03',
-            '2019-10-31',
-            '2019-11-20',
-            '2019-12-25',
-            '2019-12-26',
-        ]);
+        $this->whenHolidayCalculatorIsConstructed($argument);
+        $this->thenNoExceptionShouldBeThrown();
     }
 
-    private function givenAHolidayCalculatorWithManualInitialization(): void
+    public function provideDataForTestConstructForValidArgument(): array
     {
-        $this->holidayCalculator = new HolidayCalculator();
-        $this->holidayCalculator->addHolidayProvider(new Germany());
+        return [
+            [
+                Germany::class,
+            ],
+            [
+                new Hesse(),
+            ],
+            [
+                new Germany(),
+                Brandenburg::class,
+                Berlin::class,
+                new Saxony(),
+            ],
+        ];
     }
 
-    private function whenICallCalculateHolidaysForYear(int $year): void
+    private function whenHolidayCalculatorIsConstructed($argument): void
     {
-        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year);
+        new HolidayCalculator($argument);
     }
 
-    protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult): void
+    private function thenNoExceptionShouldBeThrown(): void
     {
-        $actualResult = [];
-        foreach ($this->actualResult->getList() as $actualHoliday) {
-            $actualResult[] = $actualHoliday->getFormattedDate('Y-m-d');
-        }
-        sort($actualResult);
-        $this->assertEquals($expectedResult, $actualResult);
+        $this->assertTrue(true);
+    }
+
+    /**
+     * @dataProvider provideDataForTestThrowExceptionOnInvalidArgument
+     *
+     * @param mixed $argument
+     */
+    public function testThrowExceptionOnInvalidArgument($argument): void
+    {
+        $this->thenExpectInvalidArgumentException();
+        $this->whenHolidayCalculatorIsConstructed($argument);
+    }
+
+    public function provideDataForTestThrowExceptionOnInvalidArgument(): array
+    {
+        return [
+            [
+                null,
+            ],
+            [
+                1,
+            ],
+            [
+                'no class name',
+            ],
+            [
+                HolidayCalculator::class,
+            ],
+            [
+                new \stdClass(),
+            ],
+            [
+                [],
+            ],
+            [
+                [
+                    Germany::class,
+                    new \stdClass(),
+                ],
+            ],
+        ];
+    }
+
+    private function thenExpectInvalidArgumentException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
     }
 }

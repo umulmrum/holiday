@@ -22,26 +22,53 @@ class HolidayCalculator implements HolidayCalculatorInterface
     private $holidayProviders = [];
 
     /**
-     * @param HolidayProviderInterface[]|HolidayProviderInterface $holidayProviders
+     * @param string[]|string|HolidayProviderInterface[]|HolidayProviderInterface $holidayProviders
      *
      * @throws \InvalidArgumentException if $holidayProviders has an invalid type
      */
     public function __construct($holidayProviders = [])
     {
         if (false === \is_array($holidayProviders)) {
-            if (false === $holidayProviders instanceof HolidayProviderInterface) {
-                throw new \InvalidArgumentException('First argument needs to be either of type HolidayProviderInterface or an array consisting only of HolidayProviderInterface objects');
-            }
-            $holidayProviders = [ $holidayProviders ];
+            $holidayProviders = [
+                $holidayProviders,
+            ];
+        } elseif (0 === \count($holidayProviders)) {
+            throw new \InvalidArgumentException('At least one holiday provider must be given.');
         }
-        foreach ($holidayProviders as $holidayProvider) {
-            $this->addHolidayProvider($holidayProvider);
+        foreach ($holidayProviders as $holidayProviderName) {
+            if (true === \is_string($holidayProviderName)) {
+                $this->holidayProviders[] = $this->getHolidayProviderFromClassString($holidayProviderName);
+            } else {
+                if (false === $holidayProviderName instanceof HolidayProviderInterface) {
+                    $argumentType = (true === \is_object($holidayProviderName)) ? \get_class($holidayProviderName) : 'scalar';
+                    throw new \InvalidArgumentException(sprintf(
+                        'First argument needs to be either of type HolidayProviderInterface or a string containing
+                        the fully qualified name of a class implementing HolidayProviderInterface 
+                        (or an array containing a mixture of both). Got %s instead.', $argumentType));
+                }
+                $this->holidayProviders[] = $holidayProviderName;
+            }
         }
     }
 
-    public function addHolidayProvider(HolidayProviderInterface $holidayProvider): void
+    /**
+     * @param string $classString
+     *
+     * @return HolidayProviderInterface
+     *
+     * @throws \InvalidArgumentException
+     */
+    private function getHolidayProviderFromClassString(string $classString): HolidayProviderInterface
     {
-        $this->holidayProviders[$holidayProvider->getId()] = $holidayProvider;
+        if (false === \class_exists($classString)) {
+            throw new \InvalidArgumentException(sprintf('Class does not exist: %s', $classString));
+        }
+        $holidayProvider = new $classString();
+        if (false === $holidayProvider instanceof HolidayProviderInterface) {
+            throw new \InvalidArgumentException(sprintf('Class does not implement HolidayProviderInterface: %s', $classString));
+        }
+
+        return $holidayProvider;
     }
 
     /**

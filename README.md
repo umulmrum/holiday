@@ -42,7 +42,7 @@ use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
 // Get a HolidayCalculator object and initalize it with one or more holiday providers.
-$holidayCalculator = new HolidayCalculator(new Bavaria());
+$holidayCalculator = new HolidayCalculator(Bavaria::class);
 // Calculate the holiday for one year (holidays are always calculated for one year).
 $holidays = $holidayCalculator->calculateHolidaysForYear(2016);
 // Optionally apply filters, e.g. restrict to one month
@@ -71,7 +71,7 @@ use umulmrum\Holiday\Helper\HolidayHelper;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
 // Get a HolidayCalculator object and initalize it with one or more holiday providers.
-$holidayCalculator = new HolidayCalculator(new Bavaria());
+$holidayCalculator = new HolidayCalculator(Bavaria::class);
 // Get a HolidayHelper object and initalize it with the HolidayCalculator.
 $holidayHelper = new HolidayHelper($holidayCalculator);
 $holidays = $holidayHelper->getHolidaysForMonth(2016, 12);
