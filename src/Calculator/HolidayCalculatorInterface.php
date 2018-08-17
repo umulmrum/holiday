@@ -20,15 +20,12 @@ use umulmrum\Holiday\Model\HolidayList;
 interface HolidayCalculatorInterface
 {
     /**
-     * Calculates all holidays for a given $year in the desired $location.
+     * Calculates all holidays for a given $year.
      *
-     * @param int          $year
-     * @param string       $region   The alias for the region. This is what the getId() method of the holiday provider for this region returns.
+     * @param int           $year
      * @param \DateTimeZone $timezone
      *
      * @return HolidayList
-     *
-     * @throws HolidayException
      */
-    public function calculateHolidaysForYear($year, $region, \DateTimeZone $timezone = null): HolidayList;
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList;
 }

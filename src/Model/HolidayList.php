@@ -44,6 +44,13 @@ class HolidayList implements \Countable
         }
     }
 
+    public function addAll(HolidayList $holidayList): void
+    {
+        foreach ($holidayList->getList() as $holiday) {
+            $this->add($holiday);
+        }
+    }
+
     private function getIndexByNameAndDate($name, \DateTime $dateTime): int
     {
         $timestamp = $dateTime->getTimestamp();

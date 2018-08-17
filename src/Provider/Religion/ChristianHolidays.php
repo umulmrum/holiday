@@ -8,9 +8,17 @@ use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-abstract class ChristianHolidays implements HolidayProviderInterface
+final class ChristianHolidays implements HolidayProviderInterface
 {
     use ChristianHolidaysTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId(): string
+    {
+        return 'REL-CHRIST';
+    }
 
     /**
      * {@inheritdoc}

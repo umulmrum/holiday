@@ -13,7 +13,6 @@ namespace umulmrum\Holiday\Calculator;
 
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayInitializerInterface;
 
 abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
 {
@@ -31,13 +30,12 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param int    $year
-     * @param string $location
      * @param array  $expectedResult
      */
-    public function it_computes_the_correct_holidays(int $year, string $location, array $expectedResult): void
+    public function it_computes_the_correct_holidays(int $year, array $expectedResult): void
     {
         $this->givenAHolidayCalculator();
-        $this->whenICallCalculateHolidaysForYear($year, $location);
+        $this->whenICallCalculateHolidaysForYear($year);
         $this->thenTheCorrectHolidaysShouldBeCalculated($expectedResult);
     }
 
@@ -45,14 +43,14 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
 
     private function givenAHolidayCalculator(): void
     {
-        $this->holidayCalculator = new HolidayCalculator($this->getHolidayInitializer());
+        $this->holidayCalculator = new HolidayCalculator($this->getHolidayProviders());
     }
 
-    abstract protected function getHolidayInitializer(): HolidayInitializerInterface;
+    abstract protected function getHolidayProviders(): array;
 
-    protected function whenICallCalculateHolidaysForYear(int $year, string $location): void
+    protected function whenICallCalculateHolidaysForYear(int $year): void
     {
-        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year, $location);
+        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year);
     }
 
     protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult): void

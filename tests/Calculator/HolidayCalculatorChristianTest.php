@@ -4,17 +4,25 @@
 namespace umulmrum\Holiday\Calculator;
 
 
-use umulmrum\Holiday\Provider\HolidayInitializerInterface;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidays;
 
 final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected function getHolidayProviders(): array
+    {
+        return [
+            new ChristianHolidays(),
+        ];
+    }
+
     public function getData(): array
     {
         return [
             '2018' => [
                 2018,
-                'foo',
                 [
                     '2018-01-06',
                     '2018-03-30',
@@ -34,7 +42,6 @@ final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
             ],
             '2000' => [
                 2000,
-                'foo',
                 [
                     '2000-01-06',
                     '2000-04-21',
@@ -54,7 +61,6 @@ final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
             ],
             '1899' => [
                 1899,
-                'foo',
                 [
                     '1899-01-06',
                     '1899-03-31',
@@ -73,31 +79,5 @@ final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
                 ],
             ],
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getHolidayInitializer(): HolidayInitializerInterface
-    {
-        /**
-         * {@inheritdoc}
-         */
-        return new class implements HolidayInitializerInterface
-        {
-            /**
-             * {@inheritdoc}
-             */
-            public function initializeHolidays(HolidayCalculator $holidayCalculator): void
-            {
-                $holidayCalculator->addHolidayProvider(new class extends ChristianHolidays
-                {
-                    public function getId(): string
-                    {
-                        return 'foo';
-                    }
-                });
-            }
-        };
     }
 }

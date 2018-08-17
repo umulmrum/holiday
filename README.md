@@ -39,13 +39,12 @@ require 'vendor/autoload.php';
 use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\Formatter\DateFormatter;
-use umulmrum\Holiday\Provider\Germany\GermanyHolidayInitializer;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
-// Get a HolidayCalculator object and initalize it with holiday providers.
-$holidayCalculator = new HolidayCalculator(new GermanyHolidayInitializer());
-// Calculate the holiday for one year in a region.
-$holidays = $holidayCalculator->calculateHolidaysForYear(2016, Bavaria::ID);
+// Get a HolidayCalculator object and initalize it with one or more holiday providers.
+$holidayCalculator = new HolidayCalculator(new Bavaria());
+// Calculate the holiday for one year (holidays are always calculated for one year).
+$holidays = $holidayCalculator->calculateHolidaysForYear(2016);
 // Optionally apply filters, e.g. restrict to one month
 $holidays = (new IncludeTimespanFilter())->filter($holidays, [
         IncludeTimespanFilter::PARAM_FIRST_DAY => new DateTime('2016-12-01'),
@@ -59,7 +58,7 @@ $formattedHolidays = (new DateFormatter())->formatList($holidays);
 This results in an array of date strings that can be echoed or computed further.
 
 There is also a `HolidayHelper` class that simplifies some common holiday
-computations. This example can be substituted by this:
+computations. Using the helper, this example can be substituted by this:
 
 ```php
 <?php
@@ -70,53 +69,48 @@ use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Helper\HolidayHelper;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
-use umulmrum\Holiday\Provider\Germany\GermanyHolidayInitializer;
 
-// Get a HolidayCalculator object and initalize it with holiday providers.
-$holidayCalculator = new HolidayCalculator(new GermanyHolidayInitializer());
+// Get a HolidayCalculator object and initalize it with one or more holiday providers.
+$holidayCalculator = new HolidayCalculator(new Bavaria());
 // Get a HolidayHelper object and initalize it with the HolidayCalculator.
 $holidayHelper = new HolidayHelper($holidayCalculator);
-$holidays = $holidayHelper->getHolidaysForMonth(2016, 12, Bavaria::ID);
+$holidays = $holidayHelper->getHolidaysForMonth(2016, 12);
 // Optionally format the results
 $formattedHolidays = (new DateFormatter())->formatList($holidays);
 
 ```
 
-The usage normally follows this pattern:
+Usage normally follows this pattern:
 
-- compute all holidays for a given year and a holiday provider (e.g. a region)
-- narrow down the list of holidays to the desired subset by using filters.
-  The filters can be chained, so that for example all religious holidays
-  in a certain month can be determined by chaining a type filter and a
-  timespan filter.
+- Compute all holidays for a given year and configured holiday providers.
+- Narrow down the list of holidays to the desired subset by using filters.
+  Filters can be chained, so that for example all religious holidays in a certain month can be determined by chaining
+  a type filter and a time span filter.
   A few filters are provided in this library, more can be added freely.
-- format the result using a formatter.
+- Format the result using a formatter.
   A few formatters are provided in this library, more can be added freely.
 
 Filters
 -------
 
-Filters can be used to narrow down or transform holiday lists. There are
-some predefined filters, but custom ones can be created by implementing
-the `HolidayFilterInterface`.
-When implementing custom filters, it is suggested that you use a prefix
-"Include" in the class name for all filters that preserve some holidays,
-e.g. the `IncludeWeekdayFilter` preserves all holidays on a specific weekday.
-Equally the prefix "Exclude" should be used for all filters that remove
-some holidays.
+Filters can be used to narrow down or transform holiday lists. There are some predefined filters (see `src/Filter`),
+but custom ones can be created by implementing `HolidayFilterInterface`.
+
+When implementing custom filters, it is suggested that you use a prefix "Include" in the class name for all filters that
+preserve some holidays, e.g. the `IncludeWeekdayFilter` preserves all holidays on a specific weekday. Equally the prefix
+"Exclude" should be used for all filters that remove some holidays.
 
 Formatters
 ----------
 
-Formatters can be used to format holidays and holiday lists. There are
-some predefined formatters, but custom ones can be created by implementing
-the `HolidayFormatterInterface`.
+Formatters can be used to format holidays and holiday lists. There are some predefined formatters (see `src/Formatter`),
+but custom ones can be created by implementing `HolidayFormatterInterface`.
 
 Translations
 ------------
 
-Some formatters can be initialized with an optional translator. See the
-`TranslatorInterface` and the translation files under `res/trans`.
+Some formatters can be initialized with an optional translator. See `TranslatorInterface` and the translation files 
+under `res/trans`.
  
 Supported Calendars
 -------------------
@@ -134,14 +128,15 @@ Notes on German Holidays
 
 - Easter Sunday/Ostersonntag and Whit Sunday/Pfingstsonntag are not public holidays in most states.
 - Every sunday is a public holiday in Hesse.
-- Assumption/Mariä Himmelfahrt is a public holiday in about 1700 of about 2000 communities in Bavaria. This is implemented
-  as a partial holiday, so you might want to add your logic that filters this date.
+- Assumption/Mariä Himmelfahrt is a public holiday in about 1700 of about 2000 communities in Bavaria. This is 
+  implemented as a partial holiday, so you might want to add your logic that filters this date.
 - In Bavaria schools are closed on Assumption Day and on Repentance and Prayer Day. There is no special handling of
   this "behavior".
 - Corpus Christi/Fronleichnam is a public holiday in some communities in Saxony and Thuringia.
-- Regional holidays with traditionally (but not publicly) limited opening hours are not considered yet (e.g. carnival days).
-- Some ports at the German Ocean celebrate some holidays as "High Holidays". It is generally not allowed to work on these days,
-  and work time ends at 12 o'clock the day before. This is not considered yet.
+- Regional holidays with traditionally (but not publicly) limited opening hours are not considered yet (e.g. carnival 
+  days).
+- Some ports at the German Ocean celebrate some holidays as "High Holidays". It is generally not allowed to work on 
+  these days, and work time ends at 12 o'clock the day before. This is not considered yet.
 - Also there are some quiet days that are not public holidays in various states. This is also not considered yet.
 - New states of Germany are treated as if they had always been part of the Federal Republic of Germany. For years
   before 1990 holidays are therefore not correct.

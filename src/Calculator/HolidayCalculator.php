@@ -12,9 +12,7 @@
 namespace umulmrum\Holiday\Calculator;
 
 use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayInitializerInterface;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
-use umulmrum\Holiday\Exception\HolidayException;
 
 class HolidayCalculator implements HolidayCalculatorInterface
 {
@@ -22,21 +20,22 @@ class HolidayCalculator implements HolidayCalculatorInterface
      * @var HolidayProviderInterface[]
      */
     private $holidayProviders = [];
-    /**
-     * @var HolidayInitializerInterface
-     */
-    private $holidayInitializer;
-    /**
-     * @var bool
-     */
-    private $initialized = false;
 
-    public function __construct(HolidayInitializerInterface $holidayInitializer = null)
+    /**
+     * @param HolidayProviderInterface[]|HolidayProviderInterface $holidayProviders
+     *
+     * @throws \InvalidArgumentException if $holidayProviders has an invalid type
+     */
+    public function __construct($holidayProviders = [])
     {
-        if (null === $holidayInitializer) {
-            $this->initialized = true;
-        } else {
-            $this->holidayInitializer = $holidayInitializer;
+        if (false === \is_array($holidayProviders)) {
+            if (false === $holidayProviders instanceof HolidayProviderInterface) {
+                throw new \InvalidArgumentException('First argument needs to be either of type HolidayProviderInterface or an array consisting only of HolidayProviderInterface objects');
+            }
+            $holidayProviders = [ $holidayProviders ];
+        }
+        foreach ($holidayProviders as $holidayProvider) {
+            $this->addHolidayProvider($holidayProvider);
         }
     }
 
@@ -45,26 +44,15 @@ class HolidayCalculator implements HolidayCalculatorInterface
         $this->holidayProviders[$holidayProvider->getId()] = $holidayProvider;
     }
 
-    private function init(): void
-    {
-        if ($this->initialized) {
-            return;
-        }
-        $this->holidayInitializer->initializeHolidays($this);
-    }
-
     /**
      * {@inheritdoc}
-     *
-     * @throws HolidayException
      */
-    public function calculateHolidaysForYear($year, $region, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
-        $this->init();
-        if (false === isset($this->holidayProviders[$region])) {
-            throw new HolidayException('Invalid location alias: '.$region);
+        $holidays = new HolidayList();
+        foreach ($this->holidayProviders as $holidayProvider) {
+            $holidays->addAll($holidayProvider->calculateHolidaysForYear($year, $timezone));
         }
-        $holidays = $this->holidayProviders[$region]->calculateHolidaysForYear($year, $timezone);
 
         return $holidays;
     }
