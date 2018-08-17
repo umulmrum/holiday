@@ -16,6 +16,7 @@ use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
 use umulmrum\Holiday\Filter\IncludeTimespanFilter;
+use umulmrum\Holiday\Filter\IncludeTypeFilter;
 use umulmrum\Holiday\Filter\IncludeUniqueDateFilter;
 use umulmrum\Holiday\Filter\SortByDateFilter;
 use umulmrum\Holiday\Formatter\ICalendarFormatter;
@@ -23,6 +24,7 @@ use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 use umulmrum\Holiday\Provider\Weekday\WeekdayInitializer;
+use umulmrum\Holiday\Provider\Weekday\Weekdays;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
 /**
@@ -136,37 +138,44 @@ class HolidayHelper
         $endYear = (int) $lastDay->format('Y');
 
         if ($startYear === $endYear) {
-            $holidays = [];
-            $holidays[] = $this->holidayCalculator->calculateHolidaysForYear($startYear, $region, $firstDay->getTimezone());
-            $temporaryHolidayCalculator = new HolidayCalculator(new WeekdayInitializer());
-            foreach ($noWork as $noWorkDays) {
-                $holidays[] = $temporaryHolidayCalculator->calculateHolidaysForYear($startYear, $noWorkDays->getId(), $firstDay->getTimezone());
-            }
-            $holidays[] = $this->holidayCalculator->calculateHolidaysForYear($startYear, Sundays::ID, $firstDay->getTimezone());
-
-            $holidayList = $this->mergeHolidayLists($holidays);
-            $holidayList = (
-                new IncludeTimespanFilter(
-                new IncludeUniqueDateFilter(
-                )))->filter($holidayList, [
-                IncludeTimespanFilter::PARAM_FIRST_DAY => $firstDay,
-                IncludeTimespanFilter::PARAM_LAST_DAY => $lastDay,
-            ]);
+            $holidayList = $this->getNoWorkDaysWithinSingleYear($firstDay, $lastDay, $region, $startYear, $noWork);
         } else {
-            $holidays = [];
-            $holidays[] = $this->getNoWorkDaysForTimespan($firstDay, new \DateTime(sprintf('%s-12-31', $startYear), $firstDay->getTimezone()), $region, $noWork);
-            for ($year = $startYear + 1; $year < $endYear; ++$year) {
-                $holidays[] = $this->getNoWorkDaysForTimespan(
-                    new \DateTime(sprintf('%s-01-01', $year), $firstDay->getTimezone()),
-                    new \DateTime(sprintf('%s-12-31', $year), $firstDay->getTimezone()),
-                    $region,
-                    $noWork);
-            }
-            $holidays[] = $this->getNoWorkDaysForTimespan(new \DateTime(sprintf('%s-01-01', $endYear), $firstDay->getTimezone()), $lastDay, $region, $noWork);
-            $holidayList = $this->mergeHolidayLists($holidays);
+            $holidayList = $this->getNoWorkDaysOverMultipleYears($firstDay, $lastDay, $region, $startYear, $endYear, $noWork);
         }
 
         return (new SortByDateFilter())->filter($holidayList);
+    }
+
+    /**
+     * @param DateTime $firstDay
+     * @param DateTime $lastDay
+     * @param string $region
+     * @param int $year
+     * @param Weekdays[] $noWork
+     *
+     * @return HolidayList
+     *
+     * @throws HolidayException
+     */
+    private function getNoWorkDaysWithinSingleYear(DateTime $firstDay, DateTime $lastDay, string $region, int $year, array $noWork): HolidayList
+    {
+        $holidays = [];
+        $holidays[] = $this->holidayCalculator->calculateHolidaysForYear($year, $region, $firstDay->getTimezone());
+        $temporaryHolidayCalculator = new HolidayCalculator(new WeekdayInitializer());
+        foreach ($noWork as $noWorkDays) {
+            $holidays[] = $temporaryHolidayCalculator->calculateHolidaysForYear($year, $noWorkDays->getId(), $firstDay->getTimezone());
+        }
+
+        $holidayList = $this->mergeHolidayLists($holidays);
+        $holidayList = (
+        new IncludeTimespanFilter(new IncludeUniqueDateFilter(new IncludeTypeFilter())))
+            ->filter($holidayList, [
+                IncludeTimespanFilter::PARAM_FIRST_DAY => $firstDay,
+                IncludeTimespanFilter::PARAM_LAST_DAY => $lastDay,
+                IncludeTypeFilter::PARAM_HOLIDAY_TYPE => HolidayType::DAY_OFF,
+            ]);
+
+        return $holidayList;
     }
 
     /**
@@ -188,6 +197,41 @@ class HolidayHelper
         return (new SortByDateFilter())->filter($newList);
     }
 
+    /**
+     * @param \DateTime $firstDay
+     * @param \DateTime $lastDay
+     * @param string $region
+     * @param int $startYear
+     * @param int $endYear
+     * @param Weekdays[] $noWork
+     *
+     * @return HolidayList
+     *
+     * @throws HolidayException
+     */
+    private function getNoWorkDaysOverMultipleYears(\DateTime $firstDay, \DateTime $lastDay, string $region, int $startYear, int $endYear, array $noWork): HolidayList
+    {
+        $holidays = [];
+        $holidays[] = $this->getNoWorkDaysForTimespan($firstDay, new \DateTime(sprintf('%s-12-31', $startYear), $firstDay->getTimezone()), $region, $noWork);
+        for ($year = $startYear + 1; $year < $endYear; ++$year) {
+            $holidays[] = $this->getNoWorkDaysForTimespan(
+                new \DateTime(sprintf('%s-01-01', $year), $firstDay->getTimezone()),
+                new \DateTime(sprintf('%s-12-31', $year), $firstDay->getTimezone()),
+                $region,
+                $noWork);
+        }
+        $holidays[] = $this->getNoWorkDaysForTimespan(new \DateTime(sprintf('%s-01-01', $endYear), $firstDay->getTimezone()), $lastDay, $region, $noWork);
+
+        return $this->mergeHolidayLists($holidays);
+    }
+
+    /**
+     * @param HolidayList              $holidayList
+     * @param TranslatorInterface|null $translator
+     * @param DateHelper               $dateHelper
+     *
+     * @return string
+     */
     public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null, DateHelper $dateHelper = null): string
     {
         $calendarFormatter = new ICalendarFormatter($translator, $dateHelper);
