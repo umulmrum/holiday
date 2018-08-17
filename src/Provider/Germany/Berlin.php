@@ -15,16 +15,6 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class Berlin extends Germany
 {
-    public const ID = 'DE-BE';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

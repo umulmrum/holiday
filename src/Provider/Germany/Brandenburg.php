@@ -21,16 +21,6 @@ class Brandenburg extends Germany
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    public const ID = 'DE-BB';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

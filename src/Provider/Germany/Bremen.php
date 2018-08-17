@@ -19,16 +19,6 @@ class Bremen extends Germany
 {
     use ChristianHolidaysTrait;
 
-    public const ID = 'DE-HB';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

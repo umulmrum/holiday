@@ -19,16 +19,6 @@ class SchleswigHolstein extends Germany
 {
     use ChristianHolidaysTrait;
 
-    public const ID = 'DE-SH';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

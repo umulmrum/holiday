@@ -21,15 +21,6 @@ class Bavaria extends BadenWuerttemberg
 {
     use ChristianHolidaysTrait;
 
-    public const ID = 'DE-BY';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
     /**
      * {@inheritdoc}
      */

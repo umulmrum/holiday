@@ -21,16 +21,6 @@ class Thuringia extends Germany
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    public const ID = 'DE-TH';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

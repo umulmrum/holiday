@@ -21,16 +21,6 @@ class MecklenburgVorpommern extends Germany
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    public const ID = 'DE-MV';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

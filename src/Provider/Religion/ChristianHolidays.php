@@ -15,14 +15,6 @@ final class ChristianHolidays implements HolidayProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): string
-    {
-        return 'REL-CHRIST';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidayList = new HolidayList();

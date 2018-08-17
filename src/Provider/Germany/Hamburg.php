@@ -19,16 +19,6 @@ class Hamburg extends Germany
 {
     use ChristianHolidaysTrait;
 
-    public const ID = 'DE-HH';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

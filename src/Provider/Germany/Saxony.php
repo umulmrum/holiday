@@ -21,16 +21,6 @@ class Saxony extends Germany
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    public const ID = 'DE-SN';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

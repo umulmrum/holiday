@@ -21,16 +21,6 @@ class BadenWuerttemberg extends Germany
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    public const ID = 'DE-BW';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

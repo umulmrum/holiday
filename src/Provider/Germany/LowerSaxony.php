@@ -19,16 +19,6 @@ class LowerSaxony extends Germany
 {
     use ChristianHolidaysTrait;
 
-    public const ID = 'DE-NI';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

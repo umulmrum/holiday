@@ -24,16 +24,6 @@ class Hesse extends Germany
     use CommonHolidaysTrait;
     use WeekdayTrait;
 
-    public const ID = 'DE-HE';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     /**
      * {@inheritdoc}
      */

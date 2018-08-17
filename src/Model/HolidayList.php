@@ -51,6 +51,11 @@ class HolidayList implements \Countable
         }
     }
 
+//    public function removeByIndex(int $index): void
+//    {
+//        \array_splice($this->holidayList, $index, 1);
+//    }
+
     private function getIndexByNameAndDate($name, \DateTime $dateTime): int
     {
         $timestamp = $dateTime->getTimestamp();

@@ -15,13 +15,6 @@ use umulmrum\Holiday\Constant\Weekday;
 
 class Tuesdays extends Weekdays
 {
-    public const ID = 'TUESDAYS';
-
-    public function getId(): string
-    {
-        return self::ID;
-    }
-
     public function __construct()
     {
         parent::__construct(Weekday::TUESDAY);
