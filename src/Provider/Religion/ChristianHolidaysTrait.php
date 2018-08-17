@@ -78,30 +78,6 @@ trait ChristianHolidaysTrait
         return "$year-$n-$p";
     }
 
-//    private function calculateEasterSunday(int $year): string
-//    {
-//        $a = $year % 19;
-//        $b = \intdiv($year, 100);
-//        $c = $year % 100;
-//        $d = \intdiv($b, 4);
-//        $e = $b % 4;
-//        $f = \intdiv($b + 8, 25);
-//        $g = \intdiv($b - $f + 1, 3);
-//        $h = (19 * $a + $b - $d - $g + 15) % 30;
-//        $i = \intdiv($c, 4);
-//        $k = $c % 4;
-//        $l = (32 + 2 * $e + 2 * $i - $h - $k) % 7;
-//        $m = \intdiv($a + 11 * $h + 22 * $l, 451);
-//        $x = $h + $l - 7 * $m + 114;
-//        $n = \intdiv($x , 31);
-//        $p = $x % 31;
-//
-//        $month = $n;
-//        $day = $p + 1;
-//
-//        return "$year-$month-$day";
-//    }
-
     private function getEpiphany(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
     {
         return new Holiday(HolidayName::EPIPHANY, new \DateTime(sprintf('%s-01-06', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
