@@ -17,27 +17,39 @@ use umulmrum\Holiday\Provider\HolidayProviderInterface;
 class HolidayCalculator implements HolidayCalculatorInterface
 {
     /**
-     * @var HolidayProviderInterface[]
+     * {@inheritdoc}
      */
-    private $holidayProviders = [];
+    public function calculateHolidaysForYear($holidayProviders, int $year, \DateTimeZone $timezone = null): HolidayList
+    {
+        $finalHolidayProviders = $this->interpretHolidayProviders($holidayProviders);
+
+        $holidays = new HolidayList();
+        foreach ($finalHolidayProviders as $holidayProvider) {
+            $holidays->addAll($holidayProvider->calculateHolidaysForYear($year, $timezone));
+        }
+
+        return $holidays;
+    }
 
     /**
-     * @param string[]|string|HolidayProviderInterface[]|HolidayProviderInterface $holidayProviders
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      *
-     * @throws \InvalidArgumentException if $holidayProviders has an invalid type
+     * @return HolidayProviderInterface[]
+     *
+     * @throws \InvalidArgumentException
      */
-    public function __construct($holidayProviders = [])
+    private function interpretHolidayProviders($holidayProviders): array
     {
+        $finalHolidayProviders = [];
+
         if (false === \is_array($holidayProviders)) {
             $holidayProviders = [
                 $holidayProviders,
             ];
-        } elseif (0 === \count($holidayProviders)) {
-            throw new \InvalidArgumentException('At least one holiday provider must be given.');
         }
         foreach ($holidayProviders as $holidayProviderName) {
             if (true === \is_string($holidayProviderName)) {
-                $this->holidayProviders[] = $this->getHolidayProviderFromClassString($holidayProviderName);
+                $finalHolidayProviders[] = $this->getHolidayProviderFromClassString($holidayProviderName);
             } else {
                 if (false === $holidayProviderName instanceof HolidayProviderInterface) {
                     $argumentType = (true === \is_object($holidayProviderName)) ? \get_class($holidayProviderName) : 'scalar';
@@ -46,9 +58,11 @@ class HolidayCalculator implements HolidayCalculatorInterface
                         the fully qualified name of a class implementing HolidayProviderInterface 
                         (or an array containing a mixture of both). Got %s instead.', $argumentType));
                 }
-                $this->holidayProviders[] = $holidayProviderName;
+                $finalHolidayProviders[] = $holidayProviderName;
             }
         }
+
+        return $finalHolidayProviders;
     }
 
     /**
@@ -69,18 +83,5 @@ class HolidayCalculator implements HolidayCalculatorInterface
         }
 
         return $holidayProvider;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
-    {
-        $holidays = new HolidayList();
-        foreach ($this->holidayProviders as $holidayProvider) {
-            $holidays->addAll($holidayProvider->calculateHolidaysForYear($year, $timezone));
-        }
-
-        return $holidays;
     }
 }

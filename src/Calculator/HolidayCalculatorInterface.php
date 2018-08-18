@@ -12,6 +12,7 @@
 namespace umulmrum\Holiday\Calculator;
 
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 /**
  * @codeCoverageIgnore
@@ -21,10 +22,13 @@ interface HolidayCalculatorInterface
     /**
      * Calculates all holidays for a given $year.
      *
-     * @param int           $year
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param int $year
      * @param \DateTimeZone $timezone
      *
      * @return HolidayList
+     *
+     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList;
+    public function calculateHolidaysForYear($holidayProviders, int $year, \DateTimeZone $timezone = null): HolidayList;
 }

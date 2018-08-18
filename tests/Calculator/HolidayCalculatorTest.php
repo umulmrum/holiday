@@ -12,7 +12,6 @@
 namespace umulmrum\Holiday\Calculator;
 
 use umulmrum\Holiday\HolidayTestCase;
-use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\Berlin;
 use umulmrum\Holiday\Provider\Germany\Brandenburg;
 use umulmrum\Holiday\Provider\Germany\Germany;
@@ -22,6 +21,10 @@ use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 class HolidayCalculatorTest extends HolidayTestCase
 {
+    /**
+     * @var HolidayCalculator
+     */
+    private $holidayCalculator;
 
     /**
      * @dataProvider provideDataForTestConstructForValidArgument
@@ -30,7 +33,8 @@ class HolidayCalculatorTest extends HolidayTestCase
      */
     public function testConstructForValidArgument($argument): void
     {
-        $this->whenHolidayCalculatorIsConstructed($argument);
+        $this->givenHolidayCalculator();
+        $this->whenCalculateHolidaysForYearIsCalled($argument);
         $this->thenNoExceptionShouldBeThrown();
     }
 
@@ -52,9 +56,14 @@ class HolidayCalculatorTest extends HolidayTestCase
         ];
     }
 
-    private function whenHolidayCalculatorIsConstructed($argument): void
+    private function givenHolidayCalculator(): void
     {
-        new HolidayCalculator($argument);
+        $this->holidayCalculator = new HolidayCalculator();
+    }
+
+    private function whenCalculateHolidaysForYearIsCalled($argument): void
+    {
+        $this->holidayCalculator->calculateHolidaysForYear($argument, 2018);
     }
 
     private function thenNoExceptionShouldBeThrown(): void
@@ -69,8 +78,9 @@ class HolidayCalculatorTest extends HolidayTestCase
      */
     public function testThrowExceptionOnInvalidArgument($argument): void
     {
+        $this->givenHolidayCalculator();
         $this->thenExpectInvalidArgumentException();
-        $this->whenHolidayCalculatorIsConstructed($argument);
+        $this->whenCalculateHolidaysForYearIsCalled($argument);
     }
 
     public function provideDataForTestThrowExceptionOnInvalidArgument(): array
@@ -90,9 +100,6 @@ class HolidayCalculatorTest extends HolidayTestCase
             ],
             [
                 new \stdClass(),
-            ],
-            [
-                [],
             ],
             [
                 [

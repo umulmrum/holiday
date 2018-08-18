@@ -16,7 +16,7 @@ use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeTypeFilterTest extends HolidayTestCase
+final class IncludeTypeFilterTest extends HolidayTestCase
 {
     /**
      * @var IncludeTypeFilter
@@ -37,21 +37,19 @@ class IncludeTypeFilterTest extends HolidayTestCase
      */
     public function it_should_filter_holidays(HolidayList $holidayList, int $filterType, array $expectedResult)
     {
-        $this->givenAFilter();
-        $this->whenFilterIsCalled($holidayList, $filterType);
+        $this->givenAFilter($filterType);
+        $this->whenFilterIsCalled($holidayList);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAFilter(): void
+    private function givenAFilter(int $filterType): void
     {
-        $this->filter = new IncludeTypeFilter();
+        $this->filter = new IncludeTypeFilter($filterType);
     }
 
-    private function whenFilterIsCalled(HolidayList $holidayList, int $filterType): void
+    private function whenFilterIsCalled(HolidayList $holidayList): void
     {
-        $this->actualResult = $this->filter->filter($holidayList, [
-            IncludeTypeFilter::PARAM_HOLIDAY_TYPE => $filterType,
-        ]);
+        $this->actualResult = $this->filter->filter($holidayList);
     }
 
     /**

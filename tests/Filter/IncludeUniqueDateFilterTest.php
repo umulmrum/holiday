@@ -15,7 +15,7 @@ use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeUniqueDateFilterTest extends HolidayTestCase
+final class IncludeUniqueDateFilterTest extends HolidayTestCase
 {
     /**
      * @var IncludeUniqueDateFilter

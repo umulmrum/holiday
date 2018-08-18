@@ -13,7 +13,7 @@ Requirements
 
 - PHP >= 7.1
 
-- Symfony translator in any version is recommended for translations
+- Symfony translator in any version is recommended for translations.
 
 That's it really.
 
@@ -29,7 +29,24 @@ composer require umulmrum/holiday
 Usage
 -----
 
-Example:
+Simple example:
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\Provider\Germany\Bavaria;
+
+$holidayCalculator = new HolidayCalculator();
+$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2016);
+```
+
+This results in a `HolidayList` which contains all holidays for 2016; this list can then be used for output or further
+computation. Holidays are always computed for one full year and can be narrowed down afterwards using filters.
+
+More complex example:
 
 ```php
 <?php
@@ -41,24 +58,20 @@ use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
-// Get a HolidayCalculator object and initalize it with one or more holiday providers.
-$holidayCalculator = new HolidayCalculator(Bavaria::class);
-// Calculate the holiday for one year (holidays are always calculated for one year).
-$holidays = $holidayCalculator->calculateHolidaysForYear(2016);
-// Optionally apply filters, e.g. restrict to one month
-$holidays = (new IncludeTimespanFilter())->filter($holidays, [
-        IncludeTimespanFilter::PARAM_FIRST_DAY => new DateTime('2016-12-01'),
-        IncludeTimespanFilter::PARAM_LAST_DAY => new DateTime('2016-12-31'),
-    ]);
-// Optionally format the results
+$holidayCalculator = new HolidayCalculator();
+$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2016);
+// Apply filters, e.g. restrict to one month.
+$firstDay = new \DateTime('2016-12-01');
+$lastDay = new \DateTime('2016-12-31');
+$holidays = (new IncludeTimespanFilter($firstDay, $lastDay))->filter($holidays);
+// Format the results.
 $formattedHolidays = (new DateFormatter())->formatList($holidays);
-
 ```
 
-This results in an array of date strings that can be echoed or computed further.
+This results in an array of date strings.
 
-There is also a `HolidayHelper` class that simplifies some common holiday
-computations. Using the helper, this example can be substituted by this:
+There is also a `HolidayHelper` class that simplifies some common holiday computations. Using the helper, this example 
+can be substituted by this:
 
 ```php
 <?php
@@ -70,22 +83,17 @@ use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Helper\HolidayHelper;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
-// Get a HolidayCalculator object and initalize it with one or more holiday providers.
-$holidayCalculator = new HolidayCalculator(Bavaria::class);
-// Get a HolidayHelper object and initalize it with the HolidayCalculator.
-$holidayHelper = new HolidayHelper($holidayCalculator);
-$holidays = $holidayHelper->getHolidaysForMonth(2016, 12);
-// Optionally format the results
+$holidayHelper = new HolidayHelper(new HolidayCalculator());
+$holidays = $holidayHelper->getHolidaysForMonth(Bavaria::class, 2016, 12);
 $formattedHolidays = (new DateFormatter())->formatList($holidays);
-
 ```
 
 Usage normally follows this pattern:
 
-- Compute all holidays for a given year and configured holiday providers.
+- Compute all holidays for a given year and one or more holiday providers.
 - Narrow down the list of holidays to the desired subset by using filters.
-  Filters can be chained, so that for example all religious holidays in a certain month can be determined by chaining
-  a type filter and a time span filter.
+  Filters take `HolidayList`s and return `HolidayList`s and can therefore easily be chained (e.g. all religious holidays
+  in a certain month can be determined by chaining a type filter and a time span filter).
   A few filters are provided in this library, more can be added freely.
 - Format the result using a formatter.
   A few formatters are provided in this library, more can be added freely.
@@ -160,14 +168,24 @@ Likewise holidays might of course change in the future. Also, Easter date calcul
 to astronomical reasons. So there is no point in calculating holidays for the year 5000 (but in case you wondered: 
 Easter Sunday will be on March 30, 5000).
 
+Versioning
+----------
+
+This library follows Semantic Versioning. Everything in the library can be considered the public API except
+ - code marked with `@internal`,
+ - tests,
+ - code that can only be accessed by using reflection (e.g. private methods). 
+
+ Note that the library is still in a 0.* version which allows the public API to change anytime.
+
 Contribution
 ------------
 
 Contributions are highly welcome. Please follow these rules when submitting a PR:
 
-- mimic existing code for style and structure
-- add unit tests for all of your code
-- use the Symfony code style (php-cs-fixer with symfony level)
+- Mimic existing code for style and structure.
+- Add unit tests for all of your code.
+- Use the Symfony code style (php-cs-fixer with symfony level).
 
 By submitting a PR you agree that all your contributed code may be used under the MIT license.
 

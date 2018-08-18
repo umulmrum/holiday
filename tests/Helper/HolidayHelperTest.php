@@ -19,6 +19,8 @@ use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
+use umulmrum\Holiday\Provider\Germany\Germany;
+use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Provider\Weekday\Saturdays;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 use umulmrum\Holiday\Provider\Weekday\Thursdays;
@@ -51,7 +53,6 @@ class HolidayHelperTest extends HolidayTestCase
         $this->holidayCalculatorMock = $this->prophesize(HolidayCalculatorInterface::class);
     }
 
-
     /**
      * @test
      */
@@ -69,7 +70,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function givenHolidayCalculatorReturningNewYear(): void
     {
-        $this->holidayCalculatorMock->calculateHolidaysForYear(2016, Argument::any())->willReturn(new HolidayList([
+        $this->holidayCalculatorMock->calculateHolidaysForYear(Argument::any(), 2016, Argument::any())->willReturn(new HolidayList([
             new Holiday(HolidayName::NEW_YEAR, new \DateTime('2016-01-01')),
         ]));
     }
@@ -85,7 +86,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function whenIsDayAHolidayIsCalledForNewYear(): void
     {
-        $this->actualResult = $this->holidayHelper->isDayAHoliday(new \DateTime('2016-01-01', $this->getTimezone()));
+        $this->actualResult = $this->holidayHelper->isDayAHoliday(Argument::any(), new \DateTime('2016-01-01', $this->getTimezone()));
     }
 
     private function thenTheDayShouldBeRecognizedAsHoliday(): void
@@ -95,7 +96,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function whenIsDayAHolidayIsCalledForARegularDay(): void
     {
-        $this->actualResult = $this->holidayHelper->isDayAHoliday(new \DateTime('2016-05-23', $this->getTimezone()));
+        $this->actualResult = $this->holidayHelper->isDayAHoliday(Argument::any(), new \DateTime('2016-05-23', $this->getTimezone()));
     }
 
     private function thenTheDayShouldNotBeRecognizedAsHoliday(): void
@@ -107,8 +108,9 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getGetHolidaysForMonthData
      *
-     * @param int   $year
-     * @param int   $month
+     * @param int $year
+     * @param int $month
+     * @param array $existingHolidays
      * @param array $expectedResult
      */
     public function it_should_calculate_a_list_of_all_holidays_in_a_given_month(int $year, int $month, array $existingHolidays, array $expectedResult): void
@@ -121,7 +123,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function givenHolidayCalculatorReturningHolidays(int $year, array $existingHolidays): void
     {
-        $this->holidayCalculatorMock->calculateHolidaysForYear($year, Argument::any())
+        $this->holidayCalculatorMock->calculateHolidaysForYear(Argument::any(), $year, Argument::any())
             ->willReturn($this->getHolidayList($existingHolidays));
     }
 
@@ -141,7 +143,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function whenGetHolidaysForMonthIsCalled(int $year, int $month): void
     {
-        $this->actualResult = $this->holidayHelper->getHolidaysForMonth($year, $month, $this->getTimezone());
+        $this->actualResult = $this->holidayHelper->getHolidaysForMonth(Germany::class, $year, $month, $this->getTimezone());
     }
 
     private function thenExpectedHolidaysShouldBeReturned(array $expectedResult): void
@@ -210,9 +212,10 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getGetHolidaysByNameData
      *
-     * @param int    $year
+     * @param int $year
+     * @param array $existingHolidays
      * @param string $holidayName
-     * @param array  $expectedResult
+     * @param array $expectedResult
      */
     public function it_should_calculate_correct_holidays_for_a_holiday_name(int $year, array $existingHolidays, string $holidayName, array $expectedResult): void
     {
@@ -224,7 +227,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function whenGetHolidaysByNameIsCalled(int $year, string $holidayName): void
     {
-        $this->actualResult = $this->holidayHelper->getHolidaysByName($year, $holidayName, $this->getTimezone());
+        $this->actualResult = $this->holidayHelper->getHolidaysByName(Germany::class, $year, $holidayName, $this->getTimezone());
     }
 
     public function getGetHolidaysByNameData(): array
@@ -279,15 +282,15 @@ class HolidayHelperTest extends HolidayTestCase
      */
     public function it_should_calculate_correct_no_work_days_for_a_timespan(string $firstDay, string $lastDay, array $noWorkWeekdaysProviders, array $expectedResult): void
     {
-        $this->givenHolidayCalculatorForBadenWuerttemberg();
+        $this->givenHolidayCalculator();
         $this->givenHolidayHelper();
-        $this->whenGetNoWorkdaysForTimespanIsCalled($firstDay, $lastDay, $noWorkWeekdaysProviders);
+        $this->whenGetNoWorkdaysForTimespanIsCalled(new BadenWuerttemberg(), $firstDay, $lastDay, $noWorkWeekdaysProviders);
         $this->thenItShouldReturnAListOfHolidays($expectedResult);
     }
 
-    private function givenHolidayCalculatorForBadenWuerttemberg(): void
+    private function givenHolidayCalculator(): void
     {
-        $this->holidayCalculatorMock = new HolidayCalculator(BadenWuerttemberg::class);
+        $this->holidayCalculatorMock = new HolidayCalculator();
     }
 
     public function getGetNoWorkdaysForTimespanData(): array
@@ -470,9 +473,10 @@ class HolidayHelperTest extends HolidayTestCase
         ];
     }
 
-    private function whenGetNoWorkdaysForTimespanIsCalled(string $firstDay, string $lastDay, array $noWorkWeekdaysProvider): void
+    private function whenGetNoWorkdaysForTimespanIsCalled(HolidayProviderInterface $holidayProvider, string $firstDay, string $lastDay, array $noWorkWeekdaysProvider): void
     {
-        $this->actualResult = $this->holidayHelper->getNoWorkDaysForTimespan(
+        $this->actualResult = $this->holidayHelper->getNoWorkDaysForTimeSpan(
+            $holidayProvider,
             new \DateTime($firstDay, $this->getTimezone()),
             new \DateTime($lastDay, $this->getTimezone()),
             $noWorkWeekdaysProvider

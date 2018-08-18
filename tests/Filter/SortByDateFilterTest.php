@@ -15,7 +15,7 @@ use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class SortByDateFilterTest extends HolidayTestCase
+final class SortByDateFilterTest extends HolidayTestCase
 {
     /**
      * @var SortByDateFilter

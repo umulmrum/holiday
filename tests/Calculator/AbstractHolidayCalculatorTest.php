@@ -43,14 +43,14 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
 
     private function givenAHolidayCalculator(): void
     {
-        $this->holidayCalculator = new HolidayCalculator($this->getHolidayProviders());
+        $this->holidayCalculator = new HolidayCalculator();
     }
 
     abstract protected function getHolidayProviders(): array;
 
     protected function whenICallCalculateHolidaysForYear(int $year): void
     {
-        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year);
+        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($this->getHolidayProviders(), $year);
     }
 
     protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult): void

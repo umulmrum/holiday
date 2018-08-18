@@ -22,9 +22,8 @@ interface HolidayFilterInterface
      * the passed one.
      *
      * @param HolidayList $holidayList
-     * @param array       $options
      *
      * @return HolidayList
      */
-    public function filter(HolidayList $holidayList, array $options = []): HolidayList;
+    public function filter(HolidayList $holidayList): HolidayList;
 }

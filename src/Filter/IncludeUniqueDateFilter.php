@@ -16,30 +16,17 @@ use umulmrum\Holiday\Model\HolidayList;
 class IncludeUniqueDateFilter implements HolidayFilterInterface
 {
     /**
-     * @var HolidayFilterInterface
-     */
-    private $chainedFilter;
-
-    public function __construct(HolidayFilterInterface $chainedFilter = null)
-    {
-        $this->chainedFilter = $chainedFilter;
-    }
-
-    /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = []): HolidayList
+    public function filter(HolidayList $holidayList): HolidayList
     {
-        if (null !== $this->chainedFilter) {
-            $holidayList = $this->chainedFilter->filter($holidayList, $options);
-        }
         $foundTimestamps = [];
 
         $newList = new HolidayList();
         foreach ($holidayList->getList() as $holiday) {
-            if (!isset($foundTimestamps[$holiday->getTimestamp()])) {
+            if (false === isset($foundTimestamps[$holiday->getTimestamp()])) {
                 $newList->add($holiday);
-                $foundTimestamps[$holiday->getTimestamp()] = 'x';
+                $foundTimestamps[$holiday->getTimestamp()] = true;
             }
         }
 

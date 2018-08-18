@@ -15,32 +15,37 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeTypeFilter implements HolidayFilterInterface
 {
-    public const PARAM_HOLIDAY_TYPE = 'include_type_filter.holiday_type';
+    /**
+     * @var int
+     */
+    private $holidayTypes = 0;
 
     /**
-     * @var HolidayFilterInterface
+     * @param int|int[] $holidayTypes
      */
-    private $chainedFilter;
-
-    public function __construct(HolidayFilterInterface $chainedFilter = null)
+    public function __construct($holidayTypes)
     {
-        $this->chainedFilter = $chainedFilter;
+        if (true === \is_int($holidayTypes)) {
+            $this->holidayTypes = $holidayTypes;
+        } elseif (true === \is_array($holidayTypes)) {
+            foreach ($holidayTypes as $holidayType) {
+                $this->holidayTypes |= $holidayType;
+            }
+        } else {
+            throw new \InvalidArgumentException('First argument must be either an integer or an array of integers.');
+        }
     }
 
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = []): HolidayList
+    public function filter(HolidayList $holidayList): HolidayList
     {
-        if (null !== $this->chainedFilter) {
-            $holidayList = $this->chainedFilter->filter($holidayList, $options);
-        }
-        $holidayType = $options[self::PARAM_HOLIDAY_TYPE];
         $tempList = $holidayList->getList();
         $newList = new HolidayList();
 
         foreach ($tempList as $holiday) {
-            if (($holiday->getType() & $holidayType) !== 0) {
+            if (($holiday->getType() & $this->holidayTypes) !== 0) {
                 $newList->add($holiday);
             }
         }
