@@ -185,12 +185,10 @@ final class IncludeTimespanFilterTest extends HolidayTestCase
             ],
             [
                 [
-
                 ],
                 '2016-01-01',
                 '2016-12-31',
                 [
-
                 ],
             ],
         ];

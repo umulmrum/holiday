@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Model;
 
-
 class HolidayList implements \Countable
 {
     /**

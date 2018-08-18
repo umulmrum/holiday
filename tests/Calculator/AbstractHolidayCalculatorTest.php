@@ -29,8 +29,8 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
      * @test
      * @dataProvider getData
      *
-     * @param int    $year
-     * @param array  $expectedResult
+     * @param int   $year
+     * @param array $expectedResult
      */
     public function it_computes_the_correct_holidays(int $year, array $expectedResult): void
     {

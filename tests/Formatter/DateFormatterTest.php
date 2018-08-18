@@ -112,10 +112,10 @@ class DateFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatListData
      *
-     * @param string|null               $defaultFormat
-     * @param string[]                  $dates
-     * @param string|null               $format
-     * @param string|string[]           $expectedResult
+     * @param string|null     $defaultFormat
+     * @param string[]        $dates
+     * @param string|null     $format
+     * @param string|string[] $expectedResult
      */
     public function it_should_format_list_values(?string $defaultFormat, array $dates, ?string $format, $expectedResult): void
     {

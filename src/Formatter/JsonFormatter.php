@@ -77,8 +77,8 @@ class JsonFormatter implements HolidayFormatterInterface
         $typeList = [];
 
         $counter = 1;
-        while ($type !== 0) {
-            if (($type & $counter) !== 0) {
+        while (0 !== $type) {
+            if (0 !== ($type & $counter)) {
                 $typeList[] = $counter;
             }
             $type &= ~$counter;

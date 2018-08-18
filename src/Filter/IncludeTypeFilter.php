@@ -45,7 +45,7 @@ class IncludeTypeFilter implements HolidayFilterInterface
         $newList = new HolidayList();
 
         foreach ($tempList as $holiday) {
-            if (($holiday->getType() & $this->holidayTypes) !== 0) {
+            if (0 !== ($holiday->getType() & $this->holidayTypes)) {
                 $newList->add($holiday);
             }
         }

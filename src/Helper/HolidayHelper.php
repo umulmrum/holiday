@@ -45,7 +45,7 @@ class HolidayHelper
      * Returns if the given date is a holiday.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param \DateTime $dateTime
+     * @param \DateTime                                                           $dateTime
      *
      * @return bool true if the day is a holiday, else false
      *
@@ -63,9 +63,9 @@ class HolidayHelper
      * Returns all holidays for the given month.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param int $year
-     * @param int $month
-     * @param \DateTimeZone $timezone
+     * @param int                                                                 $year
+     * @param int                                                                 $month
+     * @param \DateTimeZone                                                       $timezone
      *
      * @return HolidayList
      *
@@ -87,9 +87,9 @@ class HolidayHelper
      * not necessarily unique, and therefore a HolidayList object is returned.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param int $year
-     * @param string $holidayName Most likely on of the constants in \umulmrum\Holiday\Constant\HolidayName.
-     * @param \DateTimeZone $timezone
+     * @param int                                                                 $year
+     * @param string                                                              $holidayName      most likely on of the constants in \umulmrum\Holiday\Constant\HolidayName
+     * @param \DateTimeZone                                                       $timezone
      *
      * @return HolidayList
      *
@@ -108,9 +108,9 @@ class HolidayHelper
      * Be aware that this method is quite heavy-weight if multiple no-work days for multiple years are requested.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param \DateTime $firstDay
-     * @param \DateTime $lastDay
-     * @param HolidayProviderInterface[] $noWorkWeekdayProviders
+     * @param \DateTime                                                           $firstDay
+     * @param \DateTime                                                           $lastDay
+     * @param HolidayProviderInterface[]                                          $noWorkWeekdayProviders
      *
      * @return HolidayList
      *
@@ -140,9 +140,9 @@ class HolidayHelper
 
     /**
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[]$holidayProviders
-     * @param \DateTime $firstDay
-     * @param \DateTime $lastDay
-     * @param int $year
+     * @param \DateTime  $firstDay
+     * @param \DateTime  $lastDay
+     * @param int        $year
      * @param Weekdays[] $noWork
      *
      * @return HolidayList
@@ -164,11 +164,11 @@ class HolidayHelper
 
     /**
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param \DateTime $firstDay
-     * @param \DateTime $lastDay
-     * @param int $startYear
-     * @param int $endYear
-     * @param Weekdays[] $noWork
+     * @param \DateTime                                                           $firstDay
+     * @param \DateTime                                                           $lastDay
+     * @param int                                                                 $startYear
+     * @param int                                                                 $endYear
+     * @param Weekdays[]                                                          $noWork
      *
      * @return HolidayList
      *
@@ -178,11 +178,13 @@ class HolidayHelper
     {
         $holidayList = $this->getNoWorkDaysForTimeSpan($holidayProviders, $firstDay, new \DateTime(sprintf('%s-12-31', $startYear), $firstDay->getTimezone()), $noWork);
         for ($year = $startYear + 1; $year < $endYear; ++$year) {
-            $holidayList->addAll($this->getNoWorkDaysForTimeSpan(
+            $holidayList->addAll(
+                $this->getNoWorkDaysForTimeSpan(
                 $holidayProviders,
                 new \DateTime(sprintf('%s-01-01', $year), $firstDay->getTimezone()),
                 new \DateTime(sprintf('%s-12-31', $year), $firstDay->getTimezone()),
-                $noWork)
+                $noWork
+            )
             );
         }
         $holidayList->addAll($this->getNoWorkDaysForTimeSpan($holidayProviders, new \DateTime(sprintf('%s-01-01', $endYear), $firstDay->getTimezone()), $lastDay, $noWork));

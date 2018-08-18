@@ -23,8 +23,8 @@ interface HolidayCalculatorInterface
      * Calculates all holidays for a given $year.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param int $year
-     * @param \DateTimeZone $timezone
+     * @param int                                                                 $year
+     * @param \DateTimeZone                                                       $timezone
      *
      * @return HolidayList
      *

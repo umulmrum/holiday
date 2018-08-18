@@ -15,7 +15,6 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeTimespanFilter implements HolidayFilterInterface
 {
-
     /**
      * @var \DateTime
      */

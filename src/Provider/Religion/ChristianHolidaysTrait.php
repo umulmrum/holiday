@@ -29,7 +29,7 @@ trait ChristianHolidaysTrait
     }
 
     /**
-     * Taken from http://www.whydomath.org/Reading_Room_Material/ian_stewart/2000_03.html
+     * Taken from http://www.whydomath.org/Reading_Room_Material/ian_stewart/2000_03.html.
      *
      * Choose any year of the Gregorian calendar and call it x. To determine the date of Eas-ter, carry out the following 10 calculations (it’s easy to program them on a computer):
      *
@@ -57,6 +57,7 @@ trait ChristianHolidaysTrait
      * Let’s try this method for x = 2001: (1) A = 6; (2) B = 20, C = 1; (3) D = 5, E = 0; (4) G = 6; (5) H = 18; (6) M = 0; (7) J = 0, K = 1; (8) L = 6; (9) N = 4; (10) P = 15. So Easter 2001 is April 15.
      *
      * @param int $year
+     *
      * @return string
      */
     private function calculateEasterSunday(int $year): string
@@ -66,7 +67,7 @@ trait ChristianHolidaysTrait
         $c = $year % 100;
         $d = \intdiv($b, 4);
         $e = $b % 4;
-        $g = \intdiv(8*$b + 13, 25);
+        $g = \intdiv(8 * $b + 13, 25);
         $h = (19 * $a + $b - $d - $g + 15) % 30;
         $j = \intdiv($c, 4);
         $k = $c % 4;

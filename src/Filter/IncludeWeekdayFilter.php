@@ -29,7 +29,7 @@ class IncludeWeekdayFilter implements HolidayFilterInterface
     {
         if (true === \is_int($weekdays)) {
             $this->weekdays = [
-                $weekdays
+                $weekdays,
             ];
         } elseif (true === \is_array($weekdays)) {
             foreach ($weekdays as $weekday) {

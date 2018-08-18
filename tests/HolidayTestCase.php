@@ -31,7 +31,6 @@ class HolidayTestCase extends TestCase
         date_default_timezone_set($this->originalTimezone);
     }
 
-
     protected function getTimezone(): \DateTimeZone
     {
         return new \DateTimeZone('UTC');

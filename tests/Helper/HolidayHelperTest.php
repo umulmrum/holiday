@@ -108,8 +108,8 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getGetHolidaysForMonthData
      *
-     * @param int $year
-     * @param int $month
+     * @param int   $year
+     * @param int   $month
      * @param array $existingHolidays
      * @param array $expectedResult
      */
@@ -212,10 +212,10 @@ class HolidayHelperTest extends HolidayTestCase
      * @test
      * @dataProvider getGetHolidaysByNameData
      *
-     * @param int $year
-     * @param array $existingHolidays
+     * @param int    $year
+     * @param array  $existingHolidays
      * @param string $holidayName
-     * @param array $expectedResult
+     * @param array  $expectedResult
      */
     public function it_should_calculate_correct_holidays_for_a_holiday_name(int $year, array $existingHolidays, string $holidayName, array $expectedResult): void
     {

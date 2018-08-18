@@ -56,7 +56,9 @@ class HolidayCalculator implements HolidayCalculatorInterface
                     throw new \InvalidArgumentException(sprintf(
                         'First argument needs to be either of type HolidayProviderInterface or a string containing
                         the fully qualified name of a class implementing HolidayProviderInterface 
-                        (or an array containing a mixture of both). Got %s instead.', $argumentType));
+                        (or an array containing a mixture of both). Got %s instead.',
+                        $argumentType
+                    ));
                 }
                 $finalHolidayProviders[] = $holidayProviderName;
             }

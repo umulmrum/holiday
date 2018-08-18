@@ -32,8 +32,8 @@ class JsonFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatData
      *
-     * @param Holiday    $holiday
-     * @param string $expectedResult
+     * @param Holiday $holiday
+     * @param string  $expectedResult
      */
     public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
     {
