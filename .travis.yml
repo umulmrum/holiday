@@ -7,6 +7,14 @@ php:
   - '7.2'
   - nightly
 
+matrix:
+  allow_failures:
+    php: nightly
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 env:
   matrix:
     - DEPENDENCIES="high"
