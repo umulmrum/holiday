@@ -89,6 +89,11 @@ trait ChristianHolidaysTrait
         return new Holiday(HolidayName::CANDLEMAS, new \DateTime(sprintf('%s-02-02', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
     }
 
+    private function getValentinesDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    {
+        return new Holiday(HolidayName::VALENTINESDAY, new \DateTime(sprintf('%s-02-14', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
+    }
+
     private function getSaintJosephsDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
     {
         return new Holiday(HolidayName::SAINT_JOSEPHS_DAY, new \DateTime(sprintf('%s-03-19', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
@@ -99,6 +104,13 @@ trait ChristianHolidaysTrait
         $easterSunday = $this->getEasterSundayDate($year, $timezone);
 
         return new Holiday(HolidayName::ASH_WEDNESDAY, $easterSunday->sub(new \DateInterval('P46D')), HolidayType::RELIGIOUS | $additionalType);
+    }
+
+    private function getMaundyThursday(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    {
+        $easterSunday = $this->getEasterSundayDate($year, $timezone);
+
+        return new Holiday(HolidayName::MAUNDY_THURSDAY, $easterSunday->sub(new \DateInterval('P3D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getGoodFriday(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
@@ -180,9 +192,19 @@ trait ChristianHolidaysTrait
         return new Holiday(HolidayName::REFORMATION_DAY, new \DateTime(sprintf('%s-10-31', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
     }
 
+    private function getHalloween(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    {
+        return new Holiday(HolidayName::HALLOWEEN, new \DateTime(sprintf('%s-10-31', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
+    }
+
     private function getAllSaintsDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
     {
         return new Holiday(HolidayName::ALL_SAINTS_DAY, new \DateTime(sprintf('%s-11-01', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
+    }
+
+    private function getAllSoulsDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    {
+        return new Holiday(HolidayName::ALL_SOULS_DAY, new \DateTime(sprintf('%s-11-02', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSaintMartinsDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday

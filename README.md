@@ -153,8 +153,11 @@ Supported Countries
 -------------------
 
 - Austria
+- Belgium
+- Denmark
 - Germany
 - Liechtenstein
+- Luxembourg
 - Switzerland
 
 It is quite easy to create your own holiday providers. Just have a look at the existing code, it should be 

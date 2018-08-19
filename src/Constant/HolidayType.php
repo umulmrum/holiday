@@ -60,6 +60,8 @@ class HolidayType
 
     public const HALF_DAY_OFF = 128;
 
+    public const BANK = 256;
+
     public static $NAME = [
         self::OTHER => 'other',
         self::OFFICIAL => 'official',
@@ -69,5 +71,6 @@ class HolidayType
         self::PARTIAL_ONLY => 'partial_only',
         self::NO_SCHOOL => 'no_school',
         self::GOVERNMENT_AGENCIES_CLOSED => 'government_agencies_closed',
+        self::BANK => 'bank',
     ];
 }

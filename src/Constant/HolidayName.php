@@ -24,6 +24,7 @@ class HolidayName
     public const EPIPHANY = 'epiphany';
     public const CANDLEMAS = 'candlemas';
     public const SAINT_JOSEPHS_DAY = 'saint_josephs_day';
+    public const MAUNDY_THURSDAY = 'maundy_thursday';
     public const GOOD_FRIDAY = 'good_friday';
     public const EASTER_SUNDAY = 'easter_sunday';
     public const EASTER_MONDAY = 'easter_monday';
@@ -37,7 +38,9 @@ class HolidayName
     public const ASSUMPTION_DAY = 'assumption_day';
     public const NATIVITY_OF_MARY = 'nativity_of_mary';
     public const REFORMATION_DAY = 'reformation_day';
+    public const HALLOWEEN = 'halloween';
     public const ALL_SAINTS_DAY = 'all_saints_day';
+    public const ALL_SOULS_DAY = 'all_souls_day';
     public const SAINT_MARTINS_DAY = 'saint_martins_day';
     public const SAINT_RUPERTS_DAY = 'saint_ruperts_day';
     public const LEOPOLDS_DAY = 'leopolds_day';
@@ -46,6 +49,7 @@ class HolidayName
     public const CHRISTMAS_EVE = 'christmas_eve';
     public const CHRISTMAS_DAY = 'christmas_day';
     public const SECOND_CHRISTMAS_DAY = 'second_christmas_day';
+    public const VALENTINES_DAY = 'valentines_day';
 
     public const SUNDAY = 'sunday';
     public const MONDAY = 'monday';
@@ -59,8 +63,21 @@ class HolidayName
     public const AUSTRIAN_STATES_HOLIDAY = 'austrian_states_holiday';
     public const CARINTHIAN_PLEBISCITE_DAY = 'carinthian_plebiscite_day';
 
+    public const ARMISTICE_DAY = 'armistice_day';
+    public const BELGIAN_KINGS_FEAST = 'belgian_kings_feast';
+    public const BELGIAN_NATIONAL_HOLIDAY = 'belgian_national_holiday';
+    public const DAY_OF_THE_FLEMISH_COMMUNITY = 'day_of_the_flemish_community';
+    public const DAY_OF_THE_GERMAN_SPEAKING_COMMUNITY = 'day_of_the_german_speaking_community';
+    public const DAY_OF_THE_WALLOON_REGION = 'day_of_the_walloon_region';
+    public const FRENCH_COMMUNITY_HOLIDAY = 'french_community_day';
+
+    public const DANISH_NATIONAL_HOLIDAY = 'danish_national_holiday';
+    public const GENERAL_PRAYER_DAY = 'general_prayer_day';
+
     public const AUGSBURGER_FRIEDENSFEST = 'augsburger_friedensfest';
     public const GERMAN_UNITY_DAY = 'german_unity_day';
+
+    public const GRAND_DUKES_OFFICIAL_BIRTHDAY = 'grand_dukes_official_birthday';
 
     public const BETTAGSMONTAG = 'bettagsmontag';
     public const FEST_DER_UNABHAENGIGKEIT_JURA = 'fest_der_unabhaengigkeit_jura';

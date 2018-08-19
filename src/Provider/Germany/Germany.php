@@ -37,8 +37,6 @@ class Germany implements HolidayProviderInterface
         $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getWhitSunday($year, HolidayType::OFFICIAL, $timezone));
         $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         if ($year >= 1990) {
             $holidays->add($this->getGermanUnityDay($year, $timezone));
         }
@@ -55,6 +53,10 @@ class Germany implements HolidayProviderInterface
         } else {
             $holidays->add($this->getRepentanceAndPrayerDay($year, HolidayType::OFFICIAL, $timezone));
         }
+        $holidays->add($this->getChristmasEve($year, HolidayType::BANK, $timezone));
+        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getNewYearsEve($year, HolidayType::BANK, $timezone));
 
         return $holidays;
     }

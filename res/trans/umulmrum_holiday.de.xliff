@@ -14,6 +14,14 @@
         <source>all_saints_day</source>
         <target>Allerheiligen</target>
       </trans-unit>
+      <trans-unit id="all_souls_day">
+        <source>all_souls_day</source>
+        <target>Allerseelen</target>
+      </trans-unit>
+      <trans-unit id="armistice_day">
+        <source>armistice_day</source>
+        <target>Tag des Waffenstillstands</target>
+      </trans-unit>
       <trans-unit id="ascension">
         <source>ascension</source>
         <target>Christi Himmelfahrt</target>
@@ -37,6 +45,18 @@
       <trans-unit id="austrian_states_holiday">
         <source>austrian_states_holiday</source>
         <target>Staatsfeiertag</target>
+      </trans-unit>
+      <trans-unit id="bank">
+        <source>bank</source>
+        <target>Bankfeiertag</target>
+      </trans-unit>
+      <trans-unit id="belgian_kings_feast">
+        <source>belgian_kings_feast</source>
+        <target>Festtag des Königs</target>
+      </trans-unit>
+      <trans-unit id="belgian_national_holiday">
+        <source>belgian_national_holiday</source>
+        <target>Belgischer Nationalfeiertag</target>
       </trans-unit>
       <trans-unit id="bettagsmontag">
         <source>bettagsmontag</source>
@@ -62,6 +82,22 @@
         <source>corpus_christi</source>
         <target>Fronleichnam</target>
       </trans-unit>
+      <trans-unit id="danish_national_holiday">
+        <source>danish_national_holiday</source>
+        <target>Grundlovsdag</target>
+      </trans-unit>
+      <trans-unit id="day_of_the_flemish_community">
+        <source>day_of_the_flemish_community</source>
+        <target>Tag der flämischen Gemeinschaft</target>
+      </trans-unit>
+      <trans-unit id="day_of_the_german_speaking_community">
+        <source>day_of_the_german_speaking_community</source>
+        <target>Tag der Deutschsprachigen Gemeinschaft</target>
+      </trans-unit>
+      <trans-unit id="day_of_the_walloon_region">
+        <source>day_of_the_walloon_region</source>
+        <target>Festtag der Wallonischen Region</target>
+      </trans-unit>
       <trans-unit id="day_off">
         <source>day_off</source>
         <target>Arbeitsfreier Tag</target>
@@ -86,9 +122,17 @@
         <source>fest_der_unabhaengigkeit_jura</source>
         <target>Fest der Unabhängigkeit Jura</target>
       </trans-unit>
+      <trans-unit id="french_community_day">
+        <source>french_community_day</source>
+        <target>Festtag der Wallonischen Region</target>
+      </trans-unit>
       <trans-unit id="friday">
         <source>friday</source>
         <target>Freitag</target>
+      </trans-unit>
+      <trans-unit id="general_prayer_day">
+        <source>general_prayer_day</source>
+        <target>Store Bededag</target>
       </trans-unit>
       <trans-unit id="geneva_restoration_of_the_republic">
         <source>geneva_restoration_of_the_republic</source>
@@ -110,6 +154,14 @@
         <source>government_agencies_closed</source>
         <target>Ämter geschlossen</target>
       </trans-unit>
+      <trans-unit id="grand_dukes_official_birthday">
+        <source>grand_dukes_official_birthday</source>
+        <target>Luxemburgischer Nationalfeiertag</target>
+      </trans-unit>
+      <trans-unit id="halloween">
+        <source>halloween</source>
+        <target>Halloween</target>
+      </trans-unit>
       <trans-unit id="immaculate_conception">
         <source>immaculate_conception</source>
         <target>Mariä Empfängnis</target>
@@ -125,6 +177,10 @@
       <trans-unit id="leopolds_day">
         <source>leopolds_day</source>
         <target>Leopoldi-Tag</target>
+      </trans-unit>
+      <trans-unit id="maundy_thursday">
+        <source>maundy_thursday</source>
+        <target>Gründonnerstag</target>
       </trans-unit>
       <trans-unit id="monday">
         <source>monday</source>
@@ -225,6 +281,10 @@
       <trans-unit id="tuesday">
         <source>tuesday</source>
         <target>Dienstag</target>
+      </trans-unit>
+      <trans-unit id="valentinesday">
+        <source>valentinesday</source>
+        <target>Valentinstag</target>
       </trans-unit>
       <trans-unit id="wednesday">
         <source>wednesday</source>
