@@ -36,7 +36,6 @@ class HolidayProviderLowerSaxonyTest extends AbstractHolidayCalculatorTest
                 [
                     '2021-01-01',
                     '2021-04-02',
-                    '2021-04-04',
                     '2021-04-05',
                     '2021-05-01',
                     '2021-05-13',
@@ -45,8 +44,10 @@ class HolidayProviderLowerSaxonyTest extends AbstractHolidayCalculatorTest
                     '2021-10-03',
                     '2021-10-31',
                     '2021-11-17',
+                    '2021-12-24',
                     '2021-12-25',
                     '2021-12-26',
+                    '2021-12-31',
                 ],
             ],
         ];

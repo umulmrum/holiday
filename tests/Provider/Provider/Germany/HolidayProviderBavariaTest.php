@@ -37,7 +37,6 @@ class HolidayProviderBavariaTest extends AbstractHolidayCalculatorTest
                     '2016-01-01',
                     '2016-01-06',
                     '2016-03-25',
-                    '2016-03-27',
                     '2016-03-28',
                     '2016-05-01',
                     '2016-05-05',
@@ -50,8 +49,10 @@ class HolidayProviderBavariaTest extends AbstractHolidayCalculatorTest
                     '2016-10-31',
                     '2016-11-01',
                     '2016-11-16',
+                    '2016-12-24',
                     '2016-12-25',
                     '2016-12-26',
+                    '2016-12-31',
                 ],
             ],
         ];

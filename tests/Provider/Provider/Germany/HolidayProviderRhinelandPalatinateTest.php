@@ -36,7 +36,6 @@ class HolidayProviderRhinelandPalatinateTest extends AbstractHolidayCalculatorTe
                 [
                     '2023-01-01',
                     '2023-04-07',
-                    '2023-04-09',
                     '2023-04-10',
                     '2023-05-01',
                     '2023-05-18',
@@ -47,8 +46,10 @@ class HolidayProviderRhinelandPalatinateTest extends AbstractHolidayCalculatorTe
                     '2023-10-31',
                     '2023-11-01',
                     '2023-11-22',
+                    '2023-12-24',
                     '2023-12-25',
                     '2023-12-26',
+                    '2023-12-31',
                 ],
             ],
         ];

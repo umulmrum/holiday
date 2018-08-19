@@ -36,7 +36,6 @@ class HolidayProviderSaarlandTest extends AbstractHolidayCalculatorTest
                 [
                     '2024-01-01',
                     '2024-03-29',
-                    '2024-03-31',
                     '2024-04-01',
                     '2024-05-01',
                     '2024-05-09',
@@ -48,8 +47,10 @@ class HolidayProviderSaarlandTest extends AbstractHolidayCalculatorTest
                     '2024-10-31',
                     '2024-11-01',
                     '2024-11-20',
+                    '2024-12-24',
                     '2024-12-25',
                     '2024-12-26',
+                    '2024-12-31',
                 ],
             ],
         ];

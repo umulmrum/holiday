@@ -36,7 +36,6 @@ class HolidayProviderSaxonyTest extends AbstractHolidayCalculatorTest
                 [
                     '2016-01-01',
                     '2016-03-25',
-                    '2016-03-27',
                     '2016-03-28',
                     '2016-05-01',
                     '2016-05-05',
@@ -46,8 +45,10 @@ class HolidayProviderSaxonyTest extends AbstractHolidayCalculatorTest
                     '2016-10-03',
                     '2016-10-31',
                     '2016-11-16',
+                    '2016-12-24',
                     '2016-12-25',
                     '2016-12-26',
+                    '2016-12-31',
                 ],
             ],
             [
@@ -55,7 +56,6 @@ class HolidayProviderSaxonyTest extends AbstractHolidayCalculatorTest
                 [
                     '2017-01-01',
                     '2017-04-14',
-                    '2017-04-16',
                     '2017-04-17',
                     '2017-05-01',
                     '2017-05-25',
@@ -65,8 +65,10 @@ class HolidayProviderSaxonyTest extends AbstractHolidayCalculatorTest
                     '2017-10-03',
                     '2017-10-31',
                     '2017-11-22',
+                    '2017-12-24',
                     '2017-12-25',
                     '2017-12-26',
+                    '2017-12-31',
                 ],
             ],
         ];

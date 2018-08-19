@@ -45,8 +45,10 @@ class HolidayProviderBrandenburgTest extends AbstractHolidayCalculatorTest
                     '2018-10-03',
                     '2018-10-31',
                     '2018-11-21',
+                    '2018-12-24',
                     '2018-12-25',
                     '2018-12-26',
+                    '2018-12-31',
                 ],
             ],
         ];

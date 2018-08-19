@@ -36,7 +36,6 @@ class HolidayProviderSchleswigHolsteinTest extends AbstractHolidayCalculatorTest
                 [
                     '2019-01-01',
                     '2019-04-19',
-                    '2019-04-21',
                     '2019-04-22',
                     '2019-05-01',
                     '2019-05-30',
@@ -45,8 +44,10 @@ class HolidayProviderSchleswigHolsteinTest extends AbstractHolidayCalculatorTest
                     '2019-10-03',
                     '2019-10-31',
                     '2019-11-20',
+                    '2019-12-24',
                     '2019-12-25',
                     '2019-12-26',
+                    '2019-12-31',
                 ],
             ],
         ];

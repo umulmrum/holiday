@@ -37,7 +37,6 @@ class HolidayProviderSaxonyAnhaltTest extends AbstractHolidayCalculatorTest
                     '2025-01-01',
                     '2025-01-06',
                     '2025-04-18',
-                    '2025-04-20',
                     '2025-04-21',
                     '2025-05-01',
                     '2025-05-29',
@@ -46,8 +45,10 @@ class HolidayProviderSaxonyAnhaltTest extends AbstractHolidayCalculatorTest
                     '2025-10-03',
                     '2025-10-31',
                     '2025-11-19',
+                    '2025-12-24',
                     '2025-12-25',
                     '2025-12-26',
+                    '2025-12-31',
                 ],
             ],
         ];

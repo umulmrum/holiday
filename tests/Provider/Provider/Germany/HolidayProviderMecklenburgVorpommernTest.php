@@ -36,7 +36,6 @@ class HolidayProviderMecklenburgVorpommernTest extends AbstractHolidayCalculator
                 [
                     '2020-01-01',
                     '2020-04-10',
-                    '2020-04-12',
                     '2020-04-13',
                     '2020-05-01',
                     '2020-05-21',
@@ -45,8 +44,10 @@ class HolidayProviderMecklenburgVorpommernTest extends AbstractHolidayCalculator
                     '2020-10-03',
                     '2020-10-31',
                     '2020-11-18',
+                    '2020-12-24',
                     '2020-12-25',
                     '2020-12-26',
+                    '2020-12-31',
                 ],
             ],
         ];
