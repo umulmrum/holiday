@@ -43,9 +43,22 @@ class HolidayType
      */
     public const TRADITIONAL = 8;
     /**
-     * A holiday of type PARTIAL_AREA_ONLY is not celebrated in the whole region.
+     * A holiday of type PARTIAL_ONLY is not celebrated in the whole region or not a holiday for all people. Some
+     * holidays are e.g. limited to members of certain churches.
      */
-    public const PARTIAL_AREA_ONLY = 16;
+    public const PARTIAL_ONLY = 16;
+    /**
+     * On a holiday of type NO_SCHOOL pupils do not attend school. If the holiday is also a DAY_OFF, the
+     * NO_SCHOOL type is not applied separately.
+     */
+    public const NO_SCHOOL = 32;
+    /**
+     * On a holiday of type GOVERNMENT_AGENCIES_CLOSED, well, government agencies are closed. If the holiday is also a
+     * DAY_OFF, the NO_SCHOOL type is not applied separately.
+     */
+    public const GOVERNMENT_AGENCIES_CLOSED = 64;
+
+    public const HALF_DAY_OFF = 128;
 
     public static $NAME = [
         self::OTHER => 'other',
@@ -53,6 +66,8 @@ class HolidayType
         self::DAY_OFF => 'day_off',
         self::RELIGIOUS => 'religious',
         self::TRADITIONAL => 'traditional',
-        self::PARTIAL_AREA_ONLY => 'partial_area_only',
+        self::PARTIAL_ONLY => 'partial_only',
+        self::NO_SCHOOL => 'no_school',
+        self::GOVERNMENT_AGENCIES_CLOSED => 'government_agencies_closed',
     ];
 }

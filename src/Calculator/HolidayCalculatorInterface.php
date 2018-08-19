@@ -26,7 +26,7 @@ interface HolidayCalculatorInterface
      * @param int                                                                 $year
      * @param \DateTimeZone                                                       $timezone
      *
-     * @return HolidayList
+     * @return HolidayList Order is not guaranteed; use filters to sort the list afterwards.
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */

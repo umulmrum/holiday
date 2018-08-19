@@ -98,6 +98,30 @@ Usage normally follows this pattern:
 - Format the result using a formatter.
   A few formatters are provided in this library, more can be added freely.
 
+Holiday Types
+-------------
+
+Each holiday returned by the calculator has one or more types, returned by `Holiday::getType()`. The return value is a
+bit map containing all applicable types (the type identifier can be converted to a translation key which can be 
+translated to get a localized readable name - see e.g. `JsonFormatter` for details).
+
+The type is normally a combination of
+- the holiday's origin, e.g. religious or traditional,
+- the holiday's legal status (official or not),
+- the holiday's impact on working hours (e.g. if it's a full or half day off).
+
+Which Holidays are Returned
+---------------------------
+
+The `HolidayCalculator` only returns holidays that are legally defined in the scope of the chosen holiday provider, or
+if there's "secular impact", e.g. it's a day off. This means there are differences between providers; e.g. Easter Sunday
+is an official holiday in Brandenburg/Germany, so it is included for Brandenburg. In the rest of Germany (as well as 
+most other countries) it is not a holiday as it is a Sunday anyway, and therefore not included as a holiday.
+
+Similarly, Sundays are normally not included if they are no official holidays in the scope of the holiday provider,
+although they are days off in the Western hemisphere. To find out which days are days off, provide both the respective
+holiday provider and the one for Sundays (or use `HolidayHelper::getNoWorkDaysForTimeSpan()`).
+
 Filters
 -------
 
@@ -128,8 +152,13 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 Supported Countries
 -------------------
 
-Currently only Germany is supported, but you can easily create your own holiday providers. Just have a look at the
-existing code, it should be self-explanatory. I will happily merge pull requests (see below).
+- Austria
+- Germany
+- Liechtenstein
+- Switzerland
+
+It is quite easy to create your own holiday providers. Just have a look at the existing code, it should be 
+self-explanatory. I will happily merge pull requests (see below).
 
 Notes on German Holidays
 ------------------------
@@ -148,6 +177,14 @@ Notes on German Holidays
 - Also there are some quiet days that are not public holidays in various states. This is also not considered yet.
 - New states of Germany are treated as if they had always been part of the Federal Republic of Germany. For years
   before 1990 holidays are therefore not correct.
+
+Notes on Swiss Holidays
+-----------------------
+
+- Holidays in Switzerland are really complicated as they differ widely in the different cantons and some holidays are
+  celebrated inofficially or only in parts of a canton. The implemented rules are a best guess of what makes sense in
+  the scope of this library (which also means that some holidays are omitted if they are a celebrated only in very few
+  communities). I'm open for improvement suggestions.
 
 Notes on Christian Holidays
 ---------------------------

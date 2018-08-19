@@ -27,7 +27,7 @@ class Thuringia extends Germany
     public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_AREA_ONLY, $timezone));
+        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
         $holidays->add($this->getReformationDay($year, HolidayType::DAY_OFF, $timezone));
 
         return $holidays;

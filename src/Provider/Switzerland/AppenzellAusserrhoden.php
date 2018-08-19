@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Germany;
+namespace umulmrum\Holiday\Provider\Austria;
 
-use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Provider\CommonHolidaysTrait;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class Bavaria extends BadenWuerttemberg
+class AppenzellAusserrhoden extends Switzerland
 {
     use ChristianHolidaysTrait;
+    use CommonHolidaysTrait;
 
     /**
      * {@inheritdoc}
@@ -27,12 +27,10 @@ class Bavaria extends BadenWuerttemberg
     public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
-
-        $holidays->add(new Holiday(HolidayName::AUGSBURGER_FRIEDENSFEST, new \DateTime(sprintf('%s-08-08', $year), $timezone), HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
-        if ($year < 1969) {
-            $holidays->add($this->getSaintJosephsDay($year, HolidayType::DAY_OFF, $timezone));
-        }
-        $holidays->add($this->getAssumptionDay($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
+        $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
 
         return $holidays;
     }

@@ -18,6 +18,10 @@
         <source>ascension</source>
         <target>Christi Himmelfahrt</target>
       </trans-unit>
+      <trans-unit id="ash_wednesday">
+        <source>ash_wednesday</source>
+        <target>Aschermittwoch</target>
+      </trans-unit>
       <trans-unit id="assumption_day">
         <source>assumption_day</source>
         <target>Mariä Himmelfahrt</target>
@@ -26,9 +30,33 @@
         <source>augsburger_friedensfest</source>
         <target>Augsburger Friedensfest</target>
       </trans-unit>
+      <trans-unit id="austrian_national_holiday">
+        <source>austrian_national_holiday</source>
+        <target>Nationalfeiertag</target>
+      </trans-unit>
+      <trans-unit id="austrian_states_holiday">
+        <source>austrian_states_holiday</source>
+        <target>Staatsfeiertag</target>
+      </trans-unit>
+      <trans-unit id="bettagsmontag">
+        <source>bettagsmontag</source>
+        <target>Bettagsmontag</target>
+      </trans-unit>
+      <trans-unit id="candlemas">
+        <source>candlemas</source>
+        <target>Lichtmess</target>
+      </trans-unit>
+      <trans-unit id="carinthian_plebiscite_day">
+        <source>carinthian_plebiscite_day</source>
+        <target>Tag der Volksabstimmung</target>
+      </trans-unit>
       <trans-unit id="christmas_day">
         <source>christmas_day</source>
         <target>Erster Weihnachtsfeiertag</target>
+      </trans-unit>
+      <trans-unit id="christmas_eve">
+        <source>christmas_eve</source>
+        <target>Heiliger Abend</target>
       </trans-unit>
       <trans-unit id="corpus_christi">
         <source>corpus_christi</source>
@@ -50,9 +78,25 @@
         <source>epiphany</source>
         <target>Heilige drei Könige</target>
       </trans-unit>
+      <trans-unit id="feast_of_saints_peter_and_paul">
+        <source>feast_of_saints_peter_and_paul</source>
+        <target>Peter und Paul</target>
+      </trans-unit>
+      <trans-unit id="fest_der_unabhaengigkeit_jura">
+        <source>fest_der_unabhaengigkeit_jura</source>
+        <target>Fest der Unabhängigkeit Jura</target>
+      </trans-unit>
       <trans-unit id="friday">
         <source>friday</source>
         <target>Freitag</target>
+      </trans-unit>
+      <trans-unit id="geneva_restoration_of_the_republic">
+        <source>geneva_restoration_of_the_republic</source>
+        <target>Wiederherstellung der Republik</target>
+      </trans-unit>
+      <trans-unit id="genfer_bettag">
+        <source>genfer_bettag</source>
+        <target>Genfer Bettag</target>
       </trans-unit>
       <trans-unit id="german_unity_day">
         <source>german_unity_day</source>
@@ -62,17 +106,49 @@
         <source>good_friday</source>
         <target>Karfreitag</target>
       </trans-unit>
+      <trans-unit id="government_agencies_closed">
+        <source>government_agencies_closed</source>
+        <target>Ämter geschlossen</target>
+      </trans-unit>
+      <trans-unit id="immaculate_conception">
+        <source>immaculate_conception</source>
+        <target>Mariä Empfängnis</target>
+      </trans-unit>
+      <trans-unit id="jahrestag_ausrufung_republik_neuenburg">
+        <source>jahrestag_ausrufung_republik_neuenburg</source>
+        <target>Jahrestag Ausrufung Republik Neuenburg</target>
+      </trans-unit>
       <trans-unit id="labor_day">
         <source>labor_day</source>
         <target>Tag der Arbeit</target>
+      </trans-unit>
+      <trans-unit id="leopolds_day">
+        <source>leopolds_day</source>
+        <target>Leopoldi-Tag</target>
       </trans-unit>
       <trans-unit id="monday">
         <source>monday</source>
         <target>Montag</target>
       </trans-unit>
+      <trans-unit id="naefelser_fahrt">
+        <source>naefelser_fahrt</source>
+        <target>Näfelser Fahrt</target>
+      </trans-unit>
+      <trans-unit id="nativity_of_mary">
+        <source>nativity_of_mary</source>
+        <target>Mariä Geburt</target>
+      </trans-unit>
       <trans-unit id="new_year">
         <source>new_year</source>
         <target>Neujahr</target>
+      </trans-unit>
+      <trans-unit id="new_years_eve">
+        <source>new_years_eve</source>
+        <target>Silvester</target>
+      </trans-unit>
+      <trans-unit id="no_school">
+        <source>no_school</source>
+        <target>Schulfrei</target>
       </trans-unit>
       <trans-unit id="official">
         <source>official</source>
@@ -82,9 +158,9 @@
         <source>other</source>
         <target>Andere</target>
       </trans-unit>
-      <trans-unit id="partial_area_only">
-        <source>partial_area_only</source>
-        <target>Nur in Teilgebiet</target>
+      <trans-unit id="partial_only">
+        <source>partial_only</source>
+        <target>Nur teilweise</target>
       </trans-unit>
       <trans-unit id="reformation_day">
         <source>reformation_day</source>
@@ -98,6 +174,30 @@
         <source>repentance_and_prayer_day</source>
         <target>Buß- und Bettag</target>
       </trans-unit>
+      <trans-unit id="saint_florians_day">
+        <source>saint_florians_day</source>
+        <target>Florianstag</target>
+      </trans-unit>
+      <trans-unit id="saint_josephs_day">
+        <source>saint_josephs_day</source>
+        <target>Josefstag</target>
+      </trans-unit>
+      <trans-unit id="saint_martins_day">
+        <source>saint_martins_day</source>
+        <target>Martinstag</target>
+      </trans-unit>
+      <trans-unit id="saint_maurice_day">
+        <source>saint_maurice_day</source>
+        <target>St. Mauritius</target>
+      </trans-unit>
+      <trans-unit id="saint_nicholas_day">
+        <source>saint_nicholas_day</source>
+        <target>St. Niklaus von Flüe</target>
+      </trans-unit>
+      <trans-unit id="saint_ruperts_day">
+        <source>saint_ruperts_day</source>
+        <target>Rupertitag</target>
+      </trans-unit>
       <trans-unit id="saturday">
         <source>saturday</source>
         <target>Samstag</target>
@@ -109,6 +209,10 @@
       <trans-unit id="sunday">
         <source>sunday</source>
         <target>Sonntag</target>
+      </trans-unit>
+      <trans-unit id="swiss_national_day">
+        <source>swiss_national_day</source>
+        <target>Bundesfeier</target>
       </trans-unit>
       <trans-unit id="thursday">
         <source>thursday</source>

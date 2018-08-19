@@ -9,27 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Germany;
+namespace umulmrum\Holiday\Provider\Austria;
+
 
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
-use umulmrum\Holiday\Provider\CommonHolidaysTrait;
 
-class Saxony extends Germany
+class Vienna extends Austria
 {
     use ChristianHolidaysTrait;
-    use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
-        $holidays->add($this->getReformationDay($year, HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getRepentanceAndPrayerDay($year, HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getLeopoldsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
 
         return $holidays;
     }

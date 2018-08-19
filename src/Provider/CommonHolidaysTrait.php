@@ -26,4 +26,9 @@ trait CommonHolidaysTrait
     {
         return new Holiday(HolidayName::LABOR_DAY, new \DateTime(sprintf('%s-05-01', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
     }
+
+    private function getNewYearsEve(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    {
+        return new Holiday(HolidayName::NEW_YEARS_EVE, new \DateTime(sprintf('%s-12-31', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+    }
 }
