@@ -27,7 +27,7 @@ class Valais extends Switzerland
     public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getSaintJosephsDay($year,  HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getSaintJosephsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getCorpusChristi($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));

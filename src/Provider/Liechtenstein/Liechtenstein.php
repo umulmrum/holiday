@@ -11,9 +11,7 @@
 
 namespace umulmrum\Holiday\Provider\Austria;
 
-use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\CommonHolidaysTrait;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;

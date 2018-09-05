@@ -27,7 +27,7 @@ class Vaud extends Switzerland
     public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getBerchtoldstag($year,  HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getBerchtoldstag($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
@@ -35,6 +35,4 @@ class Vaud extends Switzerland
 
         return $holidays;
     }
-
-
 }

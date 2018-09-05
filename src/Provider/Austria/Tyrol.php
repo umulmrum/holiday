@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Provider\Austria;
 
-
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;

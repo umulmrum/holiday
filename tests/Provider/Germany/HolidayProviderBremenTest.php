@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Provider\Germany;
 
-
 use umulmrum\Holiday\Calculator\AbstractHolidayCalculatorTest;
 
 class HolidayProviderBremenTest extends AbstractHolidayCalculatorTest
