@@ -58,6 +58,10 @@
         <source>belgian_national_holiday</source>
         <target>Belgian National Holiday</target>
       </trans-unit>
+      <trans-unit id="berchtoldstag">
+        <source>berchtoldstag</source>
+        <target>Berchtoldstag</target>
+      </trans-unit>
       <trans-unit id="bettagsmontag">
         <source>bettagsmontag</source>
         <target>Bettagsmontag</target>

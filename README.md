@@ -167,7 +167,7 @@ Notes on German Holidays
 ------------------------
 
 - Easter Sunday/Ostersonntag and Whit Sunday/Pfingstsonntag are not public holidays in most states.
-- Every sunday is a public holiday in Hesse.
+- Every Sunday is a public holiday in Hesse.
 - Assumption/Mariä Himmelfahrt is a public holiday in about 1700 of about 2000 communities in Bavaria. This is 
   implemented as a partial holiday, so you might want to add your logic that filters this date.
 - In Bavaria schools are closed on Assumption Day and on Repentance and Prayer Day. There is no special handling of
@@ -187,7 +187,7 @@ Notes on Swiss Holidays
 - Holidays in Switzerland are really complicated as they differ widely in the different cantons and some holidays are
   celebrated inofficially or only in parts of a canton. The implemented rules are a best guess of what makes sense in
   the scope of this library (which also means that some holidays are omitted if they are a celebrated only in very few
-  communities). I'm open for improvement suggestions.
+  communities). I'm open for improvements.
 
 Notes on Christian Holidays
 ---------------------------
@@ -201,18 +201,18 @@ Note on Holidays Way in the Past or Future
 
 If computing holidays for past years, be aware that they may not be accurate. All holidays were introduced at some 
 point, so this lib might return holidays for years in which they really were not in existence, as well as omit holidays
-that haven't been celebrated for a long time. This lib aims to be accurate for "recent" years at least, approximately 
-for years after World War II.
-
+that haven't been celebrated for a long time.
+ 
 Likewise holidays might of course change in the future. Also, Easter date calculation will change in the far future due 
-to astronomical reasons. So there is no point in calculating holidays for the year 5000 (but in case you wondered: 
-Easter Sunday will be on March 30, 5000).
+to astronomical reasons.
+
+This lib aims to be accurate for "recent" years at least, approximately for years after World War II until present.
 
 Versioning
 ----------
 
 This library follows Semantic Versioning. Everything in the library can be considered the public API except
- - code marked with `@internal`,
+ - code annotated with `@internal`,
  - tests,
  - code that can only be accessed by using reflection (e.g. private methods). 
 

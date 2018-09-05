@@ -79,6 +79,7 @@ class HolidayName
 
     public const GRAND_DUKES_OFFICIAL_BIRTHDAY = 'grand_dukes_official_birthday';
 
+    public const BERCHTAG = 'bettagsmontag';
     public const BETTAGSMONTAG = 'bettagsmontag';
     public const FEST_DER_UNABHAENGIGKEIT_JURA = 'fest_der_unabhaengigkeit_jura';
     public const GENEVA_RESTORATION_OF_THE_REPUBLIC = 'geneva_restoration_of_the_republic';
