@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Calculator;
+namespace umulmrum\Holiday\Provider\Germany;
 
-use umulmrum\Holiday\Provider\Germany\Saarland;
+use umulmrum\Holiday\Calculator\AbstractHolidayCalculatorTest;
 
 class HolidayProviderSaarlandTest extends AbstractHolidayCalculatorTest
 {

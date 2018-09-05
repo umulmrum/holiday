@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Calculator;
+namespace umulmrum\Holiday\Provider\Germany;
 
-use umulmrum\Holiday\Provider\Germany\Bremen;
+use umulmrum\Holiday\Calculator\AbstractHolidayCalculatorTest;
 
-class HolidayProviderBremenTest extends AbstractHolidayCalculatorTest
+class HolidayProviderSchleswigHolsteinTest extends AbstractHolidayCalculatorTest
 {
     /**
      * {@inheritdoc}
@@ -21,7 +21,7 @@ class HolidayProviderBremenTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            Bremen::class,
+            SchleswigHolstein::class,
         ];
     }
 
