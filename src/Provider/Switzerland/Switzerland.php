@@ -47,7 +47,7 @@ class Switzerland implements HolidayProviderInterface
 
     protected function getBerchtoldstag(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
     {
-        return new Holiday(HolidayName::BERCHTOLDSTAG, new \DateTime(sprintf('%s-01-02', $year), $timezone), HolidayType::DAY_OFF | $additionalType);
+        return new Holiday(HolidayName::BERCHTOLDSTAG, new \DateTime(sprintf('%s-01-02', $year), $timezone), HolidayType::TRADITIONAL | $additionalType);
     }
 
     private function getSwissNationalDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday

@@ -29,7 +29,7 @@ class Glarus extends Switzerland
     public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getBerchtoldstag($year,  HolidayType::OTHER, $timezone));
+        $holidays->add($this->getBerchtoldstag($year,  HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getNaefelserFahrt($year,  HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));

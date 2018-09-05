@@ -34,7 +34,7 @@ class Neuchatel extends Switzerland
         if ('1' === $berchtoldstag->getDate()->format('w')) { // if Monday
             $holidays->add($this->getBerchtoldstag($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
         } else {
-            $holidays->add($this->getBerchtoldstag($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
+            $holidays->add($this->getBerchtoldstag($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
         }
 
         if ($year >= 1848) {
