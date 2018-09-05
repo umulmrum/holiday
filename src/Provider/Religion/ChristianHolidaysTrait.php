@@ -91,7 +91,7 @@ trait ChristianHolidaysTrait
 
     private function getValentinesDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
     {
-        return new Holiday(HolidayName::VALENTINESDAY, new \DateTime(sprintf('%s-02-14', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
+        return new Holiday(HolidayName::VALENTINES_DAY, new \DateTime(sprintf('%s-02-14', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSaintJosephsDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
