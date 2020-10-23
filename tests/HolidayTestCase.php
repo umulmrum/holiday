@@ -12,12 +12,15 @@
 namespace umulmrum\Holiday;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class HolidayTestCase extends TestCase
 {
+    use ProphecyTrait;
+
     private $originalTimezone;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -25,7 +28,7 @@ class HolidayTestCase extends TestCase
         date_default_timezone_set('UTC');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         date_default_timezone_set($this->originalTimezone);

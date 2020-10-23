@@ -11,7 +11,7 @@ if this library does not perfectly fit your needs, you can simply extend it.
 Requirements
 ------------
 
-- PHP >= 7.1
+- PHP >= 7.3
 
 - Symfony translator in any version is recommended for translations.
 

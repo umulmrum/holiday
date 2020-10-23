@@ -2,11 +2,11 @@
     "name": "umulmrum/holiday",
     "description": "A PHP library to compute holidays. It's something :-)",
     "keywords": [
-      "holiday",
-      "holidays",
-      "calendar",
-      "date",
-      "time"
+        "holiday",
+        "holidays",
+        "calendar",
+        "date",
+        "time"
     ],
     "license": "MIT",
     "authors": [
@@ -16,23 +16,23 @@
         }
     ],
     "require": {
-        "php": "~7.1"
+        "php": ">=7.3"
     },
     "require-dev": {
         "chameleon-system/code-style-config": "dev-master@dev",
-        "phpunit/phpunit": "~7.0",
-        "symfony/translation": "~2.0,>2.0.4|~3.0|~4.0"
+        "phpunit/phpunit": "~9.4",
+        "phpspec/prophecy-phpunit": "^2.0",
+        "symfony/translation": "~4.3|~5.0"
     },
     "autoload": {
-      "psr-4": {
-        "umulmrum\\Holiday\\": ["src"]
-      },
-      "exclude-from-classmap": ["/tests/"]
-
-},
+        "psr-4": {
+            "umulmrum\\Holiday\\": ["src"]
+        },
+        "exclude-from-classmap": ["/tests/"]
+    },
     "autoload-dev": {
-      "psr-4": {
-        "umulmrum\\Holiday\\": ["tests"]
-      }
+        "psr-4": {
+            "umulmrum\\Holiday\\": ["tests"]
+        }
     }
 }

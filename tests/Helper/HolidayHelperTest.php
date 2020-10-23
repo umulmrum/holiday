@@ -47,7 +47,7 @@ class HolidayHelperTest extends HolidayTestCase
      */
     private $translator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->holidayCalculatorMock = $this->prophesize(HolidayCalculatorInterface::class);

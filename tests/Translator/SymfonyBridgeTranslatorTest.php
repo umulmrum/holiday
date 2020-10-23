@@ -12,7 +12,7 @@
 namespace umulmrum\Holiday\Translator;
 
 use Prophecy\Argument;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 
