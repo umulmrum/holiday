@@ -53,7 +53,7 @@ class HolidayList implements \Countable
 //        \array_splice($this->holidayList, $index, 1);
 //    }
 
-    private function getIndexByNameAndDate($name, \DateTime $dateTime): int
+    private function getIndexByNameAndDate($name, \DateTimeImmutable $dateTime): int
     {
         $timestamp = $dateTime->getTimestamp();
         foreach ($this->holidayList as $index => $holiday) {
@@ -81,7 +81,7 @@ class HolidayList implements \Countable
         return \count($this->holidayList);
     }
 
-    public function isHoliday(\DateTime $date): bool
+    public function isHoliday(\DateTimeInterface $date): bool
     {
         $formatted = $date->format('Y-m-d');
 

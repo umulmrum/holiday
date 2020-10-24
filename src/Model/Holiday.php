@@ -22,7 +22,7 @@ class Holiday
      */
     private $name;
     /**
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $date;
     /**
@@ -30,7 +30,7 @@ class Holiday
      */
     private $type;
 
-    public function __construct(string $name, \DateTime $date, int $type = HolidayType::OTHER)
+    public function __construct(string $name, \DateTimeImmutable $date, int $type = HolidayType::OTHER)
     {
         $this->name = $name;
         $this->date = $date;
@@ -39,7 +39,7 @@ class Holiday
 
     public static function create(string $name, string $date, int $type = HolidayType::OTHER): self
     {
-        return new self($name, \DateTime::createFromFormat(self::DATE_FORMAT, $date), $type);
+        return new self($name, \DateTimeImmutable::createFromFormat(self::DATE_FORMAT, $date), $type);
     }
 
     public function getName(): string
@@ -47,7 +47,7 @@ class Holiday
         return $this->name;
     }
 
-    public function getDate(): \DateTime
+    public function getDate(): \DateTimeImmutable
     {
         return clone $this->date;
     }

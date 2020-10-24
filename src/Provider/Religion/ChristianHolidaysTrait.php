@@ -17,15 +17,16 @@ use umulmrum\Holiday\Model\Holiday;
 
 trait ChristianHolidaysTrait
 {
+    /** @var \DateTimeImmutable[] */
     private $easterCache = [];
 
-    private function getEasterSundayDate(int $year): \DateTime
+    private function getEasterSundayDate(int $year): \DateTimeImmutable
     {
         if (false === isset($this->easterCache[$year])) {
-            $this->easterCache[$year] = $this->calculateEasterSunday($year);
+            $this->easterCache[$year] = \DateTimeImmutable::createFromFormat(Holiday::DATE_FORMAT, $this->calculateEasterSunday($year));
         }
 
-        return \DateTime::createFromFormat(Holiday::DATE_FORMAT, $this->easterCache[$year]);
+        return $this->easterCache[$year];
     }
 
     /**
@@ -215,7 +216,7 @@ trait ChristianHolidaysTrait
 
     private function getRepentanceAndPrayerDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $christmasEve = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-12-24', $year));
+        $christmasEve = \DateTimeImmutable::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-12-24', $year));
         $changeBy = 32 + ((int) date('w', $christmasEve->getTimestamp()));
 
         return new Holiday(HolidayName::REPENTANCE_AND_PRAYER_DAY, $christmasEve->sub(new \DateInterval("P{$changeBy}D")), HolidayType::RELIGIOUS | $additionalType);

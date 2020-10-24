@@ -23,7 +23,7 @@ final class ApplyTimezoneFilter implements HolidayFilterInterface
         foreach ($holidayList->getList() as $holiday) {
             $newList->add(new Holiday(
                 $holiday->getName(),
-                \DateTime::createFromFormat(Holiday::DATE_FORMAT, $holiday->getFormattedDate('Y-m-d'), $this->dateTimeZone),
+                \DateTimeImmutable::createFromFormat(Holiday::DATE_FORMAT, $holiday->getFormattedDate('Y-m-d'), $this->dateTimeZone),
                 $holiday->getType()
             ));
         }

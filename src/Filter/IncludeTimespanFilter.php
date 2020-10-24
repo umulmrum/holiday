@@ -24,7 +24,7 @@ class IncludeTimespanFilter implements HolidayFilterInterface
      */
     private $lastIncludedDay;
 
-    public function __construct(\DateTime $firstIncludedDay, \DateTime $lastIncludedDay)
+    public function __construct(\DateTimeInterface $firstIncludedDay, \DateTimeInterface $lastIncludedDay)
     {
         $this->firstIncludedDay = clone $firstIncludedDay;
         $this->firstIncludedDay->setTime(0, 0, 0);

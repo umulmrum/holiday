@@ -165,6 +165,6 @@ class HolidayHelper
         $content = array_merge($content, $calendarFormatter->formatList($holidayList));
         $content[] = $calendarFormatter->getFooter();
 
-        return implode(ICalendarFormatter::LINE_ENDING, $content).ICalendarFormatter::LINE_ENDING;
+        return \implode(ICalendarFormatter::LINE_ENDING, $content).ICalendarFormatter::LINE_ENDING;
     }
 }
