@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Provider\Germany;
 
 use umulmrum\Holiday\Calculator\AbstractHolidayCalculatorTest;
 
-class HolidayProviderHamburgTest extends AbstractHolidayCalculatorTest
+class SchleswigHolsteinTest extends AbstractHolidayCalculatorTest
 {
     /**
      * {@inheritdoc}
@@ -21,7 +21,7 @@ class HolidayProviderHamburgTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            Hamburg::class,
+            SchleswigHolstein::class,
         ];
     }
 

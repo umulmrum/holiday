@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Provider\Germany;
 
 use umulmrum\Holiday\Calculator\AbstractHolidayCalculatorTest;
 
-class HolidayProviderMecklenburgVorpommernTest extends AbstractHolidayCalculatorTest
+class ThuringiaTest extends AbstractHolidayCalculatorTest
 {
     /**
      * {@inheritdoc}
@@ -21,7 +21,7 @@ class HolidayProviderMecklenburgVorpommernTest extends AbstractHolidayCalculator
     protected function getHolidayProviders(): array
     {
         return [
-            MecklenburgVorpommern::class,
+            Thuringia::class,
         ];
     }
 
@@ -32,22 +32,23 @@ class HolidayProviderMecklenburgVorpommernTest extends AbstractHolidayCalculator
     {
         return [
             [
-                2020,
+                2025,
                 [
-                    '2020-01-01',
-                    '2020-04-10',
-                    '2020-04-13',
-                    '2020-05-01',
-                    '2020-05-21',
-                    '2020-05-31',
-                    '2020-06-01',
-                    '2020-10-03',
-                    '2020-10-31',
-                    '2020-11-18',
-                    '2020-12-24',
-                    '2020-12-25',
-                    '2020-12-26',
-                    '2020-12-31',
+                    '2025-01-01',
+                    '2025-04-18',
+                    '2025-04-21',
+                    '2025-05-01',
+                    '2025-05-29',
+                    '2025-06-08',
+                    '2025-06-09',
+                    '2025-06-19',
+                    '2025-10-03',
+                    '2025-10-31',
+                    '2025-11-19',
+                    '2025-12-24',
+                    '2025-12-25',
+                    '2025-12-26',
+                    '2025-12-31',
                 ],
             ],
         ];

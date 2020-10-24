@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Provider\Germany;
 
 use umulmrum\Holiday\Calculator\AbstractHolidayCalculatorTest;
 
-class HolidayProviderBrandenburgTest extends AbstractHolidayCalculatorTest
+class BerlinTest extends AbstractHolidayCalculatorTest
 {
     /**
      * {@inheritdoc}
@@ -21,7 +21,7 @@ class HolidayProviderBrandenburgTest extends AbstractHolidayCalculatorTest
     protected function getHolidayProviders(): array
     {
         return [
-            Brandenburg::class,
+            Berlin::class,
         ];
     }
 
@@ -36,7 +36,6 @@ class HolidayProviderBrandenburgTest extends AbstractHolidayCalculatorTest
                 [
                     '2018-01-01',
                     '2018-03-30',
-                    '2018-04-01',
                     '2018-04-02',
                     '2018-05-01',
                     '2018-05-10',
