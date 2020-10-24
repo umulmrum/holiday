@@ -57,6 +57,6 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
             $actualResult[] = $actualHoliday->getFormattedDate('Y-m-d');
         }
         sort($actualResult);
-        $this->assertEquals($expectedResult, $actualResult);
+        self::assertEquals($expectedResult, $actualResult);
     }
 }

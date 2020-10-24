@@ -81,7 +81,7 @@ class HolidayHelperTest extends HolidayTestCase
         $holidayList = new HolidayList();
         foreach ($data as $element) {
             if (true === \is_string($element)) {
-                $holidayList->add(new Holiday('foo', new \DateTime($element)));
+                $holidayList->add(Holiday::create('foo', $element));
             } else {
                 $holidayList->add($element);
             }
@@ -97,7 +97,7 @@ class HolidayHelperTest extends HolidayTestCase
 
     private function thenExpectedHolidaysShouldBeReturned(array $expectedResult): void
     {
-        $this->assertEquals($this->getHolidayList($expectedResult), $this->actualResult);
+        self::assertEquals($this->getHolidayList($expectedResult), $this->actualResult);
     }
 
     private function thenItShouldReturnAListOfHolidays(array $expectedResult): void
@@ -180,9 +180,9 @@ class HolidayHelperTest extends HolidayTestCase
             [
                 2016,
                 [
-                    new Holiday(HolidayName::NEW_YEAR, new \DateTime('2016-01-01')),
-                    new Holiday(HolidayName::ALL_SAINTS_DAY, new \DateTime('2016-11-01')),
-                    new Holiday(HolidayName::CHRISTMAS_DAY, new \DateTime('2016-12-25')),
+                    Holiday::create(HolidayName::NEW_YEAR, '2016-01-01'),
+                    Holiday::create(HolidayName::ALL_SAINTS_DAY, '2016-11-01'),
+                    Holiday::create(HolidayName::CHRISTMAS_DAY, '2016-12-25'),
                 ],
                 HolidayName::ALL_SAINTS_DAY,
                 [
@@ -192,9 +192,9 @@ class HolidayHelperTest extends HolidayTestCase
             [
                 2016,
                 [
-                    new Holiday(HolidayName::NEW_YEAR, new \DateTime('2016-01-01')),
-                    new Holiday(HolidayName::ALL_SAINTS_DAY, new \DateTime('2016-11-01')),
-                    new Holiday(HolidayName::CHRISTMAS_DAY, new \DateTime('2016-12-25')),
+                    Holiday::create(HolidayName::NEW_YEAR, '2016-01-01'),
+                    Holiday::create(HolidayName::ALL_SAINTS_DAY, '2016-11-01'),
+                    Holiday::create(HolidayName::CHRISTMAS_DAY, '2016-12-25'),
                 ],
                 HolidayName::LABOR_DAY,
                 [],
@@ -202,9 +202,9 @@ class HolidayHelperTest extends HolidayTestCase
             [
                 2016,
                 [
-                    new Holiday(HolidayName::NEW_YEAR, new \DateTime('2016-01-01')),
-                    new Holiday(HolidayName::SUNDAY, new \DateTime('2016-11-06')),
-                    new Holiday(HolidayName::SUNDAY, new \DateTime('2016-11-13')),
+                    Holiday::create(HolidayName::NEW_YEAR, '2016-01-01'),
+                    Holiday::create(HolidayName::SUNDAY, '2016-11-06'),
+                    Holiday::create(HolidayName::SUNDAY, '2016-11-13'),
                 ],
                 HolidayName::SUNDAY,
                 [
@@ -461,7 +461,7 @@ class HolidayHelperTest extends HolidayTestCase
             ],
             [
                 new HolidayList([
-                    new Holiday('name', \DateTime::createFromFormat(Holiday::DATE_FORMAT, '2016-03-11')),
+                    Holiday::create('name', '2016-03-11'),
                 ]),
                 "BEGIN:VCALENDAR\r\n"
                 ."VERSION:2.0\r\n"

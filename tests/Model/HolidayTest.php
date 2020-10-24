@@ -9,10 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Model;
+namespace umulmrum\Holiday\Model;
 
 use umulmrum\Holiday\HolidayTestCase;
-use umulmrum\Holiday\Model\Holiday;
 
 class HolidayTest extends HolidayTestCase
 {
@@ -29,16 +28,16 @@ class HolidayTest extends HolidayTestCase
      * @test
      * @dataProvider getDateTimeData
      */
-    public function it_returns_the_correct_date(\DateTime $dateTime): void
+    public function it_returns_the_correct_date(string $dateTime): void
     {
         $this->givenAHoliday($dateTime);
         $this->whenGetDateIsCalled();
         $this->thenThisDateShouldBeReturned($dateTime);
     }
 
-    private function givenAHoliday(\DateTime $dateTime): void
+    private function givenAHoliday(string $dateTime): void
     {
-        $this->holiday = new Holiday('name', $dateTime);
+        $this->holiday = Holiday::create('name', $dateTime);
     }
 
     private function whenGetDateIsCalled(): void
@@ -46,16 +45,16 @@ class HolidayTest extends HolidayTestCase
         $this->actualResult = $this->holiday->getDate();
     }
 
-    private function thenThisDateShouldBeReturned(\DateTime $dateTime): void
+    private function thenThisDateShouldBeReturned(string $dateTime): void
     {
-        $this->assertEquals($dateTime, $this->actualResult);
+        self::assertEquals(new \DateTime($dateTime . ' 00:00:00'), $this->actualResult);
     }
 
     /**
      * @test
      * @dataProvider getDateTimeData
      */
-    public function it_is_immutable(\DateTime $dateTime): void
+    public function it_is_immutable(string $dateTime): void
     {
         $this->givenAHoliday($dateTime);
         $this->whenGetDateIsCalled();
@@ -73,45 +72,9 @@ class HolidayTest extends HolidayTestCase
     {
         return [
             [
-                new \DateTime('1917-01-01'),
-                new \DateTime('1970-01-01'),
-                new \DateTime('2000-02-29'),
-            ],
-        ];
-    }
-
-    public function getData(): array
-    {
-        return [
-            [
-                new \DateTime('100-01-01'),
-                100,
-                1,
-                1,
-            ],
-            [
-                new \DateTime('1917-01-01'),
-                1917,
-                1,
-                1,
-            ],
-            [
-                new \DateTime('1970-01-01'),
-                1970,
-                1,
-                1,
-            ],
-            [
-                new \DateTime('2000-02-29'),
-                2000,
-                2,
-                29,
-            ],
-            [
-                new \DateTime('3100-05-23'),
-                3100,
-                5,
-                23,
+                '1917-01-01',
+                '1970-01-01',
+                '2000-02-29',
             ],
         ];
     }
@@ -129,7 +92,7 @@ class HolidayTest extends HolidayTestCase
 
     private function givenANamedHoliday(string $name): void
     {
-        $this->holiday = new Holiday($name, new \DateTime('2001-04-12'));
+        $this->holiday = Holiday::create($name, '2001-04-12');
     }
 
     private function whenGetNameIsCalled(): void
@@ -139,7 +102,7 @@ class HolidayTest extends HolidayTestCase
 
     private function thenTheCorrectNameShouldBeReturned(string $expectedResult): void
     {
-        $this->assertEquals($expectedResult, $this->actualResult);
+        self::assertEquals($expectedResult, $this->actualResult);
     }
 
     public function getNameData(): array

@@ -50,7 +50,7 @@ class DateFormatterTest extends HolidayTestCase
 
     private function whenFormatIsCalled(string $dateString, ?string $format): void
     {
-        $holiday = new Holiday('name', new \DateTime($dateString));
+        $holiday = Holiday::create('name', $dateString);
         if (null === $format) {
             $this->actualResult = $this->formatter->format($holiday);
         } else {
@@ -126,7 +126,7 @@ class DateFormatterTest extends HolidayTestCase
     {
         $holidayList = new HolidayList();
         foreach ($dates as $date) {
-            $holidayList->add(new Holiday('name', new \DateTime($date)));
+            $holidayList->add(Holiday::create('name', $date));
         }
         if (null === $format) {
             $this->actualResult = $this->formatter->formatList($holidayList);

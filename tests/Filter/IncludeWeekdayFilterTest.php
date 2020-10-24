@@ -48,8 +48,8 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
     private function whenFilterIsCalled(array $holidays): void
     {
         $holidayList = new HolidayList();
-        foreach ($holidays as $holiday) {
-            $holidayList->add(new Holiday('name', new \DateTime($holiday)));
+        foreach ($holidays as $date) {
+            $holidayList->add(Holiday::create('name', $date));
         }
         $this->actualResult = $this->filter->filter($holidayList);
     }

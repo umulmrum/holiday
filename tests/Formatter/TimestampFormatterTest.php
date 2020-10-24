@@ -52,15 +52,12 @@ class TimestampFormatterTest extends HolidayTestCase
         date_default_timezone_set($timeZone);
     }
 
-    private function givenAFormatter()
+    private function givenAFormatter(): void
     {
         $this->formatter = new TimestampFormatter();
     }
 
-    /**
-     * @param string $date
-     */
-    private function whenFormatIsCalled($date)
+    private function whenFormatIsCalled(string $date): void
     {
         $holiday = Holiday::create('name', $date);
         $this->actualResult = $this->formatter->format($holiday);
@@ -69,7 +66,7 @@ class TimestampFormatterTest extends HolidayTestCase
     /**
      * @param string|string[] $expectedResult
      */
-    private function thenAFormattedResultShouldBeReturned($expectedResult)
+    private function thenAFormattedResultShouldBeReturned($expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
     }
@@ -107,7 +104,7 @@ class TimestampFormatterTest extends HolidayTestCase
      * @param string[] $dates
      * @param string[] $expectedResult
      */
-    public function it_should_format_list_values(array $dates, string $timeZone, array $expectedResult)
+    public function it_should_format_list_values(array $dates, string $timeZone, array $expectedResult): void
     {
         $this->givenTimeZone($timeZone);
         $this->givenAFormatter();
@@ -118,11 +115,11 @@ class TimestampFormatterTest extends HolidayTestCase
     /**
      * @param string[] $dates
      */
-    private function whenFormatListIsCalled(array $dates)
+    private function whenFormatListIsCalled(array $dates): void
     {
         $holidayList = new HolidayList();
         foreach ($dates as $date) {
-            $holidayList->add(new Holiday('name', new \DateTime($date)));
+            $holidayList->add(Holiday::create('name', $date));
         }
         $this->actualResult = $this->formatter->formatList($holidayList);
     }

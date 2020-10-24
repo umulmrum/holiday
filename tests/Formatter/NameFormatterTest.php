@@ -45,7 +45,7 @@ class NameFormatterTest extends HolidayTestCase
 
     private function whenFormatIsCalled(string $name): void
     {
-        $holiday = new Holiday($name, new \DateTime('2016-01-01'));
+        $holiday = Holiday::create($name, '2016-01-01');
         $this->actualResult = $this->formatter->format($holiday);
     }
 
@@ -86,7 +86,7 @@ class NameFormatterTest extends HolidayTestCase
     {
         $translator = $this->prophesize(TranslatorInterface::class);
         for ($i = 0; $i < $count = count($names); ++$i) {
-            $translator->translateName(new Holiday($names[$i], new \DateTime('2016-01-01')))->willReturn($expectedResults[$i]);
+            $translator->translateName(Holiday::create($names[$i], '2016-01-01'))->willReturn($expectedResults[$i]);
         }
         $this->formatter = new NameFormatter($translator->reveal());
     }
@@ -122,7 +122,7 @@ class NameFormatterTest extends HolidayTestCase
     {
         $holidayList = new HolidayList();
         foreach ($names as $name) {
-            $holidayList->add(new Holiday($name, new \DateTime('2016-01-01')));
+            $holidayList->add(Holiday::create($name, '2016-01-01'));
         }
         $this->actualResult = $this->formatter->formatList($holidayList);
     }

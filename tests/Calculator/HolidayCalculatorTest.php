@@ -68,7 +68,7 @@ class HolidayCalculatorTest extends HolidayTestCase
 
     private function thenNoExceptionShouldBeThrown(): void
     {
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     /**

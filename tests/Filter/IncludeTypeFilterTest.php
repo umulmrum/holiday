@@ -31,7 +31,7 @@ final class IncludeTypeFilterTest extends HolidayTestCase
      * @test
      * @dataProvider getData
      */
-    public function it_should_filter_holidays(HolidayList $holidayList, int $filterType, array $expectedResult)
+    public function it_should_filter_holidays(HolidayList $holidayList, int $filterType, array $expectedResult): void
     {
         $this->givenAFilter($filterType);
         $this->whenFilterIsCalled($holidayList);

@@ -52,7 +52,7 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
 
     private function whenTranslateNameIsCalled(string $name): void
     {
-        $this->actualResult = $this->translator->translateName(new Holiday($name, new \DateTime('2016-01-01')));
+        $this->actualResult = $this->translator->translateName(Holiday::create($name, '2016-01-01'));
     }
 
     private function thenTheSymfonyTranslatorShouldBeCalled(string $name): void
@@ -62,7 +62,7 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
 
     private function thenTheStringTranslatedBySymfonyShouldBeReturned(): void
     {
-        $this->assertEquals('translatedString', $this->actualResult);
+        self::assertEquals('translatedString', $this->actualResult);
     }
 
     public function getTranslateNameData(): array

@@ -47,8 +47,8 @@ final class SortByDateFilterTest extends HolidayTestCase
     private function whenFilterIsCalled(array $holidays): void
     {
         $holidayList = new HolidayList();
-        foreach ($holidays as $index => $holiday) {
-            $holidayList->add(new Holiday('name'.$index, new \DateTime($holiday)));
+        foreach ($holidays as $index => $date) {
+            $holidayList->add(Holiday::create('name'.$index, $date));
         }
         $this->actualResult = $this->filter->filter($holidayList);
     }
