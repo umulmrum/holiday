@@ -17,8 +17,10 @@ namespace umulmrum\Holiday\Constant;
 class HolidayName
 {
     public const NEW_YEAR = 'new_year';
+    public const INTERNATIONAL_WOMENS_DAY = 'international_womens_day';
     public const LABOR_DAY = 'labor_day';
     public const NEW_YEARS_EVE = 'new_years_eve';
+    public const VICTORY_IN_EUROPE_DAY = 'victory_in_europe_day';
 
     public const ASH_WEDNESDAY = 'ash_wednesday';
     public const EPIPHANY = 'epiphany';

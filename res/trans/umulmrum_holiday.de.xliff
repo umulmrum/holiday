@@ -170,6 +170,10 @@
         <source>immaculate_conception</source>
         <target>Mariä Empfängnis</target>
       </trans-unit>
+      <trans-unit id="international_womens_day">
+        <source>international_womens_day</source>
+        <target>Internatonaler Frauentag</target>
+      </trans-unit>
       <trans-unit id="jahrestag_ausrufung_republik_neuenburg">
         <source>jahrestag_ausrufung_republik_neuenburg</source>
         <target>Jahrestag Ausrufung Republik Neuenburg</target>
@@ -289,6 +293,10 @@
       <trans-unit id="valentinesday">
         <source>valentinesday</source>
         <target>Valentinstag</target>
+      </trans-unit>
+      <trans-unit id="victory_in_europe_day">
+        <source>victory_in_europe_day</source>
+        <target>Tag der Befreiung</target>
       </trans-unit>
       <trans-unit id="wednesday">
         <source>wednesday</source>

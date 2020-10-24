@@ -19,16 +19,26 @@ trait CommonHolidaysTrait
 {
     private function getNewYear(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::NEW_YEAR, sprintf('%s-01-01', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::NEW_YEAR, "{$year}-01-01", HolidayType::OFFICIAL | $additionalType);
+    }
+
+    private function getInternationalWomensDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::INTERNATIONAL_WOMENS_DAY, "{$year}-03-08", HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getLaborDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::LABOR_DAY, sprintf('%s-05-01', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::LABOR_DAY, "{$year}-05-01", HolidayType::OFFICIAL | $additionalType);
+    }
+
+    private function getVictoryInEuropeDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::VICTORY_IN_EUROPE_DAY, "{$year}-05-08", HolidayType::OTHER | $additionalType);
     }
 
     private function getNewYearsEve(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::NEW_YEARS_EVE, sprintf('%s-12-31', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::NEW_YEARS_EVE, "{$year}-12-31", HolidayType::OFFICIAL | $additionalType);
     }
 }
