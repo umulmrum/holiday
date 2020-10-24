@@ -26,8 +26,10 @@ class IncludeTimespanFilter implements HolidayFilterInterface
 
     public function __construct(\DateTime $firstIncludedDay, \DateTime $lastIncludedDay)
     {
-        $this->firstIncludedDay = $firstIncludedDay;
-        $this->lastIncludedDay = $lastIncludedDay;
+        $this->firstIncludedDay = clone $firstIncludedDay;
+        $this->firstIncludedDay->setTime(0, 0, 0);
+        $this->lastIncludedDay = clone $lastIncludedDay;
+        $this->lastIncludedDay->setTime(0, 0, 0);
     }
 
     /**
@@ -35,16 +37,13 @@ class IncludeTimespanFilter implements HolidayFilterInterface
      */
     public function filter(HolidayList $holidayList): HolidayList
     {
-        // TODO set time to 00:00:00 for both dates
-        $firstDayTimestamp = $this->firstIncludedDay->getTimestamp();
         $lastDayPlusOne = clone $this->lastIncludedDay;
         $lastDayPlusOne->add(new \DateInterval('P1D'));
-        $lastDayPlusOneTimestamp = $lastDayPlusOne->getTimestamp();
 
         $newList = new HolidayList();
         foreach ($holidayList->getList() as $holiday) {
-            $timestamp = $holiday->getTimestamp();
-            if ($timestamp >= $firstDayTimestamp && $timestamp < $lastDayPlusOneTimestamp) {
+            $date = $holiday->getDate();
+            if ($date >= $this->firstIncludedDay && $date < $lastDayPlusOne) {
                 $newList->add($holiday);
             }
         }

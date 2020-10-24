@@ -86,7 +86,7 @@ class HolidayList implements \Countable
         $formatted = $date->format('Y-m-d');
 
         foreach ($this->holidayList as $holiday) {
-            if ($holiday->getDate()->format('Y-m-d') === $formatted) {
+            if ($holiday->getFormattedDate('Y-m-d') === $formatted) {
                 return true;
             }
         }
