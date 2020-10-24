@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface as SymfonyTranslatorInterface;
 use umulmrum\Holiday\Model\Holiday;
 
-class SymfonyBridgeTranslator implements TranslatorInterface
+final class SymfonyBridgeTranslator implements TranslatorInterface
 {
     /**
      * @var SymfonyTranslatorInterface

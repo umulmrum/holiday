@@ -14,7 +14,7 @@ namespace umulmrum\Holiday;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
-class HolidayTestCase extends TestCase
+abstract class HolidayTestCase extends TestCase
 {
     use ProphecyTrait;
 }

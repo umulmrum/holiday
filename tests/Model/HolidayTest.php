@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Model;
 
 use umulmrum\Holiday\HolidayTestCase;
 
-class HolidayTest extends HolidayTestCase
+final class HolidayTest extends HolidayTestCase
 {
     /**
      * @var Holiday

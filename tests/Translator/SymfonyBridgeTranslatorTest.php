@@ -16,7 +16,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 
-class SymfonyBridgeTranslatorTest extends HolidayTestCase
+final class SymfonyBridgeTranslatorTest extends HolidayTestCase
 {
     /**
      * @var SymfonyBridgeTranslator

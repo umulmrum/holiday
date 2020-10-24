@@ -29,7 +29,7 @@ use umulmrum\Holiday\Translator\TranslatorInterface;
 /**
  * HolidayHelper provides helper methods that ease holiday calculations for common use cases.
  */
-class HolidayHelper
+final class HolidayHelper
 {
     /**
      * @var HolidayCalculatorInterface
@@ -157,7 +157,7 @@ class HolidayHelper
         return $holidayList;
     }
 
-    public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null, DateHelper $dateHelper = null): string
+    public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null, DateProviderInterface $dateHelper = null): string
     {
         $calendarFormatter = new ICalendarFormatter($translator, $dateHelper);
         $content = [];

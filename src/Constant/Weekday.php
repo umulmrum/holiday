@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Constant;
 /**
  * @codeCoverageIgnore
  */
-class Weekday
+final class Weekday
 {
     public const SUNDAY = 0;
     public const MONDAY = 1;

@@ -15,7 +15,7 @@ use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class TimestampFormatterTest extends HolidayTestCase
+final class TimestampFormatterTest extends HolidayTestCase
 {
     /**
      * @var TimestampFormatter

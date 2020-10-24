@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeWeekdayFilter implements HolidayFilterInterface
+final class IncludeWeekdayFilter implements HolidayFilterInterface
 {
     /**
      * @var int[]

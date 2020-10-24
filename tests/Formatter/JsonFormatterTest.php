@@ -17,7 +17,7 @@ use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\TranslatorStub;
 
-class JsonFormatterTest extends HolidayTestCase
+final class JsonFormatterTest extends HolidayTestCase
 {
     /**
      * @var JsonFormatter

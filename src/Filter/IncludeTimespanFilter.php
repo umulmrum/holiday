@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeTimespanFilter implements HolidayFilterInterface
+final class IncludeTimespanFilter implements HolidayFilterInterface
 {
     /**
      * @var \DateTime

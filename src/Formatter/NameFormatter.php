@@ -16,7 +16,7 @@ use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\NullTranslator;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
-class NameFormatter implements HolidayFormatterInterface
+final class NameFormatter implements HolidayFormatterInterface
 {
     /**
      * @var TranslatorInterface

@@ -17,7 +17,7 @@ namespace umulmrum\Holiday\Constant;
  *
  * @codeCoverageIgnore
  */
-class HolidayType
+final class HolidayType
 {
     /**
      * This is a holiday that is not further specified - one might call it a dummy value.

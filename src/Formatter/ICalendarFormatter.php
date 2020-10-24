@@ -11,13 +11,14 @@
 
 namespace umulmrum\Holiday\Formatter;
 
-use umulmrum\Holiday\Helper\DateHelper;
+use umulmrum\Holiday\Helper\DateProvider;
+use umulmrum\Holiday\Helper\DateProviderInterface;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\NullTranslator;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
-class ICalendarFormatter implements HolidayFormatterInterface
+final class ICalendarFormatter implements HolidayFormatterInterface
 {
     public const LINE_ENDING = "\r\n";
 
@@ -26,21 +27,21 @@ class ICalendarFormatter implements HolidayFormatterInterface
      */
     private $translator;
     /**
-     * @var DateHelper
+     * @var DateProvider
      */
-    private $dateHelper;
+    private $dateProvider;
 
-    public function __construct(TranslatorInterface $translator = null, DateHelper $dateHelper = null)
+    public function __construct(TranslatorInterface $translator = null, DateProviderInterface $dateProvider = null)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();
         } else {
             $this->translator = $translator;
         }
-        if (null === $dateHelper) {
-            $this->dateHelper = new DateHelper();
+        if (null === $dateProvider) {
+            $this->dateProvider = new DateProvider();
         } else {
-            $this->dateHelper = $dateHelper;
+            $this->dateProvider = $dateProvider;
         }
     }
 
@@ -78,7 +79,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
 
     private function getEvent(Holiday $holiday): string
     {
-        $dtstamp = $this->dateHelper->getCurrentDate();
+        $dtstamp = $this->dateProvider->getCurrentDate();
 
         return implode(self::LINE_ENDING, [
             'BEGIN:VEVENT',

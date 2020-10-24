@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Filter;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class SortByDateFilter implements HolidayFilterInterface
+final class SortByDateFilter implements HolidayFilterInterface
 {
     /**
      * {@inheritdoc}
@@ -22,7 +22,7 @@ class SortByDateFilter implements HolidayFilterInterface
     public function filter(HolidayList $holidayList): HolidayList
     {
         $flatList = $holidayList->getList();
-        usort($flatList, function (Holiday $o1, Holiday $o2) {
+        usort($flatList, static function (Holiday $o1, Holiday $o2) {
             return $o1->getTimestamp() > $o2->getTimestamp();
         });
         $newList = new HolidayList();

@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Provider\Germany;
 
 use umulmrum\Holiday\Calculator\AbstractHolidayCalculatorTest;
 
-class NorthRhineWestphaliaTest extends AbstractHolidayCalculatorTest
+final class NorthRhineWestphaliaTest extends AbstractHolidayCalculatorTest
 {
     /**
      * {@inheritdoc}

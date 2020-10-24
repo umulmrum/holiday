@@ -17,7 +17,7 @@ use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\NullTranslator;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
-class JsonFormatter implements HolidayFormatterInterface
+final class JsonFormatter implements HolidayFormatterInterface
 {
     /**
      * @var TranslatorInterface

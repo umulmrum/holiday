@@ -19,7 +19,7 @@ use umulmrum\Holiday\Provider\Germany\Hesse;
 use umulmrum\Holiday\Provider\Germany\Saxony;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-class HolidayCalculatorTest extends HolidayTestCase
+final class HolidayCalculatorTest extends HolidayTestCase
 {
     /**
      * @var HolidayCalculator

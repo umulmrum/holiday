@@ -16,7 +16,7 @@ use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
-class NameFormatterTest extends HolidayTestCase
+final class NameFormatterTest extends HolidayTestCase
 {
     /**
      * @var DateFormatter

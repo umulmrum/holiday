@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Constant;
 /**
  * @codeCoverageIgnore
  */
-class HolidayName
+final class HolidayName
 {
     public const NEW_YEAR = 'new_year';
     public const INTERNATIONAL_WOMENS_DAY = 'international_womens_day';

@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Calculator;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-class HolidayCalculator implements HolidayCalculatorInterface
+final class HolidayCalculator implements HolidayCalculatorInterface
 {
     /**
      * {@inheritdoc}

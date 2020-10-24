@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Model;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\HolidayTestCase;
 
-class HolidayListTest extends HolidayTestCase
+final class HolidayListTest extends HolidayTestCase
 {
     /**
      * @var HolidayList

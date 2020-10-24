@@ -17,7 +17,7 @@ namespace umulmrum\Holiday\Helper;
  *
  * @codeCoverageIgnore
  */
-class DateHelper
+final class DateProvider implements DateProviderInterface
 {
     public function getCurrentDate(): \DateTime
     {

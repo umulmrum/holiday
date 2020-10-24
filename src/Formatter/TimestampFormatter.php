@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Formatter;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class TimestampFormatter implements HolidayFormatterInterface
+final class TimestampFormatter implements HolidayFormatterInterface
 {
     /**
      * {@inheritdoc}

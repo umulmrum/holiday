@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeHolidayNameFilter implements HolidayFilterInterface
+final class IncludeHolidayNameFilter implements HolidayFilterInterface
 {
     /**
      * @var string|string[]

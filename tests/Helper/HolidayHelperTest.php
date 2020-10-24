@@ -16,6 +16,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\Constant\HolidayName;
+use umulmrum\Holiday\DateProviderStub;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -28,7 +29,7 @@ use umulmrum\Holiday\Provider\Weekday\Thursdays;
 use umulmrum\Holiday\Provider\Weekday\Tuesdays;
 use umulmrum\Holiday\TranslatorStub;
 
-class HolidayHelperTest extends HolidayTestCase
+final class HolidayHelperTest extends HolidayTestCase
 {
     /**
      * @var HolidayCalculatorInterface|ObjectProphecy
@@ -437,9 +438,7 @@ class HolidayHelperTest extends HolidayTestCase
     {
         $originalTimeZone = \date_default_timezone_get();
         \date_default_timezone_set('UTC');
-        $dateHelper = $this->prophesize(DateHelper::class);
-        $dateHelper->getCurrentDate()->willReturn(new \DateTime('20160808T120342'));
-        $this->actualResult = $this->holidayHelper->getHolidayListInICalendarFormat($holidayList, new TranslatorStub(), $dateHelper->reveal());
+        $this->actualResult = $this->holidayHelper->getHolidayListInICalendarFormat($holidayList, new TranslatorStub(), new DateProviderStub(new \DateTime('20160808T120342')));
         \date_default_timezone_set($originalTimeZone);
     }
 

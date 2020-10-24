@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Formatter;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class DateFormatter implements HolidayFormatterInterface
+final class DateFormatter implements HolidayFormatterInterface
 {
     public const PARAM_FORMAT = 'date_formatter.format';
 

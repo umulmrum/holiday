@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Translator;
 
 use umulmrum\Holiday\Model\Holiday;
 
-class NullTranslator implements TranslatorInterface
+final class NullTranslator implements TranslatorInterface
 {
     /**
      * {@inheritdoc}

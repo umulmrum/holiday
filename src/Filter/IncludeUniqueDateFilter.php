@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeUniqueDateFilter implements HolidayFilterInterface
+final class IncludeUniqueDateFilter implements HolidayFilterInterface
 {
     /**
      * {@inheritdoc}
