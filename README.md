@@ -153,6 +153,7 @@ Supported Countries
 - Austria
 - Belgium
 - Denmark
+- France
 - Germany
 - Liechtenstein
 - Luxembourg

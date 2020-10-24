@@ -76,6 +76,11 @@ final class HolidayName
     public const DANISH_NATIONAL_HOLIDAY = 'danish_national_holiday';
     public const GENERAL_PRAYER_DAY = 'general_prayer_day';
 
+    public const ABOLITION_OF_SLAVERY = 'abolition_of_slavery';
+    public const ARMISTICE_DAY_FRANCE = 'armistice_day_france';
+    public const BASTILLE_DAY = 'bastille_day';
+    public const VICTORY_DAY = 'victory_day';
+
     public const AUGSBURGER_FRIEDENSFEST = 'augsburger_friedensfest';
     public const GERMAN_UNITY_DAY = 'german_unity_day';
 

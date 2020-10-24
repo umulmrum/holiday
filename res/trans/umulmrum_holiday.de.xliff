@@ -10,6 +10,10 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" target-language="de" datatype="plaintext" original="en.xliff">
     <body>
+      <trans-unit id="abolition_of_slavery">
+        <source>abolition_of_slavery</source>
+        <target>Abschaffung der Sklaverei</target>
+      </trans-unit>
       <trans-unit id="all_saints_day">
         <source>all_saints_day</source>
         <target>Allerheiligen</target>
@@ -21,6 +25,10 @@
       <trans-unit id="armistice_day">
         <source>armistice_day</source>
         <target>Tag des Waffenstillstands</target>
+      </trans-unit>
+      <trans-unit id="armistice_day_france">
+        <source>armistice_day_france</source>
+        <target>Waffenstillstand von Compiègne</target>
       </trans-unit>
       <trans-unit id="ascension">
         <source>ascension</source>
@@ -49,6 +57,10 @@
       <trans-unit id="bank">
         <source>bank</source>
         <target>Bankfeiertag</target>
+      </trans-unit>
+      <trans-unit id="bastille_day">
+        <source>bastille_day</source>
+        <target>Französischer Nationalfeiertag</target>
       </trans-unit>
       <trans-unit id="belgian_kings_feast">
         <source>belgian_kings_feast</source>
@@ -293,6 +305,10 @@
       <trans-unit id="valentinesday">
         <source>valentinesday</source>
         <target>Valentinstag</target>
+      </trans-unit>
+      <trans-unit id="victory_day">
+        <source>victory_day</source>
+        <target>Tag des Sieges</target>
       </trans-unit>
       <trans-unit id="victory_in_europe_day">
         <source>victory_in_europe_day</source>
