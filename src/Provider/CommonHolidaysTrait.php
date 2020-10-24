@@ -17,18 +17,18 @@ use umulmrum\Holiday\Model\Holiday;
 
 trait CommonHolidaysTrait
 {
-    private function getNewYear(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getNewYear(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::NEW_YEAR, new \DateTime(sprintf('%s-01-01', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::NEW_YEAR, sprintf('%s-01-01', $year), HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function getLaborDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getLaborDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::LABOR_DAY, new \DateTime(sprintf('%s-05-01', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::LABOR_DAY, sprintf('%s-05-01', $year), HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function getNewYearsEve(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getNewYearsEve(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::NEW_YEARS_EVE, new \DateTime(sprintf('%s-12-31', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::NEW_YEARS_EVE, sprintf('%s-12-31', $year), HolidayType::OFFICIAL | $additionalType);
     }
 }

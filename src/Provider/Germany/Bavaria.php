@@ -24,15 +24,15 @@ class Bavaria extends BadenWuerttemberg
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
+        $holidays = parent::calculateHolidaysForYear($year);
 
-        $holidays->add(new Holiday(HolidayName::AUGSBURGER_FRIEDENSFEST, new \DateTime(sprintf('%s-08-08', $year), $timezone), HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
+        $holidays->add(Holiday::create(HolidayName::AUGSBURGER_FRIEDENSFEST, sprintf('%s-08-08', $year), HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
         if ($year < 1969) {
-            $holidays->add($this->getSaintJosephsDay($year, HolidayType::DAY_OFF, $timezone));
+            $holidays->add($this->getSaintJosephsDay($year, HolidayType::DAY_OFF));
         }
-        $holidays->add($this->getAssumptionDay($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
+        $holidays->add($this->getAssumptionDay($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
 
         return $holidays;
     }

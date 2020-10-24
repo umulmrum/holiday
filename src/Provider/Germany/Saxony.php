@@ -24,12 +24,12 @@ class Saxony extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
-        $holidays->add($this->getReformationDay($year, HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getRepentanceAndPrayerDay($year, HolidayType::DAY_OFF, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
+        $holidays->add($this->getReformationDay($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getRepentanceAndPrayerDay($year, HolidayType::DAY_OFF));
 
         return $holidays;
     }

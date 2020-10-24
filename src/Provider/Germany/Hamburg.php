@@ -22,11 +22,11 @@ class Hamburg extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
+        $holidays = parent::calculateHolidaysForYear($year);
         if ($year >= 2018) {
-            $holidays->add($this->getReformationDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+            $holidays->add($this->getReformationDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         }
 
         return $holidays;

@@ -20,6 +20,10 @@ class HolidayListTest extends HolidayTestCase
      * @var HolidayList
      */
     private $holidayList;
+    /**
+     * @var bool
+     */
+    private $actualResult;
 
     /**
      * @test
@@ -60,16 +64,13 @@ class HolidayListTest extends HolidayTestCase
         self::assertEquals($expectedValue, $this->holidayList->getList());
     }
 
-    /**
-     * @return array
-     */
     public function getAddHolidayData(): array
     {
-        $holiday1 = new Holiday('name1', new \DateTime('2003-02-06'), HolidayType::OFFICIAL);
-        $holiday2 = new Holiday('name2', new \DateTime('2003-04-07'), HolidayType::OFFICIAL);
-        $holiday2a = new Holiday('name2', new \DateTime('2003-04-07'), HolidayType::RELIGIOUS);
-        $holiday2b = new Holiday('name2', new \DateTime('2003-04-07'), HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
-        $holiday2c = new Holiday('name2', new \DateTime('2003-12-12'), HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
+        $holiday1 = Holiday::create('name1', '2003-02-06', HolidayType::OFFICIAL);
+        $holiday2 = Holiday::create('name2', '2003-04-07', HolidayType::OFFICIAL);
+        $holiday2a = Holiday::create('name2', '2003-04-07', HolidayType::RELIGIOUS);
+        $holiday2b = Holiday::create('name2', '2003-04-07', HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
+        $holiday2c = Holiday::create('name2', '2003-12-12', HolidayType::OFFICIAL | HolidayType::RELIGIOUS);
 
         return [
             [
@@ -120,5 +121,64 @@ class HolidayListTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    /**
+     * @test
+     * @dataProvider provideDataForContainsDate
+     */
+    public function it_should_check_if_is_holiday(array $presetHolidays, string $date, bool $expectedResult): void
+    {
+        $this->givenAHolidayList($presetHolidays);
+        $this->whenIsHolidayIsCalled($date);
+        $this->thenItShouldReturnIfDateIsHoliday($expectedResult);
+    }
+
+    public function provideDataForContainsDate(): array
+    {
+        $holiday1 = Holiday::create('name1', '2003-02-06', HolidayType::OFFICIAL);
+        $holiday2 = Holiday::create('name2', '2003-04-07', HolidayType::OFFICIAL);
+
+        return [
+            [
+                [],
+                '2020-10-10',
+                false,
+            ],
+            [
+                [
+                    $holiday1,
+                    $holiday2,
+                ],
+                '2020-10-10',
+                false,
+            ],
+            [
+                [
+                    $holiday1,
+                    $holiday2,
+                ],
+                '2003-02-06',
+                true,
+            ],
+            [
+                [
+                    $holiday1,
+                    $holiday2,
+                ],
+                '2003-04-07',
+                true,
+            ],
+        ];
+    }
+
+    private function whenIsHolidayIsCalled(string $date): void
+    {
+        $this->actualResult = $this->holidayList->isHoliday(\DateTime::createFromFormat('!Y-m-d', $date));
+    }
+
+    private function thenItShouldReturnIfDateIsHoliday(bool $expectedResult): void
+    {
+        self::assertEquals($expectedResult, $this->actualResult);
     }
 }

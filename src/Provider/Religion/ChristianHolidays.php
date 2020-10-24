@@ -22,38 +22,38 @@ final class ChristianHolidays implements HolidayProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidayList = new HolidayList();
-        $holidayList->add($this->getEpiphany($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getCandlemas($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getValentinesDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getSaintJosephsDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getAshWednesday($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getMaundyThursday($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getGoodFriday($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getEasterSunday($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getEasterMonday($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getAscension($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getWhitSunday($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getWhitMonday($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getCorpusChristi($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getSaintFloriansDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getFeastofSaintsPeterAndPaul($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getAssumptionDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getNativityOfMary($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getSaintMauriceDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getReformationDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getHalloween($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getAllSaintsDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getAllSoulsDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getSaintMartinsDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getLeopoldsDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getRepentanceAndPrayerDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getImmaculateConception($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getChristmasEve($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getChristmasDay($year, HolidayType::OTHER, $timezone));
-        $holidayList->add($this->getSecondChristmasDay($year, HolidayType::OTHER, $timezone));
+        $holidayList->add($this->getEpiphany($year));
+        $holidayList->add($this->getCandlemas($year));
+        $holidayList->add($this->getValentinesDay($year));
+        $holidayList->add($this->getSaintJosephsDay($year));
+        $holidayList->add($this->getAshWednesday($year));
+        $holidayList->add($this->getMaundyThursday($year));
+        $holidayList->add($this->getGoodFriday($year));
+        $holidayList->add($this->getEasterSunday($year));
+        $holidayList->add($this->getEasterMonday($year));
+        $holidayList->add($this->getAscension($year));
+        $holidayList->add($this->getWhitSunday($year));
+        $holidayList->add($this->getWhitMonday($year));
+        $holidayList->add($this->getCorpusChristi($year));
+        $holidayList->add($this->getSaintFloriansDay($year));
+        $holidayList->add($this->getFeastofSaintsPeterAndPaul($year));
+        $holidayList->add($this->getAssumptionDay($year));
+        $holidayList->add($this->getNativityOfMary($year));
+        $holidayList->add($this->getSaintMauriceDay($year));
+        $holidayList->add($this->getReformationDay($year));
+        $holidayList->add($this->getHalloween($year));
+        $holidayList->add($this->getAllSaintsDay($year));
+        $holidayList->add($this->getAllSoulsDay($year));
+        $holidayList->add($this->getSaintMartinsDay($year));
+        $holidayList->add($this->getLeopoldsDay($year));
+        $holidayList->add($this->getRepentanceAndPrayerDay($year));
+        $holidayList->add($this->getImmaculateConception($year));
+        $holidayList->add($this->getChristmasEve($year));
+        $holidayList->add($this->getChristmasDay($year));
+        $holidayList->add($this->getSecondChristmasDay($year));
 
         return $holidayList;
     }

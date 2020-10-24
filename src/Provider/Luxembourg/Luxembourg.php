@@ -27,32 +27,32 @@ class Luxembourg implements HolidayProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
-        $holidays->add($this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getGoodFriday($year, HolidayType::BANK, $timezone));
-        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getWhitTuesday($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL, $timezone));
+        $holidays->add($this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getGoodFriday($year, HolidayType::BANK));
+        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getWhitTuesday($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL));
         if ($year >= 1947) {
-            $holidays->add($this->getGrandDukesOfficialBirthday($year, HolidayType::DAY_OFF, $timezone));
+            $holidays->add($this->getGrandDukesOfficialBirthday($year, HolidayType::DAY_OFF));
         }
-        $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
         return $holidays;
     }
 
-    private function getGrandDukesOfficialBirthday(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getGrandDukesOfficialBirthday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         if ($year < 1962) {
             $date = '%s-01-23';
         } elseif ($year <= 2006) {
-            $tempDate = new \DateTime("$year-06-23", $timezone);
+            $tempDate = \DateTime::createFromFormat(Holiday::DATE_FORMAT, "$year-06-23");
             if ('0' === $tempDate->format('w')) {
                 $date = '%s-06-24';
             } else {
@@ -62,12 +62,12 @@ class Luxembourg implements HolidayProviderInterface
             $date = '%s-06-23';
         }
 
-        return new Holiday(HolidayName::GRAND_DUKES_OFFICIAL_BIRTHDAY, new \DateTime(sprintf($date, $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::GRAND_DUKES_OFFICIAL_BIRTHDAY, sprintf($date, $year), HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function getWhitTuesday(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getWhitTuesday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $easterSunday = $this->getEasterSundayDate($year, $timezone);
+        $easterSunday = $this->getEasterSundayDate($year);
 
         return new Holiday(HolidayName::WHIT_MONDAY, $easterSunday->add(new \DateInterval('P51D')), HolidayType::TRADITIONAL | $additionalType);
     }

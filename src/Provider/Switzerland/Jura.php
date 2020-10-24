@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Austria;
+namespace umulmrum\Holiday\Provider\Switzerland;
 
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
@@ -26,24 +26,24 @@ class Jura extends Switzerland
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getBerchtoldstag($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getCorpusChristi($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getIndependenceDay($year, HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getBerchtoldstag($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getCorpusChristi($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getIndependenceDay($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
         return $holidays;
     }
 
-    private function getIndependenceDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getIndependenceDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::FEST_DER_UNABHAENGIGKEIT_JURA, new \DateTime(sprintf('%s-06-23', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::FEST_DER_UNABHAENGIGKEIT_JURA, sprintf('%s-06-23', $year), HolidayType::OFFICIAL | $additionalType);
     }
 }

@@ -17,25 +17,4 @@ use Prophecy\PhpUnit\ProphecyTrait;
 class HolidayTestCase extends TestCase
 {
     use ProphecyTrait;
-
-    private $originalTimezone;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->originalTimezone = date_default_timezone_get();
-        date_default_timezone_set('UTC');
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        date_default_timezone_set($this->originalTimezone);
-    }
-
-    protected function getTimezone(): \DateTimeZone
-    {
-        return new \DateTimeZone('UTC');
-    }
 }

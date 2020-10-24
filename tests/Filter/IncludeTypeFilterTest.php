@@ -69,21 +69,21 @@ final class IncludeTypeFilterTest extends HolidayTestCase
         return [
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-01-01', $this->getTimezone()), HolidayType::TRADITIONAL),
+                    Holiday::create('name', '2016-01-01', HolidayType::TRADITIONAL),
                 ]),
                 HolidayType::DAY_OFF,
                 [],
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-01-01', $this->getTimezone()), HolidayType::TRADITIONAL | HolidayType::RELIGIOUS),
+                    Holiday::create('name', '2016-01-01', HolidayType::TRADITIONAL | HolidayType::RELIGIOUS),
                 ]),
                 HolidayType::DAY_OFF | HolidayType::OFFICIAL,
                 [],
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-01-01', $this->getTimezone()), HolidayType::DAY_OFF),
+                    Holiday::create('name', '2016-01-01', HolidayType::DAY_OFF),
                 ]),
                 HolidayType::DAY_OFF,
                 [
@@ -92,8 +92,8 @@ final class IncludeTypeFilterTest extends HolidayTestCase
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-01-01', $this->getTimezone()), HolidayType::DAY_OFF),
-                    new Holiday('name', new \DateTime('2016-01-02', $this->getTimezone()), HolidayType::TRADITIONAL),
+                    Holiday::create('name', '2016-01-01', HolidayType::DAY_OFF),
+                    Holiday::create('name', '2016-01-02', HolidayType::TRADITIONAL),
                 ]),
                 HolidayType::DAY_OFF,
                 [
@@ -102,8 +102,8 @@ final class IncludeTypeFilterTest extends HolidayTestCase
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-01-01', $this->getTimezone()), HolidayType::DAY_OFF | HolidayType::RELIGIOUS),
-                    new Holiday('name', new \DateTime('2016-01-02', $this->getTimezone()), HolidayType::TRADITIONAL),
+                    Holiday::create('name', '2016-01-01', HolidayType::DAY_OFF | HolidayType::RELIGIOUS),
+                    Holiday::create('name', '2016-01-02', HolidayType::TRADITIONAL),
                 ]),
                 HolidayType::DAY_OFF,
                 [
@@ -112,8 +112,8 @@ final class IncludeTypeFilterTest extends HolidayTestCase
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-01-01', $this->getTimezone()), HolidayType::DAY_OFF | HolidayType::TRADITIONAL),
-                    new Holiday('name', new \DateTime('2016-01-02', $this->getTimezone()), HolidayType::TRADITIONAL),
+                    Holiday::create('name', '2016-01-01', HolidayType::DAY_OFF | HolidayType::TRADITIONAL),
+                    Holiday::create('name', '2016-01-02', HolidayType::TRADITIONAL),
                 ]),
                 HolidayType::TRADITIONAL,
                 [
@@ -123,9 +123,9 @@ final class IncludeTypeFilterTest extends HolidayTestCase
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-01-01', $this->getTimezone()), HolidayType::DAY_OFF),
-                    new Holiday('name', new \DateTime('2016-01-02', $this->getTimezone()), HolidayType::TRADITIONAL),
-                    new Holiday('name', new \DateTime('2016-01-03', $this->getTimezone()), HolidayType::RELIGIOUS),
+                    Holiday::create('name', '2016-01-01', HolidayType::DAY_OFF),
+                    Holiday::create('name', '2016-01-02', HolidayType::TRADITIONAL),
+                    Holiday::create('name', '2016-01-03', HolidayType::RELIGIOUS),
                 ]),
                 HolidayType::DAY_OFF | HolidayType::TRADITIONAL,
                 [

@@ -21,14 +21,13 @@ trait WeekdayTrait
      * @param int           $year
      * @param int           $weekday
      * @param int           $additionalType
-     * @param \DateTimeZone $timezone
      *
      * @return Holiday[]
      */
-    private function getWeekdays(int $year, int $weekday, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): array
+    private function getWeekdays(int $year, int $weekday, int $additionalType = HolidayType::OTHER): array
     {
-        $start = new \DateTime(sprintf('%s-01-01', $year), $timezone);
-        $end = new \DateTime(sprintf('%s-01-01', $year + 1), $timezone);
+        $start = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-01-01', $year));
+        $end = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-01-01', $year + 1));
         $day = new \DateTime();
         $weekdayName = Weekday::$NAME[$weekday];
         $day->setTimestamp(strtotime($weekdayName, $start->getTimestamp()));

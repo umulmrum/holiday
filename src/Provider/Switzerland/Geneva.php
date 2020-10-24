@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Austria;
+namespace umulmrum\Holiday\Provider\Switzerland;
 
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
@@ -26,32 +26,32 @@ class Geneva extends Switzerland
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
+        $holidays = parent::calculateHolidaysForYear($year);
 
-        $holidays->add($this->getBerchtoldstag($year, HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getGenferBettag($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getBerchtoldstag($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getGenferBettag($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year >= 1814) {
-            $holidays->add($this->getRestorationOfTheRepublic($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+            $holidays->add($this->getRestorationOfTheRepublic($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         }
 
         return $holidays;
     }
 
-    private function getGenferBettag(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getGenferBettag(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year, $timezone);
+        $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year);
         $date->add(new \DateInterval('P4D'));
 
         return new Holiday(HolidayName::GENFER_BETTAG, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function getRestorationOfTheRepublic(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getRestorationOfTheRepublic(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::GENEVA_RESTORATION_OF_THE_REPUBLIC, new \DateTime(sprintf('%s-12-31', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::GENEVA_RESTORATION_OF_THE_REPUBLIC, sprintf('%s-12-31', $year), HolidayType::OFFICIAL | $additionalType);
     }
 }

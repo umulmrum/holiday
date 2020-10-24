@@ -11,8 +11,12 @@
 
 namespace umulmrum\Holiday\Model;
 
+use umulmrum\Holiday\Constant\HolidayType;
+
 class Holiday
 {
+    public const DATE_FORMAT = '!Y-m-d';
+
     /**
      * @var string
      */
@@ -26,11 +30,16 @@ class Holiday
      */
     private $type;
 
-    public function __construct(string $name, \DateTime $date, int $type = 0)
+    public function __construct(string $name, \DateTime $date, int $type = HolidayType::OTHER)
     {
         $this->name = $name;
         $this->date = $date;
         $this->type = $type;
+    }
+
+    public static function create(string $name, string $date, int $type = HolidayType::OTHER): self
+    {
+        return new self($name, \DateTime::createFromFormat(self::DATE_FORMAT, $date), $type);
     }
 
     public function getName(): string

@@ -24,11 +24,10 @@ interface HolidayCalculatorInterface
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      * @param int                                                                 $year
-     * @param \DateTimeZone                                                       $timezone
      *
      * @return HolidayList order is not guaranteed; use filters to sort the list afterwards
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    public function calculateHolidaysForYear($holidayProviders, int $year, \DateTimeZone $timezone = null): HolidayList;
+    public function calculateHolidaysForYear($holidayProviders, int $year): HolidayList;
 }

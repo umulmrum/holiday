@@ -21,19 +21,19 @@ class Carinthia extends Austria
 {
     use ChristianHolidaysTrait;
 
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getSaintJosephsDay($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL | HolidayType::GOVERNMENT_AGENCIES_CLOSED, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getSaintJosephsDay($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL | HolidayType::GOVERNMENT_AGENCIES_CLOSED));
         if ($year > 1920) {
-            $holidays->add($this->getCarinthianPlebisciteDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
+            $holidays->add($this->getCarinthianPlebisciteDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
         }
 
         return $holidays;
     }
 
-    private function getCarinthianPlebisciteDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getCarinthianPlebisciteDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::CARINTHIAN_PLEBISCITE_DAY, new \DateTime(sprintf('%s-10-26', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::CARINTHIAN_PLEBISCITE_DAY, sprintf('%s-10-26', $year), HolidayType::OFFICIAL | $additionalType);
     }
 }

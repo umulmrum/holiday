@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Austria;
+namespace umulmrum\Holiday\Provider\Switzerland;
 
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
@@ -27,47 +27,50 @@ class Switzerland implements HolidayProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
-        $holidays->add($this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getFederalDayofThanksgivingRepentanceAndPrayer($year, HolidayType::OTHER, $timezone));
+        $holidays->add($this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getFederalDayofThanksgivingRepentanceAndPrayer($year, HolidayType::OTHER));
 
         if ($year >= 1994) {
-            $holidays->add($this->getSwissNationalDay($year, HolidayType::DAY_OFF, $timezone));
+            $holidays->add($this->getSwissNationalDay($year, HolidayType::DAY_OFF));
         } else {
-            $holidays->add($this->getSwissNationalDay($year, HolidayType::OTHER, $timezone));
+            $holidays->add($this->getSwissNationalDay($year, HolidayType::OTHER));
         }
 
-        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
         return $holidays;
     }
 
-    protected function getBerchtoldstag(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    protected function getBerchtoldstag(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::BERCHTOLDSTAG, new \DateTime(sprintf('%s-01-02', $year), $timezone), HolidayType::TRADITIONAL | $additionalType);
+        return Holiday::create(HolidayName::BERCHTOLDSTAG, sprintf('%s-01-02', $year), HolidayType::TRADITIONAL | $additionalType);
     }
 
-    private function getSwissNationalDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getSwissNationalDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::SWISS_NATIONAL_DAY, new \DateTime(sprintf('%s-08-01', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::SWISS_NATIONAL_DAY, sprintf('%s-08-01', $year), HolidayType::OFFICIAL | $additionalType);
     }
 
-    protected function getDateForFederalDayofThanksgivingRepentanceAndPrayer(int $year, \DateTimeZone $timezone = null): \DateTime
+    protected function getDateForFederalDayofThanksgivingRepentanceAndPrayer(int $year): \DateTime
     {
-        return new \DateTime(sprintf('First Sunday of %s-09', $year), $timezone);
+        $dateTime = new \DateTime(sprintf('First Sunday of %s-09', $year));
+        $dateTime->setTime(0, 0, 0);
+
+        return $dateTime;
     }
 
-    private function getFederalDayofThanksgivingRepentanceAndPrayer(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getFederalDayofThanksgivingRepentanceAndPrayer(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::SWISS_NATIONAL_DAY, $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year, $timezone), HolidayType::RELIGIOUS | $additionalType);
+        return new Holiday(HolidayName::SWISS_NATIONAL_DAY, $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year), HolidayType::RELIGIOUS | $additionalType);
     }
 
-    protected function getBettagsmontag(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    protected function getBettagsmontag(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year, $timezone);
+        $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year);
         $date->add(new \DateInterval('P1D'));
 
         return new Holiday(HolidayName::BETTAGSMONTAG, $date, HolidayType::RELIGIOUS | $additionalType);

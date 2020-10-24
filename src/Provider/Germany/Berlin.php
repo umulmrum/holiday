@@ -18,8 +18,8 @@ class Berlin extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        return parent::calculateHolidaysForYear($year, $timezone);
+        return parent::calculateHolidaysForYear($year);
     }
 }

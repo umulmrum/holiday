@@ -19,13 +19,13 @@ class HolidayCalculator implements HolidayCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear($holidayProviders, int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear($holidayProviders, int $year): HolidayList
     {
         $finalHolidayProviders = $this->interpretHolidayProviders($holidayProviders);
 
         $holidays = new HolidayList();
         foreach ($finalHolidayProviders as $holidayProvider) {
-            $holidays->addAll($holidayProvider->calculateHolidaysForYear($year, $timezone));
+            $holidays->addAll($holidayProvider->calculateHolidaysForYear($year));
         }
 
         return $holidays;

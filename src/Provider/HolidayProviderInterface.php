@@ -26,9 +26,8 @@ interface HolidayProviderInterface
      * Calculates holidays for the given year.
      *
      * @param int           $year
-     * @param \DateTimeZone $timezone
      *
      * @return HolidayList
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList;
+    public function calculateHolidaysForYear(int $year): HolidayList;
 }

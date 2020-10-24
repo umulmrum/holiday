@@ -24,11 +24,11 @@ class SaxonyAnhalt extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getEpiphany($year, HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getReformationDay($year, HolidayType::DAY_OFF, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getEpiphany($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getReformationDay($year, HolidayType::DAY_OFF));
 
         return $holidays;
     }

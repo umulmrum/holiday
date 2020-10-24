@@ -32,8 +32,8 @@ abstract class Weekdays implements HolidayProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        return new HolidayList($this->getWeekdays($year, $this->weekday, HolidayType::OTHER, $timezone));
+        return new HolidayList($this->getWeekdays($year, $this->weekday));
     }
 }

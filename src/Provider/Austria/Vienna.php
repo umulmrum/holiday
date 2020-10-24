@@ -19,10 +19,10 @@ class Vienna extends Austria
 {
     use ChristianHolidaysTrait;
 
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getLeopoldsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getLeopoldsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
 
         return $holidays;
     }

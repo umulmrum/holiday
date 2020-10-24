@@ -27,14 +27,14 @@ class Hesse extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $sundays = $this->getWeekdays($year, Weekday::SUNDAY, HolidayType::DAY_OFF, $timezone);
+        $holidays = parent::calculateHolidaysForYear($year);
+        $sundays = $this->getWeekdays($year, Weekday::SUNDAY, HolidayType::DAY_OFF);
         foreach ($sundays as $sunday) {
             $holidays->add($sunday);
         }
-        $holidays->add($this->getCorpusChristi($year, HolidayType::OTHER, $timezone));
+        $holidays->add($this->getCorpusChristi($year, HolidayType::OTHER));
 
         return $holidays;
     }

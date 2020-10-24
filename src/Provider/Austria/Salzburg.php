@@ -18,16 +18,16 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class Salzburg extends Austria
 {
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getSaintRupertsDay($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getSaintRupertsDay($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL));
 
         return $holidays;
     }
 
-    private function getSaintRupertsDay(int $year, int $additionalType = HolidayType::OTHER, \DateTimeZone $timezone = null): Holiday
+    private function getSaintRupertsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::SAINT_RUPERTS_DAY, new \DateTime(sprintf('%s-09-24', $year), $timezone), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::SAINT_RUPERTS_DAY, sprintf('%s-09-24', $year), HolidayType::RELIGIOUS | $additionalType);
     }
 }

@@ -15,7 +15,7 @@ use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Translator\TranslatorInterface;
+use umulmrum\Holiday\TranslatorStub;
 
 class JsonFormatterTest extends HolidayTestCase
 {
@@ -61,7 +61,7 @@ class JsonFormatterTest extends HolidayTestCase
     {
         return [
             [
-                new Holiday('name', new \DateTime('2016-03-17', $this->getTimezone()), HolidayType::OTHER),
+                Holiday::create('name', '2016-03-17', HolidayType::OTHER),
                 '{
                     "name": "name",
                     "translatedName": "name",
@@ -74,7 +74,7 @@ class JsonFormatterTest extends HolidayTestCase
                 }',
             ],
             [
-                new Holiday('name', new \DateTime('2016-03-17', $this->getTimezone()), HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
+                Holiday::create('name', '2016-03-17', HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
                 '{
                     "name": "name",
                     "translatedName": "name",
@@ -106,18 +106,14 @@ class JsonFormatterTest extends HolidayTestCase
 
     private function givenAFormatterWithTranslator(): void
     {
-        $translator = $this->prophesize(TranslatorInterface::class);
-        $translator->translateName(new Holiday('name', new \DateTime('2016-03-17', $this->getTimezone()), 6))->willReturn('Very name');
-        $translator->translate('day_off')->willReturn('Day off');
-        $translator->translate('religious')->willReturn('Religious');
-        $this->formatter = new JsonFormatter($translator->reveal());
+        $this->formatter = new JsonFormatter(new TranslatorStub());
     }
 
     public function getFormatTranslatedData(): array
     {
         return [
             [
-                new Holiday('name', new \DateTime('2016-03-17', $this->getTimezone()), HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
+                Holiday::create('name', '2016-03-17', HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
                 '{
                     "name": "name",
                     "translatedName": "Very name",
@@ -161,8 +157,8 @@ class JsonFormatterTest extends HolidayTestCase
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new \DateTime('2016-03-17', $this->getTimezone()), HolidayType::OTHER),
-                    new Holiday('name', new \DateTime('2016-03-18', $this->getTimezone()), HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
+                    Holiday::create('name', '2016-03-17', HolidayType::OTHER),
+                    Holiday::create('name', '2016-03-18', HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
                 ]),
                 '[{
                     "name": "name",

@@ -78,8 +78,21 @@ class HolidayList implements \Countable
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         return \count($this->holidayList);
+    }
+
+    public function isHoliday(\DateTime $date): bool
+    {
+        $formatted = $date->format('Y-m-d');
+
+        foreach ($this->holidayList as $holiday) {
+            if ($holiday->getDate()->format('Y-m-d') === $formatted) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

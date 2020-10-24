@@ -19,8 +19,8 @@ namespace umulmrum\Holiday\Helper;
  */
 class DateHelper
 {
-    public function getCurrentDate(\DateTimeZone $timeZone): \DateTime
+    public function getCurrentDate(): \DateTime
     {
-        return new \DateTime('now', $timeZone);
+        return new \DateTime('now');
     }
 }

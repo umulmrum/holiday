@@ -19,11 +19,11 @@ class LowerAustria extends Austria
 {
     use ChristianHolidaysTrait;
 
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getSaintMartinsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY, $timezone));
-        $holidays->add($this->getLeopoldsDay($year, HolidayType::OFFICIAL, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getSaintMartinsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
+        $holidays->add($this->getLeopoldsDay($year, HolidayType::OFFICIAL));
 
         return $holidays;
     }

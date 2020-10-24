@@ -78,7 +78,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
 
     private function getEvent(Holiday $holiday): string
     {
-        $dtstamp = $this->dateHelper->getCurrentDate(new \DateTimeZone('UTC'));
+        $dtstamp = $this->dateHelper->getCurrentDate();
 
         return implode(self::LINE_ENDING, [
             'BEGIN:VEVENT',

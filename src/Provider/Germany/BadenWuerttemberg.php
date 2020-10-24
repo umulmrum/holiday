@@ -24,13 +24,13 @@ class BadenWuerttemberg extends Germany
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
+        $holidays = parent::calculateHolidaysForYear($year);
 
-        $holidays->add($this->getEpiphany($year, HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF, $timezone));
-        $holidays->add($this->getAllSaintsDay($year, HolidayType::DAY_OFF, $timezone));
+        $holidays->add($this->getEpiphany($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getAllSaintsDay($year, HolidayType::DAY_OFF));
 
         return $holidays;
     }

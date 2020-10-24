@@ -19,10 +19,10 @@ class Tyrol extends Austria
 {
     use ChristianHolidaysTrait;
 
-    public function calculateHolidaysForYear(int $year, \DateTimeZone $timezone = null): HolidayList
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
-        $holidays->add($this->getSaintJosephsDay($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL, HolidayType::GOVERNMENT_AGENCIES_CLOSED, $timezone));
+        $holidays = parent::calculateHolidaysForYear($year);
+        $holidays->add($this->getSaintJosephsDay($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL, HolidayType::GOVERNMENT_AGENCIES_CLOSED));
 
         return $holidays;
     }

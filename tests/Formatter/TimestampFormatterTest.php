@@ -26,18 +26,34 @@ class TimestampFormatterTest extends HolidayTestCase
      */
     private $actualResult;
 
+    private $originalTimeZone;
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        date_default_timezone_set($this->originalTimeZone);
+    }
+
     /**
      * @test
      * @dataProvider getFormatData
      *
      * @param string $date
+     * @param string $timeZone
      * @param string $expectedResult
      */
-    public function it_should_format_single_values($date, $expectedResult)
+    public function it_should_format_single_values(string $date, string $timeZone, string $expectedResult): void
     {
+        $this->givenTimeZone($timeZone);
         $this->givenAFormatter();
         $this->whenFormatIsCalled($date);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
+    }
+
+    private function givenTimeZone(string $timeZone): void
+    {
+        $this->originalTimeZone = date_default_timezone_get();
+        date_default_timezone_set($timeZone);
     }
 
     private function givenAFormatter()
@@ -50,7 +66,7 @@ class TimestampFormatterTest extends HolidayTestCase
      */
     private function whenFormatIsCalled($date)
     {
-        $holiday = new Holiday('name', new \DateTime($date));
+        $holiday = Holiday::create('name', $date);
         $this->actualResult = $this->formatter->format($holiday);
     }
 
@@ -62,19 +78,28 @@ class TimestampFormatterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    /**
-     * @return array
-     */
-    public function getFormatData()
+    public function getFormatData(): array
     {
         return [
             [
                 '2016-01-01',
+                'UTC',
                 '1451606400',
             ],
             [
+                '2016-01-01',
+                'Europe/Berlin',
+                '1451602800',
+            ],
+            [
                 '1970-01-01',
+                'UTC',
                 '0',
+            ],
+            [
+                '1970-01-01',
+                'Europe/Berlin',
+                '-3600',
             ],
         ];
     }
@@ -84,10 +109,12 @@ class TimestampFormatterTest extends HolidayTestCase
      * @dataProvider getFormatListData
      *
      * @param string[] $dates
+     * @param string   $timeZone
      * @param string[] $expectedResult
      */
-    public function it_should_format_list_values($dates, $expectedResult)
+    public function it_should_format_list_values(array $dates, string $timeZone, array $expectedResult)
     {
+        $this->givenTimeZone($timeZone);
         $this->givenAFormatter();
         $this->whenFormatListIsCalled($dates);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
@@ -105,20 +132,19 @@ class TimestampFormatterTest extends HolidayTestCase
         $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
-    /**
-     * @return array
-     */
-    public function getFormatListData()
+    public function getFormatListData(): array
     {
         return [
             [
                 [],
+                'UTC',
                 [],
             ],
             [
                 [
                     '2016-01-01',
                 ],
+                'UTC',
                 [
                     1451606400,
                 ],
@@ -128,9 +154,21 @@ class TimestampFormatterTest extends HolidayTestCase
                     '2016-01-01',
                     '1970-01-01',
                 ],
+                'UTC',
                 [
                     1451606400,
                     0,
+                ],
+            ],
+            [
+                [
+                    '2016-01-01',
+                    '1970-01-01',
+                ],
+                'Europe/Berlin',
+                [
+                    1451602800,
+                    -3600,
                 ],
             ],
         ];
