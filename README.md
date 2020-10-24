@@ -12,8 +12,7 @@ Requirements
 ------------
 
 - PHP >= 7.3
-
-- Symfony translator in any version is recommended for translations.
+- Symfony translator in version 4.3+ is recommended for translations.
 
 That's it really.
 
@@ -40,11 +39,11 @@ use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
 $holidayCalculator = new HolidayCalculator();
-$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2016);
+$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2020);
 ```
 
-This results in a `HolidayList` which contains all holidays for 2016; this list can then be used for output or further
-computation. Holidays are always computed for one full year and can be narrowed down afterwards using filters.
+This results in a `HolidayList` which contains all holidays for 2020; this list can then be used for output or further
+computation. Holidays are always computed for one full year and can then be narrowed down using filters.
 
 More complex example:
 
@@ -59,10 +58,10 @@ use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
 $holidayCalculator = new HolidayCalculator();
-$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2016);
+$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2020);
 // Apply filters, e.g. restrict to one month.
-$firstDay = new \DateTime('2016-12-01');
-$lastDay = new \DateTime('2016-12-31');
+$firstDay = new \DateTime('2020-12-01');
+$lastDay = new \DateTime('2020-12-31');
 $holidays = (new IncludeTimespanFilter($firstDay, $lastDay))->filter($holidays);
 // Format the results.
 $formattedHolidays = (new DateFormatter())->formatList($holidays);
@@ -78,13 +77,12 @@ can be substituted by this:
 
 require 'vendor/autoload.php';
 
-use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Helper\HolidayHelper;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
-$holidayHelper = new HolidayHelper(new HolidayCalculator());
-$holidays = $holidayHelper->getHolidaysForMonth(Bavaria::class, 2016, 12);
+$holidayHelper = new HolidayHelper();
+$holidays = $holidayHelper->getHolidaysForMonth(Bavaria::class, 2020, 12);
 $formattedHolidays = (new DateFormatter())->formatList($holidays);
 ```
 

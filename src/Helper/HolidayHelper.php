@@ -36,9 +36,9 @@ final class HolidayHelper
      */
     private $holidayCalculator;
 
-    public function __construct(HolidayCalculatorInterface $holidayCalculator)
+    public function __construct(HolidayCalculatorInterface $holidayCalculator = null)
     {
-        $this->holidayCalculator = $holidayCalculator;
+        $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
     }
 
     /**
