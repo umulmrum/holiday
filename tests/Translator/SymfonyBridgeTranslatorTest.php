@@ -9,12 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Translator;
+namespace umulmrum\Holiday\Test\Translator;
 
 use Prophecy\Argument;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Translator\SymfonyBridgeTranslator;
 
 final class SymfonyBridgeTranslatorTest extends HolidayTestCase
 {

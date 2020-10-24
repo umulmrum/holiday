@@ -9,10 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Model;
+namespace umulmrum\Holiday\Test\Model;
 
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Test\HolidayTestCase;
+use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Model\HolidayList;
 
 final class HolidayListTest extends HolidayTestCase
 {

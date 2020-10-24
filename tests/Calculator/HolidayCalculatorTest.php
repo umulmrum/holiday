@@ -9,9 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Calculator;
+namespace umulmrum\Holiday\Test\Calculator;
 
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Provider\Germany\Berlin;
 use umulmrum\Holiday\Provider\Germany\Brandenburg;
 use umulmrum\Holiday\Provider\Germany\Germany;

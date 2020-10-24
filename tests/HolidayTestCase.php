@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday;
+namespace umulmrum\Holiday\Test;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;

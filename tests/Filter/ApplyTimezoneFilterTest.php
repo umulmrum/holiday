@@ -1,8 +1,9 @@
 <?php
 
-namespace umulmrum\Holiday\Filter;
+namespace umulmrum\Holiday\Test\Filter;
 
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Filter\ApplyTimezoneFilter;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 

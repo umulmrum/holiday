@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Austria;
+namespace umulmrum\Holiday\Provider\Denmark;
 
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;

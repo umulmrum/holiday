@@ -9,15 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Helper;
+namespace umulmrum\Holiday\Test\Helper;
 
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\DateProviderStub;
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Helper\HolidayHelper;
+use umulmrum\Holiday\Test\DateProviderStub;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
@@ -27,7 +28,7 @@ use umulmrum\Holiday\Provider\Weekday\Saturdays;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 use umulmrum\Holiday\Provider\Weekday\Thursdays;
 use umulmrum\Holiday\Provider\Weekday\Tuesdays;
-use umulmrum\Holiday\TranslatorStub;
+use umulmrum\Holiday\Test\TranslatorStub;
 
 final class HolidayHelperTest extends HolidayTestCase
 {

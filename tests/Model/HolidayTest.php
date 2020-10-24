@@ -9,9 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Model;
+namespace umulmrum\Holiday\Test\Model;
 
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Test\HolidayTestCase;
+use umulmrum\Holiday\Model\Holiday;
 
 final class HolidayTest extends HolidayTestCase
 {

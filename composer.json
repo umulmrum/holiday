@@ -27,12 +27,11 @@
     "autoload": {
         "psr-4": {
             "umulmrum\\Holiday\\": ["src"]
-        },
-        "exclude-from-classmap": ["/tests/"]
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "umulmrum\\Holiday\\": ["tests"]
+            "umulmrum\\Holiday\\Test\\": ["tests"]
         }
     }
 }

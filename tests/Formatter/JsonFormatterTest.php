@@ -9,13 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Formatter;
+namespace umulmrum\Holiday\Test\Formatter;
 
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Formatter\JsonFormatter;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\TranslatorStub;
+use umulmrum\Holiday\Test\TranslatorStub;
 
 final class JsonFormatterTest extends HolidayTestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace umulmrum\Holiday;
+namespace umulmrum\Holiday\Test;
 
 use umulmrum\Holiday\Helper\DateProviderInterface;
 

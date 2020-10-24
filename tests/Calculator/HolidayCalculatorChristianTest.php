@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Calculator;
+namespace umulmrum\Holiday\Test\Calculator;
 
 use umulmrum\Holiday\Provider\Religion\ChristianHolidays;
 

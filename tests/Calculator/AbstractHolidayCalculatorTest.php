@@ -9,10 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Calculator;
+namespace umulmrum\Holiday\Test\Calculator;
 
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
 {

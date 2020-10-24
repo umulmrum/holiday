@@ -9,9 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Formatter;
+namespace umulmrum\Holiday\Test\Formatter;
 
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Formatter\DateFormatter;
+use umulmrum\Holiday\Formatter\NameFormatter;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\TranslatorInterface;

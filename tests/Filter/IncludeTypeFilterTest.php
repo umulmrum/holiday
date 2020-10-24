@@ -9,10 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace umulmrum\Holiday\Test\Filter;
 
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\HolidayTestCase;
+use umulmrum\Holiday\Filter\IncludeTypeFilter;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
