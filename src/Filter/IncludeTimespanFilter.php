@@ -11,52 +11,40 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use DateInterval;
-use DateTime;
 use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeTimespanFilter implements HolidayFilterInterface
 {
-    const PARAM_FIRST_DAY = 'include_timespan_filter.first_day';
-    const PARAM_LAST_DAY = 'include_timespan_filter.last_day';
-
     /**
-     * @var HolidayFilterInterface
+     * @var \DateTime
      */
-    private $chainedFilter;
-
+    private $firstIncludedDay;
     /**
-     * @param HolidayFilterInterface $chainedFilter
+     * @var \DateTime
      */
-    public function __construct(HolidayFilterInterface $chainedFilter = null)
+    private $lastIncludedDay;
+
+    public function __construct(\DateTime $firstIncludedDay, \DateTime $lastIncludedDay)
     {
-        $this->chainedFilter = $chainedFilter;
+        $this->firstIncludedDay = $firstIncludedDay;
+        $this->lastIncludedDay = $lastIncludedDay;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = [])
+    public function filter(HolidayList $holidayList): HolidayList
     {
-        if (null !== $this->chainedFilter) {
-            $holidayList = $this->chainedFilter->filter($holidayList, $options);
-        }
-
-        /**
-         * @var DateTime $firstDay
-         */
-        $firstDay = $options[self::PARAM_FIRST_DAY]->getTimestamp();
-        /**
-         * @var DateTime $lastDayPlusOne
-         */
-        $lastDayPlusOne = clone $options[self::PARAM_LAST_DAY];
-        $lastDayPlusOne->add(new DateInterval('P1D'));
-        $lastDayPlusOne = $lastDayPlusOne->getTimestamp();
+        // TODO set time to 00:00:00 for both dates
+        $firstDayTimestamp = $this->firstIncludedDay->getTimestamp();
+        $lastDayPlusOne = clone $this->lastIncludedDay;
+        $lastDayPlusOne->add(new \DateInterval('P1D'));
+        $lastDayPlusOneTimestamp = $lastDayPlusOne->getTimestamp();
 
         $newList = new HolidayList();
         foreach ($holidayList->getList() as $holiday) {
             $timestamp = $holiday->getTimestamp();
-            if ($timestamp >= $firstDay && $timestamp < $lastDayPlusOne) {
+            if ($timestamp >= $firstDayTimestamp && $timestamp < $lastDayPlusOneTimestamp) {
                 $newList->add($holiday);
             }
         }

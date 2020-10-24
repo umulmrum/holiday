@@ -23,25 +23,27 @@ class JsonFormatter implements HolidayFormatterInterface
      * @var TranslatorInterface
      */
     private $translator;
-
     /**
-     * @param TranslatorInterface|null $translator
+     * @var int
      */
-    public function __construct(TranslatorInterface $translator = null)
+    private $jsonOptions;
+
+    public function __construct(TranslatorInterface $translator = null, int $jsonOptions = 0)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();
         } else {
             $this->translator = $translator;
         }
+        $this->jsonOptions = $jsonOptions;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = [])
+    public function format(Holiday $holiday, array $options = []): string
     {
-        return json_encode($this->getEvent($holiday), JSON_PRETTY_PRINT);
+        return \json_encode($this->getEvent($holiday), $this->jsonOptions);
     }
 
     /**
@@ -55,15 +57,10 @@ class JsonFormatter implements HolidayFormatterInterface
             $result[] = $this->getEvent($holiday);
         }
 
-        return json_encode($result, JSON_PRETTY_PRINT);
+        return \json_encode($result, $this->jsonOptions);
     }
 
-    /**
-     * @param Holiday $holiday
-     *
-     * @return array
-     */
-    private function getEvent(Holiday $holiday)
+    private function getEvent(Holiday $holiday): array
     {
         return [
             'name' => $holiday->getName(),
@@ -75,36 +72,26 @@ class JsonFormatter implements HolidayFormatterInterface
         ];
     }
 
-    /**
-     * @param int $type
-     *
-     * @return array
-     */
-    private function getTypeList($type)
+    private function getTypeList(int $type): array
     {
         $typeList = [];
 
         $counter = 1;
-        while ($type !== 0) {
-            if (($type & $counter) !== 0) {
+        while (0 !== $type) {
+            if (0 !== ($type & $counter)) {
                 $typeList[] = $counter;
             }
             $type &= ~$counter;
             $counter <<= 1;
         }
-        if (0 === count($typeList)) {
+        if (0 === \count($typeList)) {
             $typeList[] = HolidayType::OTHER;
         }
 
         return $typeList;
     }
 
-    /**
-     * @param int[] $typeList
-     *
-     * @return string[]
-     */
-    private function getTypeNames(array $typeList)
+    private function getTypeNames(array $typeList): array
     {
         $translatedList = [];
         foreach ($typeList as $type) {

@@ -11,35 +11,28 @@
 
 namespace umulmrum\Holiday\Provider\Germany;
 
-use DateTime;
-use DateTimeZone;
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class Bavaria extends BadenWuerttemberg
 {
     use ChristianHolidaysTrait;
 
-    const ID = 'DE-BY';
-
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function calculateHolidaysForYear(int $year): HolidayList
     {
-        return self::ID;
-    }
-    /**
-     * {@inheritdoc}
-     */
-    public function calculateHolidaysForYear($year, DateTimeZone $timezone = null)
-    {
-        $holidays = parent::calculateHolidaysForYear($year, $timezone);
+        $holidays = parent::calculateHolidaysForYear($year);
 
-        $holidays->add(new Holiday(HolidayName::AUGSBURGER_FRIEDENSFEST, new DateTime(sprintf('%s-08-08', $year), $timezone), HolidayType::DAY_OFF | HolidayType::PARTIAL_AREA_ONLY));
-        $holidays->add($this->getAssumptionDay($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_AREA_ONLY, $timezone));
+        $holidays->add(Holiday::create(HolidayName::AUGSBURGER_FRIEDENSFEST, sprintf('%s-08-08', $year), HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
+        if ($year < 1969) {
+            $holidays->add($this->getSaintJosephsDay($year, HolidayType::DAY_OFF));
+        }
+        $holidays->add($this->getAssumptionDay($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
 
         return $holidays;
     }

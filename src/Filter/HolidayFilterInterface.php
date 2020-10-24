@@ -20,11 +20,6 @@ interface HolidayFilterInterface
      * is either reduced in size or sorted afterwards.
      * The filter MUST return a new HolidayList object and MAY NOT modify
      * the passed one.
-     *
-     * @param HolidayList $holidayList
-     * @param array       $options
-     *
-     * @return HolidayList
      */
-    public function filter(HolidayList $holidayList, array $options = []);
+    public function filter(HolidayList $holidayList): HolidayList;
 }

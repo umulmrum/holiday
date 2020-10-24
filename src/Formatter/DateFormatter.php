@@ -16,16 +16,14 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class DateFormatter implements HolidayFormatterInterface
 {
-    const PARAM_FORMAT = 'date_formatter.format';
+    public const PARAM_FORMAT = 'date_formatter.format';
+
     /**
      * @var string
      */
     private $defaultFormat;
 
-    /**
-     * @param string $defaultFormat
-     */
-    public function __construct($defaultFormat = 'Y-m-d')
+    public function __construct(string $defaultFormat = 'Y-m-d')
     {
         $this->defaultFormat = $defaultFormat;
     }
@@ -33,7 +31,7 @@ class DateFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = [])
+    public function format(Holiday $holiday, array $options = []): string
     {
         return $holiday->getFormattedDate($this->getFormat($options));
     }
@@ -53,12 +51,7 @@ class DateFormatter implements HolidayFormatterInterface
         return $result;
     }
 
-    /**
-     * @param array $options
-     *
-     * @return string
-     */
-    private function getFormat(array $options)
+    private function getFormat(array $options): string
     {
         if (isset($options[self::PARAM_FORMAT])) {
             return $options[self::PARAM_FORMAT];

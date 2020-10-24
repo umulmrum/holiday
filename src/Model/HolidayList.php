@@ -11,10 +11,7 @@
 
 namespace umulmrum\Holiday\Model;
 
-use Countable;
-use DateTime;
-
-class HolidayList implements Countable
+class HolidayList implements \Countable
 {
     /**
      * @var Holiday[]
@@ -34,10 +31,8 @@ class HolidayList implements Countable
     /**
      * Adds a holiday to the list. If there already is a holiday with the same name and date, then the holiday will
      * not be added a second time, but its types will be added to the existing one.
-     *
-     * @param Holiday $holiday
      */
-    public function add(Holiday $holiday)
+    public function add(Holiday $holiday): void
     {
         if (-1 !== $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getDate())) {
             $this->holidayList[$index] = new Holiday($holiday->getName(), $holiday->getDate(), $holiday->getType() | $this->holidayList[$index]->getType());
@@ -46,13 +41,19 @@ class HolidayList implements Countable
         }
     }
 
-    /**
-     * @param string   $name
-     * @param DateTime $dateTime
-     *
-     * @return int
-     */
-    private function getIndexByNameAndDate($name, DateTime $dateTime)
+    public function addAll(HolidayList $holidayList): void
+    {
+        foreach ($holidayList->getList() as $holiday) {
+            $this->add($holiday);
+        }
+    }
+
+//    public function removeByIndex(int $index): void
+//    {
+//        \array_splice($this->holidayList, $index, 1);
+//    }
+
+    private function getIndexByNameAndDate($name, \DateTime $dateTime): int
     {
         $timestamp = $dateTime->getTimestamp();
         foreach ($this->holidayList as $index => $holiday) {
@@ -67,7 +68,7 @@ class HolidayList implements Countable
     /**
      * @return Holiday[]
      */
-    public function getList()
+    public function getList(): array
     {
         return $this->holidayList;
     }
@@ -75,8 +76,21 @@ class HolidayList implements Countable
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
-        return count($this->holidayList);
+        return \count($this->holidayList);
+    }
+
+    public function isHoliday(\DateTime $date): bool
+    {
+        $formatted = $date->format('Y-m-d');
+
+        foreach ($this->holidayList as $holiday) {
+            if ($holiday->getDate()->format('Y-m-d') === $formatted) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

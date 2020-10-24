@@ -11,23 +11,19 @@
 
 namespace umulmrum\Holiday\Helper;
 
-use DateTime;
-use DateTimeZone;
 use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
 use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\Filter\IncludeTypeFilter;
 use umulmrum\Holiday\Filter\IncludeUniqueDateFilter;
 use umulmrum\Holiday\Filter\SortByDateFilter;
 use umulmrum\Holiday\Formatter\ICalendarFormatter;
+use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
-use umulmrum\Holiday\Provider\Weekday\WeekdayInitializer;
-use umulmrum\Holiday\Provider\Weekday\Weekdays;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
 /**
@@ -40,103 +36,60 @@ class HolidayHelper
      */
     private $holidayCalculator;
 
-    /**
-     * @param HolidayCalculatorInterface $holidayCalculator
-     */
     public function __construct(HolidayCalculatorInterface $holidayCalculator)
     {
         $this->holidayCalculator = $holidayCalculator;
     }
 
     /**
-     * Returns if the given date is a holiday in the given region.
+     * Returns all holidays for the given month.
      *
-     * @param DateTime $dateTime
-     * @param string   $region
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      *
-     * @return bool true if the day is a holiday, else false
-     *
-     * @throws HolidayException
+     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    public function isDayAHoliday(DateTime $dateTime, $region)
+    public function getHolidaysForMonth($holidayProviders, int $year, int $month): HolidayList
     {
-        $holidayList = $this->holidayCalculator->calculateHolidaysForYear((int) $dateTime->format('Y'), $region, $dateTime->getTimezone());
-        $filteredHolidays = (new IncludeTimespanFilter())->filter($holidayList, [
-            IncludeTimespanFilter::PARAM_FIRST_DAY => $dateTime,
-            IncludeTimespanFilter::PARAM_LAST_DAY => $dateTime,
-        ]);
+        $holidayList = $this->holidayCalculator->calculateHolidaysForYear($holidayProviders, $year);
+        $startDate = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-%s-01', $year, $month));
+        $lastDayOfMonth = (int) $startDate->format('t');
+        $endDate = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-%s-%s', $year, $month, $lastDayOfMonth));
 
-        return count($filteredHolidays) > 0;
+        return (new IncludeTimespanFilter($startDate, $endDate))->filter($holidayList);
     }
 
     /**
-     * Returns all holidays for the given month in the given region.
-     *
-     * @param int          $year
-     * @param int          $month
-     * @param string       $region
-     * @param DateTimeZone $timezone
-     *
-     * @return HolidayList
-     *
-     * @throws HolidayException
-     */
-    public function getHolidaysForMonth($year, $month, $region, DateTimeZone $timezone = null)
-    {
-        $holidayList = $this->holidayCalculator->calculateHolidaysForYear($year, $region, $timezone);
-        $date = new DateTime(sprintf('%s-%s-01', $year, $month), $timezone);
-        $lastDayOfMonth = (int) $date->format('t');
-        $filteredHolidays = (new IncludeTimespanFilter())->filter($holidayList, [
-            IncludeTimespanFilter::PARAM_FIRST_DAY => $date,
-            IncludeTimespanFilter::PARAM_LAST_DAY => new DateTime(sprintf('%s-%s-%s', $year, $month, $lastDayOfMonth), $timezone),
-        ]);
-
-        return $filteredHolidays;
-    }
-
-    /**
-     * Returns all holidays with the given name for the given year in the given region. Note that holiday names are
+     * Returns all holidays with the given name for the given year. Note that holiday names are
      * not necessarily unique, and therefore a HolidayList object is returned.
      *
-     * @param int          $year
-     * @param string       $holidayName
-     * @param string       $region
-     * @param DateTimeZone $timezone
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param string                                                              $holidayName      most likely on of the constants in \umulmrum\Holiday\Constant\HolidayName
      *
-     * @return HolidayList
-     *
-     * @throws HolidayException
+     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    public function getHolidaysByName($year, $holidayName, $region, DateTimeZone $timezone = null)
+    public function getHolidaysByName($holidayProviders, int $year, string $holidayName): HolidayList
     {
-        $holidayList = $this->holidayCalculator->calculateHolidaysForYear($year, $region, $timezone);
-        $filteredHolidays = (new IncludeHolidayNameFilter())->filter($holidayList, [
-            IncludeHolidayNameFilter::PARAM_HOLIDAY_NAME => $holidayName,
-        ]);
+        $holidayList = $this->holidayCalculator->calculateHolidaysForYear($holidayProviders, $year);
 
-        return $filteredHolidays;
+        return (new IncludeHolidayNameFilter($holidayName))->filter($holidayList);
     }
 
     /**
-     * Returns all days in the given timespan and the region in which normally employees do not need to work.
+     * Returns all days in the given time span in which normally employees do not need to work.
      * Be aware that this method is quite heavy-weight if multiple no-work days for multiple years are requested.
      *
-     * @param DateTime                   $firstDay
-     * @param DateTime                   $lastDay
-     * @param string                     $region
-     * @param HolidayProviderInterface[] $noWorkWeekdayProviders
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param HolidayProviderInterface[]                                          $noWorkWeekdayProviders
      *
-     * @return HolidayList
-     *
-     * @throws HolidayException
+     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    public function getNoWorkDaysForTimespan(DateTime $firstDay, DateTime $lastDay, $region, array $noWorkWeekdayProviders = [])
+    public function getNoWorkDaysForTimeSpan($holidayProviders, \DateTime $firstDay, \DateTime $lastDay, array $noWorkWeekdayProviders = []): HolidayList
     {
-        if (count($noWorkWeekdayProviders) > 0) {
+        if (\count($noWorkWeekdayProviders) > 0) {
             $noWork = $noWorkWeekdayProviders;
         } else {
             $noWork = [
-                new Sundays(),
+                Sundays::class,
             ];
         }
 
@@ -144,101 +97,67 @@ class HolidayHelper
         $endYear = (int) $lastDay->format('Y');
 
         if ($startYear === $endYear) {
-            $holidayList = $this->getNoWorkDaysWithinSingleYear($firstDay, $lastDay, $region, $startYear, $noWork);
+            $holidayList = $this->getNoWorkDaysWithinSingleYear($holidayProviders, $firstDay, $lastDay, $startYear, $noWork);
         } else {
-            $holidayList = $this->getNoWorkDaysOverMultipleYears($firstDay, $lastDay, $region, $startYear, $endYear, $noWork);
+            $holidayList = $this->getNoWorkDaysOverMultipleYears($holidayProviders, $firstDay, $lastDay, $startYear, $endYear, $noWork);
         }
 
         return (new SortByDateFilter())->filter($holidayList);
     }
 
     /**
-     * @param DateTime $firstDay
-     * @param DateTime $lastDay
-     * @param string $region
-     * @param int $year
-     * @param Weekdays[] $noWork
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[]$holidayProviders
+     * @param HolidayProviderInterface[] $noWork
      *
-     * @return HolidayList
-     *
-     * @throws HolidayException
+     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    private function getNoWorkDaysWithinSingleYear(DateTime $firstDay, DateTime $lastDay, string $region, int $year, array $noWork): HolidayList
+    private function getNoWorkDaysWithinSingleYear($holidayProviders, \DateTime $firstDay, \DateTime $lastDay, int $year, array $noWork): HolidayList
     {
-        $holidays = [];
-        $holidays[] = $this->holidayCalculator->calculateHolidaysForYear($year, $region, $firstDay->getTimezone());
-        $temporaryHolidayCalculator = new HolidayCalculator(new WeekdayInitializer());
-        foreach ($noWork as $noWorkDays) {
-            $holidays[] = $temporaryHolidayCalculator->calculateHolidaysForYear($year, $noWorkDays->getId(), $firstDay->getTimezone());
-        }
+        $holidayList = $this->holidayCalculator->calculateHolidaysForYear($holidayProviders, $year);
+        $holidayList = (new IncludeTypeFilter(HolidayType::DAY_OFF))->filter($holidayList);
+        $temporaryHolidayCalculator = new HolidayCalculator();
+        $holidayList->addAll($temporaryHolidayCalculator->calculateHolidaysForYear($noWork, $year));
 
-        $holidayList = $this->mergeHolidayLists($holidays);
-        $holidayList = (
-        new IncludeTimespanFilter(new IncludeUniqueDateFilter(new IncludeTypeFilter())))
-            ->filter($holidayList, [
-                IncludeTimespanFilter::PARAM_FIRST_DAY => $firstDay,
-                IncludeTimespanFilter::PARAM_LAST_DAY => $lastDay,
-                IncludeTypeFilter::PARAM_HOLIDAY_TYPE => HolidayType::DAY_OFF,
-            ]);
+        $holidayList = (new IncludeUniqueDateFilter())->filter($holidayList);
+        $holidayList = (new IncludeTimespanFilter($firstDay, $lastDay))->filter($holidayList);
 
         return $holidayList;
     }
 
     /**
-     * Returns a merged list of all the HolidayList objects given.
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param HolidayProviderInterface[]                                          $noWork
      *
-     * @param HolidayList[] $holidayLists
-     *
-     * @return HolidayList
+     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    public function mergeHolidayLists(array $holidayLists)
+    private function getNoWorkDaysOverMultipleYears($holidayProviders, \DateTime $firstDay, \DateTime $lastDay, int $startYear, int $endYear, array $noWork): HolidayList
     {
-        $newList = new HolidayList();
-        foreach ($holidayLists as $holidayList) {
-            foreach ($holidayList->getList() as $holiday) {
-                $newList->add($holiday);
-            }
-        }
-
-        return (new SortByDateFilter())->filter($newList);
-    }
-
-    /**
-     * @param DateTime $firstDay
-     * @param DateTime $lastDay
-     * @param string $region
-     * @param int $startYear
-     * @param int $endYear
-     * @param Weekdays[] $noWork
-     *
-     * @return HolidayList
-     *
-     * @throws HolidayException
-     */
-    private function getNoWorkDaysOverMultipleYears(DateTime $firstDay, DateTime $lastDay, string $region, int $startYear, int $endYear, array $noWork): HolidayList
-    {
-        $holidays = [];
-        $holidays[] = $this->getNoWorkDaysForTimespan($firstDay, new DateTime(sprintf('%s-12-31', $startYear), $firstDay->getTimezone()), $region, $noWork);
+        $holidayList = $this->getNoWorkDaysForTimeSpan(
+            $holidayProviders,
+            $firstDay,
+            \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-12-31', $startYear)), $noWork
+        );
         for ($year = $startYear + 1; $year < $endYear; ++$year) {
-            $holidays[] = $this->getNoWorkDaysForTimespan(
-                new DateTime(sprintf('%s-01-01', $year), $firstDay->getTimezone()),
-                new DateTime(sprintf('%s-12-31', $year), $firstDay->getTimezone()),
-                $region,
-                $noWork);
+            $holidayList->addAll(
+                $this->getNoWorkDaysForTimeSpan(
+                $holidayProviders,
+                \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-01-01', $year)),
+                \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-12-31', $year)),
+                $noWork
+            )
+            );
         }
-        $holidays[] = $this->getNoWorkDaysForTimespan(new DateTime(sprintf('%s-01-01', $endYear), $firstDay->getTimezone()), $lastDay, $region, $noWork);
+        $holidayList->addAll($this->getNoWorkDaysForTimeSpan(
+            $holidayProviders,
+            \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-01-01', $endYear)),
+            $lastDay,
+            $noWork)
+        );
 
-        return $this->mergeHolidayLists($holidays);
+        return $holidayList;
     }
 
-    /**
-     * @param HolidayList              $holidayList
-     * @param TranslatorInterface|null $translator
-     * @param DateHelper               $dateHelper
-     *
-     * @return string
-     */
-    public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null, DateHelper $dateHelper = null)
+    public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null, DateHelper $dateHelper = null): string
     {
         $calendarFormatter = new ICalendarFormatter($translator, $dateHelper);
         $content = [];

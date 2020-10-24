@@ -11,20 +11,10 @@
 
 namespace umulmrum\Holiday;
 
-use DateTimeZone;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class HolidayTestCase extends TestCase
 {
-    protected function setUp()
-    {
-        parent::setUp();
-
-        date_default_timezone_set('UTC');
-    }
-
-    protected function getTimezone()
-    {
-        return new DateTimeZone('UTC');
-    }
+    use ProphecyTrait;
 }

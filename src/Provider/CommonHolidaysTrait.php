@@ -11,35 +11,24 @@
 
 namespace umulmrum\Holiday\Provider;
 
-use DateTime;
-use DateTimeZone;
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\Holiday;
 
 trait CommonHolidaysTrait
 {
-    /**
-     * @param int          $year
-     * @param int          $additionalType
-     * @param DateTimeZone $timezone
-     *
-     * @return Holiday
-     */
-    private function getNewYear($year, $additionalType = HolidayType::OTHER, DateTimeZone $timezone = null)
+    private function getNewYear(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::NEW_YEAR, new DateTime(sprintf('%s-01-01', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::NEW_YEAR, sprintf('%s-01-01', $year), HolidayType::OFFICIAL | $additionalType);
     }
 
-    /**
-     * @param int          $year
-     * @param int          $additionalType
-     * @param DateTimeZone $timezone
-     *
-     * @return Holiday
-     */
-    private function getLaborDay($year, $additionalType = HolidayType::OTHER, DateTimeZone $timezone = null)
+    private function getLaborDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::LABOR_DAY, new DateTime(sprintf('%s-05-01', $year), $timezone), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::LABOR_DAY, sprintf('%s-05-01', $year), HolidayType::OFFICIAL | $additionalType);
+    }
+
+    private function getNewYearsEve(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::NEW_YEARS_EVE, sprintf('%s-12-31', $year), HolidayType::OFFICIAL | $additionalType);
     }
 }

@@ -11,64 +11,72 @@
 
 namespace umulmrum\Holiday\Calculator;
 
-use DateTimeZone;
-use umulmrum\Holiday\Provider\HolidayInitializerInterface;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
-use umulmrum\Holiday\Exception\HolidayException;
 
 class HolidayCalculator implements HolidayCalculatorInterface
 {
     /**
-     * @var HolidayProviderInterface[]
-     */
-    private $holidayProviders = [];
-    /**
-     * @var HolidayInitializerInterface
-     */
-    private $holidayInitializer;
-    /**
-     * @var bool
-     */
-    private $initialized = false;
-
-    public function addHolidayProvider(HolidayProviderInterface $holidayProvider)
-    {
-        $this->holidayProviders[$holidayProvider->getId()] = $holidayProvider;
-    }
-
-    /**
-     * @param HolidayInitializerInterface $holidayInitializer
-     */
-    public function __construct(HolidayInitializerInterface $holidayInitializer = null)
-    {
-        if (null === $holidayInitializer) {
-            $this->initialized = true;
-        } else {
-            $this->holidayInitializer = $holidayInitializer;
-        }
-    }
-
-    private function init()
-    {
-        if ($this->initialized) {
-            return;
-        }
-        $this->holidayInitializer->initializeHolidays($this);
-    }
-
-    /**
      * {@inheritdoc}
-     *
-     * @throws HolidayException
      */
-    public function calculateHolidaysForYear($year, $region, DateTimeZone $timezone = null)
+    public function calculateHolidaysForYear($holidayProviders, int $year): HolidayList
     {
-        $this->init();
-        if (!isset($this->holidayProviders[$region])) {
-            throw new HolidayException('Invalid location alias: '.$region);
+        $finalHolidayProviders = $this->interpretHolidayProviders($holidayProviders);
+
+        $holidays = new HolidayList();
+        foreach ($finalHolidayProviders as $holidayProvider) {
+            $holidays->addAll($holidayProvider->calculateHolidaysForYear($year));
         }
-        $holidays = $this->holidayProviders[$region]->calculateHolidaysForYear($year, $timezone);
 
         return $holidays;
+    }
+
+    /**
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     *
+     * @return HolidayProviderInterface[]
+     *
+     * @throws \InvalidArgumentException
+     */
+    private function interpretHolidayProviders($holidayProviders): array
+    {
+        $finalHolidayProviders = [];
+
+        if (false === \is_array($holidayProviders)) {
+            $holidayProviders = [
+                $holidayProviders,
+            ];
+        }
+        foreach ($holidayProviders as $holidayProviderName) {
+            if (true === \is_string($holidayProviderName)) {
+                $finalHolidayProviders[] = $this->getHolidayProviderFromClassString($holidayProviderName);
+            } else {
+                if (false === $holidayProviderName instanceof HolidayProviderInterface) {
+                    $argumentType = (true === \is_object($holidayProviderName)) ? \get_class($holidayProviderName) : 'scalar';
+                    throw new \InvalidArgumentException(\sprintf('First argument needs to be either of type HolidayProviderInterface or a string containing
+                        the fully qualified name of a class implementing HolidayProviderInterface 
+                        (or an array containing a mixture of both). Got %s instead.', $argumentType));
+                }
+                $finalHolidayProviders[] = $holidayProviderName;
+            }
+        }
+
+        return $finalHolidayProviders;
+    }
+
+    /**
+     * @throws \InvalidArgumentException
+     */
+    private function getHolidayProviderFromClassString(string $classString): HolidayProviderInterface
+    {
+        if (false === \class_exists($classString)) {
+            throw new \InvalidArgumentException(sprintf('Class does not exist: %s', $classString));
+        }
+        $holidayProvider = new $classString();
+        if (false === $holidayProvider instanceof HolidayProviderInterface) {
+            throw new \InvalidArgumentException(sprintf('Class does not implement HolidayProviderInterface: %s', $classString));
+        }
+
+        return $holidayProvider;
     }
 }

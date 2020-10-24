@@ -11,9 +11,8 @@
 
 namespace umulmrum\Holiday\Calculator;
 
-use DateTimeZone;
-use umulmrum\Holiday\Exception\HolidayException;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 /**
  * @codeCoverageIgnore
@@ -21,15 +20,13 @@ use umulmrum\Holiday\Model\HolidayList;
 interface HolidayCalculatorInterface
 {
     /**
-     * Calculates all holidays for a given $year in the desired $location.
+     * Calculates all holidays for a given $year.
      *
-     * @param int          $year
-     * @param string       $region   The alias for the region. This is what the getId() method of the holiday provider for this region returns.
-     * @param DateTimeZone $timezone
+     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      *
-     * @return HolidayList
+     * @return HolidayList order is not guaranteed; use filters to sort the list afterwards
      *
-     * @throws HolidayException
+     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
-    public function calculateHolidaysForYear($year, $region, DateTimeZone $timezone = null);
+    public function calculateHolidaysForYear($holidayProviders, int $year): HolidayList;
 }

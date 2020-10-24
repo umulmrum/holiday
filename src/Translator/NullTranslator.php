@@ -18,7 +18,7 @@ class NullTranslator implements TranslatorInterface
     /**
      * {@inheritdoc}
      */
-    public function translateName(Holiday $holiday)
+    public function translateName(Holiday $holiday): string
     {
         return $holiday->getName();
     }
@@ -26,7 +26,7 @@ class NullTranslator implements TranslatorInterface
     /**
      * {@inheritdoc}
      */
-    public function translate($string)
+    public function translate(string $string): string
     {
         return $string;
     }

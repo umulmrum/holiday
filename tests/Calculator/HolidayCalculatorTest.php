@@ -12,8 +12,12 @@
 namespace umulmrum\Holiday\Calculator;
 
 use umulmrum\Holiday\HolidayTestCase;
-use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Provider\Germany\Berlin;
+use umulmrum\Holiday\Provider\Germany\Brandenburg;
 use umulmrum\Holiday\Provider\Germany\Germany;
+use umulmrum\Holiday\Provider\Germany\Hesse;
+use umulmrum\Holiday\Provider\Germany\Saxony;
+use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 class HolidayCalculatorTest extends HolidayTestCase
 {
@@ -21,32 +25,93 @@ class HolidayCalculatorTest extends HolidayTestCase
      * @var HolidayCalculator
      */
     private $holidayCalculator;
-    /**
-     * @var Holiday[]
-     */
-    private $actualResult;
 
     /**
-     * @test
-     * @expectedException \umulmrum\Holiday\Exception\HolidayException
+     * @dataProvider provideDataForTestConstructForValidArgument
+     *
+     * @param string|HolidayProviderInterface[] $argument
      */
-    public function it_throws_an_exception_if_country_not_found()
+    public function testConstructForValidArgument($argument): void
     {
-        $this->givenAHolidayCalculatorWithoutInitialization();
-        $this->whenICallCalculateHolidaysForYear(2019, Germany::ID);
+        $this->givenHolidayCalculator();
+        $this->whenCalculateHolidaysForYearIsCalled($argument);
+        $this->thenNoExceptionShouldBeThrown();
     }
 
-    private function givenAHolidayCalculatorWithoutInitialization()
+    public function provideDataForTestConstructForValidArgument(): array
+    {
+        return [
+            [
+                Germany::class,
+            ],
+            [
+                new Hesse(),
+            ],
+            [
+                new Germany(),
+                Brandenburg::class,
+                Berlin::class,
+                new Saxony(),
+            ],
+        ];
+    }
+
+    private function givenHolidayCalculator(): void
     {
         $this->holidayCalculator = new HolidayCalculator();
     }
 
-    /**
-     * @param int    $year
-     * @param string $location
-     */
-    private function whenICallCalculateHolidaysForYear($year, $location)
+    private function whenCalculateHolidaysForYearIsCalled($argument): void
     {
-        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year, $location);
+        $this->holidayCalculator->calculateHolidaysForYear($argument, 2018);
+    }
+
+    private function thenNoExceptionShouldBeThrown(): void
+    {
+        self::assertTrue(true);
+    }
+
+    /**
+     * @dataProvider provideDataForTestThrowExceptionOnInvalidArgument
+     *
+     * @param mixed $argument
+     */
+    public function testThrowExceptionOnInvalidArgument($argument): void
+    {
+        $this->givenHolidayCalculator();
+        $this->thenExpectInvalidArgumentException();
+        $this->whenCalculateHolidaysForYearIsCalled($argument);
+    }
+
+    public function provideDataForTestThrowExceptionOnInvalidArgument(): array
+    {
+        return [
+            [
+                null,
+            ],
+            [
+                1,
+            ],
+            [
+                'no class name',
+            ],
+            [
+                HolidayCalculator::class,
+            ],
+            [
+                new \stdClass(),
+            ],
+            [
+                [
+                    Germany::class,
+                    new \stdClass(),
+                ],
+            ],
+        ];
+    }
+
+    private function thenExpectInvalidArgumentException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
     }
 }

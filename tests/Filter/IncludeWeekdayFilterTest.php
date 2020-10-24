@@ -11,13 +11,12 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use DateTime;
 use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeWeekdayFilterTest extends HolidayTestCase
+final class IncludeWeekdayFilterTest extends HolidayTestCase
 {
     /**
      * @var IncludeWeekdayFilter
@@ -33,38 +32,29 @@ class IncludeWeekdayFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string[] $holidays
-     * @param int      $weekday
-     * @param array    $expectedResult
      */
-    public function it_should_filter_holidays(array $holidays, $weekday, array $expectedResult)
+    public function it_should_filter_holidays(array $holidays, int $weekday, array $expectedResult): void
     {
-        $this->givenAnIncludeWeekDayFilter();
-        $this->whenFilterIsCalled($holidays, $weekday);
+        $this->givenAnIncludeWeekDayFilter($weekday);
+        $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAnIncludeWeekDayFilter()
+    private function givenAnIncludeWeekDayFilter(int $weekday): void
     {
-        $this->filter = new IncludeWeekdayFilter();
+        $this->filter = new IncludeWeekdayFilter($weekday);
     }
 
-    /**
-     * @param array $holidays
-     * @param int   $weekday
-     */
-    private function whenFilterIsCalled(array $holidays, $weekday)
+    private function whenFilterIsCalled(array $holidays): void
     {
         $holidayList = new HolidayList();
-        foreach ($holidays as $holiday) {
-            $holidayList->add(new Holiday('name', new DateTime($holiday)));
+        foreach ($holidays as $date) {
+            $holidayList->add(Holiday::create('name', $date));
         }
-        $options = [
-            IncludeWeekdayFilter::PARAM_WEEK_DAY => $weekday,
-        ];
-        $this->actualResult = $this->filter->filter($holidayList, $options);
+        $this->actualResult = $this->filter->filter($holidayList);
     }
 
-    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult)
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
     {
         $resultDates = [];
         foreach ($this->actualResult->getList() as $result) {
@@ -73,10 +63,7 @@ class IncludeWeekdayFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
+    public function getData(): array
     {
         return [
             [

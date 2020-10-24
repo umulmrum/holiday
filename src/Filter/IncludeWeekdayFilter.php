@@ -15,34 +15,43 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeWeekdayFilter implements HolidayFilterInterface
 {
-    const PARAM_WEEK_DAY = 'include_week_day_filter.week_day';
+    /**
+     * @var int[]
+     */
+    private $weekdays;
 
     /**
-     * @var HolidayFilterInterface
+     * @param int|int[] $weekdays
+     *
+     * @throws \InvalidArgumentException
      */
-    private $chainedFilter;
-
-    /**
-     * @param HolidayFilterInterface $chainedFilter
-     */
-    public function __construct(HolidayFilterInterface $chainedFilter = null)
+    public function __construct($weekdays)
     {
-        $this->chainedFilter = $chainedFilter;
+        if (true === \is_int($weekdays)) {
+            $this->weekdays = [
+                $weekdays,
+            ];
+        } elseif (true === \is_array($weekdays)) {
+            foreach ($weekdays as $weekday) {
+                if (false === \is_int($weekday)) {
+                    throw new \InvalidArgumentException('First argument must be either an integer or an array of integers.');
+                }
+                $this->weekdays = $weekdays;
+            }
+        } else {
+            throw new \InvalidArgumentException('First argument must be either an integer or an array of integers.');
+        }
+        $this->weekdays = \array_flip($this->weekdays);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = [])
+    public function filter(HolidayList $holidayList): HolidayList
     {
-        if (null !== $this->chainedFilter) {
-            $holidayList = $this->chainedFilter->filter($holidayList, $options);
-        }
-        $weekday = $options[self::PARAM_WEEK_DAY];
-
         $newList = new HolidayList();
         foreach ($holidayList->getList() as $holiday) {
-            if ((int) $holiday->getFormattedDate('w') === $weekday) {
+            if (true === isset($this->weekdays[(int) $holiday->getFormattedDate('w')])) {
                 $newList->add($holiday);
             }
         }

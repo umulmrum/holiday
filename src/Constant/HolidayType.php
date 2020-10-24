@@ -22,30 +22,45 @@ class HolidayType
     /**
      * This is a holiday that is not further specified - one might call it a dummy value.
      */
-    const OTHER = 0;
+    public const OTHER = 0;
     /**
      * A holiday of type OFFICIAL is guaranteed by law. Note that this does not automatically mean
      * that the holiday is also a day off - combine with DAY_OFF to express that the holiday is
      * indeed no working day.
      */
-    const OFFICIAL = 1;
+    public const OFFICIAL = 1;
     /**
      * On a holiday of type DAY_OFF, it is usually not allowed to work (exceptions may apply).
      * This can be both a "real" holiday and a weekday on which working is not allowed (normally this is Sunday).
      */
-    const DAY_OFF = 2;
+    public const DAY_OFF = 2;
     /**
      * A holiday of type RELIGIOUS is a holiday of one or more religious organizations or beliefs.
      */
-    const RELIGIOUS = 4;
+    public const RELIGIOUS = 4;
     /**
      * A holiday of type TRADITIONAL has its origins in the past, but not in religion.
      */
-    const TRADITIONAL = 8;
+    public const TRADITIONAL = 8;
     /**
-     * A holiday of type PARTIAL_AREA_ONLY is not celebrated in the whole region.
+     * A holiday of type PARTIAL_ONLY is not celebrated in the whole region or not a holiday for all people. Some
+     * holidays are e.g. limited to members of certain churches.
      */
-    const PARTIAL_AREA_ONLY = 16;
+    public const PARTIAL_ONLY = 16;
+    /**
+     * On a holiday of type NO_SCHOOL pupils do not attend school. If the holiday is also a DAY_OFF, the
+     * NO_SCHOOL type is not applied separately.
+     */
+    public const NO_SCHOOL = 32;
+    /**
+     * On a holiday of type GOVERNMENT_AGENCIES_CLOSED, well, government agencies are closed. If the holiday is also a
+     * DAY_OFF, the NO_SCHOOL type is not applied separately.
+     */
+    public const GOVERNMENT_AGENCIES_CLOSED = 64;
+
+    public const HALF_DAY_OFF = 128;
+
+    public const BANK = 256;
 
     public static $NAME = [
         self::OTHER => 'other',
@@ -53,6 +68,9 @@ class HolidayType
         self::DAY_OFF => 'day_off',
         self::RELIGIOUS => 'religious',
         self::TRADITIONAL => 'traditional',
-        self::PARTIAL_AREA_ONLY => 'partial_area_only',
+        self::PARTIAL_ONLY => 'partial_only',
+        self::NO_SCHOOL => 'no_school',
+        self::GOVERNMENT_AGENCIES_CLOSED => 'government_agencies_closed',
+        self::BANK => 'bank',
     ];
 }

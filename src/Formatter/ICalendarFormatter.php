@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Formatter;
 
-use DateTimeZone;
 use umulmrum\Holiday\Helper\DateHelper;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
@@ -20,7 +19,8 @@ use umulmrum\Holiday\Translator\TranslatorInterface;
 
 class ICalendarFormatter implements HolidayFormatterInterface
 {
-    const LINE_ENDING = "\r\n";
+    public const LINE_ENDING = "\r\n";
+
     /**
      * @var TranslatorInterface
      */
@@ -30,10 +30,6 @@ class ICalendarFormatter implements HolidayFormatterInterface
      */
     private $dateHelper;
 
-    /**
-     * @param TranslatorInterface|null $translator
-     * @param DateHelper               $dateHelper
-     */
     public function __construct(TranslatorInterface $translator = null, DateHelper $dateHelper = null)
     {
         if (null === $translator) {
@@ -51,7 +47,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = [])
+    public function format(Holiday $holiday, array $options = []): string
     {
         return $this->getEvent($holiday);
     }
@@ -70,10 +66,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
         return $result;
     }
 
-    /**
-     * @return string
-     */
-    public function getHeader()
+    public function getHeader(): string
     {
         return implode(self::LINE_ENDING, [
             'BEGIN:VCALENDAR',
@@ -83,14 +76,9 @@ class ICalendarFormatter implements HolidayFormatterInterface
         ]);
     }
 
-    /**
-     * @param Holiday $holiday
-     *
-     * @return array
-     */
-    private function getEvent(Holiday $holiday)
+    private function getEvent(Holiday $holiday): string
     {
-        $dtstamp = $this->dateHelper->getCurrentDate(new DateTimeZone('UTC'));
+        $dtstamp = $this->dateHelper->getCurrentDate();
 
         return implode(self::LINE_ENDING, [
             'BEGIN:VEVENT',
@@ -103,10 +91,7 @@ class ICalendarFormatter implements HolidayFormatterInterface
         ]);
     }
 
-    /**
-     * @return string
-     */
-    public function getFooter()
+    public function getFooter(): string
     {
         return 'END:VCALENDAR';
     }

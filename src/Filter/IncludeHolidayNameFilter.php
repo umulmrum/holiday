@@ -15,34 +15,39 @@ use umulmrum\Holiday\Model\HolidayList;
 
 class IncludeHolidayNameFilter implements HolidayFilterInterface
 {
-    const PARAM_HOLIDAY_NAME = 'include_holiday_name_filter.holiday_name';
+    /**
+     * @var string|string[]
+     */
+    private $holidayNames;
 
     /**
-     * @var HolidayFilterInterface
+     * @param string|string[] $holidayNames
+     *
+     * @throws \InvalidArgumentException
      */
-    private $chainedFilter;
-
-    /**
-     * @param HolidayFilterInterface $chainedFilter
-     */
-    public function __construct(HolidayFilterInterface $chainedFilter = null)
+    public function __construct($holidayNames)
     {
-        $this->chainedFilter = $chainedFilter;
+        if (true === \is_string($holidayNames)) {
+            $this->holidayNames = [
+                $holidayNames,
+            ];
+        } elseif (true === \is_array($holidayNames)) {
+            $this->holidayNames = $holidayNames;
+        } else {
+            throw new \InvalidArgumentException('First argument must be either a string or an array of strings.');
+        }
+        $this->holidayNames = \array_flip($this->holidayNames);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList, array $options = [])
+    public function filter(HolidayList $holidayList): HolidayList
     {
-        if (null !== $this->chainedFilter) {
-            $holidayList = $this->chainedFilter->filter($holidayList, $options);
-        }
-        $holidayName = $options[self::PARAM_HOLIDAY_NAME];
         $newList = new HolidayList();
 
         foreach ($holidayList->getList() as $holiday) {
-            if ($holidayName === $holiday->getName()) {
+            if (true === isset($this->holidayNames[$holiday->getName()])) {
                 $newList->add($holiday);
             }
         }

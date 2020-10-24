@@ -13,7 +13,6 @@ namespace umulmrum\Holiday\Calculator;
 
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayInitializerInterface;
 
 abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
 {
@@ -29,53 +28,35 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getData
-     *
-     * @param int    $year
-     * @param string $location
-     * @param array  $expectedResult
      */
-    public function it_computes_the_correct_holidays($year, $location, array $expectedResult)
+    public function it_computes_the_correct_holidays(int $year, array $expectedResult): void
     {
         $this->givenAHolidayCalculator();
-        $this->whenICallCalculateHolidaysForYear($year, $location);
+        $this->whenICallCalculateHolidaysForYear($year);
         $this->thenTheCorrectHolidaysShouldBeCalculated($expectedResult);
     }
 
-    /**
-     * @return array
-     */
-    abstract public function getData();
+    abstract public function getData(): array;
 
-    private function givenAHolidayCalculator()
+    private function givenAHolidayCalculator(): void
     {
-        $this->holidayCalculator = new HolidayCalculator($this->getHolidayInitializer());
+        $this->holidayCalculator = new HolidayCalculator();
     }
 
-    /**
-     * @return HolidayInitializerInterface
-     */
-    abstract protected function getHolidayInitializer();
+    abstract protected function getHolidayProviders(): array;
 
-    /**
-     * @param int    $year
-     * @param string $location
-     * @param string $zip
-     */
-    protected function whenICallCalculateHolidaysForYear($year, $location)
+    protected function whenICallCalculateHolidaysForYear(int $year): void
     {
-        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($year, $location);
+        $this->actualResult = $this->holidayCalculator->calculateHolidaysForYear($this->getHolidayProviders(), $year);
     }
 
-    /**
-     * @param array $expectedResult
-     */
-    protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult)
+    protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult): void
     {
         $actualResult = [];
         foreach ($this->actualResult->getList() as $actualHoliday) {
             $actualResult[] = $actualHoliday->getFormattedDate('Y-m-d');
         }
         sort($actualResult);
-        $this->assertEquals($expectedResult, $actualResult);
+        self::assertEquals($expectedResult, $actualResult);
     }
 }

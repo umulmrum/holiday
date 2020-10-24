@@ -11,12 +11,11 @@
 
 namespace umulmrum\Holiday\Formatter;
 
-use DateTime;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Translator\TranslatorInterface;
+use umulmrum\Holiday\TranslatorStub;
 
 class JsonFormatterTest extends HolidayTestCase
 {
@@ -32,46 +31,34 @@ class JsonFormatterTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getFormatData
-     *
-     * @param Holiday    $holiday
-     * @param int|string $expectedResult
      */
-    public function it_should_format_single_values(Holiday $holiday, $expectedResult)
+    public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatter();
         $this->whenFormatIsCalled($holiday);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAFormatter()
+    private function givenAFormatter(): void
     {
         $this->formatter = new JsonFormatter();
     }
 
-    /**
-     * @param Holiday $holiday
-     */
-    private function whenFormatIsCalled(Holiday $holiday)
+    private function whenFormatIsCalled(Holiday $holiday): void
     {
         $this->actualResult = $this->formatter->format($holiday);
     }
 
-    /**
-     * @param string|string[] $expectedResult
-     */
-    private function thenAFormattedResultShouldBeReturned($expectedResult)
+    private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
     {
         self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult);
     }
 
-    /**
-     * @return array
-     */
-    public function getFormatData()
+    public function getFormatData(): array
     {
         return [
             [
-                new Holiday('name', new DateTime('2016-03-17', $this->getTimezone()), HolidayType::OTHER),
+                Holiday::create('name', '2016-03-17', HolidayType::OTHER),
                 '{
                     "name": "name",
                     "translatedName": "name",
@@ -84,7 +71,7 @@ class JsonFormatterTest extends HolidayTestCase
                 }',
             ],
             [
-                new Holiday('name', new DateTime('2016-03-17', $this->getTimezone()), HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
+                Holiday::create('name', '2016-03-17', HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
                 '{
                     "name": "name",
                     "translatedName": "name",
@@ -103,34 +90,24 @@ class JsonFormatterTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getFormatTranslatedData
-     *
-     * @param Holiday $holiday
-     * @param string  $expectedResult
      */
-    public function it_should_format_single_values_with_translation(Holiday $holiday, $expectedResult)
+    public function it_should_format_single_values_with_translation(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
         $this->whenFormatIsCalled($holiday);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAFormatterWithTranslator()
+    private function givenAFormatterWithTranslator(): void
     {
-        $translator = $this->prophesize(TranslatorInterface::class);
-        $translator->translateName(new Holiday('name', new DateTime('2016-03-17', $this->getTimezone()), 6))->willReturn('Very name');
-        $translator->translate('day_off')->willReturn('Day off');
-        $translator->translate('religious')->willReturn('Religious');
-        $this->formatter = new JsonFormatter($translator->reveal());
+        $this->formatter = new JsonFormatter(new TranslatorStub());
     }
 
-    /**
-     * @return array
-     */
-    public function getFormatTranslatedData()
+    public function getFormatTranslatedData(): array
     {
         return [
             [
-                new Holiday('name', new DateTime('2016-03-17', $this->getTimezone()), HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
+                Holiday::create('name', '2016-03-17', HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
                 '{
                     "name": "name",
                     "translatedName": "Very name",
@@ -149,29 +126,20 @@ class JsonFormatterTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getFormatListData
-     *
-     * @param HolidayList $holidayList
-     * @param string      $expectedResult
      */
-    public function it_should_format_list_values(HolidayList $holidayList, $expectedResult)
+    public function it_should_format_list_values(HolidayList $holidayList, string $expectedResult): void
     {
         $this->givenAFormatter();
         $this->whenFormatListIsCalled($holidayList);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    /**
-     * @param HolidayList $holidayList
-     */
-    private function whenFormatListIsCalled(HolidayList $holidayList)
+    private function whenFormatListIsCalled(HolidayList $holidayList): void
     {
         $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
-    /**
-     * @return array
-     */
-    public function getFormatListData()
+    public function getFormatListData(): array
     {
         return [
             [
@@ -180,8 +148,8 @@ class JsonFormatterTest extends HolidayTestCase
             ],
             [
                 new HolidayList([
-                    new Holiday('name', new DateTime('2016-03-17', $this->getTimezone()), HolidayType::OTHER),
-                    new Holiday('name', new DateTime('2016-03-18', $this->getTimezone()), HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
+                    Holiday::create('name', '2016-03-17', HolidayType::OTHER),
+                    Holiday::create('name', '2016-03-18', HolidayType::RELIGIOUS | HolidayType::DAY_OFF),
                 ]),
                 '[{
                     "name": "name",

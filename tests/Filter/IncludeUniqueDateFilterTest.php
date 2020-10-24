@@ -11,12 +11,11 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use DateTime;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-class IncludeUniqueDateFilterTest extends HolidayTestCase
+final class IncludeUniqueDateFilterTest extends HolidayTestCase
 {
     /**
      * @var IncludeUniqueDateFilter
@@ -32,33 +31,29 @@ class IncludeUniqueDateFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string[] $holidays
-     * @param array    $expectedResult
      */
-    public function it_should_filter_holidays(array $holidays, array $expectedResult)
+    public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenAnIncludeUniqueDateFilter();
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAnIncludeUniqueDateFilter()
+    private function givenAnIncludeUniqueDateFilter(): void
     {
         $this->filter = new IncludeUniqueDateFilter();
     }
 
-    /**
-     * @param array $holidays
-     */
-    private function whenFilterIsCalled(array $holidays)
+    private function whenFilterIsCalled(array $holidays): void
     {
         $holidayList = new HolidayList();
-        foreach ($holidays as $holiday) {
-            $holidayList->add(new Holiday('name', new DateTime($holiday)));
+        foreach ($holidays as $date) {
+            $holidayList->add(Holiday::create('name', $date));
         }
         $this->actualResult = $this->filter->filter($holidayList);
     }
 
-    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult)
+    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult): void
     {
         $resultDates = [];
         foreach ($this->actualResult->getList() as $result) {
@@ -67,10 +62,7 @@ class IncludeUniqueDateFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    /**
-     * @return array
-     */
-    public function getData()
+    public function getData(): array
     {
         return [
             [
