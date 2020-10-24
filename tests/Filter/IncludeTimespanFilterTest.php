@@ -31,9 +31,6 @@ final class IncludeTimespanFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string[] $holidays
-     * @param string   $firstDay
-     * @param string   $lastDay
-     * @param array    $expectedResult
      */
     public function it_should_filter_holidays(array $holidays, string $firstDay, string $lastDay, array $expectedResult): void
     {

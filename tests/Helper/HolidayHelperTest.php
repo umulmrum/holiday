@@ -14,6 +14,7 @@ namespace umulmrum\Holiday\Helper;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
@@ -25,7 +26,6 @@ use umulmrum\Holiday\Provider\Weekday\Saturdays;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 use umulmrum\Holiday\Provider\Weekday\Thursdays;
 use umulmrum\Holiday\Provider\Weekday\Tuesdays;
-use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
 use umulmrum\Holiday\TranslatorStub;
 
 class HolidayHelperTest extends HolidayTestCase
@@ -61,11 +61,6 @@ class HolidayHelperTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getGetHolidaysForMonthData
-     *
-     * @param int   $year
-     * @param int   $month
-     * @param array $existingHolidays
-     * @param array $expectedResult
      */
     public function it_should_calculate_a_list_of_all_holidays_in_a_given_month(int $year, int $month, array $existingHolidays, array $expectedResult): void
     {
@@ -165,11 +160,6 @@ class HolidayHelperTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getGetHolidaysByNameData
-     *
-     * @param int    $year
-     * @param array  $existingHolidays
-     * @param string $holidayName
-     * @param array  $expectedResult
      */
     public function it_should_calculate_correct_holidays_for_a_holiday_name(int $year, array $existingHolidays, string $holidayName, array $expectedResult): void
     {
@@ -228,11 +218,6 @@ class HolidayHelperTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getGetNoWorkdaysForTimespanData
-     *
-     * @param string $firstDay
-     * @param string $lastDay
-     * @param array  $noWorkWeekdaysProviders
-     * @param array  $expectedResult
      */
     public function it_should_calculate_correct_no_work_days_for_a_timespan(string $firstDay, string $lastDay, array $noWorkWeekdaysProviders, array $expectedResult): void
     {
@@ -440,9 +425,6 @@ class HolidayHelperTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getGetHolidayListInICalendarFormatDat
-     *
-     * @param HolidayList $holidayList
-     * @param string      $expectedResult
      */
     public function it_should_calculate_correct_icalendar_format_for_holidays(HolidayList $holidayList, string $expectedResult): void
     {

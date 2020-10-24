@@ -23,7 +23,6 @@ interface HolidayCalculatorInterface
      * Calculates all holidays for a given $year.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param int                                                                 $year
      *
      * @return HolidayList order is not guaranteed; use filters to sort the list afterwards
      *

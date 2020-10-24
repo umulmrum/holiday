@@ -55,10 +55,6 @@ trait ChristianHolidaysTrait
      * 10. Divide H – M + L + N + 19 by 32 to get a quotient (which we ignore) and a remainder P.Easter Sunday is the Pth day of the Nth month (N can be either 3 for March or 4 for April). The year’s dominical letter can be found by dividing 2E + 2J – K by 7 and taking the remainder (a remainder of 0 is equivalent to the letter A, 1 is equivalent to B, and so on).
      *
      * Let’s try this method for x = 2001: (1) A = 6; (2) B = 20, C = 1; (3) D = 5, E = 0; (4) G = 6; (5) H = 18; (6) M = 0; (7) J = 0, K = 1; (8) L = 6; (9) N = 4; (10) P = 15. So Easter 2001 is April 15.
-     *
-     * @param int $year
-     *
-     * @return string
      */
     private function calculateEasterSunday(int $year): string
     {

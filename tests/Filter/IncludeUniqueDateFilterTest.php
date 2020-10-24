@@ -31,7 +31,6 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string[] $holidays
-     * @param array    $expectedResult
      */
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
@@ -63,9 +62,6 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         return [

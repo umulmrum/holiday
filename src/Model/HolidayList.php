@@ -31,8 +31,6 @@ class HolidayList implements \Countable
     /**
      * Adds a holiday to the list. If there already is a holiday with the same name and date, then the holiday will
      * not be added a second time, but its types will be added to the existing one.
-     *
-     * @param Holiday $holiday
      */
     public function add(Holiday $holiday): void
     {

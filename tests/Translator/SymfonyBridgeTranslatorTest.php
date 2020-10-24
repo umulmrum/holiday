@@ -34,8 +34,6 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getTranslateNameData
-     *
-     * @param string $name
      */
     public function it_should_return_symfony_translations(string $name): void
     {
@@ -79,8 +77,6 @@ class SymfonyBridgeTranslatorTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getTranslateData
-     *
-     * @param string $name
      */
     public function it_should_send_arbitrary_strings_to_the_translator(string $name): void
     {

@@ -18,10 +18,6 @@ use umulmrum\Holiday\Model\Holiday;
 trait WeekdayTrait
 {
     /**
-     * @param int           $year
-     * @param int           $weekday
-     * @param int           $additionalType
-     *
      * @return Holiday[]
      */
     private function getWeekdays(int $year, int $weekday, int $additionalType = HolidayType::OTHER): array

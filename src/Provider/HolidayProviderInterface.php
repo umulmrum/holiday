@@ -24,10 +24,6 @@ interface HolidayProviderInterface
 {
     /**
      * Calculates holidays for the given year.
-     *
-     * @param int           $year
-     *
-     * @return HolidayList
      */
     public function calculateHolidaysForYear(int $year): HolidayList;
 }

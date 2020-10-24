@@ -31,7 +31,6 @@ final class SortByDateFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string[] $holidays
-     * @param array    $expectedResult
      */
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {

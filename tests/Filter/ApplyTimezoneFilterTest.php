@@ -1,8 +1,6 @@
 <?php
 
-
 namespace umulmrum\Holiday\Filter;
-
 
 use umulmrum\Holiday\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;

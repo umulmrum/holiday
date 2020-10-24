@@ -13,11 +13,11 @@ namespace umulmrum\Holiday\Provider\Germany;
 
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\CommonHolidaysTrait;
+use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class Germany implements HolidayProviderInterface
 {

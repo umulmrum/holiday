@@ -37,10 +37,6 @@ class TimestampFormatterTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getFormatData
-     *
-     * @param string $date
-     * @param string $timeZone
-     * @param string $expectedResult
      */
     public function it_should_format_single_values(string $date, string $timeZone, string $expectedResult): void
     {
@@ -109,7 +105,6 @@ class TimestampFormatterTest extends HolidayTestCase
      * @dataProvider getFormatListData
      *
      * @param string[] $dates
-     * @param string   $timeZone
      * @param string[] $expectedResult
      */
     public function it_should_format_list_values(array $dates, string $timeZone, array $expectedResult)

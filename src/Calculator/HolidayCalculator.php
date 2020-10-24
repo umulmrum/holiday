@@ -53,12 +53,9 @@ class HolidayCalculator implements HolidayCalculatorInterface
             } else {
                 if (false === $holidayProviderName instanceof HolidayProviderInterface) {
                     $argumentType = (true === \is_object($holidayProviderName)) ? \get_class($holidayProviderName) : 'scalar';
-                    throw new \InvalidArgumentException(sprintf(
-                        'First argument needs to be either of type HolidayProviderInterface or a string containing
+                    throw new \InvalidArgumentException(\sprintf('First argument needs to be either of type HolidayProviderInterface or a string containing
                         the fully qualified name of a class implementing HolidayProviderInterface 
-                        (or an array containing a mixture of both). Got %s instead.',
-                        $argumentType
-                    ));
+                        (or an array containing a mixture of both). Got %s instead.', $argumentType));
                 }
                 $finalHolidayProviders[] = $holidayProviderName;
             }
@@ -68,10 +65,6 @@ class HolidayCalculator implements HolidayCalculatorInterface
     }
 
     /**
-     * @param string $classString
-     *
-     * @return HolidayProviderInterface
-     *
      * @throws \InvalidArgumentException
      */
     private function getHolidayProviderFromClassString(string $classString): HolidayProviderInterface

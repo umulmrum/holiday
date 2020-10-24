@@ -13,8 +13,8 @@ namespace umulmrum\Holiday\Provider\Germany;
 
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 use umulmrum\Holiday\Provider\CommonHolidaysTrait;
+use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class BadenWuerttemberg extends Germany
 {

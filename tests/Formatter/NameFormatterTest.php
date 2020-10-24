@@ -30,9 +30,6 @@ class NameFormatterTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getFormatData
-     *
-     * @param string $name
-     * @param string $expectedResult
      */
     public function it_should_format_single_values(string $name, string $expectedResult): void
     {
@@ -73,9 +70,6 @@ class NameFormatterTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getFormatTranslatedData
-     *
-     * @param string $name
-     * @param string $expectedResult
      */
     public function it_should_format_single_values_with_translation(string $name, string $expectedResult): void
     {

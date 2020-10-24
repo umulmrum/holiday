@@ -28,8 +28,6 @@ class HolidayTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getDateTimeData
-     *
-     * @param \DateTime $dateTime
      */
     public function it_returns_the_correct_date(\DateTime $dateTime): void
     {
@@ -56,8 +54,6 @@ class HolidayTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getDateTimeData
-     *
-     * @param \DateTime $dateTime
      */
     public function it_is_immutable(\DateTime $dateTime): void
     {
@@ -123,8 +119,6 @@ class HolidayTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getNameData
-     *
-     * @param string $name
      */
     public function it_should_return_the_correct_name(string $name): void
     {

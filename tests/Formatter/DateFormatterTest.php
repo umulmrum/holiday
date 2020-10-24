@@ -30,10 +30,7 @@ class DateFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatData
      *
-     * @param string|null $defaultFormat
-     * @param string      $date
-     * @param string|null $format
-     * @param int|string  $expectedResult
+     * @param int|string $expectedResult
      */
     public function it_should_format_single_values(?string $defaultFormat, string $date, ?string $format, string $expectedResult): void
     {
@@ -112,9 +109,7 @@ class DateFormatterTest extends HolidayTestCase
      * @test
      * @dataProvider getFormatListData
      *
-     * @param string|null     $defaultFormat
      * @param string[]        $dates
-     * @param string|null     $format
      * @param string|string[] $expectedResult
      */
     public function it_should_format_list_values(?string $defaultFormat, array $dates, ?string $format, $expectedResult): void
@@ -125,8 +120,7 @@ class DateFormatterTest extends HolidayTestCase
     }
 
     /**
-     * @param string[]    $dates
-     * @param string|null $format
+     * @param string[] $dates
      */
     private function whenFormatListIsCalled(array $dates, ?string $format): void
     {

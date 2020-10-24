@@ -20,19 +20,11 @@ interface TranslatorInterface
 {
     /**
      * Translates the holiday name. How this translation is performed is completely up to the implementation.
-     *
-     * @param Holiday $holiday
-     *
-     * @return string
      */
     public function translateName(Holiday $holiday): string;
 
     /**
      * Translates an arbitrary string.
-     *
-     * @param string $string
-     *
-     * @return string
      */
     public function translate(string $string): string;
 }

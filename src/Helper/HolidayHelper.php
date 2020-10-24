@@ -45,10 +45,6 @@ class HolidayHelper
      * Returns all holidays for the given month.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param int                                                                 $year
-     * @param int                                                                 $month
-     *
-     * @return HolidayList
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
@@ -67,10 +63,7 @@ class HolidayHelper
      * not necessarily unique, and therefore a HolidayList object is returned.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param int                                                                 $year
      * @param string                                                              $holidayName      most likely on of the constants in \umulmrum\Holiday\Constant\HolidayName
-     *
-     * @return HolidayList
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
@@ -86,11 +79,7 @@ class HolidayHelper
      * Be aware that this method is quite heavy-weight if multiple no-work days for multiple years are requested.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param \DateTime                                                           $firstDay
-     * @param \DateTime                                                           $lastDay
      * @param HolidayProviderInterface[]                                          $noWorkWeekdayProviders
-     *
-     * @return HolidayList
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
@@ -118,12 +107,7 @@ class HolidayHelper
 
     /**
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[]$holidayProviders
-     * @param \DateTime                  $firstDay
-     * @param \DateTime                  $lastDay
-     * @param int                        $year
      * @param HolidayProviderInterface[] $noWork
-     *
-     * @return HolidayList
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
@@ -142,13 +126,7 @@ class HolidayHelper
 
     /**
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param \DateTime                                                           $firstDay
-     * @param \DateTime                                                           $lastDay
-     * @param int                                                                 $startYear
-     * @param int                                                                 $endYear
      * @param HolidayProviderInterface[]                                          $noWork
-     *
-     * @return HolidayList
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
      */
@@ -179,13 +157,6 @@ class HolidayHelper
         return $holidayList;
     }
 
-    /**
-     * @param HolidayList              $holidayList
-     * @param TranslatorInterface|null $translator
-     * @param DateHelper|null          $dateHelper
-     *
-     * @return string
-     */
     public function getHolidayListInICalendarFormat(HolidayList $holidayList, TranslatorInterface $translator = null, DateHelper $dateHelper = null): string
     {
         $calendarFormatter = new ICalendarFormatter($translator, $dateHelper);

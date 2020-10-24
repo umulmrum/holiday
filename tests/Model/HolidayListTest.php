@@ -30,7 +30,6 @@ class HolidayListTest extends HolidayTestCase
      * @dataProvider getAddHolidayData
      *
      * @param Holiday[] $presetHolidays
-     * @param Holiday   $holiday
      * @param Holiday[] $expectedHolidays
      */
     public function it_should_add_a_holiday(array $presetHolidays, Holiday $holiday, array $expectedHolidays): void
