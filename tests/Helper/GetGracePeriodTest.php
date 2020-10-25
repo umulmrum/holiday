@@ -33,7 +33,7 @@ final class GetGracePeriodTest extends HolidayTestCase
      * @test
      * @dataProvider getGetGracePeriodData
      */
-    public function it_should_calculate_correct_grace_period($holidayProviders, \DateTime $firstDay, int $numberOfDays, \DateTimeInterface $expectedResult): void
+    public function it_should_calculate_correct_grace_period($holidayProviders, \DateTimeImmutable $firstDay, int $numberOfDays, \DateTimeInterface $expectedResult): void
     {
         $this->givenGetGracePeriod();
         $this->whenGetGracePeriodIsCalled($holidayProviders, $firstDay, $numberOfDays);
@@ -45,33 +45,45 @@ final class GetGracePeriodTest extends HolidayTestCase
         return [
             'no-holidays' => [
                 Germany::class,
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-09-01 12:34:56'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-09-01 12:34:56'),
                 7,
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-09-08 12:34:56'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-09-08 12:34:56'),
             ],
             'weekend' => [
                 [Saturdays::class, Sundays::class],
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-09-01 12:34:56'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-09-01 12:34:56'),
                 7,
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-09-10 12:34:56'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-09-10 12:34:56'),
+            ],
+            'next-working-day-with-no-holidays' => [
+                Germany::class,
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-10-26 12:34:56'),
+                0,
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-10-26 12:34:56'),
+            ],
+            'next-working-day-with-holidays-and-weekend' => [
+                [Germany::class, Saturdays::class, Sundays::class],
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-12-24 12:34:56'),
+                0,
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-12-28 12:34:56'),
             ],
             'leap-day-and-two-weekends' => [
                 [Saturdays::class, Sundays::class],
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-02-28 00:00:00'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-02-28 00:00:00'),
                 7,
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-03-10 00:00:00'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-03-10 00:00:00'),
             ],
             'daylight-saving' => [
                 [Saturdays::class, Sundays::class],
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-10-24 15:48:33'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-10-24 15:48:33'),
                 2,
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-10-28 15:48:33'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-10-28 15:48:33'),
             ],
             'multiple-weekends-and-holidays-with-new-year' => [
                 [BadenWuerttemberg::class, Saturdays::class, Sundays::class],
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2020-12-23 23:59:59'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2020-12-23 23:59:59'),
                 10,
-                \DateTime::createFromFormat('Y-m-d H:i:s', '2021-01-13 23:59:59'),
+                \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2021-01-13 23:59:59'),
             ],
         ];
     }
@@ -86,7 +98,7 @@ final class GetGracePeriodTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    private function whenGetGracePeriodIsCalled($holidayProviders, \DateTime $firstDay, int $numberOfDays): void
+    private function whenGetGracePeriodIsCalled($holidayProviders, \DateTimeImmutable $firstDay, int $numberOfDays): void
     {
         $this->actualResult = ($this->subject)($holidayProviders, $firstDay, $numberOfDays);
     }

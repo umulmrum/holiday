@@ -23,12 +23,11 @@ final class GetGracePeriod
      *
      * @throws \InvalidArgumentException
      */
-    public function __invoke($holidayProviders, \DateTimeInterface $firstDay, int $numberOfDays): \DateTimeInterface
+    public function __invoke($holidayProviders, \DateTimeImmutable $firstDay, int $numberOfDays): \DateTimeInterface
     {
         $workingDate = clone $firstDay;
         $year = (int) $workingDate->format('Y');
         $holidays = $this->holidayCalculator->calculate($holidayProviders, $year);
-//        $workingDate = \DateTime::createFromFormat('!Y-m-d', $firstDay->format('Y-m-d'));
         $remainingDays = $numberOfDays;
         $interval = new \DateInterval('P1D');
         do {
@@ -47,6 +46,6 @@ final class GetGracePeriod
             }
         } while($remainingDays > 0);
 
-        return $workingDate;
+        return $firstDay->add(new \DateInterval('P' . $numberOfDays . 'D'));
     }
 }
