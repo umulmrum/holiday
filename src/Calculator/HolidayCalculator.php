@@ -19,13 +19,16 @@ final class HolidayCalculator implements HolidayCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function calculateHolidaysForYear($holidayProviders, int $year): HolidayList
+    public function calculate($holidayProviders, $years): HolidayList
     {
         $finalHolidayProviders = $this->interpretHolidayProviders($holidayProviders);
+        $finalYears = $this->interpretYears($years);
 
         $holidays = new HolidayList();
         foreach ($finalHolidayProviders as $holidayProvider) {
-            $holidays->addAll($holidayProvider->calculateHolidaysForYear($year));
+            foreach ($finalYears as $year) {
+                $holidays->addAll($holidayProvider->calculateHolidaysForYear($year));
+            }
         }
 
         return $holidays;
@@ -78,5 +81,29 @@ final class HolidayCalculator implements HolidayCalculatorInterface
         }
 
         return $holidayProvider;
+    }
+
+    /**
+     * @param int|int[] $years
+     *
+     * @return int[]
+     */
+    private function interpretYears($years): array
+    {
+        if (\is_int($years)) {
+            return [$years];
+        }
+
+        if (\is_array($years)) {
+            foreach ($years as $year) {
+                if (false === \is_int($year)) {
+                    throw new \InvalidArgumentException('Year needs to be either int or an array of int');
+                }
+            }
+
+            return $years;
+        }
+
+        throw new \InvalidArgumentException('Year needs to be either int or an array of int');
     }
 }

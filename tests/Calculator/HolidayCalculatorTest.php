@@ -35,7 +35,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
     public function testConstructForValidArgument($argument): void
     {
         $this->givenHolidayCalculator();
-        $this->whenCalculateHolidaysForYearIsCalled($argument);
+        $this->whenCalculateIsCalled($argument);
         $this->thenNoExceptionShouldBeThrown();
     }
 
@@ -62,9 +62,9 @@ final class HolidayCalculatorTest extends HolidayTestCase
         $this->holidayCalculator = new HolidayCalculator();
     }
 
-    private function whenCalculateHolidaysForYearIsCalled($argument): void
+    private function whenCalculateIsCalled($argument): void
     {
-        $this->holidayCalculator->calculateHolidaysForYear($argument, 2018);
+        $this->holidayCalculator->calculate($argument, 2018);
     }
 
     private function thenNoExceptionShouldBeThrown(): void
@@ -81,7 +81,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
     {
         $this->givenHolidayCalculator();
         $this->thenExpectInvalidArgumentException();
-        $this->whenCalculateHolidaysForYearIsCalled($argument);
+        $this->whenCalculateIsCalled($argument);
     }
 
     public function provideDataForTestThrowExceptionOnInvalidArgument(): array

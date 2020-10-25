@@ -12,6 +12,7 @@
 namespace umulmrum\Holiday\Model;
 
 use umulmrum\Holiday\Constant\HolidayType;
+use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 
 class Holiday
 {
@@ -65,5 +66,10 @@ class Holiday
     public function getType(): int
     {
         return $this->type;
+    }
+
+    public function format(HolidayFormatterInterface $formatter): string
+    {
+        return $formatter->format($this);
     }
 }

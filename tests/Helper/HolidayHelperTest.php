@@ -74,7 +74,7 @@ final class HolidayHelperTest extends HolidayTestCase
 
     private function givenHolidayCalculatorReturningHolidays(int $year, array $existingHolidays): void
     {
-        $this->holidayCalculatorMock->calculateHolidaysForYear(Argument::any(), $year, Argument::any())
+        $this->holidayCalculatorMock->calculate(Argument::any(), $year, Argument::any())
             ->willReturn($this->getHolidayList($existingHolidays));
     }
 

@@ -12,6 +12,7 @@
 namespace umulmrum\Holiday\Model;
 
 use umulmrum\Holiday\Filter\HolidayFilterInterface;
+use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 
 class HolidayList implements \Countable
 {
@@ -99,5 +100,10 @@ class HolidayList implements \Countable
     public function filter(HolidayFilterInterface $filter): self
     {
         return $filter->filter($this);
+    }
+
+    public function format(HolidayFormatterInterface $formatter)
+    {
+        return $formatter->formatList($this);
     }
 }

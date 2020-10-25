@@ -39,7 +39,7 @@ use umulmrum\Holiday\Calculator\HolidayCalculator;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
 $holidayCalculator = new HolidayCalculator();
-$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2020);
+$holidays = $holidayCalculator->calculate(Bavaria::class, 2020);
 ```
 
 This results in a `HolidayList` which contains all holidays for 2020; this list can then be used for output or further
@@ -58,7 +58,7 @@ use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
 $holidayCalculator = new HolidayCalculator();
-$holidays = $holidayCalculator->calculateHolidaysForYear(Bavaria::class, 2020);
+$holidays = $holidayCalculator->calculate(Bavaria::class, 2020);
 // Apply filters, e.g. restrict to one month.
 $firstDay = new \DateTime('2020-12-01');
 $lastDay = new \DateTime('2020-12-31');
@@ -84,6 +84,30 @@ use umulmrum\Holiday\Provider\Germany\Bavaria;
 $holidayHelper = new HolidayHelper();
 $holidays = $holidayHelper->getHolidaysForMonth(Bavaria::class, 2020, 12);
 $formattedHolidays = (new DateFormatter())->formatList($holidays);
+```
+
+Yet another example:
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\Filter\SortByDateFilter;
+use umulmrum\Holiday\Formatter\JsonFormatter;
+use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
+use umulmrum\Holiday\Provider\Weekday\Saturdays;
+use umulmrum\Holiday\Provider\Weekday\Sundays;
+
+$calculator = new HolidayCalculator();
+/*
+ * Compute holidays for the German state of Baden-Wuerttemberg and also all Saturdays and Sundays for the year 2020
+ * by passing an array of holiday providers.
+ */
+$holidays = $calculator->calculate([BadenWuerttemberg::class, Saturdays::class, Sundays::class], 2020);
+// Sort holidays by date and format as JSON
+$formattedHolidays = $holidays->filter(new SortByDateFilter())->format(new JsonFormatter());
 ```
 
 Usage normally follows this pattern:
