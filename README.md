@@ -69,8 +69,8 @@ $formattedHolidays = (new DateFormatter())->formatList($holidays);
 
 This results in an array of date strings.
 
-There is also a `HolidayHelper` class that simplifies some common holiday computations. Using the helper, this example 
-can be substituted by this:
+There are also some helper methods that simplify some common holiday computations. Using the `GetHolidayForMonth` helper, the example 
+above can be substituted by this:
 
 ```php
 <?php
@@ -78,12 +78,10 @@ can be substituted by this:
 require 'vendor/autoload.php';
 
 use umulmrum\Holiday\Formatter\DateFormatter;
-use umulmrum\Holiday\Helper\HolidayHelper;
+use umulmrum\Holiday\Helper\GetHolidaysForMonth;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
-$holidayHelper = new HolidayHelper();
-$holidays = $holidayHelper->getHolidaysForMonth(Bavaria::class, 2020, 12);
-$formattedHolidays = (new DateFormatter())->formatList($holidays);
+$formattedHolidays = (new GetHolidaysForMonth())(Bavaria::class, 2020, 12)->format(new DateFormatter());
 ```
 
 Yet another example:
@@ -142,7 +140,7 @@ most other countries) it is not a holiday as it is a Sunday anyway, and therefor
 
 Similarly, Sundays are normally not included if they are no official holidays in the scope of the holiday provider,
 although they are days off in the Western hemisphere. To find out which days are days off, provide both the respective
-holiday provider and the one for Sundays (or use `HolidayHelper::getNoWorkDaysForTimeSpan()`).
+holiday provider and the one for Sundays (or use `GetNoWorkDaysForTimeSpan()`).
 
 Filters
 -------
