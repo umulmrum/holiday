@@ -75,6 +75,6 @@ final class GetNoWorkDaysForTimeSpan
             ->filter(new IncludeTypeFilter(HolidayType::DAY_OFF))
             ->filter(new IncludeUniqueDateFilter())
             ->filter(new SortByDateFilter())
-            ;
+        ;
     }
 }

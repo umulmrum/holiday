@@ -60,11 +60,13 @@ final class ICalendarFormatter implements HolidayFormatterInterface
     {
         $result = [];
 
+        $result[] = $this->getHeader();
         foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->getEvent($holiday);
         }
+        $result[] = $this->getFooter();
 
-        return $result;
+        return \implode(self::LINE_ENDING, $result).self::LINE_ENDING;
     }
 
     public function getHeader(): string
