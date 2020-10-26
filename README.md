@@ -35,7 +35,7 @@ Simple example:
 
 require 'vendor/autoload.php';
 
-use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
 
 $holidayCalculator = new HolidayCalculator();
@@ -52,7 +52,7 @@ More complex example:
 
 require 'vendor/autoload.php';
 
-use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\Formatter\DateFormatter;
 use umulmrum\Holiday\Provider\Germany\Bavaria;
@@ -91,7 +91,7 @@ Yet another example:
 
 require 'vendor/autoload.php';
 
-use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Filter\SortByDateFilter;
 use umulmrum\Holiday\Formatter\JsonFormatter;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;

@@ -23,7 +23,8 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 
 ### Changed
 - Bump minimum required PHP version to 7.3.0, minimum Symfony translator version to 4.3.0 (only if the optional SymfonyBridgeTranslator is used).
-- Simplify complete API of HolidayCalculator: No longer require static initialization and identification of holiday providers
+- Move HolidayCalculator and HolidayCalculatorInterface from namespace umulmrum\Holiday\Calculator to umulmrum\Holiday.
+- Simplify complete API of HolidayCalculator: No longer require static initialization and identification of holiday providers.
   by an ID, but pass one or more providers directly. Also allow calculation of multiple years at once.
 - Make dates in the Holiday class instances of DateTimeImmutable to have the class completely immutable.
 - Let all dates in the lib use 00:00:00 as time part, as we only deal with whole days.

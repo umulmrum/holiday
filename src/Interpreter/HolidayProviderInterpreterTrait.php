@@ -9,31 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Calculator;
+namespace umulmrum\Holiday\Interpreter;
 
-use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-final class HolidayCalculator implements HolidayCalculatorInterface
+/**
+ * @internal
+ */
+trait HolidayProviderInterpreterTrait
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function calculate($holidayProviders, $years): HolidayList
-    {
-        $finalHolidayProviders = $this->interpretHolidayProviders($holidayProviders);
-        $finalYears = $this->interpretYears($years);
-
-        $holidays = new HolidayList();
-        foreach ($finalHolidayProviders as $holidayProvider) {
-            foreach ($finalYears as $year) {
-                $holidays->addAll($holidayProvider->calculateHolidaysForYear($year));
-            }
-        }
-
-        return $holidays;
-    }
-
     /**
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      *
@@ -81,29 +65,5 @@ final class HolidayCalculator implements HolidayCalculatorInterface
         }
 
         return $holidayProvider;
-    }
-
-    /**
-     * @param int|int[] $years
-     *
-     * @return int[]
-     */
-    private function interpretYears($years): array
-    {
-        if (\is_int($years)) {
-            return [$years];
-        }
-
-        if (\is_array($years)) {
-            foreach ($years as $year) {
-                if (false === \is_int($year)) {
-                    throw new \InvalidArgumentException('Year needs to be either int or an array of int');
-                }
-            }
-
-            return $years;
-        }
-
-        throw new \InvalidArgumentException('Year needs to be either int or an array of int');
     }
 }

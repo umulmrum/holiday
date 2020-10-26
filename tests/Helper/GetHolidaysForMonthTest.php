@@ -13,7 +13,7 @@ namespace umulmrum\Holiday\Test\Helper;
 
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
-use umulmrum\Holiday\Calculator\HolidayCalculatorInterface;
+use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Helper\GetHolidaysForMonth;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;

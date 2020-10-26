@@ -11,7 +11,7 @@
 
 namespace umulmrum\Holiday\Test\Calculator;
 
-use umulmrum\Holiday\Calculator\HolidayCalculator;
+use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Provider\Germany\Berlin;
 use umulmrum\Holiday\Provider\Germany\Brandenburg;
