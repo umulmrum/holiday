@@ -12,9 +12,9 @@
 namespace umulmrum\Holiday\Test\Filter;
 
 use umulmrum\Holiday\Filter\ApplyTimezoneFilter;
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class ApplyTimezoneFilterTest extends HolidayTestCase
 {

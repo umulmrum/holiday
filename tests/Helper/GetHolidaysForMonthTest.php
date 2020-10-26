@@ -13,8 +13,8 @@ namespace umulmrum\Holiday\Test\Helper;
 
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
-use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Helper\GetHolidaysForMonth;
+use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\Germany;

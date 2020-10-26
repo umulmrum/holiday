@@ -13,14 +13,14 @@ namespace umulmrum\Holiday\Test\Helper;
 
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
-use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Helper\GetHolidaysByName;
 use umulmrum\Holiday\Helper\GetHolidaysForMonth;
-use umulmrum\Holiday\Test\HolidayTestCase;
+use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\Germany;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class GetHolidaysByNameTest extends HolidayTestCase
 {

@@ -32,20 +32,20 @@ final class GetGracePeriod
         $interval = new \DateInterval('P1D');
         do {
             if ($holidays->isHoliday($workingDate)) {
-                $numberOfDays++;
-                if ($remainingDays === 0) {
+                ++$numberOfDays;
+                if (0 === $remainingDays) {
                     $remainingDays = 1;
                 }
             } else {
-                $remainingDays--;
+                --$remainingDays;
             }
             $workingDate = $workingDate->add($interval);
             $newYear = (int) $workingDate->format('Y');
             if ($newYear !== $year) {
                 $holidays = $this->holidayCalculator->calculate($holidayProviders, $newYear);
             }
-        } while($remainingDays > 0);
+        } while ($remainingDays > 0);
 
-        return $firstDay->add(new \DateInterval('P' . $numberOfDays . 'D'));
+        return $firstDay->add(new \DateInterval('P'.$numberOfDays.'D'));
     }
 }

@@ -13,10 +13,10 @@ namespace umulmrum\Holiday\Test\Helper;
 
 use umulmrum\Holiday\Helper\GetGracePeriod;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
+use umulmrum\Holiday\Provider\Germany\Germany;
 use umulmrum\Holiday\Provider\Weekday\Saturdays;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 use umulmrum\Holiday\Test\HolidayTestCase;
-use umulmrum\Holiday\Provider\Germany\Germany;
 
 final class GetGracePeriodTest extends HolidayTestCase
 {

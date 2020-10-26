@@ -11,7 +11,6 @@
 
 namespace umulmrum\Holiday\Test\Provider\France;
 
-
 use umulmrum\Holiday\Provider\France\France;
 use umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
 

@@ -12,9 +12,9 @@
 namespace umulmrum\Holiday\Test\Formatter;
 
 use umulmrum\Holiday\Formatter\TimestampFormatter;
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class TimestampFormatterTest extends HolidayTestCase
 {

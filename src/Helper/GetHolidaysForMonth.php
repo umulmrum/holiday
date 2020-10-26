@@ -11,9 +11,9 @@
 
 namespace umulmrum\Holiday\Helper;
 
+use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\HolidayCalculatorInterface;
-use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;

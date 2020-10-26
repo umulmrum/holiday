@@ -13,9 +13,9 @@ namespace umulmrum\Holiday\Test\Filter;
 
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Filter\IncludeTypeFilter;
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class IncludeTypeFilterTest extends HolidayTestCase
 {

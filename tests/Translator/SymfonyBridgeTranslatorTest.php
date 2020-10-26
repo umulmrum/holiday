@@ -13,8 +13,8 @@ namespace umulmrum\Holiday\Test\Translator;
 
 use Prophecy\Argument;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Translator\SymfonyBridgeTranslator;
 
 final class SymfonyBridgeTranslatorTest extends HolidayTestCase

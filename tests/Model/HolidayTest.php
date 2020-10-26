@@ -11,8 +11,8 @@
 
 namespace umulmrum\Holiday\Test\Model;
 
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayTest extends HolidayTestCase
 {
@@ -48,7 +48,7 @@ final class HolidayTest extends HolidayTestCase
 
     private function thenThisDateShouldBeReturned(string $dateTime): void
     {
-        self::assertEquals(new \DateTime($dateTime . ' 00:00:00'), $this->actualResult);
+        self::assertEquals(new \DateTime($dateTime.' 00:00:00'), $this->actualResult);
     }
 
     /**

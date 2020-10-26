@@ -12,13 +12,13 @@
 namespace umulmrum\Holiday\Test\Calculator;
 
 use umulmrum\Holiday\HolidayCalculator;
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Provider\Germany\Berlin;
 use umulmrum\Holiday\Provider\Germany\Brandenburg;
 use umulmrum\Holiday\Provider\Germany\Germany;
 use umulmrum\Holiday\Provider\Germany\Hesse;
 use umulmrum\Holiday\Provider\Germany\Saxony;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayCalculatorTest extends HolidayTestCase
 {

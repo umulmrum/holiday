@@ -13,9 +13,9 @@ namespace umulmrum\Holiday\Test\Formatter;
 
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Formatter\JsonFormatter;
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Test\TranslatorStub;
 
 final class JsonFormatterTest extends HolidayTestCase

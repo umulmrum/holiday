@@ -51,7 +51,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
                 ."CREATED:20160808T120342Z+0000\r\n"
                 ."SUMMARY:Very name\r\n"
                 ."DTSTART;VALUE=DATE:20160311\r\n"
-                ."END:VEVENT",
+                .'END:VEVENT',
             ],
         ];
     }

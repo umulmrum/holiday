@@ -18,7 +18,7 @@ abstract class AbstractFilter implements HolidayFilterInterface
     public function filter(HolidayList $holidayList): void
     {
         $count = $holidayList->count();
-        for ($index = $count - 1; $index >= 0; $index--) {
+        for ($index = $count - 1; $index >= 0; --$index) {
             if (false === $this->isIncluded($holidayList->getList()[$index])) {
                 $holidayList->removeByIndex($index);
             }

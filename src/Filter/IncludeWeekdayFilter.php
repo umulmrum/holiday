@@ -12,7 +12,6 @@
 namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
 
 final class IncludeWeekdayFilter extends AbstractFilter
 {

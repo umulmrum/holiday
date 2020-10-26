@@ -11,9 +11,9 @@
 
 namespace umulmrum\Holiday\Helper;
 
+use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
 use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\HolidayCalculatorInterface;
-use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
@@ -35,7 +35,7 @@ final class GetHolidaysByName
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      * @param int|int[]                                                           $years
-     * @param string                                                              $holidayName most likely on of the constants in \umulmrum\Holiday\Constant\HolidayName
+     * @param string                                                              $holidayName      most likely on of the constants in \umulmrum\Holiday\Constant\HolidayName
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders or $years was given
      */

@@ -12,9 +12,9 @@
 namespace umulmrum\Holiday\Test\Model;
 
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Test\HolidayTestCase;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayListTest extends HolidayTestCase
 {

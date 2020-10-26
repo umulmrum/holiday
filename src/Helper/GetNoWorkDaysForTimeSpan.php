@@ -11,13 +11,13 @@
 
 namespace umulmrum\Holiday\Helper;
 
-use umulmrum\Holiday\HolidayCalculator;
-use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use umulmrum\Holiday\Filter\IncludeTypeFilter;
 use umulmrum\Holiday\Filter\IncludeUniqueDateFilter;
 use umulmrum\Holiday\Filter\SortByDateFilter;
+use umulmrum\Holiday\HolidayCalculator;
+use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
@@ -65,7 +65,7 @@ final class GetNoWorkDaysForTimeSpan
         $endYear = (int) $lastDay->format('Y');
 
         $years = [];
-        for ($i = $startYear; $i <= $endYear; $i++) {
+        for ($i = $startYear; $i <= $endYear; ++$i) {
             $years[] = $i;
         }
 

@@ -11,8 +11,8 @@
 
 namespace umulmrum\Holiday\Test\Helper;
 
-use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Helper\GetNoWorkDaysForTimeSpan;
+use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;

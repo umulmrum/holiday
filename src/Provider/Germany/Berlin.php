@@ -28,7 +28,7 @@ class Berlin extends Germany
         if ($year >= 2019) {
             $holidays->add($this->getInternationalWomensDay($year, HolidayType::DAY_OFF));
         }
-        if ($year === 2020) {
+        if (2020 === $year) {
             $holidays->add($this->getVictoryInEuropeDay($year, HolidayType::DAY_OFF));
         }
 
