@@ -11,8 +11,6 @@
 
 namespace umulmrum\Holiday\Test\Helper;
 
-use Prophecy\Argument;
-use Prophecy\Prophecy\ObjectProphecy;
 use umulmrum\Holiday\Constant\HolidayName;
 use umulmrum\Holiday\Helper\GetHolidaysByName;
 use umulmrum\Holiday\Helper\GetHolidaysForMonth;
@@ -20,14 +18,15 @@ use umulmrum\Holiday\HolidayCalculatorInterface;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Germany\Germany;
+use umulmrum\Holiday\Test\HolidayCalculatorStub;
 use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class GetHolidaysByNameTest extends HolidayTestCase
 {
     /**
-     * @var HolidayCalculatorInterface|ObjectProphecy
+     * @var HolidayCalculatorInterface
      */
-    private $holidayCalculatorMock;
+    private $holidayCalculatorStub;
     /**
      * @var GetHolidaysForMonth
      */
@@ -92,14 +91,12 @@ final class GetHolidaysByNameTest extends HolidayTestCase
 
     private function givenGetHolidaysByName(): void
     {
-        $this->subject = new GetHolidaysByName($this->holidayCalculatorMock->reveal());
+        $this->subject = new GetHolidaysByName($this->holidayCalculatorStub);
     }
 
     private function givenHolidayCalculatorReturningHolidays(int $year, array $existingHolidays): void
     {
-        $this->holidayCalculatorMock = $this->prophesize(HolidayCalculatorInterface::class);
-        $this->holidayCalculatorMock->calculate(Argument::any(), $year)
-            ->willReturn($this->getHolidayList($existingHolidays));
+        $this->holidayCalculatorStub = new HolidayCalculatorStub($this->getHolidayList($existingHolidays));
     }
 
     private function getHolidayList(array $data): HolidayList

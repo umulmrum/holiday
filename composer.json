@@ -21,7 +21,6 @@
     "require-dev": {
         "chameleon-system/code-style-config": "dev-master@dev",
         "phpunit/phpunit": "~9.4",
-        "phpspec/prophecy-phpunit": "^2.0",
         "symfony/translation": "~4.3|~5.0"
     },
     "autoload": {

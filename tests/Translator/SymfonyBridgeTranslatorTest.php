@@ -11,10 +11,9 @@
 
 namespace umulmrum\Holiday\Test\Translator;
 
-use Prophecy\Argument;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Test\HolidayTestCase;
+use umulmrum\Holiday\Test\TranslatorStub;
 use umulmrum\Holiday\Translator\SymfonyBridgeTranslator;
 
 final class SymfonyBridgeTranslatorTest extends HolidayTestCase
@@ -23,10 +22,6 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
      * @var SymfonyBridgeTranslator
      */
     private $translator;
-    /**
-     * @var TranslatorInterface
-     */
-    private $symfonyTranslator;
     /**
      * @var string
      */
@@ -40,15 +35,12 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
     {
         $this->givenASymfonyBridgeTranslator();
         $this->whenTranslateNameIsCalled($name);
-        $this->thenTheSymfonyTranslatorShouldBeCalled($name);
         $this->thenTheStringTranslatedBySymfonyShouldBeReturned();
     }
 
     private function givenASymfonyBridgeTranslator(): void
     {
-        $this->symfonyTranslator = $this->prophesize(TranslatorInterface::class);
-        $this->symfonyTranslator->trans(Argument::any(), Argument::any(), Argument::any(), Argument::any())->willReturn('translatedString');
-        $this->translator = new SymfonyBridgeTranslator($this->symfonyTranslator->reveal());
+        $this->translator = new SymfonyBridgeTranslator(new TranslatorStub());
     }
 
     private function whenTranslateNameIsCalled(string $name): void
@@ -56,14 +48,9 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
         $this->actualResult = $this->translator->translateName(Holiday::create($name, '2016-01-01'));
     }
 
-    private function thenTheSymfonyTranslatorShouldBeCalled(string $name): void
-    {
-        $this->symfonyTranslator->trans($name, [], 'umulmrum_holiday')->shouldHaveBeenCalled();
-    }
-
     private function thenTheStringTranslatedBySymfonyShouldBeReturned(): void
     {
-        self::assertEquals('translatedString', $this->actualResult);
+        self::assertEquals('Such name', $this->actualResult);
     }
 
     public function getTranslateNameData(): array
@@ -83,7 +70,6 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
     {
         $this->givenASymfonyBridgeTranslator();
         $this->whenTranslateIsCalled($name);
-        $this->thenTheSymfonyTranslatorShouldBeCalled($name);
         $this->thenTheStringTranslatedBySymfonyShouldBeReturned();
     }
 

@@ -16,7 +16,7 @@ use umulmrum\Holiday\Formatter\NameFormatter;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Test\HolidayTestCase;
-use umulmrum\Holiday\Translator\TranslatorInterface;
+use umulmrum\Holiday\Test\TranslatorStub;
 
 final class NameFormatterTest extends HolidayTestCase
 {
@@ -75,30 +75,22 @@ final class NameFormatterTest extends HolidayTestCase
      */
     public function it_should_format_single_values_with_translation(string $name, string $expectedResult): void
     {
-        $this->givenAFormatterWithTranslator([$name], [$expectedResult]);
+        $this->givenAFormatterWithTranslator();
         $this->whenFormatIsCalled($name);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    /**
-     * @param string[] $names
-     * @param string[] $expectedResults
-     */
-    private function givenAFormatterWithTranslator(array $names, array $expectedResults): void
+    private function givenAFormatterWithTranslator(): void
     {
-        $translator = $this->prophesize(TranslatorInterface::class);
-        for ($i = 0; $i < $count = count($names); ++$i) {
-            $translator->translateName(Holiday::create($names[$i], '2016-01-01'))->willReturn($expectedResults[$i]);
-        }
-        $this->formatter = new NameFormatter($translator->reveal());
+        $this->formatter = new NameFormatter(new TranslatorStub());
     }
 
     public function getFormatTranslatedData(): array
     {
         return [
             [
-                'foo',
-                'This is foo',
+                'day_off',
+                'Day off',
             ],
         ];
     }
@@ -112,7 +104,7 @@ final class NameFormatterTest extends HolidayTestCase
      */
     public function it_should_format_list_values(array $names, $expectedResult): void
     {
-        $this->givenAFormatterWithTranslator($names, $expectedResult);
+        $this->givenAFormatterWithTranslator();
         $this->whenFormatListIsCalled($names);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
@@ -134,12 +126,12 @@ final class NameFormatterTest extends HolidayTestCase
         return [
             [
                 [
-                    'foo',
-                    'bar',
+                    'name',
+                    'religious',
                 ],
                 [
-                    'This is foo',
-                    'Oh my bar-ness',
+                    'Very name',
+                    'Religious',
                 ],
             ],
         ];

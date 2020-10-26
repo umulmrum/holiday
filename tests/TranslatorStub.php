@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Test;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
-final class TranslatorStub implements TranslatorInterface
+final class TranslatorStub implements TranslatorInterface, \Symfony\Contracts\Translation\TranslatorInterface
 {
     /**
      * {@inheritdoc}
@@ -33,7 +33,16 @@ final class TranslatorStub implements TranslatorInterface
             case 'name': return 'Very name';
             case 'day_off': return 'Day off';
             case 'religious': return 'Religious';
-            default: return '';
+            default: return $string;
+        }
+    }
+
+    public function trans(string $id, array $parameters = [], string $domain = null, string $locale = null): string
+    {
+        switch ($id) {
+            case 'name': return 'Such name';
+            case 'foo': return 'Bar';
+            default: return $id;
         }
     }
 }

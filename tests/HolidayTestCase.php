@@ -12,9 +12,7 @@
 namespace umulmrum\Holiday\Test;
 
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
 
 abstract class HolidayTestCase extends TestCase
 {
-    use ProphecyTrait;
 }
