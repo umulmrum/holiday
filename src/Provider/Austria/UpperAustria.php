@@ -23,7 +23,7 @@ class UpperAustria extends Austria
     {
         $holidays = parent::calculateHolidaysForYear($year);
         if ($year <= 2003) {
-            $holidays->add($this->getLeopoldsDay($year, HolidayType::OFFICIAL));
+            $holidays->add($this->getLeopoldsDay($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL));
         } else {
             $holidays->add($this->getSaintFloriansDay($year, HolidayType::OFFICIAL));
         }

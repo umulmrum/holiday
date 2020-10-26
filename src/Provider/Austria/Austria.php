@@ -36,7 +36,7 @@ class Austria implements HolidayProviderInterface
         $holidays->add($this->getEasterSunday($year, HolidayType::OTHER));
         $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        if (($year >= 1919 && $year <= 1932) || $year >= 1945) {
+        if (($year >= 1919 && $year <= 1933) || $year >= 1945) {
             $holidays->add($this->getAustrianStatesHoliday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         }
         if ($year >= 1934 && $year <= 1944) {
@@ -53,6 +53,9 @@ class Austria implements HolidayProviderInterface
             }
         }
         $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        if (($year >= 1919 && $year <= 1933)) {
+            $holidays->add($this->getAustrianStatesHolidayNovember($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        }
         $holidays->add($this->getImmaculateConception($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getChristmasEve($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
         $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
@@ -70,5 +73,10 @@ class Austria implements HolidayProviderInterface
     private function getAustrianStatesHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         return Holiday::create(HolidayName::AUSTRIAN_STATES_HOLIDAY, sprintf('%s-05-01', $year), HolidayType::OFFICIAL | $additionalType);
+    }
+
+    private function getAustrianStatesHolidayNovember(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::AUSTRIAN_STATES_HOLIDAY, sprintf('%s-11-12', $year), HolidayType::OFFICIAL | $additionalType);
     }
 }
