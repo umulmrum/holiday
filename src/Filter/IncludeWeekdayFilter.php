@@ -11,9 +11,10 @@
 
 namespace umulmrum\Holiday\Filter;
 
+use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-final class IncludeWeekdayFilter implements HolidayFilterInterface
+final class IncludeWeekdayFilter extends AbstractFilter
 {
     /**
      * @var int[]
@@ -47,15 +48,8 @@ final class IncludeWeekdayFilter implements HolidayFilterInterface
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList): HolidayList
+    protected function isIncluded(Holiday $holiday): bool
     {
-        $newList = new HolidayList();
-        foreach ($holidayList->getList() as $holiday) {
-            if (true === isset($this->weekdays[(int) $holiday->getFormattedDate('w')])) {
-                $newList->add($holiday);
-            }
-        }
-
-        return $newList;
+        return true === isset($this->weekdays[(int) $holiday->getFormattedDate('w')]);
     }
 }

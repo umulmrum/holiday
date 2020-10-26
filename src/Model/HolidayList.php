@@ -51,10 +51,15 @@ class HolidayList implements \Countable
         }
     }
 
-//    public function removeByIndex(int $index): void
-//    {
-//        \array_splice($this->holidayList, $index, 1);
-//    }
+    public function removeByIndex(int $index): void
+    {
+        \array_splice($this->holidayList, $index, 1);
+    }
+
+    public function replaceByIndex(int $index, Holiday $holiday): void
+    {
+        $this->holidayList[$index] = $holiday;
+    }
 
     private function getIndexByNameAndDate($name, \DateTimeImmutable $dateTime): int
     {
@@ -99,7 +104,9 @@ class HolidayList implements \Countable
 
     public function filter(HolidayFilterInterface $filter): self
     {
-        return $filter->filter($this);
+        $filter->filter($this);
+
+        return $this;
     }
 
     public function format(HolidayFormatterInterface $formatter)

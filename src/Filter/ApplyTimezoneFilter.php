@@ -26,17 +26,14 @@ final class ApplyTimezoneFilter implements HolidayFilterInterface
         $this->dateTimeZone = $dateTimeZone;
     }
 
-    public function filter(HolidayList $holidayList): HolidayList
+    public function filter(HolidayList $holidayList): void
     {
-        $newList = new HolidayList();
-        foreach ($holidayList->getList() as $holiday) {
-            $newList->add(new Holiday(
+        foreach ($holidayList->getList() as $index => $holiday) {
+            $holidayList->replaceByIndex($index, new Holiday(
                 $holiday->getName(),
                 \DateTimeImmutable::createFromFormat(Holiday::DATE_FORMAT, $holiday->getFormattedDate('Y-m-d'), $this->dateTimeZone),
                 $holiday->getType()
             ));
         }
-
-        return $newList;
     }
 }

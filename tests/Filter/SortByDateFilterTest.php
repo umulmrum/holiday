@@ -51,7 +51,7 @@ final class SortByDateFilterTest extends HolidayTestCase
         foreach ($holidays as $index => $date) {
             $holidayList->add(Holiday::create('name'.$index, $date));
         }
-        $this->actualResult = $this->filter->filter($holidayList);
+        $this->actualResult = $holidayList->filter($this->filter);
     }
 
     private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void

@@ -11,9 +11,9 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Model\Holiday;
 
-final class IncludeTimespanFilter implements HolidayFilterInterface
+final class IncludeTimespanFilter extends AbstractFilter
 {
     /**
      * @var \DateTime
@@ -22,32 +22,24 @@ final class IncludeTimespanFilter implements HolidayFilterInterface
     /**
      * @var \DateTime
      */
-    private $lastIncludedDay;
+    private $lastIncludedDayPlusOne;
 
     public function __construct(\DateTimeInterface $firstIncludedDay, \DateTimeInterface $lastIncludedDay)
     {
         $this->firstIncludedDay = clone $firstIncludedDay;
         $this->firstIncludedDay->setTime(0, 0, 0);
-        $this->lastIncludedDay = clone $lastIncludedDay;
-        $this->lastIncludedDay->setTime(0, 0, 0);
+        $this->lastIncludedDayPlusOne = clone $lastIncludedDay;
+        $this->lastIncludedDayPlusOne->add(new \DateInterval('P1D'));
+        $this->lastIncludedDayPlusOne->setTime(0, 0, 0);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList): HolidayList
+    protected function isIncluded(Holiday $holiday): bool
     {
-        $lastDayPlusOne = clone $this->lastIncludedDay;
-        $lastDayPlusOne->add(new \DateInterval('P1D'));
+        $date = $holiday->getDate();
 
-        $newList = new HolidayList();
-        foreach ($holidayList->getList() as $holiday) {
-            $date = $holiday->getDate();
-            if ($date >= $this->firstIncludedDay && $date < $lastDayPlusOne) {
-                $newList->add($holiday);
-            }
-        }
-
-        return $newList;
+        return $date >= $this->firstIncludedDay && $date < $this->lastIncludedDayPlusOne;
     }
 }

@@ -11,25 +11,32 @@
 
 namespace umulmrum\Holiday\Filter;
 
+use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
-final class IncludeUniqueDateFilter implements HolidayFilterInterface
+final class IncludeUniqueDateFilter extends AbstractFilter
 {
+    private $foundTimestamps = [];
+
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList): HolidayList
+    public function filter(HolidayList $holidayList): void
     {
-        $foundTimestamps = [];
+        parent::filter($holidayList);
+        $this->foundTimestamps = [];
+    }
 
-        $newList = new HolidayList();
-        foreach ($holidayList->getList() as $holiday) {
-            if (false === isset($foundTimestamps[$holiday->getTimestamp()])) {
-                $newList->add($holiday);
-                $foundTimestamps[$holiday->getTimestamp()] = true;
-            }
+    /**
+     * {@inheritdoc}
+     */
+    protected function isIncluded(Holiday $holiday): bool
+    {
+        $found = isset($this->foundTimestamps[$holiday->getTimestamp()]);
+        if (false === $found) {
+            $this->foundTimestamps[$holiday->getTimestamp()] = true;
         }
 
-        return $newList;
+        return false === $found;
     }
 }

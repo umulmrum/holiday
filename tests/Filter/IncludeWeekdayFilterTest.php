@@ -52,7 +52,7 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
         foreach ($holidays as $date) {
             $holidayList->add(Holiday::create('name', $date));
         }
-        $this->actualResult = $this->filter->filter($holidayList);
+        $this->actualResult = $holidayList->filter($this->filter);
     }
 
     private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void

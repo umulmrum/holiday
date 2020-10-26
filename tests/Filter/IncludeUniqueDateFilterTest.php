@@ -51,7 +51,7 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
         foreach ($holidays as $date) {
             $holidayList->add(Holiday::create('name', $date));
         }
-        $this->actualResult = $this->filter->filter($holidayList);
+        $this->actualResult = $holidayList->filter($this->filter);
     }
 
     private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult): void

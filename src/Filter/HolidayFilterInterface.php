@@ -16,10 +16,8 @@ use umulmrum\Holiday\Model\HolidayList;
 interface HolidayFilterInterface
 {
     /**
-     * Applies a filter algorithm to the $holidayList, so that the result
-     * is either reduced in size or sorted afterwards.
-     * The filter MUST return a new HolidayList object and MAY NOT modify
-     * the passed one.
+     * Applies a filter algorithm to the $holidayList which means that holidays in the list can be modified in any way
+     * (removed, replaced, sorted, added).
      */
-    public function filter(HolidayList $holidayList): HolidayList;
+    public function filter(HolidayList $holidayList): void;
 }

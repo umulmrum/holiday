@@ -19,17 +19,14 @@ final class SortByDateFilter implements HolidayFilterInterface
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList): HolidayList
+    public function filter(HolidayList $holidayList): void
     {
-        $flatList = $holidayList->getList();
-        usort($flatList, static function (Holiday $o1, Holiday $o2) {
+        $sorted = $holidayList->getList();
+        \usort($sorted, static function (Holiday $o1, Holiday $o2) {
             return $o1->getTimestamp() > $o2->getTimestamp();
         });
-        $newList = new HolidayList();
-        foreach ($flatList as $holiday) {
-            $newList->add($holiday);
+        foreach ($sorted as $index => $holiday) {
+            $holidayList->replaceByIndex($index, $holiday);
         }
-
-        return $newList;
     }
 }

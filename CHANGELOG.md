@@ -13,12 +13,13 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 ### Added
 - Holidays for these countries: Austria, Belgium, Denmark, France, Liechtenstein, Luxembourg, Switzerland.
 - Transaction scripts GetHolidaysByName, GetHolidaysForMonth and GetNoWorkDaysForTimeSpan to replace similarly named methods in HolidayHelper.
-- Transactioni script GetGracePeriod.
+- Transaction script GetGracePeriod.
 - Holiday::create() is a named constructor to simplify instantiation.
 - Holiday::format() as an alternative to formatting holidays by calling HolidayFormatterInterface::format().
 - HolidayList::isHoliday() as replacement for HolidayHelper::isDayAHoliday().
 - HolidayList::filter() to simplify chaining of filters.
 - HolidayList::format() as an alternative to formatting lists by calling HolidayFormatterInterface::formatList().
+- AbstractFilter class to simplify filter implementations.
 - Add missing argument and return value declarations.
 
 ### Changed
@@ -31,6 +32,7 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 - No longer use timezones in holiday calculations and remove respective method arguments.
   Holidays always use the current timezone. Use ApplyTimezoneFilter on HolidayLists after calculations instead to adjust
   dates in the Holiday objects to other timezones.
+- Let filters modify the original list instead of creating a new one.
 - Remove options for filter calls. Options are now passed in the filter constructors (it's a bit less flexible but type-safe and easier to use).
 - Rename DateHelper to DateProvider and add DateProviderInterface.
 - Throw InvalidArgumentExceptions instead of HolidayExceptions.

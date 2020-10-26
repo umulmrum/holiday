@@ -44,6 +44,6 @@ final class GetHolidaysForMonth
         $lastDayOfMonth = (int) $startDate->format('t');
         $endDate = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-%s-%s', $year, $month, $lastDayOfMonth));
 
-        return (new IncludeTimespanFilter($startDate, $endDate))->filter($holidayList);
+        return $holidayList->filter(new IncludeTimespanFilter($startDate, $endDate));
     }
 }

@@ -46,7 +46,7 @@ final class IncludeTypeFilterTest extends HolidayTestCase
 
     private function whenFilterIsCalled(HolidayList $holidayList): void
     {
-        $this->actualResult = $this->filter->filter($holidayList);
+        $this->actualResult = $holidayList->filter($this->filter);
     }
 
     /**

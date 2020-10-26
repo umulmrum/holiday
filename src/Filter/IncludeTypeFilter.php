@@ -11,9 +11,9 @@
 
 namespace umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Model\Holiday;
 
-final class IncludeTypeFilter implements HolidayFilterInterface
+final class IncludeTypeFilter extends AbstractFilter
 {
     /**
      * @var int
@@ -39,17 +39,8 @@ final class IncludeTypeFilter implements HolidayFilterInterface
     /**
      * {@inheritdoc}
      */
-    public function filter(HolidayList $holidayList): HolidayList
+    protected function isIncluded(Holiday $holiday): bool
     {
-        $tempList = $holidayList->getList();
-        $newList = new HolidayList();
-
-        foreach ($tempList as $holiday) {
-            if (0 !== ($holiday->getType() & $this->holidayTypes)) {
-                $newList->add($holiday);
-            }
-        }
-
-        return $newList;
+        return 0 !== ($holiday->getType() & $this->holidayTypes);
     }
 }
