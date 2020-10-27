@@ -26,11 +26,10 @@ final class IncludeTimespanFilter extends AbstractFilter
 
     public function __construct(\DateTimeInterface $firstIncludedDay, \DateTimeInterface $lastIncludedDay)
     {
-        $this->firstIncludedDay = clone $firstIncludedDay;
-        $this->firstIncludedDay->setTime(0, 0, 0);
+        $this->firstIncludedDay = $firstIncludedDay->format(Holiday::DISPLAY_DATE_FORMAT);
         $this->lastIncludedDayPlusOne = clone $lastIncludedDay;
         $this->lastIncludedDayPlusOne->add(new \DateInterval('P1D'));
-        $this->lastIncludedDayPlusOne->setTime(0, 0, 0);
+        $this->lastIncludedDayPlusOne = $this->lastIncludedDayPlusOne->format(Holiday::DISPLAY_DATE_FORMAT);
     }
 
     /**
@@ -38,7 +37,7 @@ final class IncludeTimespanFilter extends AbstractFilter
      */
     protected function isIncluded(Holiday $holiday): bool
     {
-        $date = $holiday->getDate();
+        $date = $holiday->getSimpleDate();
 
         return $date >= $this->firstIncludedDay && $date < $this->lastIncludedDayPlusOne;
     }

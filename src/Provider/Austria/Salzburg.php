@@ -28,6 +28,6 @@ class Salzburg extends Austria
 
     private function getSaintRupertsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::SAINT_RUPERTS_DAY, sprintf('%s-09-24', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::SAINT_RUPERTS_DAY, "{$year}-09-24", HolidayType::RELIGIOUS | $additionalType);
     }
 }

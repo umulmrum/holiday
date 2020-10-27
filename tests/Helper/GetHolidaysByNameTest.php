@@ -117,7 +117,7 @@ final class GetHolidaysByNameTest extends HolidayTestCase
     {
         $actualResult = [];
         foreach ($this->actualResult->getList() as $holiday) {
-            $actualResult[] = $holiday->getFormattedDate('Y-m-d');
+            $actualResult[] = $holiday->getSimpleDate();
         }
         self::assertEquals($expectedResult, $actualResult);
     }

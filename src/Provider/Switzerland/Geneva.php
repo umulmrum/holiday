@@ -47,11 +47,11 @@ class Geneva extends Switzerland
         $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year);
         $date->add(new \DateInterval('P4D'));
 
-        return new Holiday(HolidayName::GENFER_BETTAG, $date, HolidayType::OFFICIAL | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::GENFER_BETTAG, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getRestorationOfTheRepublic(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::GENEVA_RESTORATION_OF_THE_REPUBLIC, sprintf('%s-12-31', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::GENEVA_RESTORATION_OF_THE_REPUBLIC, "{$year}-12-31", HolidayType::OFFICIAL | $additionalType);
     }
 }

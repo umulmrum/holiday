@@ -52,7 +52,7 @@ class Luxembourg implements HolidayProviderInterface
         if ($year < 1962) {
             $date = '%s-01-23';
         } elseif ($year <= 2006) {
-            $tempDate = \DateTime::createFromFormat(Holiday::DATE_FORMAT, "$year-06-23");
+            $tempDate = \DateTime::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, "$year-06-23");
             if ('0' === $tempDate->format('w')) {
                 $date = '%s-06-24';
             } else {
@@ -62,13 +62,17 @@ class Luxembourg implements HolidayProviderInterface
             $date = '%s-06-23';
         }
 
-        return Holiday::create(HolidayName::GRAND_DUKES_OFFICIAL_BIRTHDAY, sprintf($date, $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::GRAND_DUKES_OFFICIAL_BIRTHDAY, \sprintf($date, $year), HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getWhitTuesday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::WHIT_MONDAY, $easterSunday->add(new \DateInterval('P51D')), HolidayType::TRADITIONAL | $additionalType);
+        return Holiday::createFromDateTime(
+            HolidayName::WHIT_MONDAY,
+            $easterSunday->add(new \DateInterval('P51D')),
+            HolidayType::TRADITIONAL | $additionalType
+        );
     }
 }

@@ -41,6 +41,6 @@ final class IncludeTypeFilter extends AbstractFilter
      */
     protected function isIncluded(Holiday $holiday): bool
     {
-        return 0 !== ($holiday->getType() & $this->holidayTypes);
+        return $holiday->hasType($this->holidayTypes);
     }
 }

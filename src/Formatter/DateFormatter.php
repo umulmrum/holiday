@@ -17,13 +17,14 @@ use umulmrum\Holiday\Model\HolidayList;
 final class DateFormatter implements HolidayFormatterInterface
 {
     public const PARAM_FORMAT = 'date_formatter.format';
+    public const PARAM_DATETIMEZONE = 'date_formatter.datetimezone';
 
     /**
      * @var string
      */
     private $defaultFormat;
 
-    public function __construct(string $defaultFormat = 'Y-m-d')
+    public function __construct(string $defaultFormat = Holiday::DISPLAY_DATE_FORMAT)
     {
         $this->defaultFormat = $defaultFormat;
     }
@@ -33,7 +34,12 @@ final class DateFormatter implements HolidayFormatterInterface
      */
     public function format(Holiday $holiday, array $options = []): string
     {
-        return $holiday->getFormattedDate($this->getFormat($options));
+        $format = $this->getFormat($options);
+        if ($format === Holiday::DISPLAY_DATE_FORMAT) {
+            return $holiday->getSimpleDate();
+        }
+
+        return $holiday->getFormattedDate($format, $options[self::PARAM_DATETIMEZONE] ?? null);
     }
 
     /**
@@ -41,11 +47,9 @@ final class DateFormatter implements HolidayFormatterInterface
      */
     public function formatList(HolidayList $holidayList, array $options = [])
     {
-        $format = $this->getFormat($options);
         $result = [];
-
         foreach ($holidayList->getList() as $holiday) {
-            $result[] = $holiday->getFormattedDate($format);
+            $result[] = $this->format($holiday, $options);
         }
 
         return $result;
@@ -53,10 +57,6 @@ final class DateFormatter implements HolidayFormatterInterface
 
     private function getFormat(array $options): string
     {
-        if (isset($options[self::PARAM_FORMAT])) {
-            return $options[self::PARAM_FORMAT];
-        } else {
-            return $this->defaultFormat;
-        }
+        return $options[self::PARAM_FORMAT] ?? $this->defaultFormat;
     }
 }

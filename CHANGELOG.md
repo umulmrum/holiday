@@ -15,6 +15,8 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 - Transaction scripts GetHolidaysByName, GetHolidaysForMonth and GetNoWorkDaysForTimeSpan to replace similarly named methods in HolidayHelper.
 - Transaction script GetGracePeriod.
 - Holiday::create() is a named constructor to simplify instantiation.
+- Holiday::createFromDateTime() is a named constructor to simplify instantiation.
+- Holiday::hasType() to check if the holiday has one or more passed types.
 - Holiday::format() as an alternative to formatting holidays by calling HolidayFormatterInterface::format().
 - HolidayList::isHoliday() as replacement for HolidayHelper::isDayAHoliday().
 - HolidayList::filter() to simplify chaining of filters.
@@ -30,8 +32,8 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 - Make dates in the Holiday class instances of DateTimeImmutable to have the class completely immutable.
 - Let all dates in the lib use 00:00:00 as time part, as we only deal with whole days.
 - No longer use timezones in holiday calculations and remove respective method arguments.
-  Holidays always use the current timezone. Use ApplyTimezoneFilter on HolidayLists after calculations instead to adjust
-  dates in the Holiday objects to other timezones.
+  Holidays only use a string-based date now internally, but can return a \DateTime object with time set to 00:00:00 in
+  any timezone (current timezone by default).
 - Let filters modify the original list instead of creating a new one.
 - Remove options for filter calls. Options are now passed in the filter constructors (it's a bit less flexible but type-safe and easier to use).
 - Rename DateHelper to DateProvider and add DateProviderInterface.
@@ -43,6 +45,7 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 - Remove explicit filter chaining in filter classes. Do this by calling HolidayList::filter() now.
 - Remove HolidayHelper class, as helper classes are an anti-pattern. Move functionality to other places as stated above.
 - Remove HolidayException.
+- Remove Holiday::getTimestamp(). Use Holiday::getDate()::getTimestamp() instead.
 
 ### Fixed
 

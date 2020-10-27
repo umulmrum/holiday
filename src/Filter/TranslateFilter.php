@@ -39,7 +39,7 @@ final class TranslateFilter implements HolidayFilterInterface
                 $index,
                 Holiday::create(
                     $this->translator->translate($holiday->getName()),
-                    $holiday->getFormattedDate('Y-m-d'),
+                    $holiday->getSimpleDate(),
                     $holiday->getType()
                 )
             );

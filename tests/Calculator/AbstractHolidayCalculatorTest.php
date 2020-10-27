@@ -55,9 +55,9 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
     {
         $actualResult = [];
         foreach ($this->actualResult->getList() as $actualHoliday) {
-            $actualResult[] = $actualHoliday->getFormattedDate('Y-m-d');
+            $actualResult[] = $actualHoliday->getSimpleDate();
         }
-        sort($actualResult);
+        \sort($actualResult);
         self::assertEquals($expectedResult, $actualResult);
     }
 }

@@ -56,7 +56,7 @@ final class IncludeTypeFilterTest extends HolidayTestCase
     {
         $resultDates = [];
         foreach ($this->actualResult->getList() as $result) {
-            $resultDates[] = $result->getFormattedDate('Y-m-d');
+            $resultDates[] = $result->getSimpleDate();
         }
         self::assertEquals($expectedResult, $resultDates);
     }

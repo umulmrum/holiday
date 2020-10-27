@@ -22,15 +22,15 @@ trait WeekdayTrait
      */
     private function getWeekdays(int $year, int $weekday, int $additionalType = HolidayType::OTHER): array
     {
-        $start = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-01-01', $year));
-        $end = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-01-01', $year + 1));
+        $start = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, \sprintf('%s-01-01', $year));
+        $end = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, \sprintf('%s-01-01', $year + 1));
         $day = new \DateTime();
         $weekdayName = Weekday::$NAME[$weekday];
         $day->setTimestamp(strtotime($weekdayName, $start->getTimestamp()));
         $holidays = [];
 
         while ($day->getTimestamp() < $endDate = $end->getTimestamp()) {
-            $holidays[] = new Holiday($weekdayName, \DateTimeImmutable::createFromMutable($day), HolidayType::DAY_OFF | $additionalType);
+            $holidays[] = Holiday::createFromDateTime($weekdayName, $day, HolidayType::DAY_OFF | $additionalType);
             $day->add(new \DateInterval('P7D'));
         }
 

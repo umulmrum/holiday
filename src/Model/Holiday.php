@@ -16,7 +16,8 @@ use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 
 class Holiday
 {
-    public const DATE_FORMAT = '!Y-m-d';
+    public const DISPLAY_DATE_FORMAT = 'Y-m-d';
+    public const CREATE_DATE_FORMAT = '!Y-m-d';
 
     /**
      * @var string
@@ -25,22 +26,27 @@ class Holiday
     /**
      * @var \DateTimeImmutable
      */
-    private $date;
+    private $simpleDate;
     /**
      * @var int
      */
     private $type;
 
-    public function __construct(string $name, \DateTimeImmutable $date, int $type = HolidayType::OTHER)
+    public function __construct(string $name, string $date, int $type = HolidayType::OTHER)
     {
         $this->name = $name;
-        $this->date = $date;
+        $this->simpleDate = $date;
         $this->type = $type;
     }
 
     public static function create(string $name, string $date, int $type = HolidayType::OTHER): self
     {
-        return new self($name, \DateTimeImmutable::createFromFormat(self::DATE_FORMAT, $date), $type);
+        return new self($name, $date, $type);
+    }
+
+    public static function createFromDateTime(string $name, \DateTimeInterface $date, int $type = HolidayType::OTHER): self
+    {
+        return new self($name, $date->format(static::DISPLAY_DATE_FORMAT), $type);
     }
 
     public function getName(): string
@@ -48,24 +54,29 @@ class Holiday
         return $this->name;
     }
 
-    public function getDate(): \DateTimeImmutable
+    public function getSimpleDate(): string
     {
-        return clone $this->date;
+        return $this->simpleDate;
     }
 
-    public function getTimestamp(): int
+    public function getDate(\DateTimeZone $dateTimeZone = null): \DateTimeImmutable
     {
-        return $this->date->getTimestamp();
+        return \DateTimeImmutable::createFromFormat(static::CREATE_DATE_FORMAT, $this->simpleDate, $dateTimeZone);
     }
 
-    public function getFormattedDate(string $format): string
+    public function getFormattedDate(string $format, \DateTimeZone $dateTimeZone = null): string
     {
-        return $this->date->format($format);
+        return $this->getDate($dateTimeZone)->format($format);
     }
 
     public function getType(): int
     {
         return $this->type;
+    }
+
+    public function hasType(int $holidayType): bool
+    {
+        return 0 !== ($this->type & $holidayType);
     }
 
     public function format(HolidayFormatterInterface $formatter): string

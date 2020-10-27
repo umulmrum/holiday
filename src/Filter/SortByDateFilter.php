@@ -23,7 +23,7 @@ final class SortByDateFilter implements HolidayFilterInterface
     {
         $sorted = $holidayList->getList();
         \usort($sorted, static function (Holiday $o1, Holiday $o2) {
-            return $o1->getTimestamp() > $o2->getTimestamp();
+            return $o1->getSimpleDate() > $o2->getSimpleDate();
         });
         foreach ($sorted as $index => $holiday) {
             $holidayList->replaceByIndex($index, $holiday);

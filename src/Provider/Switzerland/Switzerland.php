@@ -47,12 +47,12 @@ class Switzerland implements HolidayProviderInterface
 
     protected function getBerchtoldstag(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::BERCHTOLDSTAG, sprintf('%s-01-02', $year), HolidayType::TRADITIONAL | $additionalType);
+        return Holiday::create(HolidayName::BERCHTOLDSTAG, "{$year}-01-02", HolidayType::TRADITIONAL | $additionalType);
     }
 
     private function getSwissNationalDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::SWISS_NATIONAL_DAY, sprintf('%s-08-01', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::SWISS_NATIONAL_DAY, "{$year}-08-01", HolidayType::OFFICIAL | $additionalType);
     }
 
     protected function getDateForFederalDayofThanksgivingRepentanceAndPrayer(int $year): \DateTime
@@ -65,7 +65,7 @@ class Switzerland implements HolidayProviderInterface
 
     private function getFederalDayofThanksgivingRepentanceAndPrayer(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return new Holiday(HolidayName::SWISS_NATIONAL_DAY, $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::SWISS_NATIONAL_DAY, $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year), HolidayType::RELIGIOUS | $additionalType);
     }
 
     protected function getBettagsmontag(int $year, int $additionalType = HolidayType::OTHER): Holiday
@@ -73,6 +73,6 @@ class Switzerland implements HolidayProviderInterface
         $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year);
         $date->add(new \DateInterval('P1D'));
 
-        return new Holiday(HolidayName::BETTAGSMONTAG, $date, HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::BETTAGSMONTAG, $date, HolidayType::RELIGIOUS | $additionalType);
     }
 }

@@ -40,9 +40,9 @@ final class GetHolidaysForMonth
     public function __invoke($holidayProviders, int $year, int $month): HolidayList
     {
         $holidayList = $this->holidayCalculator->calculate($holidayProviders, $year);
-        $startDate = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-%s-01', $year, $month));
+        $startDate = \DateTime::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, \sprintf('%s-%s-01', $year, $month));
         $lastDayOfMonth = (int) $startDate->format('t');
-        $endDate = \DateTime::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-%s-%s', $year, $month, $lastDayOfMonth));
+        $endDate = \DateTime::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, \sprintf('%s-%s-%s', $year, $month, $lastDayOfMonth));
 
         return $holidayList->filter(new IncludeTimespanFilter($startDate, $endDate));
     }

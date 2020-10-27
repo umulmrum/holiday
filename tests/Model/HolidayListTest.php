@@ -175,7 +175,7 @@ final class HolidayListTest extends HolidayTestCase
 
     private function whenIsHolidayIsCalled(string $date): void
     {
-        $this->actualResult = $this->holidayList->isHoliday(\DateTime::createFromFormat('!Y-m-d', $date));
+        $this->actualResult = $this->holidayList->isHoliday(\DateTime::createFromFormat('Y-m-d', $date));
     }
 
     private function thenItShouldReturnIfDateIsHoliday(bool $expectedResult): void

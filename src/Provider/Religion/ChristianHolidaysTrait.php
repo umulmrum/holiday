@@ -23,7 +23,7 @@ trait ChristianHolidaysTrait
     private function getEasterSundayDate(int $year): \DateTimeImmutable
     {
         if (false === isset($this->easterCache[$year])) {
-            $this->easterCache[$year] = \DateTimeImmutable::createFromFormat(Holiday::DATE_FORMAT, $this->calculateEasterSunday($year));
+            $this->easterCache[$year] = \DateTimeImmutable::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, $this->calculateEasterSunday($year));
         }
 
         return $this->easterCache[$year];
@@ -78,167 +78,167 @@ trait ChristianHolidaysTrait
 
     private function getEpiphany(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::EPIPHANY, sprintf('%s-01-06', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::EPIPHANY, "{$year}-01-06", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getCandlemas(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::CANDLEMAS, sprintf('%s-02-02', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::CANDLEMAS, "{$year}-02-02", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getValentinesDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::VALENTINES_DAY, sprintf('%s-02-14', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::VALENTINES_DAY, "{$year}-02-14", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSaintJosephsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::SAINT_JOSEPHS_DAY, sprintf('%s-03-19', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::SAINT_JOSEPHS_DAY, "{$year}-03-19", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAshWednesday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::ASH_WEDNESDAY, $easterSunday->sub(new \DateInterval('P46D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::ASH_WEDNESDAY, $easterSunday->sub(new \DateInterval('P46D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getMaundyThursday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::MAUNDY_THURSDAY, $easterSunday->sub(new \DateInterval('P3D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::MAUNDY_THURSDAY, $easterSunday->sub(new \DateInterval('P3D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getGoodFriday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::GOOD_FRIDAY, $easterSunday->sub(new \DateInterval('P2D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::GOOD_FRIDAY, $easterSunday->sub(new \DateInterval('P2D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getEasterSunday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::EASTER_SUNDAY, $easterSunday, HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::EASTER_SUNDAY, $easterSunday, HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getEasterMonday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::EASTER_MONDAY, $easterSunday->add(new \DateInterval('P1D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::EASTER_MONDAY, $easterSunday->add(new \DateInterval('P1D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAscension(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::ASCENSION, $easterSunday->add(new \DateInterval('P39D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::ASCENSION, $easterSunday->add(new \DateInterval('P39D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getWhitSunday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::WHIT_SUNDAY, $easterSunday->add(new \DateInterval('P49D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::WHIT_SUNDAY, $easterSunday->add(new \DateInterval('P49D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getWhitMonday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::WHIT_MONDAY, $easterSunday->add(new \DateInterval('P50D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::WHIT_MONDAY, $easterSunday->add(new \DateInterval('P50D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getCorpusChristi(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::CORPUS_CHRISTI, $easterSunday->add(new \DateInterval('P60D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::CORPUS_CHRISTI, $easterSunday->add(new \DateInterval('P60D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSaintFloriansDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::SAINT_FLORIANS_DAY, sprintf('%s-05-04', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::SAINT_FLORIANS_DAY, "{$year}-05-04", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getFeastofSaintsPeterAndPaul(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::FEAST_OF_SAINTS_PETER_AND_PAUL, sprintf('%s-06-29', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::FEAST_OF_SAINTS_PETER_AND_PAUL, "{$year}-06-29", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAssumptionDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::ASSUMPTION_DAY, sprintf('%s-08-15', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::ASSUMPTION_DAY, "{$year}-08-15", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getNativityOfMary(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::NATIVITY_OF_MARY, sprintf('%s-09-08', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::NATIVITY_OF_MARY, "{$year}-09-08", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSaintMauriceDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::SAINT_MAURICE_DAY, sprintf('%s-09-22', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::SAINT_MAURICE_DAY, "{$year}-09-22", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getReformationDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::REFORMATION_DAY, sprintf('%s-10-31', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::REFORMATION_DAY, "{$year}-10-31", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getHalloween(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::HALLOWEEN, sprintf('%s-10-31', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::HALLOWEEN, "{$year}-10-31", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAllSaintsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::ALL_SAINTS_DAY, sprintf('%s-11-01', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::ALL_SAINTS_DAY, "{$year}-11-01", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAllSoulsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::ALL_SOULS_DAY, sprintf('%s-11-02', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::ALL_SOULS_DAY, "{$year}-11-02", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSaintMartinsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::SAINT_MARTINS_DAY, sprintf('%s-11-11', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::SAINT_MARTINS_DAY, "{$year}-11-11", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getLeopoldsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::LEOPOLDS_DAY, sprintf('%s-11-15', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::LEOPOLDS_DAY, "{$year}-11-15", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getRepentanceAndPrayerDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $christmasEve = \DateTimeImmutable::createFromFormat(Holiday::DATE_FORMAT, \sprintf('%s-12-24', $year));
+        $christmasEve = \DateTimeImmutable::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, "{$year}-12-24");
         $changeBy = 32 + ((int) date('w', $christmasEve->getTimestamp()));
 
-        return new Holiday(HolidayName::REPENTANCE_AND_PRAYER_DAY, $christmasEve->sub(new \DateInterval("P{$changeBy}D")), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::REPENTANCE_AND_PRAYER_DAY, $christmasEve->sub(new \DateInterval("P{$changeBy}D")), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getImmaculateConception(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::IMMACULATE_CONCEPTION, sprintf('%s-12-08', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::IMMACULATE_CONCEPTION, "{$year}-12-08", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getChristmasEve(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::CHRISTMAS_EVE, sprintf('%s-12-24', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::CHRISTMAS_EVE, "{$year}-12-24", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getChristmasDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::CHRISTMAS_DAY, sprintf('%s-12-25', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::CHRISTMAS_DAY, "{$year}-12-25", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSecondChristmasDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::SECOND_CHRISTMAS_DAY, sprintf('%s-12-26', $year), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::create(HolidayName::SECOND_CHRISTMAS_DAY, "{$year}-12-26", HolidayType::RELIGIOUS | $additionalType);
     }
 }

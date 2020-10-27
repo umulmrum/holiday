@@ -69,36 +69,36 @@ class Belgium implements HolidayProviderInterface
 
     private function getBelgianNationalHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::BELGIAN_NATIONAL_HOLIDAY, sprintf('%s-07-21', $year), $additionalType | HolidayType::OFFICIAL);
+        return Holiday::create(HolidayName::BELGIAN_NATIONAL_HOLIDAY, "{$year}-07-21", $additionalType | HolidayType::OFFICIAL);
     }
 
     private function getDayOfTheFlemishCommunity(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::DAY_OF_THE_FLEMISH_COMMUNITY, sprintf('%s-07-11', $year), $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
+        return Holiday::create(HolidayName::DAY_OF_THE_FLEMISH_COMMUNITY, "{$year}-07-11", $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
     }
 
     private function getFrenchCommunityHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::FRENCH_COMMUNITY_HOLIDAY, sprintf('%s-09-27', $year), $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
+        return Holiday::create(HolidayName::FRENCH_COMMUNITY_HOLIDAY, "{$year}-09-27", $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
     }
 
     private function getDayOfTheWalloonRegion(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::DAY_OF_THE_WALLOON_REGION, sprintf('Third Sunday of %s-09', $year), $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
+        return Holiday::create(HolidayName::DAY_OF_THE_WALLOON_REGION, "Third Sunday of {$year}-09", $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
     }
 
     private function getArmisticeDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::ARMISTICE_DAY, sprintf('%s-11-11', $year), $additionalType | HolidayType::OFFICIAL);
+        return Holiday::create(HolidayName::ARMISTICE_DAY, "{$year}-11-11", $additionalType | HolidayType::OFFICIAL);
     }
 
     private function getDayofTheGermanSpeakingCommunity(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::DAY_OF_THE_GERMAN_SPEAKING_COMMUNITY, sprintf('%s-11-15', $year), $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
+        return Holiday::create(HolidayName::DAY_OF_THE_GERMAN_SPEAKING_COMMUNITY, "{$year}-11-15", $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
     }
 
     private function getKingsFeast(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::BELGIAN_KINGS_FEAST, sprintf('%s-11-15', $year), $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
+        return Holiday::create(HolidayName::BELGIAN_KINGS_FEAST, "{$year}-11-15", $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
     }
 }

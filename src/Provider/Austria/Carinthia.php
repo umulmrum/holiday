@@ -34,6 +34,6 @@ class Carinthia extends Austria
 
     private function getCarinthianPlebisciteDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::CARINTHIAN_PLEBISCITE_DAY, sprintf('%s-10-26', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::CARINTHIAN_PLEBISCITE_DAY, "{$year}-10-26", HolidayType::OFFICIAL | $additionalType);
     }
 }

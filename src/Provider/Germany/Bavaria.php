@@ -28,7 +28,7 @@ class Bavaria extends BadenWuerttemberg
     {
         $holidays = parent::calculateHolidaysForYear($year);
 
-        $holidays->add(Holiday::create(HolidayName::AUGSBURGER_FRIEDENSFEST, sprintf('%s-08-08', $year), HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
+        $holidays->add(Holiday::create(HolidayName::AUGSBURGER_FRIEDENSFEST, "{$year}-08-08", HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
         if ($year < 1969) {
             $holidays->add($this->getSaintJosephsDay($year, HolidayType::DAY_OFF));
         }

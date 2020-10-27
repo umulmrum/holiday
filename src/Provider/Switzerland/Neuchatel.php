@@ -57,6 +57,6 @@ class Neuchatel extends Switzerland
 
     private function getRepublicAnniversary(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::JAHRESTAG_AUSRUFUNG_REPUBLIK_NEUENBURG, sprintf('%s-03-01', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::JAHRESTAG_AUSRUFUNG_REPUBLIK_NEUENBURG, "{$year}-03-01", HolidayType::OFFICIAL | $additionalType);
     }
 }

@@ -63,11 +63,11 @@ class Germany implements HolidayProviderInterface
 
     private function getGermanUnityDay(int $year): Holiday
     {
-        return Holiday::create(HolidayName::GERMAN_UNITY_DAY, sprintf('%s-10-03', $year), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return Holiday::create(HolidayName::GERMAN_UNITY_DAY, "{$year}-10-03", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
     private function getOldGermanUnityDay(int $year): Holiday
     {
-        return Holiday::create(HolidayName::GERMAN_UNITY_DAY, sprintf('%s-06-17', $year), HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return Holiday::create(HolidayName::GERMAN_UNITY_DAY, "{$year}-06-17", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 }

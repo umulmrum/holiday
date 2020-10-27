@@ -85,7 +85,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
 
         return implode(self::LINE_ENDING, [
             'BEGIN:VEVENT',
-            sprintf('UID:%s-%s', $holiday->getName(), $holiday->getFormattedDate('Y-m-d')),
+            sprintf('UID:%s-%s', $holiday->getName(), $holiday->getSimpleDate()),
             sprintf('DTSTAMP:%s', $dtstamp->format('Ymd\THis\ZO')),
             sprintf('CREATED:%s', $dtstamp->format('Ymd\THis\ZO')),
             'SUMMARY:'.$this->translator->translateName($holiday),

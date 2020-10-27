@@ -37,8 +37,8 @@ class HolidayList implements \Countable
      */
     public function add(Holiday $holiday): void
     {
-        if (-1 !== $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getDate())) {
-            $this->holidayList[$index] = new Holiday($holiday->getName(), $holiday->getDate(), $holiday->getType() | $this->holidayList[$index]->getType());
+        if (-1 !== $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getSimpleDate())) {
+            $this->holidayList[$index] = Holiday::create($holiday->getName(), $holiday->getSimpleDate(), $holiday->getType() | $this->holidayList[$index]->getType());
         } else {
             $this->holidayList[] = $holiday;
         }
@@ -61,11 +61,10 @@ class HolidayList implements \Countable
         $this->holidayList[$index] = $holiday;
     }
 
-    private function getIndexByNameAndDate($name, \DateTimeImmutable $dateTime): int
+    private function getIndexByNameAndDate(string $name, string $date): int
     {
-        $timestamp = $dateTime->getTimestamp();
         foreach ($this->holidayList as $index => $holiday) {
-            if ($name === $holiday->getName() && $timestamp === $holiday->getTimestamp()) {
+            if ($name === $holiday->getName() && $date === $holiday->getSimpleDate()) {
                 return $index;
             }
         }
@@ -91,10 +90,10 @@ class HolidayList implements \Countable
 
     public function isHoliday(\DateTimeInterface $date): bool
     {
-        $formatted = $date->format('Y-m-d');
+        $formatted = $date->format(Holiday::DISPLAY_DATE_FORMAT);
 
         foreach ($this->holidayList as $holiday) {
-            if ($holiday->getFormattedDate('Y-m-d') === $formatted) {
+            if ($holiday->getSimpleDate() === $formatted) {
                 return true;
             }
         }

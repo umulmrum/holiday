@@ -29,11 +29,11 @@ final class HolidayTest extends HolidayTestCase
      * @test
      * @dataProvider getDateTimeData
      */
-    public function it_returns_the_correct_date(string $dateTime): void
+    public function it_returns_the_correct_date(string $date): void
     {
-        $this->givenAHoliday($dateTime);
+        $this->givenAHoliday($date);
         $this->whenGetDateIsCalled();
-        $this->thenThisDateShouldBeReturned($dateTime);
+        $this->thenThisDateShouldBeReturned($date);
     }
 
     private function givenAHoliday(string $dateTime): void

@@ -57,13 +57,17 @@ class Denmark implements HolidayProviderInterface
 
     private function getDanishNationalHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::DANISH_NATIONAL_HOLIDAY, sprintf('%s-06-05', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::DANISH_NATIONAL_HOLIDAY, "{$year}-06-05", HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getGeneralPrayerDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSundayDate = $this->getEasterSundayDate($year);
 
-        return new Holiday(HolidayName::GENERAL_PRAYER_DAY, $easterSundayDate->add(new \DateInterval('P26D')), HolidayType::OFFICIAL | HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(
+            HolidayName::GENERAL_PRAYER_DAY,
+            $easterSundayDate->add(new \DateInterval('P26D')),
+            HolidayType::OFFICIAL | HolidayType::RELIGIOUS | $additionalType
+        );
     }
 }

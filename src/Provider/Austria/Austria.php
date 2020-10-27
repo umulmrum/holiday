@@ -67,16 +67,16 @@ class Austria implements HolidayProviderInterface
 
     private function getAustrianNationalHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::AUSTRIAN_NATIONAL_HOLIDAY, sprintf('%s-10-26', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::AUSTRIAN_NATIONAL_HOLIDAY, "{$year}-10-26", HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getAustrianStatesHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::AUSTRIAN_STATES_HOLIDAY, sprintf('%s-05-01', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::AUSTRIAN_STATES_HOLIDAY, "{$year}-05-01", HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getAustrianStatesHolidayNovember(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::AUSTRIAN_STATES_HOLIDAY, sprintf('%s-11-12', $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::AUSTRIAN_STATES_HOLIDAY, "{$year}-11-12", HolidayType::OFFICIAL | $additionalType);
     }
 }

@@ -32,9 +32,9 @@ final class IncludeUniqueDateFilter extends AbstractFilter
      */
     protected function isIncluded(Holiday $holiday): bool
     {
-        $found = isset($this->foundTimestamps[$holiday->getTimestamp()]);
+        $found = isset($this->foundTimestamps[$holiday->getSimpleDate()]);
         if (false === $found) {
-            $this->foundTimestamps[$holiday->getTimestamp()] = true;
+            $this->foundTimestamps[$holiday->getSimpleDate()] = true;
         }
 
         return false === $found;
