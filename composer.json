@@ -19,6 +19,7 @@
         "php": ">=7.3"
     },
     "require-dev": {
+        "ext-json": "*",
         "chameleon-system/code-style-config": "dev-master@dev",
         "phpunit/phpunit": "~9.4",
         "symfony/translation": "~4.3|~5.0"

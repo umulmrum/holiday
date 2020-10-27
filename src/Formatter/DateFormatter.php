@@ -35,7 +35,7 @@ final class DateFormatter implements HolidayFormatterInterface
     public function format(Holiday $holiday, array $options = []): string
     {
         $format = $this->getFormat($options);
-        if ($format === Holiday::DISPLAY_DATE_FORMAT) {
+        if (Holiday::DISPLAY_DATE_FORMAT === $format) {
             return $holiday->getSimpleDate();
         }
 
