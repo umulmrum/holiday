@@ -140,7 +140,6 @@ final class BelgiumTest extends AbstractHolidayCalculatorTest
                     '1975-11-11',
                     '1975-11-15',
                     '1975-12-25',
-
                 ],
             ],
             [

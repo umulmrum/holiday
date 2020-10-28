@@ -55,7 +55,7 @@ final class IncludeTypeFilterTest extends HolidayTestCase
     private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
     {
         $resultDates = [];
-        foreach ($this->actualResult->getList() as $result) {
+        foreach ($this->actualResult as $result) {
             $resultDates[] = $result->getSimpleDate();
         }
         self::assertEquals($expectedResult, $resultDates);

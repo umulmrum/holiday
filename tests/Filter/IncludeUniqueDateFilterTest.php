@@ -57,7 +57,7 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
     private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult): void
     {
         $resultDates = [];
-        foreach ($this->actualResult->getList() as $result) {
+        foreach ($this->actualResult as $result) {
             $resultDates[] = $result->getSimpleDate();
         }
         self::assertEquals($expectedResult, $resultDates);

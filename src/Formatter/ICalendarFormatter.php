@@ -61,7 +61,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
         $result = [];
 
         $result[] = $this->getHeader();
-        foreach ($holidayList->getList() as $holiday) {
+        foreach ($holidayList as $holiday) {
             $result[] = $this->getEvent($holiday);
         }
         $result[] = $this->getFooter();

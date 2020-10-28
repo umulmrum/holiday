@@ -242,7 +242,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
     private function thenItShouldReturnAListOfHolidays(array $expectedResult): void
     {
         $actualResult = [];
-        foreach ($this->actualResult->getList() as $holiday) {
+        foreach ($this->actualResult as $holiday) {
             $actualResult[] = $holiday->getSimpleDate();
         }
         self::assertEquals($expectedResult, $actualResult);

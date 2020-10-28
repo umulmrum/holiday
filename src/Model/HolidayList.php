@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Model;
 use umulmrum\Holiday\Filter\HolidayFilterInterface;
 use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 
-class HolidayList implements \Countable
+class HolidayList implements \Countable, \IteratorAggregate
 {
     /**
      * @var Holiday[]
@@ -46,7 +46,7 @@ class HolidayList implements \Countable
 
     public function addAll(HolidayList $holidayList): void
     {
-        foreach ($holidayList->getList() as $holiday) {
+        foreach ($holidayList as $holiday) {
             $this->add($holiday);
         }
     }
@@ -111,5 +111,10 @@ class HolidayList implements \Countable
     public function format(HolidayFormatterInterface $formatter)
     {
         return $formatter->formatList($this);
+    }
+
+    public function getIterator(): \Traversable
+    {
+        return new \ArrayIterator($this->holidayList);
     }
 }

@@ -38,6 +38,7 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 - Remove options for filter calls. Options are now passed in the filter constructors (it's a bit less flexible but type-safe and easier to use).
 - Rename DateHelper to DateProvider and add DateProviderInterface.
 - Throw InvalidArgumentExceptions instead of HolidayExceptions.
+- HolidayList is now traversable.
 
 ### Removed
 - Remove HolidayInitializerInterface and all implementations, as they overcomplicated things and are no longer required.

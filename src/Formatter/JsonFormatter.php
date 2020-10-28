@@ -58,7 +58,7 @@ final class JsonFormatter implements HolidayFormatterInterface
     {
         $result = [];
 
-        foreach ($holidayList->getList() as $holiday) {
+        foreach ($holidayList as $holiday) {
             $result[] = $this->getEvent($holiday);
         }
 
