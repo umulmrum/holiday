@@ -42,6 +42,10 @@ class Glarus extends Switzerland
 
     private function getNaefelserFahrt(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::NAEFELSER_FAHRT, "First Thursday of {$year}-04", HolidayType::OFFICIAL | $additionalType);
+        return Holiday::createFromDateTime(
+            HolidayName::NAEFELSER_FAHRT,
+            new \DateTime("First Thursday of {$year}-04"),
+            HolidayType::OFFICIAL | $additionalType
+        );
     }
 }
