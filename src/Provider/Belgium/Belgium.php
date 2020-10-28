@@ -40,27 +40,27 @@ class Belgium implements HolidayProviderInterface
         $holidays->add($this->getWhitSunday($year, HolidayType::OTHER));
         $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year >= 1973) {
-            $holidays->add($this->getDayOfTheFlemishCommunity($year, HolidayType::OTHER));
+            $holidays->add($this->getDayOfTheFlemishCommunity($year));
         }
         if ($year >= 1890) {
             $holidays->add($this->getBelgianNationalHoliday($year, HolidayType::DAY_OFF));
         }
         $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year >= 1975) {
-            $holidays->add($this->getFrenchCommunityHoliday($year, HolidayType::OTHER));
+            $holidays->add($this->getFrenchCommunityHoliday($year));
         }
         if ($year >= 1998) {
-            $holidays->add($this->getDayOfTheWalloonRegion($year, HolidayType::OTHER));
+            $holidays->add($this->getDayOfTheWalloonRegion($year));
         }
-        $holidays->add($this->getHalloween($year, HolidayType::OTHER));
+        $holidays->add($this->getHalloween($year));
         $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        $holidays->add($this->getAllSoulsDay($year, HolidayType::OTHER));
+        $holidays->add($this->getAllSoulsDay($year));
         $holidays->add($this->getArmisticeDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year >= 1990) {
             $holidays->add($this->getDayofTheGermanSpeakingCommunity($year, HolidayType::OTHER));
         }
         if ($year >= 1866) {
-            $holidays->add($this->getKingsFeast($year, HolidayType::OTHER));
+            $holidays->add($this->getKingsFeast($year));
         }
         $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
@@ -84,7 +84,11 @@ class Belgium implements HolidayProviderInterface
 
     private function getDayOfTheWalloonRegion(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::DAY_OF_THE_WALLOON_REGION, "Third Sunday of {$year}-09", $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY);
+        return Holiday::createFromDateTime(
+            HolidayName::DAY_OF_THE_WALLOON_REGION,
+            new \DateTime("Third Sunday of {$year}-09"),
+            $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY
+        );
     }
 
     private function getArmisticeDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
