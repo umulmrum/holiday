@@ -33,10 +33,13 @@ class Luxembourg implements HolidayProviderInterface
         $holidays->add($this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getGoodFriday($year, HolidayType::BANK));
         $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        if ($year >= 2019) {
+            $holidays->add($this->getEuropeDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        }
         $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getWhitTuesday($year, HolidayType::OFFICIAL | HolidayType::NO_SCHOOL));
-        if ($year >= 1947) {
+        if ($year >= 1962) {
             $holidays->add($this->getGrandDukesOfficialBirthday($year, HolidayType::DAY_OFF));
         }
         $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
@@ -47,22 +50,14 @@ class Luxembourg implements HolidayProviderInterface
         return $holidays;
     }
 
+    private function getEuropeDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::EUROPE_DAY, "{$year}-05-09", HolidayType::OFFICIAL | $additionalType);
+    }
+
     private function getGrandDukesOfficialBirthday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        if ($year < 1962) {
-            $date = '%s-01-23';
-        } elseif ($year <= 2006) {
-            $tempDate = \DateTime::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, "$year-06-23");
-            if ('0' === $tempDate->format('w')) {
-                $date = '%s-06-24';
-            } else {
-                $date = '%s-06-23';
-            }
-        } else {
-            $date = '%s-06-23';
-        }
-
-        return Holiday::create(HolidayName::GRAND_DUKES_OFFICIAL_BIRTHDAY, \sprintf($date, $year), HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::GRAND_DUKES_OFFICIAL_BIRTHDAY, "{$year}-06-23", HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getWhitTuesday(int $year, int $additionalType = HolidayType::OTHER): Holiday

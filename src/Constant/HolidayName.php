@@ -84,6 +84,7 @@ final class HolidayName
     public const AUGSBURGER_FRIEDENSFEST = 'augsburger_friedensfest';
     public const GERMAN_UNITY_DAY = 'german_unity_day';
 
+    public const EUROPE_DAY = 'europe_day';
     public const GRAND_DUKES_OFFICIAL_BIRTHDAY = 'grand_dukes_official_birthday';
 
     public const BERCHTOLDSTAG = 'berchtoldstag';
