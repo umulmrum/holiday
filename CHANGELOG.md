@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 There's a lot of API changes in this release - sorry for that, but I think the lib is way better and easier to use than before.
-I hope this to be the only change this dramatic before release 1.0.0. See UPGRADING.md on how to migrate from 0.2.x.
+I hope this to be the only change this dramatic before release 1.0.0. There is no explicit migration guide, but if you
+get stuck when upgrading, please open an issue and I will try to help.
 
 ### Added
 - Holidays for these countries: Austria, Belgium, Denmark, France, Liechtenstein, Luxembourg, Switzerland.
@@ -22,12 +23,13 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 - HolidayList::filter() to simplify chaining of filters.
 - HolidayList::format() as an alternative to formatting lists by calling HolidayFormatterInterface::formatList().
 - AbstractFilter class to simplify filter implementations.
+- FilterInverter to add inverse filters without almost-duplicate implementations.
 - Add missing argument and return value declarations.
 
 ### Changed
 - Bump minimum required PHP version to 7.3.0, minimum Symfony translator version to 4.3.0 (only if the optional SymfonyBridgeTranslator is used).
 - Move HolidayCalculator and HolidayCalculatorInterface from namespace umulmrum\Holiday\Calculator to umulmrum\Holiday.
-- Simplify complete API of HolidayCalculator: No longer require static initialization and identification of holiday providers.
+- Simplify API of HolidayCalculator: No longer require static initialization and identification of holiday providers.
   by an ID, but pass one or more providers directly. Also allow calculation of multiple years at once.
 - Make dates in the Holiday class instances of DateTimeImmutable to have the class completely immutable.
 - Let all dates in the lib use 00:00:00 as time part, as we only deal with whole days.
@@ -39,6 +41,7 @@ I hope this to be the only change this dramatic before release 1.0.0. See UPGRAD
 - Rename DateHelper to DateProvider and add DateProviderInterface.
 - Throw InvalidArgumentExceptions instead of HolidayExceptions.
 - HolidayList is now traversable.
+- Methods in TranslatorInterface can now receive an optional locale.
 
 ### Removed
 - Remove HolidayInitializerInterface and all implementations, as they overcomplicated things and are no longer required.

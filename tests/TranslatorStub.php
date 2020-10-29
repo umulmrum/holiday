@@ -19,7 +19,7 @@ final class TranslatorStub implements TranslatorInterface, \Symfony\Contracts\Tr
     /**
      * {@inheritdoc}
      */
-    public function translateName(Holiday $holiday): string
+    public function translateName(Holiday $holiday, string $locale = null): string
     {
         return $this->translate($holiday->getName());
     }
@@ -27,7 +27,7 @@ final class TranslatorStub implements TranslatorInterface, \Symfony\Contracts\Tr
     /**
      * {@inheritdoc}
      */
-    public function translate(string $string): string
+    public function translate(string $string, string $locale = null): string
     {
         switch ($string) {
             case 'name': return 'Very name';
