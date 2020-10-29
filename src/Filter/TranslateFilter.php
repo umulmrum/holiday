@@ -15,6 +15,10 @@ use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Translator\TranslatorInterface;
 
+/**
+ * TranslateFilter translates the names of all elements in the filtered HolidayList by using the translator passed as
+ * constructor argument.
+ */
 final class TranslateFilter implements HolidayFilterInterface
 {
     /**

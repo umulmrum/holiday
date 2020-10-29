@@ -14,6 +14,9 @@ namespace umulmrum\Holiday\Filter;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
+/**
+ * SortByDateFilter sorts the list by date.
+ */
 final class SortByDateFilter implements HolidayFilterInterface
 {
     /**
@@ -23,7 +26,7 @@ final class SortByDateFilter implements HolidayFilterInterface
     {
         $sorted = $holidayList->getList();
         \usort($sorted, static function (Holiday $o1, Holiday $o2) {
-            return $o1->getSimpleDate() > $o2->getSimpleDate();
+            return $o1->getSimpleDate() <=> $o2->getSimpleDate();
         });
         foreach ($sorted as $index => $holiday) {
             $holidayList->replaceByIndex($index, $holiday);

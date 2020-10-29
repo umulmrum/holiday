@@ -13,6 +13,10 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\Holiday;
 
+/**
+ * IncludeTimespanFilter retains all holidays that lie within the timespan passed as constructor arguments (including
+ * these days).
+ */
 final class IncludeTimespanFilter extends AbstractFilter
 {
     /**

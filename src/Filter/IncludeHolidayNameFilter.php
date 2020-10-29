@@ -13,6 +13,9 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\Holiday;
 
+/**
+ * IncludeHolidayNameFilter retains all holidays with the name or names passed as constructor arguments.
+ */
 final class IncludeHolidayNameFilter extends AbstractFilter
 {
     /**

@@ -13,6 +13,10 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\Holiday;
 
+/**
+ * IncludeTypeFilter retains all holidays with one or more types passed as constructor argument.
+ * Multiple types can be given either as a bitmask in a single integer, or as separate types in an integer array.
+ */
 final class IncludeTypeFilter extends AbstractFilter
 {
     /**

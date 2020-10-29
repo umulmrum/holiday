@@ -14,6 +14,11 @@ namespace umulmrum\Holiday\Filter;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 
+/**
+ * IncludeUniqueDateFilter rejects all holidays with a duplicate date in the filtered HolidayList. The first holiday with
+ * any date is retained, but note that order is not defined in the result of HolidayCalculator. Depending on the use case,
+ * it might make sense to apply other filters before, e.g. to sort or remove holidays, to receive more reliable results.
+ */
 final class IncludeUniqueDateFilter extends AbstractFilter
 {
     private $foundTimestamps = [];

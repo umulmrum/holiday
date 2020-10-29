@@ -13,6 +13,11 @@ namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Model\Holiday;
 
+/**
+ * IncludeWeekdayFilter retains all holidays that are on a weekday passed as constructor argument.
+ * Either a single weekday may be passed as an integer (use constants in the Weekday class), or an array of integers to
+ * retain more than one weekday.
+ */
 final class IncludeWeekdayFilter extends AbstractFilter
 {
     /**
