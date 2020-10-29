@@ -30,8 +30,8 @@ final class GetHolidaysByName
     }
 
     /**
-     * Returns all holidays with the given name for the given year. Note that holiday names are
-     * not necessarily unique, and therefore a HolidayList object is returned.
+     * Returns all holidays with the given name for the given years. Note that holiday names are
+     * not necessarily unique, which is why a HolidayList object is returned.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      * @param int|int[]                                                           $years

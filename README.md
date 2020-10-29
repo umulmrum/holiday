@@ -1,6 +1,4 @@
-
-Holiday
-=======
+# Holiday
 
 Holiday is a library that computes holidays in a very flexible way. It is possible to filter holiday lists by various
 criteria and format them in different ways. It is easy to add more holiday providers, filters and formatters, so even
@@ -8,16 +6,15 @@ if this library does not perfectly fit your needs, you can simply extend it.
 
 [![Latest Stable Version](https://poser.pugx.org/umulmrum/holiday/v/stable)](https://packagist.org/packages/umulmrum/holiday) [![Latest Unstable Version](https://poser.pugx.org/umulmrum/holiday/v/unstable)](https://packagist.org/packages/umulmrum/holiday) [![License](https://poser.pugx.org/umulmrum/holiday/license)](https://packagist.org/packages/umulmrum/holiday)
 
-Requirements
-------------
+## Requirements
 
 - PHP >= 7.3
-- Symfony translator in version 4.3+ is recommended for translations.
+- Symfony translator is recommended for translations (built-in translator requires version 4.3+, but can be trivially
+  reimplemented for older versions).
 
 That's it really.
 
-Installation
-------------
+## Installation
 
 Install the library using Composer.
 
@@ -25,8 +22,7 @@ Install the library using Composer.
 composer require umulmrum/holiday
 ```
 
-Usage
------
+## Usage Examples
 
 Simple example:
 
@@ -62,15 +58,15 @@ $holidays = $holidayCalculator->calculate(Bavaria::class, 2020);
 // Apply filters, e.g. restrict to one month.
 $firstDay = new \DateTime('2020-12-01');
 $lastDay = new \DateTime('2020-12-31');
-$holidays = (new IncludeTimespanFilter($firstDay, $lastDay))->filter($holidays);
+$holidays = $holidays->filter(new IncludeTimespanFilter($firstDay, $lastDay));
 // Format the results.
-$formattedHolidays = (new DateFormatter())->formatList($holidays);
+$formattedHolidays = $holidays->format(new DateFormatter());
 ```
 
 This results in an array of date strings.
 
-There are also some helper methods that simplify some common holiday computations. Using the `GetHolidayForMonth` helper, the example 
-above can be substituted by this:
+There are also some helper methods that simplify some common holiday computations. Using the `GetHolidayForMonth` helper,
+the example above can be substituted by this:
 
 ```php
 <?php
@@ -84,7 +80,8 @@ use umulmrum\Holiday\Provider\Germany\Bavaria;
 $formattedHolidays = (new GetHolidaysForMonth())(Bavaria::class, 2020, 12)->format(new DateFormatter());
 ```
 
-Yet another example:
+One last example shows how to compute all holidays, Saturdays and Sundays in the years 2020 and 2021 for the German state
+Baden-Wuerttemberg, sort these holidays by date and format the result as JSON (all in 2 lines of code):
 
 ```php
 <?php
@@ -99,41 +96,120 @@ use umulmrum\Holiday\Provider\Weekday\Saturdays;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 
 $calculator = new HolidayCalculator();
-/*
- * Compute holidays for the German state of Baden-Wuerttemberg and also all Saturdays and Sundays for the year 2020
- * by passing an array of holiday providers.
- */
-$holidays = $calculator->calculate([BadenWuerttemberg::class, Saturdays::class, Sundays::class], 2020);
-// Sort holidays by date and format as JSON
+$holidays = $calculator->calculate([BadenWuerttemberg::class, Saturdays::class, Sundays::class], [2020, 2021]);
 $formattedHolidays = $holidays->filter(new SortByDateFilter())->format(new JsonFormatter());
 ```
 
-Usage normally follows this pattern:
+## Detailed Usage
 
-- Compute all holidays for a given year and one or more holiday providers.
-- Narrow down the list of holidays to the desired subset by using filters.
-  Filters take `HolidayList`s and return `HolidayList`s and can therefore easily be chained (e.g. all religious holidays
-  in a certain month can be determined by chaining a type filter and a time span filter).
-  A few filters are provided in this library, more can be added freely.
-- Format the result using a formatter.
-  A few formatters are provided in this library, more can be added freely.
+First create a `HolidayList` for holidays in one or more years by using the `HolidayCalculator`. Pass one or more holiday
+providers to the calculator to get holidays for these providers, e.g. a country, a religion or event a specific weekday.
+`HolidayList` is basically an augmented array of `Holiday` objects.
 
-Holiday Types
--------------
+```php
+use umulmrum\Holiday\HolidayCalculator;
+use umulmrum\Holiday\Provider\Luxembourg\Luxembourg;
+use umulmrum\Holiday\Provider\Weekday\Saturdays;
+use umulmrum\Holiday\Provider\Weekday\Sundays;
 
-Each holiday returned by the calculator has one or more types, returned by `Holiday::getType()`. The return value is a
-bit map containing all applicable types (the type identifier can be converted to a translation key which can be 
-translated to get a localized readable name - see e.g. `JsonFormatter` for details).
+$calculator = new HolidayCalculator();
+$holidays = $calculator->calculate(Luxembourg::class, 2020);
+
+// or multiple providers at once by passing an array of providers
+$holidays = $calculator->calculate([Luxembourg::class, Saturdays::class, Sundays::class], 2020);
+
+// or multiple years at once by passing an array of years (can be combined)
+$holidays = $calculator->calculate(Luxembourg::class, [2020, 2021]);
+```
+
+See the complete list of built-in providers under `src/Provider` or use them as examples to create your own. Be aware that
+a holiday is NOT equivalent to a day off - holidays in the sense of this lib is more of a "special day" as defined by
+providers, and might be traditional or religious days without impact on working hours. To restrict a `HolidayList` to
+days off, use the `IncludeTypeFilter` as described below in the `Filters` section.
+
+The `HolidayList` can then be asked for information or holidays can be added or removed, the list can be filtered or formatted.
+
+```php
+// Get the number of holidays in the list. HolidayList also implements \Countable
+$holidays->count();
+```
+
+```php
+// Get the list of holidays as array. HolidayList also implements \IteratorAggregate
+$holidays->getList();
+$holidays->getIterator();
+```
+
+```php
+// Modify the list.
+$holidays->add($anotherHoliday);
+$holidays->addAll($anotherHolidayList);
+$holidays->removeByIndex(3);
+$holidays->replaceByIndex(0, $anotherHoliday);
+```
+
+```php
+// Check if a given date is in the list
+$holidays->isHoliday(new \DateTime('2020-12-01'));
+```
+
+### Filters
+
+Use filters to narrow down the list of holidays to the desired subset.
+
+```php
+use umulmrum\Holiday\Constant\HolidayType;
+use umulmrum\Holiday\Filter\IncludeTimespanFilter;
+use umulmrum\Holiday\Filter\IncludeTypeFilter;
+
+// Keep only work-free days (as defined in the provider(s) the list is derived from).
+$holidays->filter(new IncludeTypeFilter(HolidayType::DAY_OFF));
+
+/*
+ * Filters modify the original list. The following example shows how to chain filters to get holidays with type DAY_OFF
+ * in January 2020.
+ */
+$holidays
+    ->filter(new IncludeTimespanFilter(new \DateTime('2020-01-01'), new \DateTime('2020-01-31')))
+    ->filter(new IncludeTypeFilter(HolidayType::DAY_OFF))
+;
+```
+
+See the complete list of built-in filters under `src/Filter` or use them as examples to create your own (extend
+`AbstractFilter` or implement `HolidayFilterInterface`).
+
+### Formatters
+
+Use formatters to - you guessed it - format `HolidayList`s and `Holiday`s.
+
+```php
+use umulmrum\Holiday\Formatter\JsonFormatter;
+
+$formattedList = $holidayList->format(new JsonFormatter());
+```
+
+Formatters may return a string or an array of strings.
+
+See the complete list of built-in formatters under `src/Formatter` or use them as examples to create your own (implement
+`HolidayFormatterInterface`).
+
+### Holiday Types
+
+A `HolidayList` contains `Holiday` objects. Apart from a (technical) name and date, each holiday has one or more types.
+Return these types as an integer bit mask by calling `Holiday::getType()`, or ask for specific types using
+`Holiday::hasType()`.
 
 The type is normally a combination of
 - the holiday's origin, e.g. religious or traditional,
 - the holiday's legal status (official or not),
-- the holiday's impact on working hours (e.g. if it's a full or half day off).
+- the holiday's impact on working hours (e.g. if it's a full or half day off, if schools or government agencies are closed).
 
-Which Holidays are Returned
----------------------------
+See the `HolidayType` class for available types. This class also contains translation keys for these types
+which can then get translated for localized readable names - see e.g. `JsonFormatter` for details.
 
-The `HolidayCalculator` only returns holidays that are legally defined in the scope of the chosen holiday provider, or
+### Which Holidays are Returned
+
+`HolidayCalculator` only returns holidays that are legally defined in the scope of the chosen holiday provider, or
 if there's "secular impact", e.g. it's a day off. This means there are differences between providers; e.g. Easter Sunday
 is an official holiday in Brandenburg/Germany, so it is included for Brandenburg. In the rest of Germany (as well as 
 most other countries) it is not a holiday as it is a Sunday anyway, and therefore not included as a holiday.
@@ -142,50 +218,35 @@ Similarly, Sundays are normally not included if they are no official holidays in
 although they are days off in the Western hemisphere. To find out which days are days off, provide both the respective
 holiday provider and the one for Sundays (or use `GetNoWorkDaysForTimeSpan()`).
 
-Filters
--------
-
-Filters can be used to narrow down or transform holiday lists. There are some predefined filters (see `src/Filter`),
-but custom ones can be created by implementing `HolidayFilterInterface`.
-
-When implementing custom filters, it is suggested that you use a prefix "Include" in the class name for all filters that
-preserve some holidays, e.g. the `IncludeWeekdayFilter` preserves all holidays on a specific weekday. Equally the prefix
-"Exclude" should be used for all filters that remove some holidays.
-
-Formatters
-----------
-
-Formatters can be used to format holidays and holiday lists. There are some predefined formatters (see `src/Formatter`),
-but custom ones can be created by implementing `HolidayFormatterInterface`.
-
-Translations
-------------
+### Translations
 
 Some formatters can be initialized with an optional translator. See `TranslatorInterface` and the translation files 
 under `res/trans`.
+
+### Helpers
+
+To simplify some common holiday-related tasks, see the helpers under `src/Helper` (e.g. the `GetNoWorkDaysForTimeSpan`
+helper takes holiday providers and a timespan and calculates a list of all days off for these arguments).
  
-Supported Calendars
--------------------
+## Supported Calendars
 
 Currently only the Gregorian calendar is supported, for years < 10000.
  
-Supported Countries
--------------------
+## Supported Countries
 
-- Austria
+- Austria (incl. Burgenland, Carinthia, Lower Austria, Salzburg, Styria, Tyrol, UpperAustria, Vienna, Vorarlberg)
 - Belgium
 - Denmark
-- France
-- Germany
+- France (incl. Bas-Rhin, French Guiana, Guadeloupe, Haut-Rhin, Martinique, Moselle, Reunion)
+- Germany (incl. Baden-Wuerttemberg, Bavaria, Berlin, Brandenburg, Bremen, Hamburg, Hesse, Lower Saxony, Mecklenburg-Vorpommern, North-rhine Westphalia, Rhineland Palatinate, Saarland, Saxony, Saxony-Anhalt, Schleswig-Holstein, Thuringia)
 - Liechtenstein
 - Luxembourg
-- Switzerland
+- Switzerland (incl. Aargau, Appenzell-Ausserrhoden, Appenzell-Innerrhoden, Basel Landschaft, Basel Stadt, Bern, Fribourg, Geneva, Glarus, Grisons, Jura, Lucerne, Neuchatel, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St Gallen, Thurgau, Ticino, Uri, Valais, Vaud, Zuerich, Zug)
 
-It is quite easy to create your own holiday providers. Just have a look at the existing code, it should be 
-self-explanatory. I will happily merge pull requests (see below).
+To create your own holiday providers have a look at the existing code, it should be self-explanatory. I will happily
+merge pull requests to support more countries (see below).
 
-Notes on German Holidays
-------------------------
+### Notes on German Holidays
 
 - Easter Sunday/Ostersonntag and Whit Sunday/Pfingstsonntag are not public holidays in most states.
 - Every Sunday is a public holiday in Hesse.
@@ -202,56 +263,51 @@ Notes on German Holidays
 - New states of Germany are treated as if they had always been part of the Federal Republic of Germany. For years
   before 1990 holidays are therefore not correct.
 
-Notes on Swiss Holidays
------------------------
+### Notes on Swiss Holidays
 
 - Holidays in Switzerland are really complicated as they differ widely in the different cantons and some holidays are
   celebrated inofficially or only in parts of a canton. The implemented rules are a best guess of what makes sense in
   the scope of this library (which also means that some holidays are omitted if they are a celebrated only in very few
   communities). I'm open for improvements.
 
-Notes on Christian Holidays
----------------------------
+### Notes on Christian Holidays
 
 - Only holidays of Western churches are taken into account.
 - Only the most important holidays are taken into account, as interpreted by me (which is most likely far from accurate; 
   please feel free to contribute changes).
 
-Note on Holidays Way in the Past or Future
-------------------------------------------
+### Note on Holidays Way in the Past or Future
 
 If computing holidays for past years, be aware that they may not be accurate. All holidays were introduced at some 
-point, so this lib might return holidays for years in which they really were not in existence, as well as omit holidays
-that haven't been celebrated for a long time.
+point in time, so this lib might return holidays for years in which they really were not in existence, as well as omit
+holidays that haven't been celebrated for a long time.
  
 Likewise holidays might of course change in the future. Also, Easter date calculation will change in the far future due 
 to astronomical reasons.
 
 This lib aims to be accurate for "recent" years at least, approximately for years after World War II until present.
+Again, contributions are welcome.
 
-Versioning
-----------
+## Versioning
 
-This library follows Semantic Versioning. Everything in the library can be considered the public API except
+This library follows Semantic Versioning. Everything in the library can be considered the public API except:
  - code annotated with `@internal`,
  - tests,
  - code that can only be accessed by using reflection (e.g. private methods). 
 
  Note that the library is still in a 0.* version which allows the public API to change anytime.
 
-Contribution
-------------
+## Contribution
 
 Contributions are highly welcome. Please follow these rules when submitting a PR:
 
 - Mimic existing code for style and structure.
 - Add unit tests for all of your code.
-- Use the Symfony code style (php-cs-fixer with symfony level).
+- Use the Symfony code style (call `php-cs-fixer fix` in the library root without further arguments).
 
 By submitting a PR you agree that all your contributed code may be used under the MIT license.
 
-License
--------
+## License
 
 Holiday is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 

@@ -62,6 +62,18 @@ final class HolidayType
 
     public const BANK = 256;
 
+    public const RESERVED1 = 512;
+
+    public const RESERVED2 = 1024;
+
+    public const RESERVED3 = 2048;
+
+    public const RESERVED4 = 4096;
+
+    public const RESERVED5 = 8192;
+
+    public const RESERVED6 = 16384;
+
     public static $NAME = [
         self::OTHER => 'other',
         self::OFFICIAL => 'official',

@@ -36,7 +36,6 @@ final class GetNoWorkDaysForTimeSpan
 
     /**
      * Returns all days in the given time span in which normally employees do not need to work.
-     * Be aware that this method is quite heavy-weight if multiple no-work days for multiple years are requested.
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      * @param HolidayProviderInterface[]                                          $noWorkWeekdayProviders

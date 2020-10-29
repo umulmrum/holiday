@@ -19,6 +19,9 @@ final class GetGracePeriod
     }
 
     /**
+     * Returns the date that lies $numberOfDays in the future of $firstDay, prolonged by all holidays generated from
+     * $holidayProviders.
+     *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      *
      * @throws \InvalidArgumentException
