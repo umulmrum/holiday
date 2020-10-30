@@ -11,11 +11,15 @@
 
 namespace umulmrum\Holiday\Interpreter;
 
+use umulmrum\Holiday\Assert\Assert;
+
 /**
  * @internal
  */
 trait YearInterpreterTrait
 {
+    use Assert;
+
     /**
      * @param int|int[] $years
      *
@@ -28,11 +32,7 @@ trait YearInterpreterTrait
         }
 
         if (\is_array($years)) {
-            foreach ($years as $year) {
-                if (false === \is_int($year)) {
-                    throw new \InvalidArgumentException('Year needs to be either int or an array of int');
-                }
-            }
+            $this->assertIntArray($years);
 
             return $years;
         }

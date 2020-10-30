@@ -1,0 +1,50 @@
+<?php
+
+namespace umulmrum\Holiday\Assert;
+
+use umulmrum\Holiday\Constant\Weekday;
+
+trait Assert
+{
+    /**
+     * @param mixed $value
+     * @throws \InvalidArgumentException
+     */
+    private function assertInt($value): void
+    {
+        if (false === \is_int($value)) {
+            throw new \InvalidArgumentException('int expected, got: '.$value);
+        }
+    }
+
+    /**
+     * @param array $value
+     * @throws \InvalidArgumentException
+     */
+    private function assertIntArray(array $value): void
+    {
+        foreach ($value as $item) {
+            if (false === \is_int($item)) {
+                throw new \InvalidArgumentException('array of int expected, got: '.\print_r($value, true));
+            }
+        }
+    }
+
+    /**
+     * @param mixed $value
+     *
+     * @throws \InvalidArgumentException
+     */
+    private function assertWeekday($value): void
+    {
+        $this->assertInt($value);
+        if ($value < Weekday::SUNDAY || $value >Weekday::SATURDAY) {
+            throw new \InvalidArgumentException(\sprintf(
+                'Invalid weekday "%s". Expected value between %s and %s.',
+                $value,
+                Weekday::SUNDAY,
+                Weekday::SATURDAY
+            ));
+        }
+    }
+}

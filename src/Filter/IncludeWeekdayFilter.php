@@ -11,6 +11,8 @@
 
 namespace umulmrum\Holiday\Filter;
 
+use umulmrum\Holiday\Assert\Assert;
+use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\Model\Holiday;
 
 /**
@@ -20,6 +22,8 @@ use umulmrum\Holiday\Model\Holiday;
  */
 final class IncludeWeekdayFilter extends AbstractFilter
 {
+    use Assert;
+
     /**
      * @var int[]
      */
@@ -33,18 +37,17 @@ final class IncludeWeekdayFilter extends AbstractFilter
     public function __construct($weekdays)
     {
         if (true === \is_int($weekdays)) {
+            $this->assertWeekday($weekdays);
             $this->weekdays = [
                 $weekdays,
             ];
         } elseif (true === \is_array($weekdays)) {
             foreach ($weekdays as $weekday) {
-                if (false === \is_int($weekday)) {
-                    throw new \InvalidArgumentException('First argument must be either an integer or an array of integers.');
-                }
+                $this->assertWeekday($weekday);
                 $this->weekdays = $weekdays;
             }
         } else {
-            throw new \InvalidArgumentException('First argument must be either an integer or an array of integers.');
+            throw new \InvalidArgumentException('Argument must be either an integer or an array of integers.');
         }
         $this->weekdays = \array_flip($this->weekdays);
     }

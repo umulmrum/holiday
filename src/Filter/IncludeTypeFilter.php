@@ -11,6 +11,7 @@
 
 namespace umulmrum\Holiday\Filter;
 
+use umulmrum\Holiday\Assert\Assert;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\Holiday;
 
@@ -20,6 +21,8 @@ use umulmrum\Holiday\Model\Holiday;
  */
 final class IncludeTypeFilter extends AbstractFilter
 {
+    use Assert;
+
     /**
      * @var int
      */
@@ -34,9 +37,7 @@ final class IncludeTypeFilter extends AbstractFilter
             $this->holidayTypes = $holidayTypes;
         } elseif (true === \is_array($holidayTypes)) {
             foreach ($holidayTypes as $holidayType) {
-                if (false === \is_int($holidayType)) {
-                    throw new \InvalidArgumentException('Argument must be either an integer or an array of integers.');
-                }
+                $this->assertInt($holidayType);
                 $this->holidayTypes |= $holidayType;
             }
         } else {

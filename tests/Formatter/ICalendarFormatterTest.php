@@ -98,9 +98,24 @@ final class ICalendarFormatterTest extends HolidayTestCase
         ];
     }
 
+    /**
+     * @test
+     */
+    public function it_should_use_defaults_if_no_constructor_arguments(): void
+    {
+        $this->givenICalendarFormatterWithoutArguments();
+        $this->whenFormatIsCalled(Holiday::create('name', '2020-01-01'));
+        $this->thenOutputShouldDependOnDefaults();
+    }
+
     private function givenICalendarFormatter(): void
     {
         $this->subject = new ICalendarFormatter(new TranslatorStub(), new DateProviderStub(new \DateTime('20160808T120342')));
+    }
+
+    private function givenICalendarFormatterWithoutArguments(): void
+    {
+        $this->subject = new ICalendarFormatter();
     }
 
     private function whenFormatIsCalled(Holiday $holiday): void
@@ -119,5 +134,17 @@ final class ICalendarFormatterTest extends HolidayTestCase
     private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
+    }
+
+    private function thenOutputShouldDependOnDefaults(): void
+    {
+        /*
+         * Don't use minutes and seconds to minimize test brittleness - we just assume that the correct time is printed
+         * if the rest of the date is current. We already tested correctness of date formatting above.
+         */
+        $now = (new \DateTime('now'))->format('Ymd\TH');
+        self::assertStringContainsString('DTSTAMP:'.$now, $this->actualResult);
+        self::assertStringContainsString('CREATED:'.$now, $this->actualResult);
+        self::assertStringContainsString('SUMMARY:name', $this->actualResult);
     }
 }

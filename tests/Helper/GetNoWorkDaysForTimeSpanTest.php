@@ -14,6 +14,7 @@ namespace umulmrum\Holiday\Test\Helper;
 use umulmrum\Holiday\Helper\GetNoWorkDaysForTimeSpan;
 use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Provider\France\France;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Provider\Weekday\Saturdays;
@@ -40,7 +41,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
     public function it_should_calculate_correct_no_work_days_for_a_timespan(string $firstDay, string $lastDay, array $noWorkWeekdaysProviders, array $expectedResult): void
     {
         $this->givenGetNoWorkDaysForTimeSpan();
-        $this->whenGetNoWorkdaysForTimespanIsCalled(new BadenWuerttemberg(), $firstDay, $lastDay, $noWorkWeekdaysProviders);
+        $this->whenGetNoWorkdaysForTimespanIsCalled(BadenWuerttemberg::class, $firstDay, $lastDay, $noWorkWeekdaysProviders);
         $this->thenItShouldReturnAListOfHolidays($expectedResult);
     }
 
@@ -224,12 +225,22 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
         ];
     }
 
+    /**
+     * @test
+     */
+    public function it_should_throw_exception_on_invalid_timespan(): void
+    {
+        $this->givenGetNoWorkDaysForTimeSpan();
+        $this->thenInvalidArgumentExceptionIsExpected();
+        $this->whenGetNoWorkdaysForTimespanIsCalled(France::class, '2020-11-01', '2020-10-31');
+    }
+
     private function givenGetNoWorkDaysForTimeSpan(): void
     {
         $this->subject = new GetNoWorkDaysForTimeSpan(new HolidayCalculator());
     }
 
-    private function whenGetNoWorkdaysForTimespanIsCalled(HolidayProviderInterface $holidayProvider, string $firstDay, string $lastDay, array $noWorkWeekdaysProvider): void
+    private function whenGetNoWorkdaysForTimespanIsCalled(string $holidayProvider, string $firstDay, string $lastDay, array $noWorkWeekdaysProvider = []): void
     {
         $this->actualResult = ($this->subject)(
             $holidayProvider,
@@ -246,5 +257,10 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
             $actualResult[] = $holiday->getSimpleDate();
         }
         self::assertEquals($expectedResult, $actualResult);
+    }
+
+    private function thenInvalidArgumentExceptionIsExpected(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
     }
 }

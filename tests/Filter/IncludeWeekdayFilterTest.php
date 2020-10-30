@@ -207,4 +207,40 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
             ],
         ];
     }
+
+    /**
+     * @test
+     * @dataProvider getDataForException
+     *
+     * @param mixed $weekdays
+     */
+    public function it_should_throw_exception_on_invalid_weekdays($weekdays): void
+    {
+        $this->thenInvalidArgumentExceptionIsExpected();
+        $this->whenFilterWithInvalidWeekdayIsInstantiated($weekdays);
+    }
+
+    public function getDataForException(): array
+    {
+        return [
+            ['string'],
+            [['array', 'of', 'strings']],
+            [[Weekday::SATURDAY, 'other']],
+            [null],
+            [true],
+            [-1],
+            [7],
+            [[3, 7]],
+        ];
+    }
+
+    private function thenInvalidArgumentExceptionIsExpected(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+    }
+
+    private function whenFilterWithInvalidWeekdayIsInstantiated($weekdays): void
+    {
+        new IncludeWeekdayFilter($weekdays);
+    }
 }
