@@ -11,6 +11,7 @@
 
 namespace umulmrum\Holiday\Filter;
 
+use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\Holiday;
 
 /**
@@ -22,7 +23,7 @@ final class IncludeTypeFilter extends AbstractFilter
     /**
      * @var int
      */
-    private $holidayTypes = 0;
+    private $holidayTypes = HolidayType::OTHER;
 
     /**
      * @param int|int[] $holidayTypes
@@ -33,10 +34,13 @@ final class IncludeTypeFilter extends AbstractFilter
             $this->holidayTypes = $holidayTypes;
         } elseif (true === \is_array($holidayTypes)) {
             foreach ($holidayTypes as $holidayType) {
+                if (false === \is_int($holidayType)) {
+                    throw new \InvalidArgumentException('Argument must be either an integer or an array of integers.');
+                }
                 $this->holidayTypes |= $holidayType;
             }
         } else {
-            throw new \InvalidArgumentException('First argument must be either an integer or an array of integers.');
+            throw new \InvalidArgumentException('Argument must be either an integer or an array of integers.');
         }
     }
 

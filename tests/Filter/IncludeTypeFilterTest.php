@@ -31,15 +31,20 @@ final class IncludeTypeFilterTest extends HolidayTestCase
     /**
      * @test
      * @dataProvider getData
+     *
+     * @param int|int[] $filterType
      */
-    public function it_should_filter_holidays(HolidayList $holidayList, int $filterType, array $expectedResult): void
+    public function it_should_filter_holidays(HolidayList $holidayList, $filterType, array $expectedResult): void
     {
         $this->givenAFilter($filterType);
         $this->whenFilterIsCalled($holidayList);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAFilter(int $filterType): void
+    /**
+     * @param int|int[] $filterType
+     */
+    private function givenAFilter($filterType): void
     {
         $this->filter = new IncludeTypeFilter($filterType);
     }
@@ -130,6 +135,51 @@ final class IncludeTypeFilterTest extends HolidayTestCase
                     '2016-01-02',
                 ],
             ],
+            [
+                new HolidayList([
+                    Holiday::create('name', '2016-01-01', HolidayType::DAY_OFF),
+                    Holiday::create('name', '2016-01-02', HolidayType::TRADITIONAL),
+                    Holiday::create('name', '2016-01-03', HolidayType::RELIGIOUS),
+                ]),
+                [HolidayType::DAY_OFF, HolidayType::TRADITIONAL],
+                [
+                    '2016-01-01',
+                    '2016-01-02',
+                ],
+            ],
         ];
+    }
+
+    /**
+     * @test
+     * @dataProvider getDataForException
+     *
+     * @param mixed $filterType
+     */
+    public function it_should_throw_exception_on_invalid_holiday_types($filterType): void
+    {
+        $this->thenInvalidArgumentExceptionIsExpected();
+        $this->whenFilterWithInvalidTypeIsInstantiated($filterType);
+    }
+
+    public function getDataForException(): array
+    {
+        return [
+            ['string'],
+            [['array', 'of', 'strings']],
+            [[HolidayType::DAY_OFF, 'other']],
+            [null],
+            [true],
+        ];
+    }
+
+    private function thenInvalidArgumentExceptionIsExpected(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+    }
+
+    private function whenFilterWithInvalidTypeIsInstantiated($filterType): void
+    {
+        new IncludeTypeFilter($filterType);
     }
 }
