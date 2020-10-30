@@ -81,7 +81,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
             sprintf('DTSTAMP:%s', $dtstamp->format('Ymd\THis\ZO')),
             sprintf('CREATED:%s', $dtstamp->format('Ymd\THis\ZO')),
             'SUMMARY:'.$this->translator->translateName($holiday),
-            'DTSTART;VALUE=DATE:'.$holiday->getFormattedDate('Ymd'),
+            'DTSTART;VALUE=DATE:'.$holiday->getDate()->format('Ymd'),
             'END:VEVENT',
         ]);
     }

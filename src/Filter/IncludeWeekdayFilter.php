@@ -57,6 +57,6 @@ final class IncludeWeekdayFilter extends AbstractFilter
      */
     protected function isIncluded(Holiday $holiday): bool
     {
-        return true === isset($this->weekdays[(int) $holiday->getFormattedDate('w')]);
+        return true === isset($this->weekdays[(int) $holiday->getDate()->format('w')]);
     }
 }

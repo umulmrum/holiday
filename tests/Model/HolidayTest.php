@@ -11,7 +11,10 @@
 
 namespace umulmrum\Holiday\Test\Model;
 
+use umulmrum\Holiday\Constant\HolidayType;
+use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 use umulmrum\Holiday\Model\Holiday;
+use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayTest extends HolidayTestCase
@@ -21,7 +24,7 @@ final class HolidayTest extends HolidayTestCase
      */
     private $holiday;
     /**
-     * @var
+     * @var bool|\DateTime
      */
     private $actualResult;
 
@@ -29,87 +32,184 @@ final class HolidayTest extends HolidayTestCase
      * @test
      * @dataProvider getDateTimeData
      */
-    public function it_returns_the_correct_date(string $date): void
+    public function it_builds_correctly_from_constructor(string $name, string $date, int $type): void
     {
-        $this->givenAHoliday($date);
-        $this->whenGetDateIsCalled();
-        $this->thenThisDateShouldBeReturned($date);
+        $this->whenHolidayIsCreatedFromConstructor($name, $date, $type);
+        $this->thenThisNameShouldBeSet($name);
+        $this->thenThisSimpleDateShouldBeSet($date);
+        $this->thenThisTypeShouldBeSet($type);
     }
 
-    private function givenAHoliday(string $dateTime): void
+    private function whenHolidayIsCreatedFromConstructor(string $name, string $date, int $type): void
     {
-        $this->holiday = Holiday::create('name', $dateTime);
+        $this->holiday = new Holiday($name, $date, $type);
     }
 
-    private function whenGetDateIsCalled(): void
+    private function thenThisNameShouldBeSet(string $name): void
     {
-        $this->actualResult = $this->holiday->getDate();
+        self::assertEquals($name, $this->holiday->getName());
     }
 
-    private function thenThisDateShouldBeReturned(string $dateTime): void
+    private function thenThisSimpleDateShouldBeSet(string $dateTime): void
     {
-        self::assertEquals(new \DateTime($dateTime.' 00:00:00'), $this->actualResult);
+        self::assertEquals($dateTime, $this->holiday->getSimpleDate());
+    }
+
+    private function thenThisTypeShouldBeSet(int $type): void
+    {
+        self::assertEquals($type, $this->holiday->getType());
     }
 
     /**
      * @test
      * @dataProvider getDateTimeData
      */
-    public function it_is_immutable(string $dateTime): void
+    public function it_builds_correctly_from_create(string $name, string $date, int $type): void
     {
-        $this->givenAHoliday($dateTime);
-        $this->whenGetDateIsCalled();
-        $this->whenTheResultIsModified();
-        $this->whenGetDateIsCalled();
-        $this->thenThisDateShouldBeReturned($dateTime);
+        $this->whenHolidayIsCreatedFromCreate($name, $date, $type);
+        $this->thenThisNameShouldBeSet($name);
+        $this->thenThisSimpleDateShouldBeSet($date);
+        $this->thenThisTypeShouldBeSet($type);
     }
 
-    private function whenTheResultIsModified(): void
+    private function whenHolidayIsCreatedFromCreate(string $name, string $date, int $type): void
     {
-        $this->actualResult->add(new \DateInterval('P1D'));
+        $this->holiday = Holiday::create($name, $date, $type);
+    }
+
+    /**
+     * @test
+     * @dataProvider getDateTimeData
+     */
+    public function it_builds_correctly_from_createFromDateTime(string $name, string $date, int $type): void
+    {
+        $this->whenHolidayIsCreatedFromCreateFromDateTime($name, $date, $type);
+        $this->thenThisNameShouldBeSet($name);
+        $this->thenThisSimpleDateShouldBeSet($date);
+        $this->thenThisTypeShouldBeSet($type);
+    }
+
+    private function whenHolidayIsCreatedFromCreateFromDateTime(string $name, string $date, int $type): void
+    {
+        $this->holiday = Holiday::createFromDateTime($name, new \DateTime($date), $type);
+    }
+
+    /**
+     * @test
+     * @dataProvider getDetailedDateTimeData
+     */
+    public function it_should_return_date_time(string $date, string $timezone, \DateTimeImmutable $expectedResult): void
+    {
+        $this->givenHolidayWithDate($date);
+        $this->whenGetDateIsCalled($timezone);
+        $this->thenThisDateShouldBeReturned($expectedResult);
+    }
+
+    private function givenHolidayWithDate(string $date): void
+    {
+        $this->holiday = Holiday::create('name', $date);
+    }
+
+    private function whenGetDateIsCalled(string $timezone): void
+    {
+        $this->actualResult = $this->holiday->getDate(new \DateTimeZone($timezone));
+    }
+
+    private function thenThisDateShouldBeReturned(\DateTimeImmutable $expectedResult): void
+    {
+        self::assertEquals($expectedResult, $this->actualResult);
     }
 
     public function getDateTimeData(): array
     {
         return [
-            [
-                '1917-01-01',
-                '1970-01-01',
-                '2000-02-29',
-            ],
+            ['foo', '1917-01-01', HolidayType::DAY_OFF],
+            ['bar', '1970-01-01', HolidayType::OTHER],
+            ['baz', '2000-02-29', HolidayType::BANK | HolidayType::NO_SCHOOL],
+        ];
+    }
+
+    public function getDetailedDateTimeData(): array
+    {
+        return [
+            ['1917-01-01', 'Europe/Berlin', new \DateTimeImmutable('1917-01-01T00:00:00+0100')],
+            ['1970-01-01', 'America/Argentina/Cordoba', new \DateTimeImmutable('1970-01-01T00:00:00-0300')],
+            ['2020-10-31', 'Asia/Manila', new \DateTimeImmutable('2020-10-31T00:00:00+0800')],
         ];
     }
 
     /**
      * @test
-     * @dataProvider getNameData
+     * @dataProvider getTypeData
      */
-    public function it_should_return_the_correct_name(string $name): void
+    public function it_should_return_if_it_has_type(int $typeToSet, int $checkedType, bool $expectedResult): void
     {
-        $this->givenANamedHoliday($name);
-        $this->whenGetNameIsCalled();
-        $this->thenTheCorrectNameShouldBeReturned($name);
+        $this->givenHolidayWithType($typeToSet);
+        $this->whenHasTypeIsCalled($checkedType);
+        $this->thenTheExpectedResultShouldBeReturned($expectedResult);
     }
 
-    private function givenANamedHoliday(string $name): void
+    public function getTypeData(): array
     {
-        $this->holiday = Holiday::create($name, '2001-04-12');
+        return [
+            [HolidayType::NO_SCHOOL, HolidayType::NO_SCHOOL, true],
+            [HolidayType::OTHER, HolidayType::NO_SCHOOL, false],
+            [HolidayType::NO_SCHOOL, HolidayType::OTHER, false],
+            [HolidayType::OTHER, HolidayType::OTHER, true],
+            [HolidayType::NO_SCHOOL | HolidayType::BANK, HolidayType::NO_SCHOOL, true],
+            [HolidayType::NO_SCHOOL | HolidayType::BANK, HolidayType::NO_SCHOOL | HolidayType::BANK, true],
+            [HolidayType::NO_SCHOOL | HolidayType::BANK | HolidayType::DAY_OFF, HolidayType::NO_SCHOOL | HolidayType::BANK, true],
+        ];
     }
 
-    private function whenGetNameIsCalled(): void
+    private function givenHolidayWithType(int $type): void
     {
-        $this->actualResult = $this->holiday->getName();
+        $this->holiday = Holiday::create('name', '2020-01-01', $type);
     }
 
-    private function thenTheCorrectNameShouldBeReturned(string $expectedResult): void
+    private function whenHasTypeIsCalled(int $type): void
+    {
+        $this->actualResult = $this->holiday->hasType($type);
+    }
+
+    private function thenTheExpectedResultShouldBeReturned(bool $expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    public function getNameData(): array
+    /**
+     * @test
+     */
+    public function it_should_format_self(): void
     {
-        return [
-            ['name'],
-        ];
+        $this->givenHoliday('name', '2019-06-30', HolidayType::DAY_OFF);
+        $this->whenFormatIsCalledWithSomeFormatter();
+        $this->thenTheExpectedStringShouldBeReturned('name|2019-06-30|2');
+    }
+
+    private function givenHoliday(string $name, string $date, int $type): void
+    {
+        $this->holiday = Holiday::create($name, $date, $type);
+    }
+
+    private function whenFormatIsCalledWithSomeFormatter(): void
+    {
+        $this->actualResult = $this->holiday->format(new class implements HolidayFormatterInterface
+        {
+            public function format(Holiday $holiday, array $options = []): string
+            {
+                return \sprintf('%s|%s|%s', $holiday->getName(), $holiday->getSimpleDate(), $holiday->getType());
+            }
+
+            public function formatList(HolidayList $holidayList, array $options = [])
+            {
+                return 'not implemented';
+            }
+        });
+    }
+
+    private function thenTheExpectedStringShouldBeReturned(string $expectedResult): void
+    {
+        self::assertEquals($expectedResult, $this->actualResult);
     }
 }

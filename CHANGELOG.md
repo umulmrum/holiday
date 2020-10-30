@@ -50,6 +50,7 @@ get stuck when upgrading, please open an issue and I will try to help.
 - Remove HolidayHelper class, as helper classes are an anti-pattern. Move functionality to other places as stated above.
 - Remove HolidayException.
 - Remove Holiday::getTimestamp(). Use Holiday::getDate()::getTimestamp() instead.
+- Remove Holiday::getFormattedDate(). Use Holiday::getDate()::format() instead.
 
 ### Fixed
 

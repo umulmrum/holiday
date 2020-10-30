@@ -39,7 +39,7 @@ final class DateFormatter implements HolidayFormatterInterface
             return $holiday->getSimpleDate();
         }
 
-        return $holiday->getFormattedDate($format, $options[self::PARAM_DATETIMEZONE] ?? null);
+        return $holiday->getDate($options[self::PARAM_DATETIMEZONE] ?? null)->format($format);
     }
 
     /**

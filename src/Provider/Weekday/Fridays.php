@@ -11,12 +11,13 @@
 
 namespace umulmrum\Holiday\Provider\Weekday;
 
+use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Constant\Weekday;
 
 class Fridays extends Weekdays
 {
-    public function __construct()
+    public function __construct(int $additionalType = HolidayType::OTHER)
     {
-        parent::__construct(Weekday::FRIDAY);
+        parent::__construct(Weekday::FRIDAY, $additionalType);
     }
 }

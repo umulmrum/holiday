@@ -11,6 +11,7 @@
 
 namespace umulmrum\Holiday\Test\Helper;
 
+use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Helper\GetNoWorkDaysForTimeSpan;
 use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Model\HolidayList;
@@ -60,7 +61,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
                 '2016-01-01',
                 '2016-01-11',
                 [
-                    Sundays::class,
+                    new Sundays(HolidayType::DAY_OFF),
                 ],
                 [
                     '2016-01-01',
@@ -100,8 +101,8 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
                 '2015-12-01',
                 '2016-01-02',
                 [
-                    Saturdays::class,
-                    Sundays::class,
+                    new Saturdays(HolidayType::DAY_OFF),
+                    new Sundays(HolidayType::DAY_OFF),
                 ],
                 [
                     '2015-12-05',
@@ -121,8 +122,8 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
                 '2015-12-02',
                 '2016-01-05',
                 [
-                    Tuesdays::class,
-                    Thursdays::class,
+                    new Tuesdays(HolidayType::DAY_OFF),
+                    new Thursdays(HolidayType::DAY_OFF),
                 ],
                 [
                     '2015-12-03',

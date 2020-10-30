@@ -64,11 +64,6 @@ class Holiday
         return \DateTimeImmutable::createFromFormat(static::CREATE_DATE_FORMAT, $this->simpleDate, $dateTimeZone);
     }
 
-    public function getFormattedDate(string $format, \DateTimeZone $dateTimeZone = null): string
-    {
-        return $this->getDate($dateTimeZone)->format($format);
-    }
-
     public function getType(): int
     {
         return $this->type;
@@ -76,7 +71,8 @@ class Holiday
 
     public function hasType(int $holidayType): bool
     {
-        return 0 !== ($this->type & $holidayType);
+        return (0 !== ($this->type & $holidayType))
+            || (HolidayType::OTHER === $this->type && HolidayType::OTHER === $holidayType);
     }
 
     public function format(HolidayFormatterInterface $formatter): string

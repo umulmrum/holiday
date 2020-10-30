@@ -52,7 +52,7 @@ final class GetNoWorkDaysForTimeSpan
             $noWork = $noWorkWeekdayProviders;
         } else {
             $noWork = [
-                Sundays::class,
+                new Sundays(HolidayType::DAY_OFF),
             ];
         }
         if (false === \is_array($holidayProviders)) {
