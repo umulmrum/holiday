@@ -12,7 +12,6 @@
 namespace umulmrum\Holiday\Filter;
 
 use umulmrum\Holiday\Assert\Assert;
-use umulmrum\Holiday\Constant\Weekday;
 use umulmrum\Holiday\Model\Holiday;
 
 /**
@@ -36,12 +35,13 @@ final class IncludeWeekdayFilter extends AbstractFilter
      */
     public function __construct($weekdays)
     {
-        if (true === \is_int($weekdays)) {
+        if (\is_int($weekdays)) {
             $this->assertWeekday($weekdays);
             $this->weekdays = [
                 $weekdays,
             ];
-        } elseif (true === \is_array($weekdays)) {
+        } elseif (\is_array($weekdays)) {
+           $this->assertArrayNotEmpty($weekdays);
             foreach ($weekdays as $weekday) {
                 $this->assertWeekday($weekday);
                 $this->weekdays = $weekdays;

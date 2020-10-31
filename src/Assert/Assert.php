@@ -27,7 +27,7 @@ trait Assert
     }
 
     /**
-     * @param array $value
+     * @param mixed[] $value
      * @throws \InvalidArgumentException
      */
     private function assertIntArray(array $value): void
@@ -36,6 +36,16 @@ trait Assert
             if (false === \is_int($item)) {
                 throw new \InvalidArgumentException('array of int expected, got: '.\print_r($value, true));
             }
+        }
+    }
+
+    /**
+     * @param mixed[] $value
+     */
+    private function assertArrayNotEmpty(array $value): void
+    {
+        if (\count($value) === 0) {
+            throw new \InvalidArgumentException('array must not be empty');
         }
     }
 

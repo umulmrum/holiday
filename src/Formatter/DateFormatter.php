@@ -48,7 +48,7 @@ final class DateFormatter implements HolidayFormatterInterface
     public function formatList(HolidayList $holidayList, array $options = [])
     {
         $result = [];
-        foreach ($holidayList as $holiday) {
+        foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->format($holiday, $options);
         }
 

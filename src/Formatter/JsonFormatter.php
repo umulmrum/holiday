@@ -58,13 +58,16 @@ final class JsonFormatter implements HolidayFormatterInterface
     {
         $result = [];
 
-        foreach ($holidayList as $holiday) {
+        foreach ($holidayList->getList() as $holiday) {
             $result[] = $this->getEvent($holiday);
         }
 
         return \json_encode($result, $this->jsonOptions);
     }
 
+    /**
+     * @return mixed[]
+     */
     private function getEvent(Holiday $holiday): array
     {
         $date = $holiday->getDate($this->dateTimeZone);
@@ -79,6 +82,9 @@ final class JsonFormatter implements HolidayFormatterInterface
         ];
     }
 
+    /**
+     * @return int[]
+     */
     private function getTypeList(int $type): array
     {
         $typeList = [];
@@ -98,6 +104,11 @@ final class JsonFormatter implements HolidayFormatterInterface
         return $typeList;
     }
 
+    /**
+     * @param int[] $typeList
+     *
+     * @return string[]
+     */
     private function getTypeNames(array $typeList): array
     {
         $translatedList = [];

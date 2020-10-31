@@ -36,7 +36,7 @@ final class TranslateFilter implements HolidayFilterInterface
      */
     public function filter(HolidayList $holidayList): void
     {
-        foreach ($holidayList as $index => $holiday) {
+        foreach ($holidayList->getList() as $index => $holiday) {
             $holidayList->replaceByIndex(
                 $index,
                 Holiday::create(

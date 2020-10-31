@@ -20,11 +20,11 @@ use umulmrum\Holiday\Model\Holiday;
 final class IncludeTimespanFilter extends AbstractFilter
 {
     /**
-     * @var \DateTime
+     * @var string
      */
     private $firstIncludedDay;
     /**
-     * @var \DateTime
+     * @var string
      */
     private $lastIncludedDay;
 

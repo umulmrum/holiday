@@ -46,7 +46,7 @@ class HolidayList implements \Countable, \IteratorAggregate
 
     public function addAll(HolidayList $holidayList): void
     {
-        foreach ($holidayList as $holiday) {
+        foreach ($holidayList->getList() as $holiday) {
             $this->add($holiday);
         }
     }
@@ -108,6 +108,9 @@ class HolidayList implements \Countable, \IteratorAggregate
         return $this;
     }
 
+    /**
+     * @return string|string[]
+     */
     public function format(HolidayFormatterInterface $formatter)
     {
         return $formatter->formatList($this);

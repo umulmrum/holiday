@@ -34,7 +34,7 @@ final class IncludeHolidayNameFilter extends AbstractFilter
             $this->holidayNames = [
                 $holidayNames,
             ];
-        } elseif (true === \is_array($holidayNames)) {
+        } elseif (\is_array($holidayNames)) {
             foreach ($holidayNames as $holidayName) {
                 if (false === \is_string($holidayName)) {
                     throw new \InvalidArgumentException('Argument must be either a string or an array of strings.');

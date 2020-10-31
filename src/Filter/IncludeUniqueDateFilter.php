@@ -21,6 +21,7 @@ use umulmrum\Holiday\Model\HolidayList;
  */
 final class IncludeUniqueDateFilter extends AbstractFilter
 {
+    /** @var bool[] */
     private $foundTimestamps = [];
 
     /**

@@ -16,7 +16,9 @@ use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 
 class Holiday
 {
+    /** @var string */
     public const DISPLAY_DATE_FORMAT = 'Y-m-d';
+    /** @var string */
     public const CREATE_DATE_FORMAT = '!Y-m-d';
 
     /**
@@ -24,7 +26,7 @@ class Holiday
      */
     private $name;
     /**
-     * @var \DateTimeImmutable
+     * @var string
      */
     private $simpleDate;
     /**

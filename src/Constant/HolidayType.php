@@ -74,6 +74,7 @@ final class HolidayType
 
     public const RESERVED6 = 16384;
 
+    /** @var string[] */
     public static $NAME = [
         self::OTHER => 'other',
         self::OFFICIAL => 'official',

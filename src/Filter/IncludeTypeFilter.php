@@ -33,9 +33,9 @@ final class IncludeTypeFilter extends AbstractFilter
      */
     public function __construct($holidayTypes)
     {
-        if (true === \is_int($holidayTypes)) {
+        if (\is_int($holidayTypes)) {
             $this->holidayTypes = $holidayTypes;
-        } elseif (true === \is_array($holidayTypes)) {
+        } elseif (\is_array($holidayTypes)) {
             foreach ($holidayTypes as $holidayType) {
                 $this->assertInt($holidayType);
                 $this->holidayTypes |= $holidayType;
