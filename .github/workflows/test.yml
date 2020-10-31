@@ -38,5 +38,5 @@ jobs:
               run: |
                 composer install --no-progress --prefer-dist --optimize-autoloader
 
-            - name: "Run tests"
+            - name: "Run unit tests"
               run: "vendor/bin/phpunit --verbose --coverage-text"

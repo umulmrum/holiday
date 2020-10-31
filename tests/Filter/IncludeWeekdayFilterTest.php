@@ -223,6 +223,7 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
     public function getDataForException(): array
     {
         return [
+            [[]],
             ['string'],
             [['array', 'of', 'strings']],
             [[Weekday::SATURDAY, 'other']],

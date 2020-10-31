@@ -26,7 +26,7 @@ final class IncludeWeekdayFilter extends AbstractFilter
     /**
      * @var int[]
      */
-    private $weekdays;
+    private $weekdays = [];
 
     /**
      * @param int|int[] $weekdays
