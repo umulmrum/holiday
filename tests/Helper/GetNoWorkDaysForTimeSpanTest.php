@@ -17,7 +17,6 @@ use umulmrum\Holiday\HolidayCalculator;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\France\France;
 use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
 use umulmrum\Holiday\Provider\Weekday\Saturdays;
 use umulmrum\Holiday\Provider\Weekday\Sundays;
 use umulmrum\Holiday\Provider\Weekday\Thursdays;

@@ -12,9 +12,7 @@
 namespace umulmrum\Holiday\Test\Model;
 
 use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Test\FormatterStub;
 use umulmrum\Holiday\Test\HolidayTestCase;
 

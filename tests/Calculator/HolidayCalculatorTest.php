@@ -138,7 +138,6 @@ final class HolidayCalculatorTest extends HolidayTestCase
                 Belgium::class,
                 [2020, 'foo'],
             ],
-
         ];
     }
 

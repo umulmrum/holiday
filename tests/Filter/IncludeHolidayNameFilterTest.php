@@ -32,7 +32,7 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string|string[] $holidayNames
-     * @param Holiday[] $expectedResult
+     * @param Holiday[]       $expectedResult
      */
     public function it_should_filter_holidays(HolidayList $holidayList, $holidayNames, array $expectedResult): void
     {
@@ -130,7 +130,7 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
             [null],
             [true],
             [['string', 1337]],
-            [[null, 'string']]
+            [[null, 'string']],
         ];
     }
 

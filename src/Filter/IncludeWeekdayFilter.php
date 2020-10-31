@@ -41,7 +41,7 @@ final class IncludeWeekdayFilter extends AbstractFilter
                 $weekdays,
             ];
         } elseif (\is_array($weekdays)) {
-           $this->assertArrayNotEmpty($weekdays);
+            $this->assertArrayNotEmpty($weekdays);
             foreach ($weekdays as $weekday) {
                 $this->assertWeekday($weekday);
                 $this->weekdays = $weekdays;

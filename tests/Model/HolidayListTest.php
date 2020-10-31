@@ -198,7 +198,7 @@ final class HolidayListTest extends HolidayTestCase
     {
         $this->holidayList = new HolidayList([
             Holiday::create('name1', '2020-01-01'),
-            Holiday::create('name2', '2020-12-31', HolidayType::DAY_OFF)
+            Holiday::create('name2', '2020-12-31', HolidayType::DAY_OFF),
         ]);
     }
 

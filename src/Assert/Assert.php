@@ -17,6 +17,7 @@ trait Assert
 {
     /**
      * @param mixed $value
+     *
      * @throws \InvalidArgumentException
      */
     private function assertInt($value): void
@@ -28,6 +29,7 @@ trait Assert
 
     /**
      * @param mixed[] $value
+     *
      * @throws \InvalidArgumentException
      */
     private function assertIntArray(array $value): void
@@ -44,7 +46,7 @@ trait Assert
      */
     private function assertArrayNotEmpty(array $value): void
     {
-        if (\count($value) === 0) {
+        if (0 === \count($value)) {
             throw new \InvalidArgumentException('array must not be empty');
         }
     }
@@ -57,7 +59,7 @@ trait Assert
     private function assertWeekday($value): void
     {
         $this->assertInt($value);
-        if ($value < Weekday::SUNDAY || $value >Weekday::SATURDAY) {
+        if ($value < Weekday::SUNDAY || $value > Weekday::SATURDAY) {
             throw new \InvalidArgumentException(\sprintf(
                 'Invalid weekday "%s". Expected value between %s and %s.',
                 $value,
