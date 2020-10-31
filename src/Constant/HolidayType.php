@@ -57,12 +57,18 @@ final class HolidayType
      * DAY_OFF, the NO_SCHOOL type is not applied separately.
      */
     public const GOVERNMENT_AGENCIES_CLOSED = 64;
-
+    /**
+     * On a holiday of type HALF_DAY_OFF, employees usually only work half their normal working hours.
+     */
     public const HALF_DAY_OFF = 128;
 
     public const BANK = 256;
-
-    public const RESERVED1 = 512;
+    /**
+     * A holidy of type COMPENSATORY is added to a list if for a provider there are rules that holidays that fall on a
+     * Saturday or Sunday are "replaced" with a weekday. Compensatory holidays are always added in addition to the
+     * original holiday.
+     */
+    public const COMPENSATORY = 512;
 
     public const RESERVED2 = 1024;
 

@@ -16,6 +16,8 @@ namespace umulmrum\Holiday\Constant;
  */
 final class HolidayName
 {
+    public const SUFFIX_COMPENSATORY = '_compensatory';
+
     public const NEW_YEAR = 'new_year';
     public const INTERNATIONAL_WOMENS_DAY = 'international_womens_day';
     public const LABOR_DAY = 'labor_day';
@@ -50,16 +52,9 @@ final class HolidayName
     public const IMMACULATE_CONCEPTION = 'immaculate_conception';
     public const CHRISTMAS_EVE = 'christmas_eve';
     public const CHRISTMAS_DAY = 'christmas_day';
+    public const CHRISTMAS_DAY_COMPENSATORY = 'christmas_day'.self::SUFFIX_COMPENSATORY;
     public const SECOND_CHRISTMAS_DAY = 'second_christmas_day';
     public const VALENTINES_DAY = 'valentines_day';
-
-    public const SUNDAY = 'sunday';
-    public const MONDAY = 'monday';
-    public const TUESDAY = 'tuesday';
-    public const WEDNESDAY = 'wednesday';
-    public const THURSDAY = 'thursday';
-    public const FRIDAY = 'friday';
-    public const SATURDAY = 'saturday';
 
     public const AUSTRIAN_NATIONAL_HOLIDAY = 'austrian_national_holiday';
     public const AUSTRIAN_STATES_HOLIDAY = 'austrian_states_holiday';
@@ -96,4 +91,23 @@ final class HolidayName
     public const NAEFELSER_FAHRT = 'naefelser_fahrt';
     public const SAINT_NICHOLAS_DAY = 'saint_nicholas_day';
     public const SWISS_NATIONAL_DAY = 'swiss_national_day';
+
+    public const COLUMBUS_DAY = 'columbus_day';
+    public const INDEPENDENCE_DAY = 'independence_day';
+    public const INDEPENDENCE_DAY_COMPENSATORY = 'independence_day'.self::SUFFIX_COMPENSATORY;
+    public const MARTIN_LUTHER_KING_JR_DAY = 'martin_luther_king_jr_day';
+    public const MEMORIAL_DAY = 'memorial_day';
+    public const NEW_YEAR_COMPENSATORY = 'new_year'.self::SUFFIX_COMPENSATORY;
+    public const THANKSGIVING_DAY = 'thanksgiving_day';
+    public const VETERANS_DAY = 'veterans_day';
+    public const VETERANS_DAY_COMPENSATORY = 'veterans_day'.self::SUFFIX_COMPENSATORY;
+    public const WASHINGTONS_BIRTHDAY = 'washingtons_birthday';
+
+    public const SUNDAY = 'sunday';
+    public const MONDAY = 'monday';
+    public const TUESDAY = 'tuesday';
+    public const WEDNESDAY = 'wednesday';
+    public const THURSDAY = 'thursday';
+    public const FRIDAY = 'friday';
+    public const SATURDAY = 'saturday';
 }

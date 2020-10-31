@@ -12,7 +12,7 @@ I hope this to be the only change this dramatic before release 1.0.0. There is n
 get stuck when upgrading, please open an issue and I will try to help.
 
 ### Added
-- Holidays for these countries: Austria, Belgium, Denmark, France, Liechtenstein, Luxembourg, Switzerland.
+- Holidays for these countries: Austria, Belgium, Denmark, France, Liechtenstein, Luxembourg, Switzerland, USA.
 - Transaction scripts GetHolidaysByName, GetHolidaysForMonth and GetNoWorkDaysForTimeSpan to replace similarly named methods in HolidayHelper.
 - Transaction script GetGracePeriod.
 - Holiday::create() is a named constructor to simplify instantiation.

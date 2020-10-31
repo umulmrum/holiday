@@ -57,7 +57,7 @@ class Switzerland implements HolidayProviderInterface
 
     protected function getDateForFederalDayofThanksgivingRepentanceAndPrayer(int $year): \DateTime
     {
-        $dateTime = new \DateTime(sprintf('First Sunday of %s-09', $year));
+        $dateTime = new \DateTime("First Sunday of {$year}-09");
         $dateTime->setTime(0, 0, 0);
 
         return $dateTime;

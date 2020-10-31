@@ -273,6 +273,10 @@ merge pull requests to support more countries (see below).
   The implemented rules are a best guess of what makes sense in the scope of this library (written by someone who isn't
   from Switzerland). I'm open for improvements.
 
+### Notes on US Holidays
+
+- Only common federal holidays are supported yet.
+
 ### Notes on Christian Holidays
 
 - Only holidays of Western churches are taken into account.

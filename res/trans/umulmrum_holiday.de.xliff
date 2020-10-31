@@ -90,9 +90,17 @@
         <source>christmas_day</source>
         <target>Erster Weihnachtsfeiertag</target>
       </trans-unit>
+      <trans-unit id="christmas_day_compensatory">
+        <source>christmas_day_compensatory</source>
+        <target>Erster Weihnachtsfeiertag (Ausgleich)</target>
+      </trans-unit>
       <trans-unit id="christmas_eve">
         <source>christmas_eve</source>
         <target>Heiliger Abend</target>
+      </trans-unit>
+      <trans-unit id="columbus_day">
+        <source>columbus_day</source>
+        <target>Kolumbus-Tag</target>
       </trans-unit>
       <trans-unit id="corpus_christi">
         <source>corpus_christi</source>
@@ -186,6 +194,14 @@
         <source>immaculate_conception</source>
         <target>Mariä Empfängnis</target>
       </trans-unit>
+      <trans-unit id="independence_day">
+        <source>independence_day</source>
+        <target>Unabhängigkeitstag</target>
+      </trans-unit>
+      <trans-unit id="independence_day_compensatory">
+        <source>independence_day_compensatory</source>
+        <target>Unabhängigkeitstag (Ausgleich)</target>
+      </trans-unit>
       <trans-unit id="international_womens_day">
         <source>international_womens_day</source>
         <target>Internatonaler Frauentag</target>
@@ -202,9 +218,17 @@
         <source>leopolds_day</source>
         <target>Leopoldi-Tag</target>
       </trans-unit>
+      <trans-unit id="martin_luther_king_jr_day">
+        <source>martin_luther_king_jr_day</source>
+        <target>Martin Luther King Day</target>
+      </trans-unit>
       <trans-unit id="maundy_thursday">
         <source>maundy_thursday</source>
         <target>Gründonnerstag</target>
+      </trans-unit>
+      <trans-unit id="memorial_day">
+        <source>memorial_day</source>
+        <target>Memorial Day</target>
       </trans-unit>
       <trans-unit id="monday">
         <source>monday</source>
@@ -221,6 +245,10 @@
       <trans-unit id="new_year">
         <source>new_year</source>
         <target>Neujahr</target>
+      </trans-unit>
+      <trans-unit id="new_year_compensatory">
+        <source>new_year_compensatory</source>
+        <target>Neujahr (Ausgleich)</target>
       </trans-unit>
       <trans-unit id="new_years_eve">
         <source>new_years_eve</source>
@@ -298,6 +326,10 @@
         <source>thursday</source>
         <target>Donnerstag</target>
       </trans-unit>
+      <trans-unit id="thanksgiving_day">
+        <source>thanksgiving_day</source>
+        <target>Thanksgiving Day</target>
+      </trans-unit>
       <trans-unit id="traditional">
         <source>traditional</source>
         <target>Traditionell</target>
@@ -314,9 +346,21 @@
         <source>victory_day</source>
         <target>Tag des Sieges</target>
       </trans-unit>
+      <trans-unit id="veterans_day">
+        <source>veterans_day</source>
+        <target>Veterans Day</target>
+      </trans-unit>
+      <trans-unit id="veterans_day_compensatory">
+        <source>veterans_day_compensatory</source>
+        <target>Veterans Day (Ausgleich)</target>
+      </trans-unit>
       <trans-unit id="victory_in_europe_day">
         <source>victory_in_europe_day</source>
         <target>Tag der Befreiung</target>
+      </trans-unit>
+      <trans-unit id="washingtons_birthday">
+        <source>washingtons_birthday</source>
+        <target>Washington's Birthday</target>
       </trans-unit>
       <trans-unit id="wednesday">
         <source>wednesday</source>
