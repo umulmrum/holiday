@@ -37,10 +37,10 @@ class HolidayList implements \Countable, \IteratorAggregate
      */
     public function add(Holiday $holiday): void
     {
-        if (-1 !== $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getSimpleDate())) {
-            $this->holidayList[$index] = Holiday::create($holiday->getName(), $holiday->getSimpleDate(), $holiday->getType() | $this->holidayList[$index]->getType());
-        } else {
+        if (-1 === $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getSimpleDate())) {
             $this->holidayList[] = $holiday;
+        } else {
+            $this->holidayList[$index] = Holiday::create($holiday->getName(), $holiday->getSimpleDate(), $holiday->getType() | $this->holidayList[$index]->getType());
         }
     }
 

@@ -14,6 +14,7 @@ namespace umulmrum\Holiday\Test\Model;
 use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\FormatterStub;
 use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayListTest extends HolidayTestCase
@@ -23,7 +24,7 @@ final class HolidayListTest extends HolidayTestCase
      */
     private $holidayList;
     /**
-     * @var bool
+     * @var bool|string
      */
     private $actualResult;
 
@@ -181,5 +182,33 @@ final class HolidayListTest extends HolidayTestCase
     private function thenItShouldReturnIfDateIsHoliday(bool $expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_format_lists(): void
+    {
+        $this->givenSomeHolidayList();
+        $this->whenFormatIsCalledWithAFormatter();
+        $this->thenTheFormattedResultShouldBeReturned();
+    }
+
+    private function givenSomeHolidayList(): void
+    {
+        $this->holidayList = new HolidayList([
+            Holiday::create('name1', '2020-01-01'),
+            Holiday::create('name2', '2020-12-31', HolidayType::DAY_OFF)
+        ]);
+    }
+
+    private function whenFormatIsCalledWithAFormatter(): void
+    {
+        $this->actualResult = $this->holidayList->format(new FormatterStub());
+    }
+
+    private function thenTheFormattedResultShouldBeReturned(): void
+    {
+        self::assertEquals('name1|2020-01-01|0;name2|2020-12-31|2', $this->actualResult);
     }
 }

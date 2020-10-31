@@ -218,6 +218,10 @@ Similarly, Sundays are normally not included if they are no official holidays in
 although they are days off in the Western hemisphere. To find out which days are days off, provide both the respective
 holiday provider and the one for Sundays (or use `GetNoWorkDaysForTimeSpan()`).
 
+If your use case requires other holiday lists, consider combining multiple providers (e.g. `Switzerland` and
+`ChristianHolidays`), or remove some using filters (e.g. combine `IncludeTypeFilter` and `InverseFilter`) to remove
+Sundays from `Brandenburg` lists.
+
 ### Translations
 
 Some formatters can be initialized with an optional translator. See `TranslatorInterface` and the translation files 
@@ -265,10 +269,9 @@ merge pull requests to support more countries (see below).
 
 ### Notes on Swiss Holidays
 
-- Holidays in Switzerland are really complicated as they differ widely in the different cantons and some holidays are
-  celebrated inofficially or only in parts of a canton. The implemented rules are a best guess of what makes sense in
-  the scope of this library (which also means that some holidays are omitted if they are a celebrated only in very few
-  communities). I'm open for improvements.
+- Holidays in Switzerland are really complicated as there is wide fragmentation on if or how holidays are celebrated.
+  The implemented rules are a best guess of what makes sense in the scope of this library (written by someone who isn't
+  from Switzerland). I'm open for improvements.
 
 ### Notes on Christian Holidays
 

@@ -15,6 +15,7 @@ use umulmrum\Holiday\Constant\HolidayType;
 use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
+use umulmrum\Holiday\Test\FormatterStub;
 use umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayTest extends HolidayTestCase
@@ -194,18 +195,7 @@ final class HolidayTest extends HolidayTestCase
 
     private function whenFormatIsCalledWithSomeFormatter(): void
     {
-        $this->actualResult = $this->holiday->format(new class implements HolidayFormatterInterface
-        {
-            public function format(Holiday $holiday, array $options = []): string
-            {
-                return \sprintf('%s|%s|%s', $holiday->getName(), $holiday->getSimpleDate(), $holiday->getType());
-            }
-
-            public function formatList(HolidayList $holidayList, array $options = [])
-            {
-                return 'not implemented';
-            }
-        });
+        $this->actualResult = $this->holiday->format(new FormatterStub());
     }
 
     private function thenTheExpectedStringShouldBeReturned(string $expectedResult): void
