@@ -246,6 +246,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Liechtenstein
 - Luxembourg
 - Switzerland (incl. Aargau, Appenzell-Ausserrhoden, Appenzell-Innerrhoden, Basel Landschaft, Basel Stadt, Bern, Fribourg, Geneva, Glarus, Grisons, Jura, Lucerne, Neuchatel, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St Gallen, Thurgau, Ticino, Uri, Valais, Vaud, Zuerich, Zug)
+- USA (federal holidays only yet)
 
 To create your own holiday providers have a look at the existing code, it should be self-explanatory. I will happily
 merge pull requests to support more countries (see below).
@@ -272,10 +273,6 @@ merge pull requests to support more countries (see below).
 - Holidays in Switzerland are really complicated as there is wide fragmentation on if or how holidays are celebrated.
   The implemented rules are a best guess of what makes sense in the scope of this library (written by someone who isn't
   from Switzerland). I'm open for improvements.
-
-### Notes on US Holidays
-
-- Only common federal holidays are supported yet.
 
 ### Notes on Christian Holidays
 
