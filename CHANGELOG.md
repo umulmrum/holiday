@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Holidays for Italy.
+
+## [0.3.0] - 2020-11-01
+
 There's a lot of API changes in this release - sorry for that, but I think the lib is way better and easier to use than before.
 I hope this to be the only change this dramatic before release 1.0.0. There is no explicit migration guide, but if you
 get stuck when upgrading, please open an issue and I will try to help.
@@ -82,7 +87,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.2.1...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/0.3.0...master
+[0.3.0]: https://github.com/umulmrum/holiday/compare/0.2.1...0.3.0
 [0.2.1]: https://github.com/umulmrum/holiday/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/umulmrum/holiday/compare/0.1.4...0.2.0
 [0.1.4]: https://github.com/umulmrum/holiday/compare/0.1.3...0.1.4

@@ -14,7 +14,7 @@ namespace umulmrum\Holiday\Provider\Religion;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-final class ChristianHolidays implements HolidayProviderInterface
+class ChristianHolidays implements HolidayProviderInterface
 {
     use ChristianHolidaysTrait;
 

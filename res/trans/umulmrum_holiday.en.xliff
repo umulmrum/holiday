@@ -22,6 +22,10 @@
         <source>all_souls_day</source>
         <target>All Souls' Day</target>
       </trans-unit>
+      <trans-unit id="anniversary_of_the_unification_of_italy">
+        <source>anniversary_of_the_unification_of_italy</source>
+        <target>Anniversary of the Unification of Italy</target>
+      </trans-unit>
       <trans-unit id="armistice_day">
         <source>armistice_day</source>
         <target>Armistice Day</target>
@@ -202,6 +206,10 @@
         <source>independence_day_compensatory</source>
         <target>Independence Day (compensatory)</target>
       </trans-unit>
+      <trans-unit id="international_holocaust_remembrance_day">
+        <source>international_holocaust_remembrance_day</source>
+        <target>Internatonal Holocaust Remembrance Day</target>
+      </trans-unit>
       <trans-unit id="international_womens_day">
         <source>international_womens_day</source>
         <target>Internatonal Women's Day</target>
@@ -217,6 +225,10 @@
       <trans-unit id="leopolds_day">
         <source>leopolds_day</source>
         <target>Leopold's Day</target>
+      </trans-unit>
+      <trans-unit id="liberation_day">
+        <source>liberation_day</source>
+        <target>Liberation Day</target>
       </trans-unit>
       <trans-unit id="martin_luther_king_jr_day">
         <source>martin_luther_king_jr_day</source>
@@ -282,6 +294,10 @@
         <source>repentance_and_prayer_day</source>
         <target>Repentance and Prayer Day</target>
       </trans-unit>
+      <trans-unit id="republic_day">
+        <source>republic_day</source>
+        <target>Republic Day</target>
+      </trans-unit>
       <trans-unit id="saint_florians_day">
         <source>saint_florians_day</source>
         <target>St. Florian's Day</target>
@@ -333,6 +349,10 @@
       <trans-unit id="traditional">
         <source>traditional</source>
         <target>Traditional</target>
+      </trans-unit>
+      <trans-unit id="tricolour_day">
+        <source>tricolour_day</source>
+        <target>Tricolour Day</target>
       </trans-unit>
       <trans-unit id="tuesday">
         <source>tuesday</source>

@@ -22,6 +22,10 @@
         <source>all_souls_day</source>
         <target>Allerseelen</target>
       </trans-unit>
+      <trans-unit id="anniversary_of_the_unification_of_italy">
+        <source>anniversary_of_the_unification_of_italy</source>
+        <target>Tag der nationalen Einheit</target>
+      </trans-unit>
       <trans-unit id="armistice_day">
         <source>armistice_day</source>
         <target>Tag des Waffenstillstands</target>
@@ -202,6 +206,10 @@
         <source>independence_day_compensatory</source>
         <target>Unabhängigkeitstag (Ausgleich)</target>
       </trans-unit>
+      <trans-unit id="international_holocaust_remembrance_day">
+        <source>international_holocaust_remembrance_day</source>
+        <target>Internationaler Tag des Gedenkens an die Opfer des Holocaust</target>
+      </trans-unit>
       <trans-unit id="international_womens_day">
         <source>international_womens_day</source>
         <target>Internatonaler Frauentag</target>
@@ -217,6 +225,10 @@
       <trans-unit id="leopolds_day">
         <source>leopolds_day</source>
         <target>Leopoldi-Tag</target>
+      </trans-unit>
+      <trans-unit id="liberation_day">
+        <source>liberation_day</source>
+        <target>Tag der Befreiung</target>
       </trans-unit>
       <trans-unit id="martin_luther_king_jr_day">
         <source>martin_luther_king_jr_day</source>
@@ -282,6 +294,10 @@
         <source>repentance_and_prayer_day</source>
         <target>Buß- und Bettag</target>
       </trans-unit>
+      <trans-unit id="republic_day">
+        <source>republic_day</source>
+        <target>Tag der Republik</target>
+      </trans-unit>
       <trans-unit id="saint_florians_day">
         <source>saint_florians_day</source>
         <target>Florianstag</target>
@@ -333,6 +349,10 @@
       <trans-unit id="traditional">
         <source>traditional</source>
         <target>Traditionell</target>
+      </trans-unit>
+      <trans-unit id="tricolour_day">
+        <source>tricolour_day</source>
+        <target>Tag der Nationalflagge</target>
       </trans-unit>
       <trans-unit id="tuesday">
         <source>tuesday</source>
