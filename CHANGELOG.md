@@ -13,7 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Holidays for Italy.
 
 ### Changed
-
 - Rename vendor namespace from umulmrum to Umulmrum to conform to common convention.
 - Bavaria now derives from Germany instead of BadenWuerttemberg.
 
