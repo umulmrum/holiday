@@ -17,7 +17,7 @@ use umulmrum\Holiday\Model\Holiday;
 use umulmrum\Holiday\Model\HolidayList;
 use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class Bavaria extends BadenWuerttemberg
+class Bavaria extends Germany
 {
     use ChristianHolidaysTrait;
 
@@ -28,6 +28,9 @@ class Bavaria extends BadenWuerttemberg
     {
         $holidays = parent::calculateHolidaysForYear($year);
 
+        $holidays->add($this->getEpiphany($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF));
+        $holidays->add($this->getAllSaintsDay($year, HolidayType::DAY_OFF));
         $holidays->add(Holiday::create(HolidayName::AUGSBURGER_FRIEDENSFEST, "{$year}-08-08", HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
         if ($year < 1969) {
             $holidays->add($this->getSaintJosephsDay($year, HolidayType::DAY_OFF));

@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Holidays for Italy.
 
+### Changed
+
+- Bavaria now derives from Germany instead of BadenWuerttemberg
+
 ## [0.3.0] - 2020-11-01
 
 There's a lot of API changes in this release - sorry for that, but I think the lib is way better and easier to use than before.
