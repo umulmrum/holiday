@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test;
+namespace Umulmrum\Holiday\Test;
 
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Translator\TranslatorInterface;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Translator\TranslatorInterface;
 
 final class TranslatorStub implements TranslatorInterface, \Symfony\Contracts\Translation\TranslatorInterface
 {

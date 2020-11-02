@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Formatter;
+namespace Umulmrum\Holiday\Formatter;
 
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
 
 final class TimestampFormatter implements HolidayFormatterInterface
 {

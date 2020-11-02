@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Helper;
+namespace Umulmrum\Holiday\Helper;
 
-use umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
-use umulmrum\Holiday\HolidayCalculator;
-use umulmrum\Holiday\HolidayCalculatorInterface;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
+use Umulmrum\Holiday\HolidayCalculator;
+use Umulmrum\Holiday\HolidayCalculatorInterface;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 final class GetHolidaysByName
 {
@@ -35,7 +35,7 @@ final class GetHolidaysByName
      *
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
      * @param int|int[]                                                           $years
-     * @param string                                                              $holidayName      most likely on of the constants in \umulmrum\Holiday\Constant\HolidayName
+     * @param string                                                              $holidayName      most likely on of the constants in \Umulmrum\Holiday\Constant\HolidayName
      *
      * @throws \InvalidArgumentException if an invalid value for $holidayProviders or $years was given
      */

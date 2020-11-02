@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Provider\Weekday;
+namespace Umulmrum\Holiday\Test\Provider\Weekday;
 
-use umulmrum\Holiday\Provider\Weekday\Thursdays;
-use umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Provider\Weekday\Thursdays;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
 
 final class ThursdaysTest extends AbstractHolidayCalculatorTest
 {

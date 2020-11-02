@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace Umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Assert\Assert;
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Assert\Assert;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\Holiday;
 
 /**
  * IncludeTypeFilter retains all holidays with one or more types passed as constructor argument.

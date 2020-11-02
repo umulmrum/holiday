@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Calculator;
+namespace Umulmrum\Holiday\Test\Calculator;
 
-use umulmrum\Holiday\Provider\Religion\ChristianHolidays;
+use Umulmrum\Holiday\Provider\Religion\ChristianHolidays;
 
 final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
 {

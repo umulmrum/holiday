@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Filter;
+namespace Umulmrum\Holiday\Test\Filter;
 
-use umulmrum\Holiday\Filter\SortByDateFilter;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Filter\SortByDateFilter;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class SortByDateFilterTest extends HolidayTestCase
 {

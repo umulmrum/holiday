@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Helper;
+namespace Umulmrum\Holiday\Helper;
 
 final class DateProvider implements DateProviderInterface
 {

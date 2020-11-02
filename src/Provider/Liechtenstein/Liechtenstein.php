@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Liechtenstein;
+namespace Umulmrum\Holiday\Provider\Liechtenstein;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
-use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class Liechtenstein implements HolidayProviderInterface
 {

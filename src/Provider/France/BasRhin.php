@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\France;
+namespace Umulmrum\Holiday\Provider\France;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class BasRhin extends France
 {

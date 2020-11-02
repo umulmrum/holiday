@@ -12,7 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Bavaria now derives from Germany instead of BadenWuerttemberg
+- Rename vendor namespace from umulmrum to Umulmrum to conform to common convention.
+- Bavaria now derives from Germany instead of BadenWuerttemberg.
 
 ## [0.3.0] - 2020-11-01
 

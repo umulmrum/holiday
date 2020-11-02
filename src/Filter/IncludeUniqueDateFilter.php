@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace Umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
 
 /**
  * IncludeUniqueDateFilter rejects all holidays with a duplicate date in the filtered HolidayList. The first holiday with

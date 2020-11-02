@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test;
+namespace Umulmrum\Holiday\Test;
 
-use umulmrum\Holiday\Helper\DateProviderInterface;
+use Umulmrum\Holiday\Helper\DateProviderInterface;
 
 final class DateProviderStub implements DateProviderInterface
 {

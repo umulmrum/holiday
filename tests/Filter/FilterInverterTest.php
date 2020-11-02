@@ -1,12 +1,12 @@
 <?php
 
-namespace umulmrum\Holiday\Test\Filter;
+namespace Umulmrum\Holiday\Test\Filter;
 
-use umulmrum\Holiday\Filter\AbstractFilter;
-use umulmrum\Holiday\Filter\FilterInverter;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Filter\AbstractFilter;
+use Umulmrum\Holiday\Filter\FilterInverter;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class FilterInverterTest extends HolidayTestCase
 {

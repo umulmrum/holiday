@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test;
+namespace Umulmrum\Holiday\Test;
 
 use PHPUnit\Framework\TestCase;
 

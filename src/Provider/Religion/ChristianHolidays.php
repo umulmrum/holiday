@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Religion;
+namespace Umulmrum\Holiday\Provider\Religion;
 
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 class ChristianHolidays implements HolidayProviderInterface
 {

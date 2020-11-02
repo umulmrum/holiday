@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Weekday;
+namespace Umulmrum\Holiday\Provider\Weekday;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 abstract class Weekdays implements HolidayProviderInterface
 {

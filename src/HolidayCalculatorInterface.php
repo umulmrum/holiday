@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday;
+namespace Umulmrum\Holiday;
 
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 /**
  * @codeCoverageIgnore

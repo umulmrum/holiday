@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Assert;
+namespace Umulmrum\Holiday\Assert;
 
-use umulmrum\Holiday\Constant\Weekday;
+use Umulmrum\Holiday\Constant\Weekday;
 
 trait Assert
 {

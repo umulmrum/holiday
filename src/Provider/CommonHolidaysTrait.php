@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider;
+namespace Umulmrum\Holiday\Provider;
 
-use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Constant\HolidayName;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\Holiday;
 
 trait CommonHolidaysTrait
 {

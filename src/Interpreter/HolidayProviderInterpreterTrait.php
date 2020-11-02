@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Interpreter;
+namespace Umulmrum\Holiday\Interpreter;
 
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 /**
  * @internal

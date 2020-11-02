@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace Umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\Holiday;
 
 /**
  * IncludeHolidayNameFilter retains all holidays with the name or names passed as constructor arguments.

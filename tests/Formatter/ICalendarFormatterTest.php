@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Formatter;
+namespace Umulmrum\Holiday\Test\Formatter;
 
-use umulmrum\Holiday\Formatter\ICalendarFormatter;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Test\DateProviderStub;
-use umulmrum\Holiday\Test\HolidayTestCase;
-use umulmrum\Holiday\Test\TranslatorStub;
+use Umulmrum\Holiday\Formatter\ICalendarFormatter;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Test\DateProviderStub;
+use Umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Test\TranslatorStub;
 
 final class ICalendarFormatterTest extends HolidayTestCase
 {

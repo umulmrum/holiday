@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Helper;
+namespace Umulmrum\Holiday\Test\Helper;
 
-use umulmrum\Holiday\Helper\GetGracePeriod;
-use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
-use umulmrum\Holiday\Provider\Germany\Germany;
-use umulmrum\Holiday\Provider\Weekday\Saturdays;
-use umulmrum\Holiday\Provider\Weekday\Sundays;
-use umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Helper\GetGracePeriod;
+use Umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
+use Umulmrum\Holiday\Provider\Germany\Germany;
+use Umulmrum\Holiday\Provider\Weekday\Saturdays;
+use Umulmrum\Holiday\Provider\Weekday\Sundays;
+use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class GetGracePeriodTest extends HolidayTestCase
 {

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Constant;
+namespace Umulmrum\Holiday\Constant;
 
 /**
  * HolidayType defines constants for different types of holidays. These can be combined to describe a holiday that

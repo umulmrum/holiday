@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Helper;
+namespace Umulmrum\Holiday\Test\Helper;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Helper\GetNoWorkDaysForTimeSpan;
-use umulmrum\Holiday\HolidayCalculator;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\France\France;
-use umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
-use umulmrum\Holiday\Provider\Weekday\Saturdays;
-use umulmrum\Holiday\Provider\Weekday\Sundays;
-use umulmrum\Holiday\Provider\Weekday\Thursdays;
-use umulmrum\Holiday\Provider\Weekday\Tuesdays;
-use umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Helper\GetNoWorkDaysForTimeSpan;
+use Umulmrum\Holiday\HolidayCalculator;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\France\France;
+use Umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
+use Umulmrum\Holiday\Provider\Weekday\Saturdays;
+use Umulmrum\Holiday\Provider\Weekday\Sundays;
+use Umulmrum\Holiday\Provider\Weekday\Thursdays;
+use Umulmrum\Holiday\Provider\Weekday\Tuesdays;
+use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
 {

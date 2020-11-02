@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Switzerland;
+namespace Umulmrum\Holiday\Provider\Switzerland;
 
-use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
+use Umulmrum\Holiday\Constant\HolidayName;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
+use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class Obwalden extends Switzerland
 {

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace Umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Assert\Assert;
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Assert\Assert;
+use Umulmrum\Holiday\Model\Holiday;
 
 /**
  * IncludeWeekdayFilter retains all holidays that are on a weekday passed as constructor argument.

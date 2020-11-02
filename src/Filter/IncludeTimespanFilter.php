@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace Umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\Holiday;
 
 /**
  * IncludeTimespanFilter retains all holidays that lie within the timespan passed as constructor arguments (including

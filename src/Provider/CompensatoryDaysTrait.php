@@ -1,11 +1,11 @@
 <?php
 
-namespace umulmrum\Holiday\Provider;
+namespace Umulmrum\Holiday\Provider;
 
-use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Constant\HolidayName;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
 
 trait CompensatoryDaysTrait
 {

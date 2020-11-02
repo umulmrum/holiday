@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Formatter;
+namespace Umulmrum\Holiday\Test\Formatter;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Formatter\JsonFormatter;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Test\HolidayTestCase;
-use umulmrum\Holiday\Test\TranslatorStub;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Formatter\JsonFormatter;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Test\TranslatorStub;
 
 final class JsonFormatterTest extends HolidayTestCase
 {

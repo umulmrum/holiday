@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday;
+namespace Umulmrum\Holiday;
 
-use umulmrum\Holiday\Interpreter\HolidayProviderInterpreterTrait;
-use umulmrum\Holiday\Interpreter\YearInterpreterTrait;
-use umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Interpreter\HolidayProviderInterpreterTrait;
+use Umulmrum\Holiday\Interpreter\YearInterpreterTrait;
+use Umulmrum\Holiday\Model\HolidayList;
 
 final class HolidayCalculator implements HolidayCalculatorInterface
 {

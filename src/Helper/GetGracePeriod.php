@@ -1,10 +1,10 @@
 <?php
 
-namespace umulmrum\Holiday\Helper;
+namespace Umulmrum\Holiday\Helper;
 
-use umulmrum\Holiday\HolidayCalculator;
-use umulmrum\Holiday\HolidayCalculatorInterface;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\HolidayCalculator;
+use Umulmrum\Holiday\HolidayCalculatorInterface;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 final class GetGracePeriod
 {

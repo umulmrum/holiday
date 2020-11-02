@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Provider\France;
+namespace Umulmrum\Holiday\Test\Provider\France;
 
-use umulmrum\Holiday\Provider\France\Guadeloupe;
-use umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Provider\France\Guadeloupe;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
 
 final class GuadeloupeTest extends AbstractHolidayCalculatorTest
 {

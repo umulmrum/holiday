@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Helper;
+namespace Umulmrum\Holiday\Helper;
 
 /**
  * DateProviderInterface is a simple encapsulation for getting the current date.

@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Italy;
+namespace Umulmrum\Holiday\Provider\Italy;
 
-use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Constant\Weekday;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
-use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
-use umulmrum\Holiday\Provider\Weekday\WeekdayTrait;
+use Umulmrum\Holiday\Constant\HolidayName;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Constant\Weekday;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
+use Umulmrum\Holiday\Provider\Weekday\WeekdayTrait;
 
 class Italy implements HolidayProviderInterface
 {

@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Austria;
+namespace Umulmrum\Holiday\Provider\Austria;
 
-use umulmrum\Holiday\Constant\HolidayName;
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Constant\HolidayName;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
 
 class Salzburg extends Austria
 {

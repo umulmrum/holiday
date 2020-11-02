@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Calculator;
+namespace Umulmrum\Holiday\Test\Calculator;
 
-use umulmrum\Holiday\HolidayCalculator;
-use umulmrum\Holiday\Provider\Belgium\Belgium;
-use umulmrum\Holiday\Provider\Germany\Berlin;
-use umulmrum\Holiday\Provider\Germany\Brandenburg;
-use umulmrum\Holiday\Provider\Germany\Germany;
-use umulmrum\Holiday\Provider\Germany\Hesse;
-use umulmrum\Holiday\Provider\Germany\Saxony;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
-use umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\HolidayCalculator;
+use Umulmrum\Holiday\Provider\Belgium\Belgium;
+use Umulmrum\Holiday\Provider\Germany\Berlin;
+use Umulmrum\Holiday\Provider\Germany\Brandenburg;
+use Umulmrum\Holiday\Provider\Germany\Germany;
+use Umulmrum\Holiday\Provider\Germany\Hesse;
+use Umulmrum\Holiday\Provider\Germany\Saxony;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayCalculatorTest extends HolidayTestCase
 {

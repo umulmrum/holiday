@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Helper;
+namespace Umulmrum\Holiday\Helper;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Filter\IncludeTimespanFilter;
-use umulmrum\Holiday\Filter\IncludeTypeFilter;
-use umulmrum\Holiday\Filter\IncludeUniqueDateFilter;
-use umulmrum\Holiday\Filter\SortByDateFilter;
-use umulmrum\Holiday\HolidayCalculator;
-use umulmrum\Holiday\HolidayCalculatorInterface;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\HolidayProviderInterface;
-use umulmrum\Holiday\Provider\Weekday\Sundays;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Filter\IncludeTimespanFilter;
+use Umulmrum\Holiday\Filter\IncludeTypeFilter;
+use Umulmrum\Holiday\Filter\IncludeUniqueDateFilter;
+use Umulmrum\Holiday\Filter\SortByDateFilter;
+use Umulmrum\Holiday\HolidayCalculator;
+use Umulmrum\Holiday\HolidayCalculatorInterface;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\Weekday\Sundays;
 
 final class GetNoWorkDaysForTimeSpan
 {

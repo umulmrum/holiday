@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Weekday;
+namespace Umulmrum\Holiday\Provider\Weekday;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Constant\Weekday;
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Constant\Weekday;
+use Umulmrum\Holiday\Model\Holiday;
 
 trait WeekdayTrait
 {

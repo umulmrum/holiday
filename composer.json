@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "umulmrum\\Holiday\\": ["src"]
+            "Umulmrum\\Holiday\\": ["src"]
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "umulmrum\\Holiday\\Test\\": ["tests"]
+            "Umulmrum\\Holiday\\Test\\": ["tests"]
         }
     }
 }

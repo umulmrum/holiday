@@ -1,9 +1,9 @@
 <?php
 
-namespace umulmrum\Holiday\Test;
+namespace Umulmrum\Holiday\Test;
 
-use umulmrum\Holiday\HolidayCalculatorInterface;
-use umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\HolidayCalculatorInterface;
+use Umulmrum\Holiday\Model\HolidayList;
 
 final class HolidayCalculatorStub implements HolidayCalculatorInterface
 {

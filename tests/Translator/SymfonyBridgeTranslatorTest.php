@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Translator;
+namespace Umulmrum\Holiday\Test\Translator;
 
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Test\HolidayTestCase;
-use umulmrum\Holiday\Test\TranslatorStub;
-use umulmrum\Holiday\Translator\SymfonyBridgeTranslator;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Test\TranslatorStub;
+use Umulmrum\Holiday\Translator\SymfonyBridgeTranslator;
 
 final class SymfonyBridgeTranslatorTest extends HolidayTestCase
 {

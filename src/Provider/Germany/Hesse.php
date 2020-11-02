@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Provider\Germany;
+namespace Umulmrum\Holiday\Provider\Germany;
 
-use umulmrum\Holiday\Constant\HolidayType;
-use umulmrum\Holiday\Constant\Weekday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
-use umulmrum\Holiday\Provider\Weekday\WeekdayTrait;
+use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Constant\Weekday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
+use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
+use Umulmrum\Holiday\Provider\Weekday\WeekdayTrait;
 
 class Hesse extends Germany
 {

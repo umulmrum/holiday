@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Constant;
+namespace Umulmrum\Holiday\Constant;
 
 /**
  * @codeCoverageIgnore

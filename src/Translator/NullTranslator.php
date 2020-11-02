@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Translator;
+namespace Umulmrum\Holiday\Translator;
 
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\Holiday;
 
 final class NullTranslator implements TranslatorInterface
 {

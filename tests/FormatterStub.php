@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test;
+namespace Umulmrum\Holiday\Test;
 
-use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Formatter\HolidayFormatterInterface;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
 
 final class FormatterStub implements HolidayFormatterInterface
 {

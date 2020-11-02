@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace Umulmrum\Holiday\Filter;
 
-use umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\Holiday;
 
 /**
  * FilterInverter takes another subclass of AbstractFilter and retains all elements the inner filter would reject and

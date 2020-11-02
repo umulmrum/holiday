@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Formatter;
+namespace Umulmrum\Holiday\Test\Formatter;
 
-use umulmrum\Holiday\Formatter\DateFormatter;
-use umulmrum\Holiday\Model\Holiday;
-use umulmrum\Holiday\Model\HolidayList;
-use umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Formatter\DateFormatter;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class DateFormatterTest extends HolidayTestCase
 {

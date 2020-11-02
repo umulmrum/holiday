@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Model;
+namespace Umulmrum\Holiday\Model;
 
-use umulmrum\Holiday\Filter\HolidayFilterInterface;
-use umulmrum\Holiday\Formatter\HolidayFormatterInterface;
+use Umulmrum\Holiday\Filter\HolidayFilterInterface;
+use Umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 
 class HolidayList implements \Countable, \IteratorAggregate
 {
