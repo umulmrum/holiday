@@ -91,5 +91,6 @@ final class HolidayType
         self::NO_SCHOOL => 'no_school',
         self::GOVERNMENT_AGENCIES_CLOSED => 'government_agencies_closed',
         self::BANK => 'bank',
+        self::COMPENSATORY => 'compensatory',
     ];
 }

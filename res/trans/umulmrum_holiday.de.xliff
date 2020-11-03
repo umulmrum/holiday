@@ -50,6 +50,10 @@
         <source>augsburger_friedensfest</source>
         <target>Augsburger Friedensfest</target>
       </trans-unit>
+      <trans-unit id="august_holiday">
+        <source>august_holiday</source>
+        <target>August Holiday</target>
+      </trans-unit>
       <trans-unit id="austrian_national_holiday">
         <source>austrian_national_holiday</source>
         <target>Nationalfeiertag</target>
@@ -105,6 +109,10 @@
       <trans-unit id="columbus_day">
         <source>columbus_day</source>
         <target>Kolumbus-Tag</target>
+      </trans-unit>
+      <trans-unit id="compensatory">
+        <source>compensatory</source>
+        <target>Ausgleichstag</target>
       </trans-unit>
       <trans-unit id="corpus_christi">
         <source>corpus_christi</source>
@@ -218,6 +226,10 @@
         <source>jahrestag_ausrufung_republik_neuenburg</source>
         <target>Jahrestag Ausrufung Republik Neuenburg</target>
       </trans-unit>
+      <trans-unit id="june_holiday">
+        <source>june_holiday</source>
+        <target>June Holiday</target>
+      </trans-unit>
       <trans-unit id="labor_day">
         <source>labor_day</source>
         <target>Tag der Arbeit</target>
@@ -237,6 +249,10 @@
       <trans-unit id="maundy_thursday">
         <source>maundy_thursday</source>
         <target>Gründonnerstag</target>
+      </trans-unit>
+      <trans-unit id="may_day">
+        <source>may_day</source>
+        <target>May Day</target>
       </trans-unit>
       <trans-unit id="memorial_day">
         <source>memorial_day</source>
@@ -269,6 +285,10 @@
       <trans-unit id="no_school">
         <source>no_school</source>
         <target>Schulfrei</target>
+      </trans-unit>
+      <trans-unit id="october_holiday">
+        <source>october_holiday</source>
+        <target>October Holiday</target>
       </trans-unit>
       <trans-unit id="official">
         <source>official</source>
@@ -318,6 +338,14 @@
         <source>saint_nicholas_day</source>
         <target>St. Niklaus von Flüe</target>
       </trans-unit>
+      <trans-unit id="saint_patricks_day">
+        <source>saint_patricks_day</source>
+        <target>Saint Patrick's Day</target>
+      </trans-unit>
+      <trans-unit id="saint_patricks_day_compensatory">
+        <source>saint_patricks_day_compensatory</source>
+        <target>Saint Patrick's Day (Ausgleich)</target>
+      </trans-unit>
       <trans-unit id="saint_ruperts_day">
         <source>saint_ruperts_day</source>
         <target>Rupertitag</target>
@@ -329,6 +357,10 @@
       <trans-unit id="second_christmas_day">
         <source>second_christmas_day</source>
         <target>Zweiter Weihnachtsfeiertag</target>
+      </trans-unit>
+      <trans-unit id="second_christmas_day_compensatory">
+        <source>second_christmas_day_compensatory</source>
+        <target>Zweiter Weihnachtsfeiertag (Ausgleich)</target>
       </trans-unit>
       <trans-unit id="sunday">
         <source>sunday</source>

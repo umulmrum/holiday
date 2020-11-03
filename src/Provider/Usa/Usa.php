@@ -68,7 +68,7 @@ class Usa implements HolidayProviderInterface
     {
         $holiday = $this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        $this->addCompensatoryDay($holidays, $holiday, $year);
+        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
     private function getMartinLutherKingJrDay(int $year): Holiday
@@ -104,7 +104,7 @@ class Usa implements HolidayProviderInterface
     {
         $holiday = Holiday::create(HolidayName::INDEPENDENCE_DAY, "{$year}-07-04", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        $this->addCompensatoryDay($holidays, $holiday, $year);
+        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
     private function getLaborDayUsa(int $year): Holiday
@@ -141,7 +141,7 @@ class Usa implements HolidayProviderInterface
         $holiday = Holiday::create(HolidayName::VETERANS_DAY, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
         if ($year >= 1978) {
-            $this->addCompensatoryDay($holidays, $holiday, $year);
+            $this->addNearestCompensatoryDay($holidays, $holiday, $year);
         }
     }
 
@@ -156,6 +156,6 @@ class Usa implements HolidayProviderInterface
     {
         $holiday = $this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        $this->addCompensatoryDay($holidays, $holiday, $year);
+        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 }

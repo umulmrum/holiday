@@ -10,10 +10,33 @@ use Umulmrum\Holiday\Model\HolidayList;
 trait CompensatoryDaysTrait
 {
     /**
+     * If $holiday falls on a Saturday or a Sunday, add the follwing Monday as holiday.
+     * If $holiday falls on a Sunday and has a preceding, add the following Monday as holiday.
+     */
+    private function addLaterCompensatoryDay(HolidayList $holidays, Holiday $holiday, int $type = null, int $daysToAdd = null): void
+    {
+        $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, $holiday->getSimpleDate());
+        $weekDay = $date->format('w');
+        if ('6' === $weekDay) {
+            $date->add(new \DateInterval('P' . ($daysToAdd ?? 2) . 'D'));
+        } elseif ('0' === $weekDay) {
+            $date->add(new \DateInterval('P' . ($daysToAdd ?? 1) . 'D'));
+        } else {
+            return;
+        }
+
+        $holidays->add(Holiday::create(
+            $holiday->getName() . HolidayName::SUFFIX_COMPENSATORY,
+            $date->format(Holiday::DISPLAY_DATE_FORMAT),
+            ($type ?? $holiday->getType()) | HolidayType::COMPENSATORY
+        ));
+    }
+
+    /**
      * If $holiday falls on a Saturday, add the preceding Friday as holiday.
      * If $holiday falls on a Sunday, add the following Monday as holiday.
      */
-    private function addCompensatoryDay(HolidayList $holidays, Holiday $holiday, int $year): void
+    private function addNearestCompensatoryDay(HolidayList $holidays, Holiday $holiday, int $year): void
     {
         $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, $holiday->getSimpleDate());
         $weekDay = $date->format('w');

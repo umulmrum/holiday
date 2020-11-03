@@ -243,6 +243,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Denmark
 - France (incl. Bas-Rhin, French Guiana, Guadeloupe, Haut-Rhin, Martinique, Moselle, Reunion)
 - Germany (incl. Baden-Wuerttemberg, Bavaria, Berlin, Brandenburg, Bremen, Hamburg, Hesse, Lower Saxony, Mecklenburg-Vorpommern, North-rhine Westphalia, Rhineland Palatinate, Saarland, Saxony, Saxony-Anhalt, Schleswig-Holstein, Thuringia)
+- Ireland
 - Italy (incl. South Tyrol)
 - Liechtenstein
 - Luxembourg

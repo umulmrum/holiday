@@ -20,6 +20,7 @@ final class HolidayName
 
     // Common
     public const NEW_YEAR = 'new_year';
+    public const NEW_YEAR_COMPENSATORY = self::NEW_YEAR.self::SUFFIX_COMPENSATORY;
     public const INTERNATIONAL_WOMENS_DAY = 'international_womens_day';
     public const LABOR_DAY = 'labor_day';
     public const NEW_YEARS_EVE = 'new_years_eve';
@@ -54,8 +55,9 @@ final class HolidayName
     public const IMMACULATE_CONCEPTION = 'immaculate_conception';
     public const CHRISTMAS_EVE = 'christmas_eve';
     public const CHRISTMAS_DAY = 'christmas_day';
-    public const CHRISTMAS_DAY_COMPENSATORY = 'christmas_day'.self::SUFFIX_COMPENSATORY;
+    public const CHRISTMAS_DAY_COMPENSATORY = self::CHRISTMAS_DAY.self::SUFFIX_COMPENSATORY;
     public const SECOND_CHRISTMAS_DAY = 'second_christmas_day';
+    public const SECOND_CHRISTMAS_DAY_COMPENSATORY = self::SECOND_CHRISTMAS_DAY.self::SUFFIX_COMPENSATORY;
     public const VALENTINES_DAY = 'valentines_day';
 
     // Austria
@@ -86,6 +88,14 @@ final class HolidayName
     public const AUGSBURGER_FRIEDENSFEST = 'augsburger_friedensfest';
     public const GERMAN_UNITY_DAY = 'german_unity_day';
 
+    // Ireland
+    public const AUGUST_HOLIDAY = 'august_holiday';
+    public const MAY_DAY = 'may_day';
+    public const JUNE_HOLIDAY = 'june_holiday';
+    public const OCTOBER_HOLIDAY = 'october_holiday';
+    public const SAINT_PATRICKS_DAY = 'saint_patricks_day';
+    public const SAINT_PATRICKS_DAY_COMPENSATORY = self::SAINT_PATRICKS_DAY.self::SUFFIX_COMPENSATORY;
+
     // Italy
     public const ANNIVERSARY_OF_THE_UNIFICATION_OF_ITALY = 'anniversary_of_the_unification_of_italy';
     public const INTERNATIONAL_HOLOCAUST_REMEMBRANCE_DAY = 'international_holocaust_remembrance_day';
@@ -111,13 +121,12 @@ final class HolidayName
     // USA
     public const COLUMBUS_DAY = 'columbus_day';
     public const INDEPENDENCE_DAY = 'independence_day';
-    public const INDEPENDENCE_DAY_COMPENSATORY = 'independence_day'.self::SUFFIX_COMPENSATORY;
+    public const INDEPENDENCE_DAY_COMPENSATORY = self::INDEPENDENCE_DAY.self::SUFFIX_COMPENSATORY;
     public const MARTIN_LUTHER_KING_JR_DAY = 'martin_luther_king_jr_day';
     public const MEMORIAL_DAY = 'memorial_day';
-    public const NEW_YEAR_COMPENSATORY = 'new_year'.self::SUFFIX_COMPENSATORY;
     public const THANKSGIVING_DAY = 'thanksgiving_day';
     public const VETERANS_DAY = 'veterans_day';
-    public const VETERANS_DAY_COMPENSATORY = 'veterans_day'.self::SUFFIX_COMPENSATORY;
+    public const VETERANS_DAY_COMPENSATORY = self::VETERANS_DAY.self::SUFFIX_COMPENSATORY;
     public const WASHINGTONS_BIRTHDAY = 'washingtons_birthday';
 
     // Weekdays
