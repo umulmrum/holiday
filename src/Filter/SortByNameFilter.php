@@ -14,9 +14,11 @@ namespace Umulmrum\Holiday\Filter;
 use Umulmrum\Holiday\Model\Holiday;
 
 /**
- * SortByDateFilter sorts the list by date.
+ * SortByNameFilter sorts the list by name.
+ * As holidays use a technical name by default, it might make sense to translate to a human-readable format before
+ * using this filter, e.g. by applying TranslateFilter.
  */
-final class SortByDateFilter extends AbstractSortFilter
+final class SortByNameFilter extends AbstractSortFilter
 {
     /**
      * {@inheritdoc}
@@ -24,7 +26,7 @@ final class SortByDateFilter extends AbstractSortFilter
     protected function getCompareFunction(): callable
     {
         return static function (Holiday $o1, Holiday $o2) {
-            return $o1->getSimpleDate() <=> $o2->getSimpleDate();
+            return $o1->getName() <=> $o2->getName();
         };
     }
 }

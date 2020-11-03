@@ -14,9 +14,9 @@ namespace Umulmrum\Holiday\Filter;
 use Umulmrum\Holiday\Model\Holiday;
 
 /**
- * SortByDateFilter sorts the list by date.
+ * SortByTypeFilter sorts the list by type.
  */
-final class SortByDateFilter extends AbstractSortFilter
+final class SortByTypeFilter extends AbstractSortFilter
 {
     /**
      * {@inheritdoc}
@@ -24,7 +24,7 @@ final class SortByDateFilter extends AbstractSortFilter
     protected function getCompareFunction(): callable
     {
         return static function (Holiday $o1, Holiday $o2) {
-            return $o1->getSimpleDate() <=> $o2->getSimpleDate();
+            return $o1->getType() <=> $o2->getType();
         };
     }
 }

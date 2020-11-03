@@ -32,6 +32,7 @@ final class SortByDateFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string[] $holidays
+     * @param string[] $expectedResult
      */
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
@@ -57,7 +58,7 @@ final class SortByDateFilterTest extends HolidayTestCase
     private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
     {
         $resultDates = [];
-        foreach ($this->actualResult as $result) {
+        foreach ($this->actualResult->getList() as $result) {
             $resultDates[] = $result->getSimpleDate();
         }
         self::assertEquals($expectedResult, $resultDates);
