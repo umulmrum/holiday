@@ -107,6 +107,21 @@ final class HolidayName
     public const EUROPE_DAY = 'europe_day';
     public const GRAND_DUKES_OFFICIAL_BIRTHDAY = 'grand_dukes_official_birthday';
 
+    // Russia
+    public const DECLARATION_OF_SOVEREIGNTY_DAY = 'declaration_of_sovereignty_day';
+    public const DECLARATION_OF_SOVEREIGNTY_DAY_COMPENSATORY = 'declaration_of_sovereignty_day_compensatory';
+    public const DEFENDER_OF_THE_FATHERLAND_DAY = 'defender_of_the_fatherland_day';
+    public const DEFENDER_OF_THE_FATHERLAND_DAY_COMPENSATORY = 'defender_of_the_fatherland_day_compensatory';
+    public const NEW_YEAR_HOLIDAY = 'new_year_holiday';
+    public const OCTOBER_REVOLUTION_DAY = 'october_revolution_day';
+    public const OCTOBER_REVOLUTION_DAY_COMPENSATORY = 'october_revolution_day_compensatory';
+    public const RUSSIA_DAY = 'russia_day';
+    public const RUSSIA_DAY_COMPENSATORY = 'russia_day_compensatory';
+    public const SPRING_AND_LABOUR_DAY = 'spring_and_labour_day';
+    public const SPRING_AND_LABOUR_DAY_COMPENSATORY = 'spring_and_labour_day_compensatory';
+    public const UNITY_DAY = 'unity_day';
+    public const UNITY_DAY_COMPENSATORY = 'unity_day_compensatory';
+
     // Switzerland
     public const BERCHTOLDSTAG = 'berchtoldstag';
     public const BETTAGSMONTAG = 'bettagsmontag';

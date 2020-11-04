@@ -247,6 +247,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Italy (incl. South Tyrol)
 - Liechtenstein
 - Luxembourg
+- Russia
 - Switzerland (incl. Aargau, Appenzell-Ausserrhoden, Appenzell-Innerrhoden, Basel Landschaft, Basel Stadt, Bern, Fribourg, Geneva, Glarus, Grisons, Jura, Lucerne, Neuchatel, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St Gallen, Thurgau, Ticino, Uri, Valais, Vaud, Zuerich, Zug)
 - USA (federal holidays only yet)
 

@@ -138,6 +138,22 @@
         <source>day_off</source>
         <target>Day Off</target>
       </trans-unit>
+      <trans-unit id="declaration_of_sovereignty_day">
+        <source>declaration_of_sovereignty_day</source>
+        <target>Declaration of Sovereignty Day</target>
+      </trans-unit>
+      <trans-unit id="declaration_of_sovereignty_day_compensatory">
+        <source>declaration_of_sovereignty_day_compensatory</source>
+        <target>Declaration of Sovereignty Day (compensatory)</target>
+      </trans-unit>
+      <trans-unit id="defender_of_the_fatherland_day">
+        <source>defender_of_the_fatherland_day</source>
+        <target>Defender of the Fatherland Day</target>
+      </trans-unit>
+      <trans-unit id="defender_of_the_fatherland_day_compensatory">
+        <source>defender_of_the_fatherland_day_compensatory</source>
+        <target>Defender of the Fatherland Day (compensatory)</target>
+      </trans-unit>
       <trans-unit id="easter_monday">
         <source>easter_monday</source>
         <target>Easter Monday</target>
@@ -278,6 +294,10 @@
         <source>new_year_compensatory</source>
         <target>New Year (compensatory)</target>
       </trans-unit>
+      <trans-unit id="new_year_holiday">
+        <source>new_year_holiday</source>
+        <target>New Year Holiday</target>
+      </trans-unit>
       <trans-unit id="new_years_eve">
         <source>new_years_eve</source>
         <target>New Year's Eve</target>
@@ -289,6 +309,14 @@
       <trans-unit id="october_holiday">
         <source>october_holiday</source>
         <target>October Holiday</target>
+      </trans-unit>
+      <trans-unit id="october_revolution_day">
+        <source>october_revolution_day</source>
+        <target>October Revolution Day</target>
+      </trans-unit>
+      <trans-unit id="october_revolution_day_compensatory">
+        <source>october_revolution_day_compensatory</source>
+        <target>October Revolution Day (compensatory)</target>
       </trans-unit>
       <trans-unit id="official">
         <source>official</source>
@@ -317,6 +345,14 @@
       <trans-unit id="republic_day">
         <source>republic_day</source>
         <target>Republic Day</target>
+      </trans-unit>
+      <trans-unit id="russia_day">
+        <source>russia_day</source>
+        <target>Russia Day</target>
+      </trans-unit>
+      <trans-unit id="russia_day_compensatory">
+        <source>russia_day_compensatory</source>
+        <target>Russia Day (compensatory)</target>
       </trans-unit>
       <trans-unit id="saint_florians_day">
         <source>saint_florians_day</source>
@@ -362,6 +398,14 @@
         <source>second_christmas_day_compensatory</source>
         <target>Second Christmas Day (compensatory)</target>
       </trans-unit>
+      <trans-unit id="spring_and_labour_day">
+        <source>spring_and_labour_day</source>
+        <target>Spring and Labour Day</target>
+      </trans-unit>
+      <trans-unit id="spring_and_labour_day_compensatory">
+        <source>spring_and_labour_day_compensatory</source>
+        <target>Spring and Labour Day (compensatory)</target>
+      </trans-unit>
       <trans-unit id="sunday">
         <source>sunday</source>
         <target>Sunday</target>
@@ -389,6 +433,14 @@
       <trans-unit id="tuesday">
         <source>tuesday</source>
         <target>Tuesday</target>
+      </trans-unit>
+      <trans-unit id="unity_day">
+        <source>unity_day</source>
+        <target>Unity Day</target>
+      </trans-unit>
+      <trans-unit id="unity_day_compensatory">
+        <source>unity_day_compensatory</source>
+        <target>Unity Day (compensatory)</target>
       </trans-unit>
       <trans-unit id="valentinesday">
         <source>valentinesday</source>
