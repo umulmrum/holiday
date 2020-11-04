@@ -9,18 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Provider\Russia;
+namespace Umulmrum\Holiday\Test\Provider\Russia;
 
 use Umulmrum\Holiday\Provider\Russia\Russia;
 use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
 
 final class RussiaTest extends AbstractHolidayCalculatorTest
 {
+    /**
+     * {@inheritdoc}
+     */
     protected function getHolidayProviders(): array
     {
         return [Russia::class];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getData(): array
     {
         return [

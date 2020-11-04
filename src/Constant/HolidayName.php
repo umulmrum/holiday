@@ -27,6 +27,7 @@ final class HolidayName
     public const VICTORY_IN_EUROPE_DAY = 'victory_in_europe_day';
 
     // Christian
+    public const FAT_TUESDAY = 'fat_tuesday';
     public const ASH_WEDNESDAY = 'ash_wednesday';
     public const EPIPHANY = 'epiphany';
     public const CANDLEMAS = 'candlemas';
@@ -73,6 +74,12 @@ final class HolidayName
     public const DAY_OF_THE_GERMAN_SPEAKING_COMMUNITY = 'day_of_the_german_speaking_community';
     public const DAY_OF_THE_WALLOON_REGION = 'day_of_the_walloon_region';
     public const FRENCH_COMMUNITY_HOLIDAY = 'french_community_day';
+
+    // Brazil
+    public const DAY_OF_THE_DEAD = 'day_of_the_dead';
+    public const OUR_LADY_OF_APARECIDA = 'our_lady_of_aparecida';
+    public const REPUBLIC_PROCLAMATION_DAY = 'republic_proclamation_day';
+    public const TIRADENTES = 'tiradentes';
 
     // Denmark
     public const DANISH_NATIONAL_HOLIDAY = 'danish_national_holiday';
