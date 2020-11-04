@@ -166,6 +166,14 @@
         <source>easter_sunday</source>
         <target>Ostersonntag</target>
       </trans-unit>
+      <trans-unit id="electoral_day_round_one">
+        <source>electoral_day_round_one</source>
+        <target>Wahltag (Runde 1)</target>
+      </trans-unit>
+      <trans-unit id="electoral_day_round_two">
+        <source>electoral_day_round_two</source>
+        <target>Wahltag (Runde 2)</target>
+      </trans-unit>
       <trans-unit id="epiphany">
         <source>epiphany</source>
         <target>Heilige drei Könige</target>

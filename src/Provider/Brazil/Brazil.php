@@ -33,6 +33,10 @@ class Brazil implements HolidayProviderInterface
             $holidays->add($this->getIndependenceDay($year, HolidayType::DAY_OFF));
         }
         $holidays->add($this->getOurLadyOfAparecida($year));
+        if ($year % 2 === 0) {
+            $holidays->add($this->getElectoralDayRoundOne($year));
+            $holidays->add($this->getElectoralDayRoundTwo($year));
+        }
         $holidays->add($this->getDayOfTheDead($year, HolidayType::DAY_OFF));
         if ($year >= 1890) {
             $holidays->add($this->getRepublicProclamationDay($year, HolidayType::DAY_OFF));
@@ -61,6 +65,20 @@ class Brazil implements HolidayProviderInterface
         }
 
         return Holiday::create(HolidayName::OUR_LADY_OF_APARECIDA, "{$year}-10-12", $type);
+    }
+
+    private function getElectoralDayRoundOne(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $date = (new \DateTime("First Sunday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
+
+        return Holiday::create(HolidayName::ELECTORAL_DAY_ROUND_ONE, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF | $additionalType);
+    }
+
+    private function getElectoralDayRoundTwo(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $date = (new \DateTime("Last Sunday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
+
+        return Holiday::create(HolidayName::ELECTORAL_DAY_ROUND_TWO, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF | $additionalType);
     }
 
     private function getDayOfTheDead(int $year, int $additionalType = HolidayType::OTHER): Holiday

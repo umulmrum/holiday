@@ -77,6 +77,8 @@ final class HolidayName
 
     // Brazil
     public const DAY_OF_THE_DEAD = 'day_of_the_dead';
+    public const ELECTORAL_DAY_ROUND_ONE = 'electoral_day_round_one';
+    public const ELECTORAL_DAY_ROUND_TWO = 'electoral_day_round_two';
     public const OUR_LADY_OF_APARECIDA = 'our_lady_of_aparecida';
     public const REPUBLIC_PROCLAMATION_DAY = 'republic_proclamation_day';
     public const TIRADENTES = 'tiradentes';
