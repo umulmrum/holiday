@@ -11,30 +11,66 @@
 
 namespace Umulmrum\Holiday;
 
-use Umulmrum\Holiday\Interpreter\HolidayProviderInterpreterTrait;
-use Umulmrum\Holiday\Interpreter\YearInterpreterTrait;
+use Umulmrum\Holiday\Assert\Assert;
 use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Resolver\ClassNameResolver;
+use Umulmrum\Holiday\Resolver\IsoResolver;
+use Umulmrum\Holiday\Resolver\ProviderResolverInterface;
+use Umulmrum\Holiday\Resolver\ResolverHandler;
+use Umulmrum\Holiday\Resolver\ResolverHandlerInterface;
 
 final class HolidayCalculator implements HolidayCalculatorInterface
 {
-    use HolidayProviderInterpreterTrait;
-    use YearInterpreterTrait;
+    use Assert;
+
+    /**
+     * @var ProviderResolverInterface[]
+     */
+    private $providerResolvers = [];
+    /**
+     * @var ResolverHandler
+     */
+    private $resolverHandler;
+
+    public function __construct(ResolverHandlerInterface $resolverHandler = null)
+    {
+        $this->resolverHandler = $resolverHandler ?? new ResolverHandler([new ClassNameResolver(), new IsoResolver()]);
+    }
 
     /**
      * {@inheritdoc}
      */
     public function calculate($holidayProviders, $years): HolidayList
     {
-        $finalHolidayProviders = $this->interpretHolidayProviders($holidayProviders);
         $finalYears = $this->interpretYears($years);
 
         $holidays = new HolidayList();
-        foreach ($finalHolidayProviders as $holidayProvider) {
+        foreach ($this->resolverHandler->resolve($holidayProviders) as $holidayProvider) {
             foreach ($finalYears as $year) {
                 $holidays->addAll($holidayProvider->calculateHolidaysForYear($year));
             }
         }
 
         return $holidays;
+    }
+
+    /**
+     * @param int|int[] $years
+     *
+     * @return int[]
+     */
+    private function interpretYears($years): array
+    {
+        if (\is_int($years)) {
+            return [$years];
+        }
+
+        if (\is_array($years)) {
+            $this->assertIntArray($years);
+
+            return $years;
+        }
+
+        throw new \InvalidArgumentException('Year needs to be either int or an array of int');
     }
 }

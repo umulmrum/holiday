@@ -12,6 +12,8 @@
 namespace Umulmrum\Holiday\Test\Calculator;
 
 use Umulmrum\Holiday\HolidayCalculator;
+use Umulmrum\Holiday\Model\Holiday;
+use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\Belgium\Belgium;
 use Umulmrum\Holiday\Provider\Germany\Berlin;
 use Umulmrum\Holiday\Provider\Germany\Brandenburg;
@@ -19,7 +21,9 @@ use Umulmrum\Holiday\Provider\Germany\Germany;
 use Umulmrum\Holiday\Provider\Germany\Hesse;
 use Umulmrum\Holiday\Provider\Germany\Saxony;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Resolver\ResolverHandlerInterface;
 use Umulmrum\Holiday\Test\HolidayTestCase;
+use Umulmrum\Holiday\Test\ResolverHandlerStub;
 
 final class HolidayCalculatorTest extends HolidayTestCase
 {
@@ -27,21 +31,26 @@ final class HolidayCalculatorTest extends HolidayTestCase
      * @var HolidayCalculator
      */
     private $holidayCalculator;
+    /**
+     * @var HolidayList
+     */
+    private $actualResult;
 
     /**
-     * @dataProvider provideDataForTestConstructForValidArgument
+     * @test
+     * @dataProvider provideDataForTestDefaultResolver
      *
      * @param string|HolidayProviderInterface[] $holidayProviders
      * @param int|int[]                         $years
      */
-    public function testConstructForValidArgument($holidayProviders, $years): void
+    public function it_calculates_with_default_resolver($holidayProviders, $years): void
     {
         $this->givenHolidayCalculator();
         $this->whenCalculateIsCalled($holidayProviders, $years);
         $this->thenNoExceptionShouldBeThrown();
     }
 
-    public function provideDataForTestConstructForValidArgument(): array
+    public function provideDataForTestDefaultResolver(): array
     {
         return [
             [
@@ -61,17 +70,21 @@ final class HolidayCalculatorTest extends HolidayTestCase
                 ],
                 [2020],
             ],
+            [
+                'DE',
+                2020,
+            ],
         ];
     }
 
-    private function givenHolidayCalculator(): void
+    private function givenHolidayCalculator(ResolverHandlerInterface $resolverHandler = null): void
     {
-        $this->holidayCalculator = new HolidayCalculator();
+        $this->holidayCalculator = new HolidayCalculator($resolverHandler);
     }
 
     private function whenCalculateIsCalled($holidayProviders, $years): void
     {
-        $this->holidayCalculator->calculate($holidayProviders, $years);
+        $this->actualResult = $this->holidayCalculator->calculate($holidayProviders, $years);
     }
 
     private function thenNoExceptionShouldBeThrown(): void
@@ -80,12 +93,13 @@ final class HolidayCalculatorTest extends HolidayTestCase
     }
 
     /**
+     * @test
      * @dataProvider provideDataForTestThrowExceptionOnInvalidArgument
      *
      * @param mixed $holidayProviders
      * @param mixed $years
      */
-    public function testThrowExceptionOnInvalidArgument($holidayProviders, $years): void
+    public function it_throws_exception_on_invalid_arguments($holidayProviders, $years): void
     {
         $this->givenHolidayCalculator();
         $this->thenExpectInvalidArgumentException();
@@ -144,5 +158,25 @@ final class HolidayCalculatorTest extends HolidayTestCase
     private function thenExpectInvalidArgumentException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
+    }
+
+    /**
+     * @test
+     */
+    public function it_uses_passed_resolver_handler(): void
+    {
+        $this->givenHolidayCalculator(new ResolverHandlerStub());
+        $this->whenCalculateIsCalled('x', 2020);
+        $this->thenExpectedHolidaysShouldBeReturned(['2020-01-01', '2020-07-07']);
+    }
+
+    /**
+     * @param string[] $expectedHolidays
+     */
+    private function thenExpectedHolidaysShouldBeReturned(array $expectedHolidays): void
+    {
+        self::assertEquals($expectedHolidays, \array_map(static function (Holiday $holiday) {
+            return $holiday->getSimpleDate();
+        }, $this->actualResult->getList()));
     }
 }

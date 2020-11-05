@@ -9,8 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Holidays for these countries: Brazil, Ireland, Russia.
+- Providers for countries or regions can now be referenced by their respective ISO-3166 code.
 - Fat Tuesday in ChristianHolidays.
 - SortByNameFilter and SortByTypeFilter.
+
+### Changed
+- Made provider resolving (from untyped arguments) more flexible by introducing provider resolvers.
 
 ## [0.4.0] - 2020-11-02
 
