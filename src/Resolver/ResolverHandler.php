@@ -59,8 +59,6 @@ final class ResolverHandler implements ResolverHandlerInterface
     /**
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $identifier
      *
-     * @return HolidayProviderInterface
-     *
      * @throws \InvalidArgumentException
      */
     private function doResolve($identifier): HolidayProviderInterface
@@ -71,16 +69,16 @@ final class ResolverHandler implements ResolverHandlerInterface
 
         if (false === \is_string($identifier)) {
             throw new \InvalidArgumentException('Argument must either be an instance of HolidayProviderInterface,
-                a string containing a class name or an array of these types. Got: ' . \print_r($identifier, true));
+                a string containing a class name or an array of these types. Got: '.\print_r($identifier, true));
         }
 
         foreach ($this->resolvers as $resolver) {
             $resolved = $resolver->resolveHolidayProvider($identifier);
-            if ($resolved !== null) {
+            if (null !== $resolved) {
                 return $resolved;
             }
         }
 
-        throw new \InvalidArgumentException('Could not resolve holiday provider for: ' . $identifier);
+        throw new \InvalidArgumentException('Could not resolve holiday provider for: '.$identifier);
     }
 }

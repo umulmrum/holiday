@@ -18,15 +18,15 @@ trait CompensatoryDaysTrait
         $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, $holiday->getSimpleDate());
         $weekDay = $date->format('w');
         if ('6' === $weekDay) {
-            $date->add(new \DateInterval('P' . ($daysToAdd ?? 2) . 'D'));
+            $date->add(new \DateInterval('P'.($daysToAdd ?? 2).'D'));
         } elseif ('0' === $weekDay) {
-            $date->add(new \DateInterval('P' . ($daysToAdd ?? 1) . 'D'));
+            $date->add(new \DateInterval('P'.($daysToAdd ?? 1).'D'));
         } else {
             return;
         }
 
         $holidays->add(Holiday::create(
-            $holiday->getName() . HolidayName::SUFFIX_COMPENSATORY,
+            $holiday->getName().HolidayName::SUFFIX_COMPENSATORY,
             $date->format(Holiday::DISPLAY_DATE_FORMAT),
             ($type ?? $holiday->getType()) | HolidayType::COMPENSATORY
         ));

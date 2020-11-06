@@ -31,7 +31,7 @@ final class IsoResolver implements ProviderResolverInterface
     {
         $this->init();
         if (isset(self::$MAP[$identifier])) {
-            return new self::$MAP[$identifier];
+            return new self::$MAP[$identifier]();
         }
 
         return null;
@@ -47,6 +47,6 @@ final class IsoResolver implements ProviderResolverInterface
         }
         $this->initialized = true;
 
-        self::$MAP = include __DIR__ . '/isoData.php';
+        self::$MAP = include __DIR__.'/isoData.php';
     }
 }
