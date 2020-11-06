@@ -31,7 +31,7 @@ abstract class AbstractSortFilter implements HolidayFilterInterface
      * Returns a callable that takes two Holiday arguments and returns:
      * - 1 is argument 1 is greater
      * - -1 if argument 2 is greater
-     * - 0 if the arguments are equal
+     * - 0 if the arguments are equal.
      */
     abstract protected function getCompareFunction(): callable;
 }

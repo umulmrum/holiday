@@ -51,10 +51,9 @@ require 'vendor/autoload.php';
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use Umulmrum\Holiday\Formatter\DateFormatter;
-use Umulmrum\Holiday\Provider\Germany\Bavaria;
 
 $holidayCalculator = new HolidayCalculator();
-$holidays = $holidayCalculator->calculate(Bavaria::class, 2020);
+$holidays = $holidayCalculator->calculate('DE-BY', 2020);
 // Apply filters, e.g. restrict to one month.
 $firstDay = new \DateTime('2020-12-01');
 $lastDay = new \DateTime('2020-12-31');
@@ -63,7 +62,8 @@ $holidays = $holidays->filter(new IncludeTimespanFilter($firstDay, $lastDay));
 $formattedHolidays = $holidays->format(new DateFormatter());
 ```
 
-This results in an array of date strings.
+This results in an array of date strings. Note that we used the ISO-3166-2 code `DE-BY` to get the holidays for Bavaria.
+See section `Resolving Holiday Providers` below for different ways to request holidays.
 
 There are also some helper methods that simplify some common holiday computations. Using the `GetHolidayForMonth` helper,
 the example above can be substituted by this:
@@ -152,6 +152,47 @@ $holidays->replaceByIndex(0, $anotherHoliday);
 // Check if a given date is in the list
 $holidays->isHoliday(new \DateTime('2020-12-01'));
 ```
+
+### Resolving Holiday Providers
+
+The examples above already showed two different ways to specify for which region or other "entity" holidays should be
+calculated. There is also a third way, and complete customization is also possible - let's have a look at all of them:
+
+1. Fully qualified class name:
+
+    ```php
+    $calculator->calculate(\Umulmrum\Holiday\Provider\France\France::class, 2020);
+    ```
+    
+    This is suggested as default, since you only need to remember the region to request and IDEs should provide
+    autocompletion to save keystrokes.
+
+2. Instantiated class:
+
+    ```php
+    $calculator->calculate(new \Umulmrum\Holiday\Provider\Weekday\Sundays(\Umulmrum\Holiday\Constant\HolidayType::DAY_OFF), 2020);
+    ```
+    
+    Use an instantiated class of the same type as you would specify when using way 1. Do this if a provider has constructor
+    arguments, such as additional holiday types as seen in the example (Sundays aren't automatically days off).
+
+3. ISO-3166 names:
+
+    ```php
+    $calculator->calculate('AT-9', 2020); // AT-9 = Vienna in Austria
+    ```
+    
+    Use ISO-3166-1 country codes or ISO-3166-2 region codes e.g. if your application already uses them to simplify integration
+    and decoupling of the Holiday lib. The list of supported countries and regions can be found in `src/Resolver/isoData.php`.
+
+4. Custom
+
+    ```php
+    $calculator = new \Umulmrum\Holiday\HolidayCalculator(new \Umulmrum\Holiday\Resolver\ResolverHandler([new MyCustomResolver()]));
+    ```
+    
+    Use this to add custom resolving logic. `ResolverHandler` takes an array of `ProviderResolverInterface`s (and implements
+    `ResolverHandlerInterface`, so can even be exchanged with more custom code).
 
 ### Filters
 

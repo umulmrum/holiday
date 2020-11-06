@@ -33,7 +33,7 @@ class Brazil implements HolidayProviderInterface
             $holidays->add($this->getIndependenceDay($year, HolidayType::DAY_OFF));
         }
         $holidays->add($this->getOurLadyOfAparecida($year));
-        if ($year % 2 === 0) {
+        if (0 === $year % 2) {
             $holidays->add($this->getElectoralDayRoundOne($year));
             $holidays->add($this->getElectoralDayRoundTwo($year));
         }
