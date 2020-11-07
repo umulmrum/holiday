@@ -454,10 +454,6 @@
         <source>thanksgiving_day</source>
         <target>Thanksgiving Day</target>
       </trans-unit>
-      <trans-unit id="three_wise_men">
-        <source>three_wise_men</source>
-        <target>Three Wise Men</target>
-      </trans-unit>
       <trans-unit id="thursday">
         <source>thursday</source>
         <target>Thursday</target>

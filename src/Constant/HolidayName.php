@@ -60,7 +60,6 @@ final class HolidayName
     public const SECOND_CHRISTMAS_DAY = 'second_christmas_day';
     public const SECOND_CHRISTMAS_DAY_COMPENSATORY = self::SECOND_CHRISTMAS_DAY.self::SUFFIX_COMPENSATORY;
     public const VALENTINES_DAY = 'valentines_day';
-    public const THREE_WISE_MEN = 'three_wise_men';
 
     // Austria
     public const AUSTRIAN_NATIONAL_HOLIDAY = 'austrian_national_holiday';
