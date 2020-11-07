@@ -86,6 +86,10 @@
         <source>bettagsmontag</source>
         <target>Bettagsmontag</target>
       </trans-unit>
+      <trans-unit id="birthday_of_benito_juarez">
+        <source>birthday_of_benito_juarez</source>
+        <target>Geburtstag von Benito Juárez</target>
+      </trans-unit>
       <trans-unit id="candlemas">
         <source>candlemas</source>
         <target>Lichtmess</target>
@@ -377,6 +381,10 @@
       <trans-unit id="republic_proclamation_day">
         <source>republic_proclamation_day</source>
         <target>Tag der Ausrufung der Republik</target>
+      </trans-unit>
+      <trans-unit id="revolution_day">
+        <source>revolution_day</source>
+        <target>Tag der Revolution</target>
       </trans-unit>
       <trans-unit id="russia_day">
         <source>russia_day</source>

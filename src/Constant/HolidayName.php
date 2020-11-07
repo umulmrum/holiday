@@ -116,6 +116,10 @@ final class HolidayName
     public const EUROPE_DAY = 'europe_day';
     public const GRAND_DUKES_OFFICIAL_BIRTHDAY = 'grand_dukes_official_birthday';
 
+    // Mexico
+    public const BIRTHDAY_OF_BENITO_JUAREZ = 'birthday_of_benito_juarez';
+    public const REVOLUTION_DAY = 'revolution_day';
+
     // Poland
     public const CONSTITUTION_DAY = 'constitution_day';
     public const POLISH_ARMED_FORCES_DAY = 'polish_armed_forces_day';
