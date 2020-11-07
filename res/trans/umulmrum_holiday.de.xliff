@@ -114,6 +114,10 @@
         <source>compensatory</source>
         <target>Ausgleichstag</target>
       </trans-unit>
+      <trans-unit id="constitution_day">
+        <source>constitution_day</source>
+        <target>Verfassungstag</target>
+      </trans-unit>
       <trans-unit id="corpus_christi">
         <source>corpus_christi</source>
         <target>Fronleichnam</target>
@@ -349,6 +353,10 @@
       <trans-unit id="partial_only">
         <source>partial_only</source>
         <target>Nur teilweise</target>
+      </trans-unit>
+      <trans-unit id="polish_armed_forces_day">
+        <source>polish_armed_forces_day</source>
+        <target>Tag der polnischen Armee</target>
       </trans-unit>
       <trans-unit id="reformation_day">
         <source>reformation_day</source>

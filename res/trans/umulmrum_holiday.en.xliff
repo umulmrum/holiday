@@ -114,6 +114,10 @@
         <source>compensatory</source>
         <target>Compensatory Day</target>
       </trans-unit>
+      <trans-unit id="constitution_day">
+        <source>constitution_day</source>
+        <target>Constitution Day</target>
+      </trans-unit>
       <trans-unit id="corpus_christi">
         <source>corpus_christi</source>
         <target>Corpus Christi</target>
@@ -349,6 +353,10 @@
       <trans-unit id="partial_only">
         <source>partial_only</source>
         <target>Partial only</target>
+      </trans-unit>
+      <trans-unit id="polish_armed_forces_day">
+        <source>polish_armed_forces_day</source>
+        <target>Polish Armed Forces Day</target>
       </trans-unit>
       <trans-unit id="reformation_day">
         <source>reformation_day</source>
