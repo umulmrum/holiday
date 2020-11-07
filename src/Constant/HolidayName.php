@@ -131,6 +131,10 @@ final class HolidayName
     public const UNITY_DAY = 'unity_day';
     public const UNITY_DAY_COMPENSATORY = 'unity_day_compensatory';
 
+    // Spain
+    public const SPANISH_NATIONAL_DAY = 'spanish_national_day';
+    public const SPANISH_CONSTITUTION_DAY = 'spanish_constitution_day';
+
     // Switzerland
     public const BERCHTOLDSTAG = 'berchtoldstag';
     public const BETTAGSMONTAG = 'bettagsmontag';
