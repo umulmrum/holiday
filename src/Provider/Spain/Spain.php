@@ -59,7 +59,7 @@ class Spain implements HolidayProviderInterface
 
     private function getSpanishConstitutionDay(int $year, int $additionalType = HolidayType::OTHER)
     {
-        return Holiday::create(HolidayName::SPANISH_CONSTITUTION_DAY, "{$year}-12-06", HolidayType::OFFICIAL | $additionalType);
+        return Holiday::create(HolidayName::CONSTITUTION_DAY, "{$year}-12-06", HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getThreeWiseMen(int $year, int $additionalType = HolidayType::OTHER)

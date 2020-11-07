@@ -434,10 +434,6 @@
         <source>spanish_national_day</source>
         <target>Spanish National Day</target>
       </trans-unit>
-      <trans-unit id="spanish_constitution_day">
-        <source>spanish_constitution_day</source>
-        <target>Spanish Constitution Day</target>
-      </trans-unit>
       <trans-unit id="spring_and_labour_day">
         <source>spring_and_labour_day</source>
         <target>Spring and Labour Day</target>

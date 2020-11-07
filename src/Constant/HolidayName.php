@@ -138,7 +138,6 @@ final class HolidayName
 
     // Spain
     public const SPANISH_NATIONAL_DAY = 'spanish_national_day';
-    public const SPANISH_CONSTITUTION_DAY = 'spanish_constitution_day';
 
     // Switzerland
     public const BERCHTOLDSTAG = 'berchtoldstag';
