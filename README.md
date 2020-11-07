@@ -184,6 +184,8 @@ calculated. There is also a third way, and complete customization is also possib
     
     Use ISO-3166-1 country codes or ISO-3166-2 region codes e.g. if your application already uses them to simplify integration
     and decoupling of the Holiday lib. The list of supported countries and regions can be found in `src/Resolver/isoData.php`.
+    There is a fallback to the base country in case the region code is not found - see the comment in the `IsoResolver`
+    class for details.
 
 4. Custom
 

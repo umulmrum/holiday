@@ -16,6 +16,7 @@ use Umulmrum\Holiday\Provider\France\BasRhin;
 use Umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
 use Umulmrum\Holiday\Provider\Germany\Germany;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\Italy\Italy;
 use Umulmrum\Holiday\Resolver\IsoResolver;
 use Umulmrum\Holiday\Test\HolidayTestCase;
 
@@ -44,17 +45,33 @@ final class IsoResolverTest extends HolidayTestCase
     public function provideDataForResolveProviders(): array
     {
         return [
-            [
+            'country' => [
                 'DE',
                 new Germany(),
             ],
-            [
+            'wrong-case' => [
+                'de',
+                null,
+            ],
+            'region' => [
                 'DE-BW',
                 new BadenWuerttemberg(),
             ],
-            [
+            'nonexisting' => [
                 'foo',
                 null,
+            ],
+            'toolong' => [
+                '12345678',
+                null,
+            ],
+            'not-implemented-region' => [
+                'IT-65',
+                new Italy(),
+            ],
+            'nonexisting-region' => [
+                'IT-foo',
+                new Italy(),
             ],
         ];
     }
