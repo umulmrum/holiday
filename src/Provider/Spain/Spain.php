@@ -33,7 +33,14 @@ class Spain implements HolidayProviderInterface
     {
         $holidays = new HolidayList();
         $holidays->add($this->getNewYear($year, HolidayType::DAY_OFF));
-        $holidays->add($this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getThreeWiseMen($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getMaundyThursday($year));
+        $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        if (($year >= 1889 && $year <= 1939) || $year>=1978) {
+            $holidays->add($this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        }
+        $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getAllSaintsDay($year, HolidayType::DAY_OFF));
         if ($year >= 1892) {
             $holidays->add($this->getSpanishNationalDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         }
@@ -53,5 +60,10 @@ class Spain implements HolidayProviderInterface
     private function getSpanishConstitutionDay(int $year, int $additionalType = HolidayType::OTHER)
     {
         return Holiday::create(HolidayName::SPANISH_CONSTITUTION_DAY, "{$year}-12-06", HolidayType::OFFICIAL | $additionalType);
+    }
+
+    private function getThreeWiseMen(int $year, int $additionalType = HolidayType::OTHER)
+    {
+        return Holiday::create(HolidayName::THREE_WISE_MEN, "{$year}-01-06", HolidayType::OFFICIAL | $additionalType);
     }
 }

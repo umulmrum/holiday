@@ -422,6 +422,14 @@
         <source>second_christmas_day_compensatory</source>
         <target>Second Christmas Day (compensatory)</target>
       </trans-unit>
+      <trans-unit id="spanish_national_day">
+        <source>spanish_national_day</source>
+        <target>Spanish National Day</target>
+      </trans-unit>
+      <trans-unit id="spanish_constitution_day">
+        <source>spanish_constitution_day</source>
+        <target>Spanish Constitution Day</target>
+      </trans-unit>
       <trans-unit id="spring_and_labour_day">
         <source>spring_and_labour_day</source>
         <target>Spring and Labour Day</target>
@@ -441,6 +449,10 @@
       <trans-unit id="thanksgiving_day">
         <source>thanksgiving_day</source>
         <target>Thanksgiving Day</target>
+      </trans-unit>
+      <trans-unit id="three_wise_men">
+        <source>three_wise_men</source>
+        <target>Three Wise Men</target>
       </trans-unit>
       <trans-unit id="thursday">
         <source>thursday</source>
