@@ -438,6 +438,10 @@
         <source>second_christmas_day_compensatory</source>
         <target>Zweiter Weihnachtsfeiertag (Ausgleich)</target>
       </trans-unit>
+      <trans-unit id="spanish_national_day">
+        <source>spanish_national_day</source>
+        <target>Spanischer Nationalfeiertag</target>
+      </trans-unit>
       <trans-unit id="spring_and_labour_day">
         <source>spring_and_labour_day</source>
         <target>Tag des Frühlings und der Arbeit</target>

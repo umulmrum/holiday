@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Holidays for these countries: Brazil, Ireland, Mexico, Poland, Russia.
+- Holidays for these countries: Brazil, Ireland, Mexico, Poland, Russia, Spain (by @marioquartz).
 - Providers for countries or regions can now be referenced by their respective ISO-3166 code.
 - Fat Tuesday in ChristianHolidays.
 - SortByNameFilter and SortByTypeFilter.

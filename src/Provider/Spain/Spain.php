@@ -16,7 +16,6 @@ use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
@@ -24,7 +23,6 @@ class Spain implements HolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     /**
      * {@inheritdoc}
@@ -36,7 +34,7 @@ class Spain implements HolidayProviderInterface
         $holidays->add($this->getEpiphany($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidays->add($this->getMaundyThursday($year));
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        if (($year >= 1889 && $year <= 1939) || $year>=1978) {
+        if (($year >= 1889 && $year <= 1939) || $year >= 1978) {
             $holidays->add($this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         }
         $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
@@ -57,7 +55,7 @@ class Spain implements HolidayProviderInterface
         return Holiday::create(HolidayName::SPANISH_NATIONAL_DAY, "{$year}-10-12", HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function getSpanishConstitutionDay(int $year, int $additionalType = HolidayType::OTHER)
+    private function getSpanishConstitutionDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         return Holiday::create(HolidayName::CONSTITUTION_DAY, "{$year}-12-06", HolidayType::OFFICIAL | $additionalType);
     }

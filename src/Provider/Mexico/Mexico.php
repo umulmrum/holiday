@@ -41,9 +41,7 @@ class Mexico implements HolidayProviderInterface
         if ($year >= 1826) {
             $this->addIndependenceDay($holidays, $year);
         }
-        if ($year >= 1911) {
-            $this->addRevolutionDay($holidays, $year);
-        }
+        $this->addRevolutionDay($holidays, $year);
         $this->addChristmasDay($holidays, $year);
 
         return $holidays;
@@ -56,7 +54,7 @@ class Mexico implements HolidayProviderInterface
         $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
-    private function addConstitutionDay(HolidayList  $holidays, int $year): void
+    private function addConstitutionDay(HolidayList $holidays, int $year): void
     {
         if ($year >= 2006) {
             $date = (new \DateTime("First Monday of {$year}-02"))->format(Holiday::DISPLAY_DATE_FORMAT);
@@ -70,7 +68,7 @@ class Mexico implements HolidayProviderInterface
         $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
-    private function addBirthdayOfBenitoJuarez(HolidayList  $holidays, int $year): void
+    private function addBirthdayOfBenitoJuarez(HolidayList $holidays, int $year): void
     {
         if ($year >= 2006) {
             $date = (new \DateTime("Third Monday of {$year}-03"))->format(Holiday::DISPLAY_DATE_FORMAT);
@@ -96,7 +94,7 @@ class Mexico implements HolidayProviderInterface
         $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
-    private function addRevolutionDay(HolidayList  $holidays, int $year): void
+    private function addRevolutionDay(HolidayList $holidays, int $year): void
     {
         if ($year >= 2006) {
             $date = (new \DateTime("Third Monday of {$year}-11"))->format(Holiday::DISPLAY_DATE_FORMAT);
