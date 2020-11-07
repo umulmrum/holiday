@@ -76,6 +76,9 @@ return [
     // Luxembourg
     'LU' => \Umulmrum\Holiday\Provider\Luxembourg\Luxembourg::class,
 
+    // Poland
+    'PL' => \Umulmrum\Holiday\Provider\Poland\Poland::class,
+
     // Russia
     'RU' => \Umulmrum\Holiday\Provider\Russia\Russia::class,
 
