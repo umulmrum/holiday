@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1] - 2020-12-08
+
+### Changed
+- Fixed lower-case namespace on `AbstractSortFilter` class.
+- Added missing regions to world map.
+
 ## [0.5.0] - 2020-11-07
 
 ### Added
@@ -104,7 +110,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.5.0...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/0.5.1...master
+[0.5.1]: https://github.com/umulmrum/holiday/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/umulmrum/holiday/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/umulmrum/holiday/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/umulmrum/holiday/compare/0.2.1...0.3.0
