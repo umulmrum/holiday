@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Test\Provider\Mexico;
+namespace Umulmrum\Holiday\Test\Provider\Mexico;
 
 use Umulmrum\Holiday\Provider\Mexico\Mexico;
 use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;

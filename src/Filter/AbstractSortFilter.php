@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace umulmrum\Holiday\Filter;
+namespace Umulmrum\Holiday\Filter;
 
 use Umulmrum\Holiday\Model\HolidayList;
 
