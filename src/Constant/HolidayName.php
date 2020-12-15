@@ -120,6 +120,11 @@ final class HolidayName
     public const BIRTHDAY_OF_BENITO_JUAREZ = 'birthday_of_benito_juarez';
     public const REVOLUTION_DAY = 'revolution_day';
 
+    // Netherlands
+    public const DUTCH_LIBERATION_DAY = 'liberation_day';
+    public const QUEENS_DAY = 'queens_day';
+    public const KINGS_DAY = 'kings_day';
+
     // Poland
     public const CONSTITUTION_DAY = 'constitution_day';
     public const POLISH_ARMED_FORCES_DAY = 'polish_armed_forces_day';
