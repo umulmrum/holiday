@@ -296,6 +296,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Liechtenstein
 - Luxembourg
 - Mexico
+- The Netherlands  
 - Poland
 - Russia
 - Spain (common holidays only yet)
