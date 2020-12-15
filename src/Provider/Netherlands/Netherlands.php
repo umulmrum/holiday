@@ -58,8 +58,11 @@ class Netherlands implements HolidayProviderInterface
         $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, "{$year}-{$date}");
         $weekDay = $date->format('w');
         if ('0' === $weekDay) {
-            $daysToAdd = ($year < 1980) ? 1 : -1;
-            $date->add(new \DateInterval('P' . ($daysToAdd) . 'D'));
+            if($year < 1980) {
+                $date->add(new \DateInterval('P1D'));
+            } else {
+                $date->sub(new \DateInterval('P1D'));
+            }
         }
 
         return Holiday::create(HolidayName::QUEENS_DAY, $date->format(Holiday::DISPLAY_DATE_FORMAT), $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
@@ -70,7 +73,7 @@ class Netherlands implements HolidayProviderInterface
         $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, "{$year}-04-27");
         $weekDay = $date->format('w');
         if ('0' === $weekDay) {
-            $date->add(new \DateInterval('P-1D')); // Move to Saturday
+            $date->sub(new \DateInterval('P1D')); // Move to Saturday
         }
 
         return Holiday::create(HolidayName::KINGS_DAY, $date->format(Holiday::DISPLAY_DATE_FORMAT), $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
@@ -91,6 +94,6 @@ class Netherlands implements HolidayProviderInterface
             return null;
         }
 
-        return Holiday::create(HolidayName::DUTCH_LIBERATION_DAY, "{$year}-05-05", $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
+        return Holiday::create(HolidayName::DUTCH_LIBERATION_DAY, $date->format(Holiday::DISPLAY_DATE_FORMAT), $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
     }
 }
