@@ -366,6 +366,14 @@ Contributions are highly welcome. Please follow these rules when submitting a PR
 
 By submitting a PR you agree that all your contributed code may be used under the MIT license.
 
+### Instructions for adding a new country or region
+
+- Add a Provider for that country or region
+- Should you need to add country-specific holiday names, add those to `Constant\HolidayName` and provide
+  English translations inside `umulmrum_holiday.en.xliff`.
+- Lookup the ISO code for your country or region and add those to `Resolver\isoData`
+- Provide test data inside `tests/Provider/...` that covers all edge cases
+
 ## License
 
 Holiday is licensed under the MIT License. See [LICENSE](LICENSE) for details.
