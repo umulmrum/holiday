@@ -94,6 +94,6 @@ class Netherlands implements HolidayProviderInterface
             return null;
         }
 
-        return Holiday::create(HolidayName::DUTCH_LIBERATION_DAY, $date->format(Holiday::DISPLAY_DATE_FORMAT), $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
+        return Holiday::create(HolidayName::DUTCH_LIBERATION_DAY, $date->format(Holiday::DISPLAY_DATE_FORMAT), $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED | HolidayType::NO_SCHOOL);
     }
 }
