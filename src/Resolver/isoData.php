@@ -79,6 +79,9 @@ return [
     // Mexico
     'MX' => \Umulmrum\Holiday\Provider\Mexico\Mexico::class,
 
+    // Netherlands
+    'NL' => \Umulmrum\Holiday\Provider\Netherlands\Netherlands::class,
+
     // Poland
     'PL' => \Umulmrum\Holiday\Provider\Poland\Poland::class,
 

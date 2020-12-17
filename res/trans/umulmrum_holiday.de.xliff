@@ -166,6 +166,10 @@
         <source>defender_of_the_fatherland_day_compensatory</source>
         <target>Tag des Verteidigers des Vaterlandes (Ausgleich)</target>
       </trans-unit>
+      <trans-unit id="dutch_liberation_day">
+        <source>dutch_liberation_day</source>
+        <target>Befreiungstag</target>
+      </trans-unit>
       <trans-unit id="easter_monday">
         <source>easter_monday</source>
         <target>Ostermontag</target>
@@ -270,6 +274,10 @@
         <source>june_holiday</source>
         <target>June Holiday</target>
       </trans-unit>
+      <trans-unit id="kings_day">
+        <source>kings_day</source>
+        <target>Königstag</target>
+      </trans-unit>
       <trans-unit id="labor_day">
         <source>labor_day</source>
         <target>Tag der Arbeit</target>
@@ -361,6 +369,10 @@
       <trans-unit id="polish_armed_forces_day">
         <source>polish_armed_forces_day</source>
         <target>Tag der polnischen Armee</target>
+      </trans-unit>
+      <trans-unit id="queens_day">
+        <source>queens_day</source>
+        <target>Königinnentag</target>
       </trans-unit>
       <trans-unit id="reformation_day">
         <source>reformation_day</source>

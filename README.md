@@ -296,6 +296,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Liechtenstein
 - Luxembourg
 - Mexico
+- The Netherlands  
 - Poland
 - Russia
 - Spain (common holidays only yet)
@@ -364,6 +365,14 @@ Contributions are highly welcome. Please follow these rules when submitting a PR
 - Use the Symfony code style (call `php-cs-fixer fix` in the library root without further arguments).
 
 By submitting a PR you agree that all your contributed code may be used under the MIT license.
+
+### How To Add a New Country or Region
+
+- Add a Provider for that country or region.
+- Should you need to add country-specific holiday names, add those to `Constant\HolidayName` and provide
+  English translations inside `umulmrum_holiday.en.xliff`.
+- Lookup the ISO code for your country or region and add those to `Resolver\isoData`.
+- Provide tests inside `tests/Provider/...` that ideally cover all edge cases.
 
 ## License
 
