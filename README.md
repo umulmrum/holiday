@@ -296,7 +296,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Liechtenstein
 - Luxembourg
 - Mexico
-- The Netherlands  
+- The Netherlands
 - Poland
 - Russia
 - Spain (common holidays only yet)
@@ -368,10 +368,10 @@ By submitting a PR you agree that all your contributed code may be used under th
 
 ### How To Add a New Country or Region
 
-- Add a Provider for that country or region.
+- Add a provider for that country or region inside `src/Provider/...`.
 - Should you need to add country-specific holiday names, add those to `Constant\HolidayName` and provide
   English translations inside `umulmrum_holiday.en.xliff`.
-- Lookup the ISO code for your country or region and add those to `Resolver\isoData`.
+- Lookup the ISO code for your country or region and add it to `Resolver\isoData`.
 - Provide tests inside `tests/Provider/...` that ideally cover all edge cases.
 
 ## License

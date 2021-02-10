@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2021-02-10
+
+### Added
+- Holidays for the Netherlands.
+
 ## [0.5.1] - 2020-12-08
 
 ### Changed
@@ -110,7 +115,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.5.1...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/0.6.0...master
+[0.6.0]: https://github.com/umulmrum/holiday/compare/0.5.1...0.6.0
 [0.5.1]: https://github.com/umulmrum/holiday/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/umulmrum/holiday/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/umulmrum/holiday/compare/0.3.0...0.4.0
