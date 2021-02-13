@@ -28,7 +28,7 @@ final class HolidayCalculator implements HolidayCalculatorInterface
      */
     private $providerResolvers = [];
     /**
-     * @var ResolverHandler
+     * @var ResolverHandlerInterface
      */
     private $resolverHandler;
 
@@ -58,6 +58,8 @@ final class HolidayCalculator implements HolidayCalculatorInterface
      * @param int|int[] $years
      *
      * @return int[]
+     *
+     * * @throws \InvalidArgumentException
      */
     private function interpretYears($years): array
     {
@@ -65,6 +67,7 @@ final class HolidayCalculator implements HolidayCalculatorInterface
             return [$years];
         }
 
+        /** @psalm-suppress RedundantConditionGivenDocblockType */
         if (\is_array($years)) {
             $this->assertIntArray($years);
 

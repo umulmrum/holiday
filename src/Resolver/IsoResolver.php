@@ -26,10 +26,11 @@ final class IsoResolver implements ProviderResolverInterface
 {
     private const MAX_CODE_LENGTH = 7;
 
+    /** @var string[] */
     private static $MAP;
 
     /** @var bool */
-    private $initialized;
+    private $initialized = false;
 
     /**
      * {@inheritdoc}
@@ -41,7 +42,10 @@ final class IsoResolver implements ProviderResolverInterface
         }
         $this->init();
         if (isset(self::$MAP[$identifier])) {
-            return new self::$MAP[$identifier]();
+            /** @var HolidayProviderInterface $provider */
+            $provider = new self::$MAP[$identifier]();
+
+            return $provider;
         }
 
         if (\preg_match('#^([A-Z]{2})-#', $identifier, $matches)) {

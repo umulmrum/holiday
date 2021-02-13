@@ -30,6 +30,10 @@ final class IncludeTypeFilter extends AbstractFilter
 
     /**
      * @param int|int[] $holidayTypes
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @psalm-suppress RedundantConditionGivenDocblockType
      */
     public function __construct($holidayTypes)
     {

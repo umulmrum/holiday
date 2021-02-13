@@ -41,3 +41,6 @@ jobs:
 
             - name: "Run unit tests"
               run: "vendor/bin/phpunit --verbose --coverage-text"
+
+            - name: "Run psalm"
+              run: "vendor/bin/psalm.phar --show-info=true"

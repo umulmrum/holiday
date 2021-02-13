@@ -24,32 +24,34 @@ final class IncludeWeekdayFilter extends AbstractFilter
     use Assert;
 
     /**
-     * @var int[]
+     * @var array<int, array-key>
      */
-    private $weekdays = [];
+    private $weekdays;
 
     /**
      * @param int|int[] $weekdays
      *
      * @throws \InvalidArgumentException
+     *
+     * @psalm-suppress RedundantConditionGivenDocblockType
      */
     public function __construct($weekdays)
     {
         if (\is_int($weekdays)) {
             $this->assertWeekday($weekdays);
-            $this->weekdays = [
+            $tempWeekdays = [
                 $weekdays,
             ];
         } elseif (\is_array($weekdays)) {
             $this->assertArrayNotEmpty($weekdays);
             foreach ($weekdays as $weekday) {
                 $this->assertWeekday($weekday);
-                $this->weekdays = $weekdays;
             }
+            $tempWeekdays = $weekdays;
         } else {
             throw new \InvalidArgumentException('Argument must be either an integer or an array of integers.');
         }
-        $this->weekdays = \array_flip($this->weekdays);
+        $this->weekdays = \array_flip($tempWeekdays);
     }
 
     /**

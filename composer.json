@@ -22,7 +22,8 @@
         "ext-json": "*",
         "chameleon-system/code-style-config": "dev-master@dev",
         "phpunit/phpunit": "~9.4",
-        "symfony/translation": "~4.3|~5.0"
+        "symfony/translation": "~4.3|~5.0",
+        "psalm/phar": "^4.5"
     },
     "autoload": {
         "psr-4": {
