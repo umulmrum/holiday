@@ -23,7 +23,7 @@ trait Assert
     private function assertInt($value): void
     {
         if (false === \is_int($value)) {
-            throw new \InvalidArgumentException('int expected, got: '.$value);
+            throw new \InvalidArgumentException('int expected, got: '.(string) $value);
         }
     }
 

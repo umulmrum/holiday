@@ -16,7 +16,9 @@ use Umulmrum\Holiday\Model\HolidayList;
 
 final class DateFormatter implements HolidayFormatterInterface
 {
+    /** @var string */
     public const PARAM_FORMAT = 'date_formatter.format';
+    /** @var string */
     public const PARAM_DATETIMEZONE = 'date_formatter.datetimezone';
 
     /**
@@ -39,7 +41,16 @@ final class DateFormatter implements HolidayFormatterInterface
             return $holiday->getSimpleDate();
         }
 
-        return $holiday->getDate($options[self::PARAM_DATETIMEZONE] ?? null)->format($format);
+        return $holiday->getDate($this->getDateTimezoneOption($options))->format($format);
+    }
+
+    private function getDateTimezoneOption(array $options): ?\DateTimeZone
+    {
+        if (!isset($options[self::PARAM_DATETIMEZONE])) {
+            return null;
+        }
+
+        return $options[self::PARAM_DATETIMEZONE] instanceof \DateTimeZone ? $options[self::PARAM_DATETIMEZONE] : null;
     }
 
     /**
@@ -57,6 +68,10 @@ final class DateFormatter implements HolidayFormatterInterface
 
     private function getFormat(array $options): string
     {
-        return $options[self::PARAM_FORMAT] ?? $this->defaultFormat;
+        if (!isset($options[self::PARAM_FORMAT])) {
+            return $this->defaultFormat;
+        }
+
+        return (string) $options[self::PARAM_FORMAT];
     }
 }

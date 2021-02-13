@@ -19,7 +19,7 @@ use Umulmrum\Holiday\Model\Holiday;
 final class IncludeHolidayNameFilter extends AbstractFilter
 {
     /**
-     * @var string|string[]
+     * @var array<string, array-key>
      */
     private $holidayNames;
 
@@ -27,11 +27,14 @@ final class IncludeHolidayNameFilter extends AbstractFilter
      * @param string|string[] $holidayNames
      *
      * @throws \InvalidArgumentException
+     *
+     * @psalm-suppress RedundantConditionGivenDocblockType
      */
     public function __construct($holidayNames)
     {
+        /** @psalm-suppress DocblockTypeContradiction */
         if (true === \is_string($holidayNames)) {
-            $this->holidayNames = [
+            $tempHolidayNames = [
                 $holidayNames,
             ];
         } elseif (\is_array($holidayNames)) {
@@ -40,11 +43,11 @@ final class IncludeHolidayNameFilter extends AbstractFilter
                     throw new \InvalidArgumentException('Argument must be either a string or an array of strings.');
                 }
             }
-            $this->holidayNames = $holidayNames;
+            $tempHolidayNames = $holidayNames;
         } else {
             throw new \InvalidArgumentException('Argument must be either a string or an array of strings.');
         }
-        $this->holidayNames = \array_flip($this->holidayNames);
+        $this->holidayNames = \array_flip($tempHolidayNames);
     }
 
     /**

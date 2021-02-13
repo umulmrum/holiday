@@ -17,7 +17,7 @@ use Umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 class HolidayList implements \Countable, \IteratorAggregate
 {
     /**
-     * @var Holiday[]
+     * @var array<int, Holiday>
      */
     private $holidayList = [];
 
@@ -73,7 +73,7 @@ class HolidayList implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @return Holiday[]
+     * @return array<int, Holiday>
      */
     public function getList(): array
     {

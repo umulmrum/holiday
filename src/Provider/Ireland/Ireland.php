@@ -57,7 +57,7 @@ class Ireland implements HolidayProviderInterface
         return $holidays;
     }
 
-    private function addNewYear(HolidayList $holidays, $year): void
+    private function addNewYear(HolidayList $holidays, int $year): void
     {
         $holiday = $this->getNewYear($year, HolidayType::DAY_OFF);
         $holidays->add($holiday);
@@ -99,14 +99,14 @@ class Ireland implements HolidayProviderInterface
         return Holiday::create(HolidayName::OCTOBER_HOLIDAY, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function addChristmasDay(HolidayList $holidays, $year): void
+    private function addChristmasDay(HolidayList $holidays, int $year): void
     {
         $holiday = $this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
         $this->addLaterCompensatoryDay($holidays, $holiday, HolidayType::OTHER, 2);
     }
 
-    private function addSecondChristmasDay(HolidayList $holidays, $year): void
+    private function addSecondChristmasDay(HolidayList $holidays, int $year): void
     {
         $holiday = $this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
