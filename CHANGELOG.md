@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- [BC Break] DateFormatter no longer uses options for format and timezone. Instead it receives these options
+  as constructor arguments. 
+
+### Removed
+- [BC Break] Remove second argument `$options` from `\Umulmrum\Holiday\Formatter\HolidayFormatterInterface::format`
+  and `\Umulmrum\Holiday\Formatter\HolidayFormatterInterface::formatList` and all classes that implement this
+  interface.
+- [BC Break] Remove constant `\Umulmrum\Holiday\Formatter\DateFormatter::PARAM_FORMAT`.
+  Use constructor argument for DateFormatter instead.
+- [BC Break] Remove constant `\Umulmrum\Holiday\Formatter\DateFormatter::PARAM_DATETIMEZONE`.
+  Use constructor argument for DateFormatter instead.
+
 ## [0.6.0] - 2021-02-10
 
 ### Added

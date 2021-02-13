@@ -33,33 +33,22 @@ final class DateFormatterTest extends HolidayTestCase
      *
      * @param int|string $expectedResult
      */
-    public function it_should_format_single_values(?string $defaultFormat, string $date, ?string $format, string $expectedResult): void
+    public function it_should_format_single_values(string $date, ?string $format, string $expectedResult): void
     {
-        $this->givenAFormatter($defaultFormat);
-        $this->whenFormatIsCalled($date, $format);
+        $this->givenAFormatter($format);
+        $this->whenFormatIsCalled($date);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAFormatter(?string $defaultFormat = null): void
+    private function givenAFormatter(?string $format): void
     {
-        if (null === $defaultFormat) {
-            $this->formatter = new DateFormatter();
-        } else {
-            $this->formatter = new DateFormatter($defaultFormat);
-        }
+        $this->formatter = new DateFormatter($format);
     }
 
-    private function whenFormatIsCalled(string $dateString, ?string $format): void
+    private function whenFormatIsCalled(string $dateString): void
     {
         $holiday = Holiday::create('name', $dateString);
-        if (null === $format) {
-            $this->actualResult = $this->formatter->format($holiday);
-        } else {
-            $options = [
-                DateFormatter::PARAM_FORMAT => $format,
-            ];
-            $this->actualResult = $this->formatter->format($holiday, $options);
-        }
+        $this->actualResult = $this->formatter->format($holiday);
     }
 
     /**
@@ -74,31 +63,26 @@ final class DateFormatterTest extends HolidayTestCase
     {
         return [
             [
-                null,
                 '2016-01-01',
                 'Y-m-d',
                 '2016-01-01',
             ],
             [
-                'm',
                 '2016-01-01',
                 'Y-m-d',
                 '2016-01-01',
             ],
             [
-                'Y-m-d',
                 '2016-01-01',
-                null,
-                '2016-01-01',
-            ],
-            [
-                null,
-                '2016-01-01',
-                null,
+                Holiday::DISPLAY_DATE_FORMAT,
                 '2016-01-01',
             ],
             [
-                'Y-m-d',
+                '2016-01-01',
+                Holiday::DISPLAY_DATE_FORMAT,
+                '2016-01-01',
+            ],
+            [
                 '2016-01-01',
                 'm',
                 '01',
@@ -113,37 +97,29 @@ final class DateFormatterTest extends HolidayTestCase
      * @param string[]        $dates
      * @param string|string[] $expectedResult
      */
-    public function it_should_format_list_values(?string $defaultFormat, array $dates, ?string $format, $expectedResult): void
+    public function it_should_format_list_values(array $dates, ?string $format, $expectedResult): void
     {
-        $this->givenAFormatter($defaultFormat);
-        $this->whenFormatListIsCalled($dates, $format);
+        $this->givenAFormatter($format);
+        $this->whenFormatListIsCalled($dates);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
     /**
      * @param string[] $dates
      */
-    private function whenFormatListIsCalled(array $dates, ?string $format): void
+    private function whenFormatListIsCalled(array $dates): void
     {
         $holidayList = new HolidayList();
         foreach ($dates as $date) {
             $holidayList->add(Holiday::create('name', $date));
         }
-        if (null === $format) {
-            $this->actualResult = $this->formatter->formatList($holidayList);
-        } else {
-            $options = [
-                DateFormatter::PARAM_FORMAT => $format,
-            ];
-            $this->actualResult = $this->formatter->formatList($holidayList, $options);
-        }
+        $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
     public function getFormatListData(): array
     {
         return [
             [
-                null,
                 [
                     '2016-01-01',
                 ],
@@ -153,17 +129,15 @@ final class DateFormatterTest extends HolidayTestCase
                 ],
             ],
             [
-                'Y-m-d',
                 [
                     '2016-01-01',
                 ],
-                null,
+                Holiday::DISPLAY_DATE_FORMAT,
                 [
                     '2016-01-01',
                 ],
             ],
             [
-                null,
                 [
                     '2016-01-01',
                     '2013-12-24',
@@ -175,7 +149,6 @@ final class DateFormatterTest extends HolidayTestCase
                 ],
             ],
             [
-                null,
                 [
                     '2016-01-01',
                     '2015-12-24',

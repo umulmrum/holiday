@@ -35,20 +35,20 @@ final class NameFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = []): string
+    public function format(Holiday $holiday): string
     {
-        return  $this->translator->translateName($holiday);
+        return $this->translator->translateName($holiday);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function formatList(HolidayList $holidayList, array $options = [])
+    public function formatList(HolidayList $holidayList)
     {
         $result = [];
 
         foreach ($holidayList->getList() as $holiday) {
-            $result[] = $this->translator->translateName($holiday);
+            $result[] = $this->format($holiday);
         }
 
         return $result;

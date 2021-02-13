@@ -17,12 +17,12 @@ use Umulmrum\Holiday\Model\HolidayList;
 
 final class FormatterStub implements HolidayFormatterInterface
 {
-    public function format(Holiday $holiday, array $options = []): string
+    public function format(Holiday $holiday): string
     {
         return \sprintf('%s|%s|%s', $holiday->getName(), $holiday->getSimpleDate(), $holiday->getType());
     }
 
-    public function formatList(HolidayList $holidayList, array $options = [])
+    public function formatList(HolidayList $holidayList)
     {
         return \implode(';', \array_map([$this, 'format'], $holidayList->getList()));
     }
