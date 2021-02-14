@@ -49,7 +49,7 @@ class Holiday
     public static function createFromDateTime(string $name, \DateTimeInterface $date, int $type = HolidayType::OTHER): self
     {
         /** @psalm-suppress MixedArgument */
-        return new self($name, $date->format(static::DISPLAY_DATE_FORMAT), $type);
+        return new self($name, $date->format((string) static::DISPLAY_DATE_FORMAT), $type);
     }
 
     public function getName(): string
@@ -69,7 +69,7 @@ class Holiday
      */
     public function getDate(\DateTimeZone $dateTimeZone = null): \DateTimeImmutable
     {
-        return \DateTimeImmutable::createFromFormat(static::CREATE_DATE_FORMAT, $this->simpleDate, $dateTimeZone);
+        return \DateTimeImmutable::createFromFormat((string) static::CREATE_DATE_FORMAT, $this->simpleDate, $dateTimeZone);
     }
 
     public function getType(): int

@@ -32,7 +32,7 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
      * @test
      * @dataProvider getData
      *
-     * @param string[] $holidays
+     * @param string[]  $holidays
      * @param int|int[] $weekday
      */
     public function it_should_filter_holidays(array $holidays, $weekday, array $expectedResult): void

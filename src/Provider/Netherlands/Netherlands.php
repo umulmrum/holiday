@@ -54,11 +54,11 @@ class Netherlands implements HolidayProviderInterface
 
     private function getQueensDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = ($year < 1949) ? "08-31" : "04-30";
+        $date = ($year < 1949) ? '08-31' : '04-30';
         $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, "{$year}-{$date}");
         $weekDay = $date->format('w');
         if ('0' === $weekDay) {
-            if($year < 1980) {
+            if ($year < 1980) {
                 $date->add(new \DateInterval('P1D'));
             } else {
                 $date->sub(new \DateInterval('P1D'));
@@ -90,7 +90,7 @@ class Netherlands implements HolidayProviderInterface
             }
         }
 
-        if ($year > 1968 && $year < 1990 && $year % 5 !== 0) {
+        if ($year > 1968 && $year < 1990 && 0 !== $year % 5) {
             return null;
         }
 

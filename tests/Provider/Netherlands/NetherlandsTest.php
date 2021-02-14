@@ -45,7 +45,7 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '1948-05-17',
                     '1948-08-31',
                     '1948-12-25',
-                    '1948-12-26'
+                    '1948-12-26',
                 ],
             ],
             [
@@ -61,8 +61,8 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '1963-06-02',
                     '1963-06-03',
                     '1963-12-25',
-                    '1963-12-26'
-                ]
+                    '1963-12-26',
+                ],
             ],
             [
                 1967,
@@ -77,7 +77,7 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '1967-05-14',
                     '1967-05-15',
                     '1967-12-25',
-                    '1967-12-26'
+                    '1967-12-26',
                 ],
             ],
             [
@@ -93,7 +93,7 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '1975-05-18',
                     '1975-05-19',
                     '1975-12-25',
-                    '1975-12-26'
+                    '1975-12-26',
                 ],
             ],
             [
@@ -108,7 +108,7 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '1989-05-14',
                     '1989-05-15',
                     '1989-12-25',
-                    '1989-12-26'
+                    '1989-12-26',
                 ],
             ],
             [
@@ -124,7 +124,7 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '1990-06-03',
                     '1990-06-04',
                     '1990-12-25',
-                    '1990-12-26'
+                    '1990-12-26',
                 ],
             ],
             [
@@ -140,8 +140,8 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '2014-06-08',
                     '2014-06-09',
                     '2014-12-25',
-                    '2014-12-26'
-                ]
+                    '2014-12-26',
+                ],
             ],
             [
                 2020,
@@ -156,7 +156,7 @@ final class NetherlandsTest extends AbstractHolidayCalculatorTest
                     '2020-05-31',
                     '2020-06-01',
                     '2020-12-25',
-                    '2020-12-26'
+                    '2020-12-26',
                 ],
             ],
         ];
