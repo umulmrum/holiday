@@ -33,15 +33,19 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
      * @dataProvider getData
      *
      * @param string[] $holidays
+     * @param int|int[] $weekday
      */
-    public function it_should_filter_holidays(array $holidays, int $weekday, array $expectedResult): void
+    public function it_should_filter_holidays(array $holidays, $weekday, array $expectedResult): void
     {
         $this->givenAnIncludeWeekDayFilter($weekday);
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAnIncludeWeekDayFilter(int $weekday): void
+    /**
+     * @param int|int[] $weekday
+     */
+    private function givenAnIncludeWeekDayFilter($weekday): void
     {
         $this->filter = new IncludeWeekdayFilter($weekday);
     }
@@ -169,6 +173,27 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
                 ],
                 Weekday::SUNDAY,
                 [
+                    '2016-01-03',
+                ],
+            ],
+            [
+                [
+                    '2016-01-01',
+                    '2016-01-02',
+                    '2016-01-03',
+                    '2016-01-04',
+                    '2016-01-05',
+                    '2016-01-06',
+                    '2016-01-07',
+                ],
+                [
+                    Weekday::FRIDAY,
+                    Weekday::SATURDAY,
+                    Weekday::SUNDAY,
+                ],
+                [
+                    '2016-01-01',
+                    '2016-01-02',
                     '2016-01-03',
                 ],
             ],

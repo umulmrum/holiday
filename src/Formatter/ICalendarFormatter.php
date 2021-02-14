@@ -40,7 +40,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = []): string
+    public function format(Holiday $holiday): string
     {
         return $this->getEvent($holiday);
     }
@@ -48,7 +48,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function formatList(HolidayList $holidayList, array $options = [])
+    public function formatList(HolidayList $holidayList)
     {
         $result = [];
 

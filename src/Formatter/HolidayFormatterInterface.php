@@ -20,7 +20,7 @@ interface HolidayFormatterInterface
      * Formats a single Holiday object. Implementations may be configured using the $options array (depending completely
      * on the concrete implementation).
      */
-    public function format(Holiday $holiday, array $options = []): string;
+    public function format(Holiday $holiday): string;
 
     /**
      * Formats a list of Holiday objects. Implementations may be configured using the $options array (depending completely
@@ -28,5 +28,5 @@ interface HolidayFormatterInterface
      *
      * @return string|string[]
      */
-    public function formatList(HolidayList $holidayList, array $options = []);
+    public function formatList(HolidayList $holidayList);
 }

@@ -46,7 +46,7 @@ final class JsonFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format(Holiday $holiday, array $options = []): string
+    public function format(Holiday $holiday): string
     {
         return \json_encode($this->getEvent($holiday), $this->jsonOptions);
     }
@@ -54,7 +54,7 @@ final class JsonFormatter implements HolidayFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function formatList(HolidayList $holidayList, array $options = [])
+    public function formatList(HolidayList $holidayList)
     {
         $result = [];
 
