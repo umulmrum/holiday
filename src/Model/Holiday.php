@@ -48,7 +48,6 @@ class Holiday
 
     public static function createFromDateTime(string $name, \DateTimeInterface $date, int $type = HolidayType::OTHER): self
     {
-        /** @psalm-suppress MixedArgument */
         return new self($name, $date->format((string) static::DISPLAY_DATE_FORMAT), $type);
     }
 
