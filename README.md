@@ -291,7 +291,6 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Denmark
 - France (incl. Bas-Rhin, French Guiana, Guadeloupe, Haut-Rhin, Martinique, Moselle, Reunion)
 - Germany (incl. Baden-Wuerttemberg, Bavaria, Berlin, Brandenburg, Bremen, Hamburg, Hesse, Lower Saxony, Mecklenburg-Vorpommern, North-rhine Westphalia, Rhineland Palatinate, Saarland, Saxony, Saxony-Anhalt, Schleswig-Holstein, Thuringia)
-- Ireland
 - Italy (incl. South Tyrol)
 - Liechtenstein
 - Luxembourg
@@ -302,6 +301,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Spain (common holidays only yet)
 - Switzerland (incl. Aargau, Appenzell-Ausserrhoden, Appenzell-Innerrhoden, Basel Landschaft, Basel Stadt, Bern, Fribourg, Geneva, Glarus, Grisons, Jura, Lucerne, Neuchatel, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St Gallen, Thurgau, Ticino, Uri, Valais, Vaud, Zuerich, Zug)
 - USA (federal holidays only yet)
+- United Kingdom (only England and Ireland)
 
 To create your own holiday providers have a look at the existing code, it should be self-explanatory. I will happily
 merge pull requests to support more countries (see below).

@@ -12,6 +12,7 @@
 /*
  * See https://www.iso.org/obp/ui/#search for country and region data
  */
+
 return [
     // Austria
     'AT' => \Umulmrum\Holiday\Provider\Austria\Austria::class,
@@ -62,9 +63,6 @@ return [
     'DE-SN' => \Umulmrum\Holiday\Provider\Germany\Saxony::class,
     'DE-ST' => \Umulmrum\Holiday\Provider\Germany\SaxonyAnhalt::class,
     'DE-TH' => \Umulmrum\Holiday\Provider\Germany\Thuringia::class,
-
-    // Ireland
-    'IE' => \Umulmrum\Holiday\Provider\Ireland\Ireland::class,
 
     // Italy
     'IT' => \Umulmrum\Holiday\Provider\Italy\Italy::class,
@@ -121,4 +119,9 @@ return [
 
     // USA
     'US' => \Umulmrum\Holiday\Provider\Usa\Usa::class,
+
+    // United Kingdom
+    'GB' => \Umulmrum\Holiday\Provider\UK\UnitedKingdom::class,
+    'GB-ENG' => \Umulmrum\Holiday\Provider\UK\UnitedKingdom::class,
+    'IE' => \Umulmrum\Holiday\Provider\UK\Ireland::class,
 ];

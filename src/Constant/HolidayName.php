@@ -169,6 +169,12 @@ final class HolidayName
     public const VETERANS_DAY_COMPENSATORY = self::VETERANS_DAY.self::SUFFIX_COMPENSATORY;
     public const WASHINGTONS_BIRTHDAY = 'washingtons_birthday';
 
+    // United Kingdom
+
+    public const SPRING_BANK_HOLIDAY = 'spring_bank_holiday';
+    public const SUMMER_BANK_HOLIDAY = 'summer_bank_holiday';
+    public const BOXING_DAY = 'boxying_day';
+
     // Weekdays
     public const SUNDAY = 'sunday';
     public const MONDAY = 'monday';
