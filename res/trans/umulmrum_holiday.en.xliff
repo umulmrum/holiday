@@ -90,6 +90,10 @@
         <source>birthday_of_benito_juarez</source>
         <target>Birthday of Benito Juárez</target>
       </trans-unit>
+      <trans-unit id="boxying_day">
+        <source>boxying_day</source>
+        <target>Boxing Day</target>
+      </trans-unit>
       <trans-unit id="candlemas">
         <source>candlemas</source>
         <target>Candlemas</target>
@@ -461,6 +465,14 @@
       <trans-unit id="spring_and_labour_day_compensatory">
         <source>spring_and_labour_day_compensatory</source>
         <target>Spring and Labour Day (compensatory)</target>
+      </trans-unit>
+      <trans-unit id="spring_bank_holiday">
+        <source>spring_bank_holiday</source>
+        <target>Spring Bank Holiday</target>
+      </trans-unit>
+      <trans-unit id="summer_bank_holiday">
+        <source>summer_bank_holiday</source>
+        <target>Summer Bank Holiday</target>
       </trans-unit>
       <trans-unit id="sunday">
         <source>sunday</source>

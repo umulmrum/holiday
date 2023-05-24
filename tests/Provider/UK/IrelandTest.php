@@ -1,8 +1,8 @@
 <?php
 
-namespace Umulmrum\Holiday\Test\Provider\Ireland;
+namespace Umulmrum\Holiday\Test\Provider\UK;
 
-use Umulmrum\Holiday\Provider\Ireland\Ireland;
+use Umulmrum\Holiday\Provider\UK\Ireland;
 use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
 
 final class IrelandTest extends AbstractHolidayCalculatorTest
