@@ -27,6 +27,11 @@ trait CommonHolidaysTrait
         return Holiday::create(HolidayName::INTERNATIONAL_WOMENS_DAY, "{$year}-03-08", HolidayType::OFFICIAL | $additionalType);
     }
 
+    private function getInternationalChildrensDay(int $year, string $month, string $day, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::INTERNATIONAL_CHILDRENS_DAY, "{$year}-{$month}-{$day}", HolidayType::OFFICIAL | $additionalType);
+    }
+
     private function getLaborDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         return Holiday::create(HolidayName::LABOR_DAY, "{$year}-05-01", HolidayType::OFFICIAL | $additionalType);
