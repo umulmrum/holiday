@@ -11,7 +11,6 @@
 
 namespace Umulmrum\Holiday\Test\Formatter;
 
-use Umulmrum\Holiday\Formatter\DateFormatter;
 use Umulmrum\Holiday\Formatter\NameFormatter;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -21,7 +20,7 @@ use Umulmrum\Holiday\Test\TranslatorStub;
 final class NameFormatterTest extends HolidayTestCase
 {
     /**
-     * @var DateFormatter
+     * @var NameFormatter
      */
     private $formatter;
     /**
@@ -29,10 +28,8 @@ final class NameFormatterTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getFormatData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_single_values(string $name, string $expectedResult): void
     {
         $this->givenAFormatter();
@@ -59,7 +56,7 @@ final class NameFormatterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    public function getFormatData(): array
+    public static function getFormatData(): array
     {
         return [
             [
@@ -69,10 +66,8 @@ final class NameFormatterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider getFormatTranslatedData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatTranslatedData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_single_values_with_translation(string $name, string $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
@@ -85,7 +80,7 @@ final class NameFormatterTest extends HolidayTestCase
         $this->formatter = new NameFormatter(new TranslatorStub());
     }
 
-    public function getFormatTranslatedData(): array
+    public static function getFormatTranslatedData(): array
     {
         return [
             [
@@ -96,12 +91,11 @@ final class NameFormatterTest extends HolidayTestCase
     }
 
     /**
-     * @test
-     * @dataProvider getFormatListData
-     *
      * @param string[]        $names
      * @param string|string[] $expectedResult
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_list_values(array $names, $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
@@ -121,7 +115,7 @@ final class NameFormatterTest extends HolidayTestCase
         $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
-    public function getFormatListData(): array
+    public static function getFormatListData(): array
     {
         return [
             [

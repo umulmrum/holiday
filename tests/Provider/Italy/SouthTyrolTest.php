@@ -12,16 +12,16 @@
 namespace Umulmrum\Holiday\Test\Provider\Italy;
 
 use Umulmrum\Holiday\Provider\Italy\SouthTyrol;
-use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
-final class SouthTyrolTest extends AbstractHolidayCalculatorTest
+final class SouthTyrolTest extends AbstractHolidayCalculatorTestCase
 {
     protected function getHolidayProviders(): array
     {
         return [SouthTyrol::class];
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

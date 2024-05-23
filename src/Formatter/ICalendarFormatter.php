@@ -31,7 +31,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
      */
     private $dateProvider;
 
-    public function __construct(TranslatorInterface $translator = null, DateProviderInterface $dateProvider = null)
+    public function __construct(?TranslatorInterface $translator = null, ?DateProviderInterface $dateProvider = null)
     {
         $this->translator = $translator ?? new NullTranslator();
         $this->dateProvider = $dateProvider ?? new DateProvider();

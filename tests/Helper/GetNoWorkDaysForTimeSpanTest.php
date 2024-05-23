@@ -34,10 +34,8 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getGetNoWorkdaysForTimespanData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getGetNoWorkdaysForTimespanData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_calculate_correct_no_work_days_for_a_timespan(string $firstDay, string $lastDay, array $noWorkWeekdaysProviders, array $expectedResult): void
     {
         $this->givenGetNoWorkDaysForTimeSpan();
@@ -45,7 +43,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
         $this->thenItShouldReturnAListOfHolidays($expectedResult);
     }
 
-    public function getGetNoWorkdaysForTimespanData(): array
+    public static function getGetNoWorkdaysForTimespanData(): array
     {
         return [
             'sunday-in-short-timespan' => [
@@ -225,9 +223,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_throw_exception_on_invalid_timespan(): void
     {
         $this->givenGetNoWorkDaysForTimeSpan();

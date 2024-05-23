@@ -12,9 +12,9 @@
 namespace Umulmrum\Holiday\Test\Provider\Switzerland;
 
 use Umulmrum\Holiday\Provider\Switzerland\BaselStadt;
-use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
-final class BaselStadtTest extends AbstractHolidayCalculatorTest
+final class BaselStadtTest extends AbstractHolidayCalculatorTestCase
 {
     /**
      * {@inheritdoc}
@@ -29,7 +29,7 @@ final class BaselStadtTest extends AbstractHolidayCalculatorTest
     /**
      * {@inheritdoc}
      */
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

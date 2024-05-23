@@ -14,6 +14,9 @@ namespace Umulmrum\Holiday\Model;
 use Umulmrum\Holiday\Filter\HolidayFilterInterface;
 use Umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 
+/**
+ * @implements \IteratorAggregate<int, Holiday>
+ */
 class HolidayList implements \Countable, \IteratorAggregate
 {
     /**

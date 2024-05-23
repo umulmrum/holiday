@@ -9,13 +9,15 @@ use Umulmrum\Holiday\Model\HolidayList;
 
 trait CompensatoryDaysTrait
 {
+    use DateCreatorTrait;
+
     /**
      * If $holiday falls on a Saturday or a Sunday, add the follwing Monday as holiday.
      * If $holiday falls on a Sunday and has a preceding, add the following Monday as holiday.
      */
-    private function addLaterCompensatoryDay(HolidayList $holidays, Holiday $holiday, int $type = null, int $daysToAdd = null): void
+    private function addLaterCompensatoryDay(HolidayList $holidays, Holiday $holiday, ?int $type = null, ?int $daysToAdd = null): void
     {
-        $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, $holiday->getSimpleDate());
+        $date = $this->createDateFromString($holiday->getSimpleDate());
         $weekDay = $date->format('w');
         if ('6' === $weekDay) {
             $date->add(new \DateInterval('P'.($daysToAdd ?? 2).'D'));
@@ -38,7 +40,7 @@ trait CompensatoryDaysTrait
      */
     private function addNearestCompensatoryDay(HolidayList $holidays, Holiday $holiday, int $year): void
     {
-        $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, $holiday->getSimpleDate());
+        $date = $this->createDateFromString($holiday->getSimpleDate());
         $weekDay = $date->format('w');
         if ('6' === $weekDay) {
             if ("$year-01-01" === $holiday->getSimpleDate()) {
@@ -64,7 +66,7 @@ trait CompensatoryDaysTrait
      */
     private function addCompensatoryNewYearForFollowingYear(HolidayList $holidays, int $year): void
     {
-        $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, "$year-12-31");
+        $date = $this->createDateFromString("$year-12-31");
         if ('5' === $date->format('w')) {
             $holidays->add(Holiday::create(HolidayName::NEW_YEAR_COMPENSATORY, "$year-12-31", HolidayType::COMPENSATORY));
         }

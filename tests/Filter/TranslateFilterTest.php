@@ -12,7 +12,6 @@
 namespace Umulmrum\Holiday\Test\Filter;
 
 use Umulmrum\Holiday\Constant\HolidayType;
-use Umulmrum\Holiday\Filter\ApplyTimezoneFilter;
 use Umulmrum\Holiday\Filter\TranslateFilter;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -22,7 +21,7 @@ use Umulmrum\Holiday\Test\TranslatorStub;
 final class TranslateFilterTest extends HolidayTestCase
 {
     /**
-     * @var ApplyTimezoneFilter
+     * @var TranslateFilter
      */
     private $filter;
     /**
@@ -31,12 +30,11 @@ final class TranslateFilterTest extends HolidayTestCase
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getData
-     *
      * @param Holiday[] $holidays
      * @param Holiday[] $expectedResult
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenTranslateFilter();
@@ -62,7 +60,7 @@ final class TranslateFilterTest extends HolidayTestCase
         self::assertEquals(new HolidayList($expectedResult), $this->actualResult);
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

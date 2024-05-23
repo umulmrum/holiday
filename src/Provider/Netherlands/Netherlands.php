@@ -16,6 +16,7 @@ use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
+use Umulmrum\Holiday\Provider\DateCreatorTrait;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
@@ -23,6 +24,7 @@ class Netherlands implements HolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
+    use DateCreatorTrait;
 
     /**
      * {@inheritdoc}
@@ -55,7 +57,7 @@ class Netherlands implements HolidayProviderInterface
     private function getQueensDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $date = ($year < 1949) ? '08-31' : '04-30';
-        $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, "{$year}-{$date}");
+        $date = $this->createDateFromString("{$year}-{$date}");
         $weekDay = $date->format('w');
         if ('0' === $weekDay) {
             if ($year < 1980) {
@@ -70,7 +72,7 @@ class Netherlands implements HolidayProviderInterface
 
     private function getKingsDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, "{$year}-04-27");
+        $date = $this->createDateFromString("{$year}-04-27");
         $weekDay = $date->format('w');
         if ('0' === $weekDay) {
             $date->sub(new \DateInterval('P1D')); // Move to Saturday
@@ -81,7 +83,7 @@ class Netherlands implements HolidayProviderInterface
 
     private function getLiberationDay(int $year, int $additionalType = HolidayType::OTHER): ?Holiday
     {
-        $date = \DateTime::createFromFormat(Holiday::CREATE_DATE_FORMAT, "{$year}-05-05");
+        $date = $this->createDateFromString("{$year}-05-05");
         $weekDay = $date->format('w');
 
         if ($year < 1968) {

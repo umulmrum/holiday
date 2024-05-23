@@ -29,11 +29,11 @@ final class IncludeTypeFilterTest extends HolidayTestCase
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getData
      *
      * @param int|int[] $filterType
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_filter_holidays(HolidayList $holidayList, $filterType, array $expectedResult): void
     {
         $this->givenAFilter($filterType);
@@ -66,7 +66,7 @@ final class IncludeTypeFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [
@@ -151,18 +151,18 @@ final class IncludeTypeFilterTest extends HolidayTestCase
     }
 
     /**
-     * @test
-     * @dataProvider getDataForException
      *
      * @param mixed $filterType
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getDataForException')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_throw_exception_on_invalid_holiday_types($filterType): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidTypeIsInstantiated($filterType);
     }
 
-    public function getDataForException(): array
+    public static function getDataForException(): array
     {
         return [
             ['string'],
@@ -178,6 +178,9 @@ final class IncludeTypeFilterTest extends HolidayTestCase
         $this->expectException(\InvalidArgumentException::class);
     }
 
+    /**
+     * @param int|int[] $filterType
+     */
     private function whenFilterWithInvalidTypeIsInstantiated($filterType): void
     {
         new IncludeTypeFilter($filterType);

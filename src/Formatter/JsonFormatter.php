@@ -32,7 +32,7 @@ final class JsonFormatter implements HolidayFormatterInterface
      */
     private $dateTimeZone;
 
-    public function __construct(TranslatorInterface $translator = null, int $jsonOptions = 0, \DateTimeZone $dateTimeZone = null)
+    public function __construct(?TranslatorInterface $translator = null, int $jsonOptions = 0, ?\DateTimeZone $dateTimeZone = null)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();
@@ -48,7 +48,7 @@ final class JsonFormatter implements HolidayFormatterInterface
      */
     public function format(Holiday $holiday): string
     {
-        return \json_encode($this->getEvent($holiday), $this->jsonOptions);
+        return \json_encode($this->getEvent($holiday), $this->jsonOptions) ?: '';
     }
 
     /**
@@ -62,7 +62,7 @@ final class JsonFormatter implements HolidayFormatterInterface
             $result[] = $this->getEvent($holiday);
         }
 
-        return \json_encode($result, $this->jsonOptions);
+        return \json_encode($result, $this->jsonOptions) ?: '';
     }
 
     /**

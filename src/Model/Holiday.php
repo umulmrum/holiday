@@ -13,9 +13,12 @@ namespace Umulmrum\Holiday\Model;
 
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Formatter\HolidayFormatterInterface;
+use Umulmrum\Holiday\Provider\DateCreatorTrait;
 
 class Holiday
 {
+    use DateCreatorTrait;
+
     /** @var string */
     public const DISPLAY_DATE_FORMAT = 'Y-m-d';
     /** @var string */
@@ -61,13 +64,9 @@ class Holiday
         return $this->simpleDate;
     }
 
-    /**
-     * @psalm-suppress all Although the return value can be false here, this error should always
-     *                 be detected at development time. So we do not handle it to not complicate things too much here.
-     *                 Shit in, shit out :-)
-     */
-    public function getDate(\DateTimeZone $dateTimeZone = null): \DateTimeImmutable
+    public function getDate(?\DateTimeZone $dateTimeZone = null): \DateTimeImmutable
     {
+        /** @phpstan-ignore-next-line */
         return \DateTimeImmutable::createFromFormat((string) static::CREATE_DATE_FORMAT, $this->simpleDate, $dateTimeZone);
     }
 

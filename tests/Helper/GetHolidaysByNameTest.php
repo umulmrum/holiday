@@ -13,7 +13,6 @@ namespace Umulmrum\Holiday\Test\Helper;
 
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Helper\GetHolidaysByName;
-use Umulmrum\Holiday\Helper\GetHolidaysForMonth;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -28,7 +27,7 @@ final class GetHolidaysByNameTest extends HolidayTestCase
      */
     private $holidayCalculatorStub;
     /**
-     * @var GetHolidaysForMonth
+     * @var GetHolidaysByName
      */
     private $subject;
     /**
@@ -36,10 +35,8 @@ final class GetHolidaysByNameTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getGetHolidaysByNameData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getGetHolidaysByNameData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_calculate_correct_holidays_for_a_holiday_name(int $year, array $existingHolidays, string $holidayName, array $expectedResult): void
     {
         $this->givenHolidayCalculatorReturningHolidays($year, $existingHolidays);
@@ -48,7 +45,7 @@ final class GetHolidaysByNameTest extends HolidayTestCase
         $this->thenItShouldReturnAListOfHolidays($expectedResult);
     }
 
-    public function getGetHolidaysByNameData(): array
+    public static function getGetHolidaysByNameData(): array
     {
         return [
             [

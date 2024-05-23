@@ -38,13 +38,13 @@ final class ResolverHandlerTest extends HolidayTestCase
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider provideDataForResolveHolidayProviders
      *
      * @param ProviderResolverInterface[]                                         $providers
      * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $identifier
      * @param HolidayProviderInterface[]                                          $expectedResult
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForResolveHolidayProviders')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_resolves_holiday_providers(array $providers, $identifier, array $expectedResult): void
     {
         $this->givenResolverHandler($providers);
@@ -52,7 +52,7 @@ final class ResolverHandlerTest extends HolidayTestCase
         $this->thenTheExpectedProvidersShouldBeReturned($expectedResult);
     }
 
-    public function provideDataForResolveHolidayProviders(): array
+    public static function provideDataForResolveHolidayProviders(): array
     {
         return [
             'always-resolve-class-instance' => [
@@ -74,11 +74,11 @@ final class ResolverHandlerTest extends HolidayTestCase
     }
 
     /**
-     * @test
-     * @dataProvider provideDataForThrowException
      *
      * @param mixed $identifier
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForThrowException')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_throws_exception_for_invalid_identifier($identifier): void
     {
         $this->givenResolverHandler([new ClassNameResolver()]);
@@ -86,7 +86,7 @@ final class ResolverHandlerTest extends HolidayTestCase
         $this->whenResolveIsCalled($identifier);
     }
 
-    public function provideDataForThrowException(): array
+    public static function provideDataForThrowException(): array
     {
         return [
             [1],

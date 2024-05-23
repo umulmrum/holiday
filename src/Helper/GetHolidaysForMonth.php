@@ -14,18 +14,20 @@ namespace Umulmrum\Holiday\Helper;
 use Umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
-use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\DateCreatorTrait;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 final class GetHolidaysForMonth
 {
+    use DateCreatorTrait;
+
     /**
      * @var HolidayCalculatorInterface
      */
     private $holidayCalculator;
 
-    public function __construct(HolidayCalculatorInterface $holidayCalculator = null)
+    public function __construct(?HolidayCalculatorInterface $holidayCalculator = null)
     {
         $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
     }
@@ -40,9 +42,9 @@ final class GetHolidaysForMonth
     public function __invoke($holidayProviders, int $year, int $month): HolidayList
     {
         $holidayList = $this->holidayCalculator->calculate($holidayProviders, $year);
-        $startDate = \DateTime::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, \sprintf('%s-%s-01', $year, $month));
+        $startDate = $this->createDisplayDateFromString("{$year}-{$month}-01");
         $lastDayOfMonth = (int) $startDate->format('t');
-        $endDate = \DateTime::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, \sprintf('%s-%s-%s', $year, $month, $lastDayOfMonth));
+        $endDate = $this->createDisplayDateFromString("{$year}-{$month}-{$lastDayOfMonth}");
 
         return $holidayList->filter(new IncludeTimespanFilter($startDate, $endDate));
     }

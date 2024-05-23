@@ -24,17 +24,16 @@ final class HolidayListTest extends HolidayTestCase
      */
     private $holidayList;
     /**
-     * @var bool|string
+     * @var bool|string|string[]
      */
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getAddHolidayData
-     *
      * @param Holiday[] $presetHolidays
      * @param Holiday[] $expectedHolidays
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getAddHolidayData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_add_a_holiday(array $presetHolidays, Holiday $holiday, array $expectedHolidays): void
     {
         $this->givenAHolidayList($presetHolidays);
@@ -66,7 +65,7 @@ final class HolidayListTest extends HolidayTestCase
         self::assertEquals($expectedValue, $this->holidayList->getList());
     }
 
-    public function getAddHolidayData(): array
+    public static function getAddHolidayData(): array
     {
         $holiday1 = Holiday::create('name1', '2003-02-06', HolidayType::OFFICIAL);
         $holiday2 = Holiday::create('name2', '2003-04-07', HolidayType::OFFICIAL);
@@ -125,10 +124,8 @@ final class HolidayListTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider provideDataForContainsDate
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForContainsDate')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_check_if_is_holiday(array $presetHolidays, string $date, bool $expectedResult): void
     {
         $this->givenAHolidayList($presetHolidays);
@@ -136,7 +133,7 @@ final class HolidayListTest extends HolidayTestCase
         $this->thenItShouldReturnIfDateIsHoliday($expectedResult);
     }
 
-    public function provideDataForContainsDate(): array
+    public static function provideDataForContainsDate(): array
     {
         $holiday1 = Holiday::create('name1', '2003-02-06', HolidayType::OFFICIAL);
         $holiday2 = Holiday::create('name2', '2003-04-07', HolidayType::OFFICIAL);
@@ -176,7 +173,7 @@ final class HolidayListTest extends HolidayTestCase
 
     private function whenIsHolidayIsCalled(string $date): void
     {
-        $this->actualResult = $this->holidayList->isHoliday(\DateTime::createFromFormat('Y-m-d', $date));
+        $this->actualResult = $this->holidayList->isHoliday(\DateTime::createFromFormat('Y-m-d', $date)); /** @phpstan-ignore-line */
     }
 
     private function thenItShouldReturnIfDateIsHoliday(bool $expectedResult): void
@@ -184,9 +181,7 @@ final class HolidayListTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_lists(): void
     {
         $this->givenSomeHolidayList();

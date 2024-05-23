@@ -15,7 +15,6 @@ use Umulmrum\Holiday\Assert\Assert;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Resolver\ClassNameResolver;
 use Umulmrum\Holiday\Resolver\IsoResolver;
-use Umulmrum\Holiday\Resolver\ProviderResolverInterface;
 use Umulmrum\Holiday\Resolver\ResolverHandler;
 use Umulmrum\Holiday\Resolver\ResolverHandlerInterface;
 
@@ -24,15 +23,11 @@ final class HolidayCalculator implements HolidayCalculatorInterface
     use Assert;
 
     /**
-     * @var ProviderResolverInterface[]
-     */
-    private $providerResolvers = [];
-    /**
      * @var ResolverHandlerInterface
      */
     private $resolverHandler;
 
-    public function __construct(ResolverHandlerInterface $resolverHandler = null)
+    public function __construct(?ResolverHandlerInterface $resolverHandler = null)
     {
         $this->resolverHandler = $resolverHandler ?? new ResolverHandler([new ClassNameResolver(), new IsoResolver()]);
     }
@@ -67,7 +62,6 @@ final class HolidayCalculator implements HolidayCalculatorInterface
             return [$years];
         }
 
-        /** @psalm-suppress RedundantConditionGivenDocblockType */
         if (\is_array($years)) {
             $this->assertIntArray($years);
 

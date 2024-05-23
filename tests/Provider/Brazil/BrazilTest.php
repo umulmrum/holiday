@@ -12,9 +12,9 @@
 namespace Umulmrum\Holiday\Test\Provider\Brazil;
 
 use Umulmrum\Holiday\Provider\Brazil\Brazil;
-use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
-final class BrazilTest extends AbstractHolidayCalculatorTest
+final class BrazilTest extends AbstractHolidayCalculatorTestCase
 {
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ final class BrazilTest extends AbstractHolidayCalculatorTest
     /**
      * {@inheritdoc}
      */
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

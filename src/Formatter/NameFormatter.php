@@ -23,7 +23,7 @@ final class NameFormatter implements HolidayFormatterInterface
      */
     private $translator;
 
-    public function __construct(TranslatorInterface $translator = null)
+    public function __construct(?TranslatorInterface $translator = null)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();

@@ -12,9 +12,9 @@
 namespace Umulmrum\Holiday\Test\Provider\Religion;
 
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidays;
-use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
-final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
+final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTestCase
 {
     /**
      * {@inheritdoc}
@@ -26,7 +26,7 @@ final class HolidayCalculatorChristianTest extends AbstractHolidayCalculatorTest
         ];
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             '1899' => [

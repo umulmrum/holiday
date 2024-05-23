@@ -28,12 +28,11 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getData
-     *
      * @param string|string[] $holidayNames
      * @param Holiday[]       $expectedResult
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_filter_holidays(HolidayList $holidayList, $holidayNames, array $expectedResult): void
     {
         $this->givenAFilter($holidayNames);
@@ -41,7 +40,7 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             'not found' => [
@@ -114,16 +113,17 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
     }
 
     /**
-     * @test
-     * @dataProvider getDataForException
+     * @param mixed $holidayName
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getDataForException')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_throw_exception_on_invalid_holiday_names($holidayName): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidHolidayNameIsInstantiated($holidayName);
     }
 
-    public function getDataForException(): array
+    public static function getDataForException(): array
     {
         return [
             [42],
@@ -160,6 +160,9 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
         $this->expectException(\InvalidArgumentException::class);
     }
 
+    /**
+     * @param string|string[] $holidayName
+     */
     private function whenFilterWithInvalidHolidayNameIsInstantiated($holidayName): void
     {
         new IncludeHolidayNameFilter($holidayName);

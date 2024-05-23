@@ -29,12 +29,11 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getData
-     *
      * @param string[]  $holidays
      * @param int|int[] $weekday
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_filter_holidays(array $holidays, $weekday, array $expectedResult): void
     {
         $this->givenAnIncludeWeekDayFilter($weekday);
@@ -68,7 +67,7 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [
@@ -234,18 +233,18 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
     }
 
     /**
-     * @test
-     * @dataProvider getDataForException
      *
      * @param mixed $weekdays
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getDataForException')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_throw_exception_on_invalid_weekdays($weekdays): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidWeekdayIsInstantiated($weekdays);
     }
 
-    public function getDataForException(): array
+    public static function getDataForException(): array
     {
         return [
             [[]],
@@ -265,6 +264,9 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
         $this->expectException(\InvalidArgumentException::class);
     }
 
+    /**
+     * @param int|int[] $weekdays
+     */
     private function whenFilterWithInvalidWeekdayIsInstantiated($weekdays): void
     {
         new IncludeWeekdayFilter($weekdays);
