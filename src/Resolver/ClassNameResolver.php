@@ -24,7 +24,6 @@ final class ClassNameResolver implements ProviderResolverInterface
             return null;
         }
 
-        /** @psalm-suppress MixedMethodCall */
         $holidayProvider = new $identifier();
         if (false === $holidayProvider instanceof HolidayProviderInterface) {
             throw new \InvalidArgumentException(sprintf('Class does not implement HolidayProviderInterface: %s', $identifier));

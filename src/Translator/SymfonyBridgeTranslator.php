@@ -29,7 +29,7 @@ final class SymfonyBridgeTranslator implements TranslatorInterface
     /**
      * {@inheritdoc}
      */
-    public function translateName(Holiday $holiday, string $locale = null): string
+    public function translateName(Holiday $holiday, ?string $locale = null): string
     {
         return $this->translator->trans($holiday->getName(), [], 'umulmrum_holiday', $locale);
     }
@@ -37,7 +37,7 @@ final class SymfonyBridgeTranslator implements TranslatorInterface
     /**
      * {@inheritdoc}
      */
-    public function translate(string $string, string $locale = null): string
+    public function translate(string $string, ?string $locale = null): string
     {
         return $this->translator->trans($string, [], 'umulmrum_holiday', $locale);
     }

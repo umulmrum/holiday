@@ -28,12 +28,11 @@ final class SortByTypeFilterTest extends HolidayTestCase
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getData
-     *
      * @param int[] $holidays
      * @param int[] $expectedResult
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenASortByTypeFilter();
@@ -64,7 +63,7 @@ final class SortByTypeFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultTypes);
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

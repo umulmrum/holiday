@@ -27,20 +27,16 @@ final class DateFormatterTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getFormatData
-     *
-     * @param int|string $expectedResult
-     */
-    public function it_should_format_single_values(string $date, ?string $format, string $expectedResult): void
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function it_should_format_single_values(string $date, string $format, string $expectedResult): void
     {
         $this->givenAFormatter($format);
         $this->whenFormatIsCalled($date);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    private function givenAFormatter(?string $format): void
+    private function givenAFormatter(string $format): void
     {
         $this->formatter = new DateFormatter($format);
     }
@@ -59,7 +55,7 @@ final class DateFormatterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    public function getFormatData(): array
+    public static function getFormatData(): array
     {
         return [
             [
@@ -91,13 +87,12 @@ final class DateFormatterTest extends HolidayTestCase
     }
 
     /**
-     * @test
-     * @dataProvider getFormatListData
-     *
      * @param string[]        $dates
      * @param string|string[] $expectedResult
      */
-    public function it_should_format_list_values(array $dates, ?string $format, $expectedResult): void
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function it_should_format_list_values(array $dates, string $format, $expectedResult): void
     {
         $this->givenAFormatter($format);
         $this->whenFormatListIsCalled($dates);
@@ -116,7 +111,7 @@ final class DateFormatterTest extends HolidayTestCase
         $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
-    public function getFormatListData(): array
+    public static function getFormatListData(): array
     {
         return [
             [

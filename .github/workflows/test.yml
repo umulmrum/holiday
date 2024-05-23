@@ -1,20 +1,25 @@
 name: "Continuous Integration"
 on:
     push:
+        branches: ['master']
     pull_request:
+        branches: ['*']
 
 jobs:
     tests:
-        name: "CI (PHP ${{ matrix.php-version }} on ${{ matrix.os }})"
-        runs-on: ${{ matrix.os }}
+        name: "CI (PHP ${{ matrix.php-version }})"
+        runs-on: "ubuntu-22.04"
 
         strategy:
             matrix:
-                os: [ "ubuntu-latest" ]
-                php-version: [ "7.3", "7.4", "8.0" ]
+                php-version:
+                    - "8.2"
+                    - "8.3"
+#                    - "8.4"
+
         steps:
             - name: "Checkout"
-              uses: "actions/checkout@v2"
+              uses: "actions/checkout@v4"
 
             - name: "Install PHP"
               uses: "shivammathur/setup-php@v2"
@@ -24,23 +29,19 @@ jobs:
                   php-version: "${{ matrix.php-version }}"
                   tools: "composer:v2"
 
-            - name: "Get composer cache directory"
-              id: "composercache"
-              run: 'echo "::set-output name=dir::$(composer config cache-files-dir)"'
-
-            - name: "Cache composer dependencies"
-              uses: "actions/cache@v2"
+            - name: "Cache Composer dependencies"
+              uses: "actions/cache@v4"
               with:
-                  path: "${{ steps.composercache.outputs.dir }}"
-                  key: "${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}"
-                  restore-keys: "${{ runner.os }}-composer-"
+                  path: "~/.composer/cache"
+                  key: "php-composer-locked-${{ hashFiles('composer.lock') }}"
+                  restore-keys: "php-composer-locked-"
 
             - name: "Install Composer dependencies"
               run: |
                 composer install --no-progress --prefer-dist --optimize-autoloader
 
             - name: "Run unit tests"
-              run: "vendor/bin/phpunit --verbose --coverage-text"
+              run: "composer functional-tests"
 
-            - name: "Run psalm"
-              run: "vendor/bin/psalm.phar --show-info=true"
+            - name: "Run PHPStan"
+              run: "composer phpstan"

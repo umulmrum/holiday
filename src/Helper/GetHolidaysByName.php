@@ -24,7 +24,7 @@ final class GetHolidaysByName
      */
     private $holidayCalculator;
 
-    public function __construct(HolidayCalculatorInterface $holidayCalculator = null)
+    public function __construct(?HolidayCalculatorInterface $holidayCalculator = null)
     {
         $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
     }

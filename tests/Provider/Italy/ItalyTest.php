@@ -12,16 +12,16 @@
 namespace Umulmrum\Holiday\Test\Provider\Italy;
 
 use Umulmrum\Holiday\Provider\Italy\Italy;
-use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
-final class ItalyTest extends AbstractHolidayCalculatorTest
+final class ItalyTest extends AbstractHolidayCalculatorTestCase
 {
     protected function getHolidayProviders(): array
     {
         return [Italy::class];
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

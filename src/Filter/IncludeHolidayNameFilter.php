@@ -27,12 +27,9 @@ final class IncludeHolidayNameFilter extends AbstractFilter
      * @param string|string[] $holidayNames
      *
      * @throws \InvalidArgumentException
-     *
-     * @psalm-suppress RedundantConditionGivenDocblockType
      */
     public function __construct($holidayNames)
     {
-        /** @psalm-suppress DocblockTypeContradiction */
         if (true === \is_string($holidayNames)) {
             $tempHolidayNames = [
                 $holidayNames,

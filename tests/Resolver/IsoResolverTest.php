@@ -31,10 +31,8 @@ final class IsoResolverTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider provideDataForResolveProviders
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForResolveProviders')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_resolve_providers(string $identifier, HolidayProviderInterface $expectedResult = null): void
     {
         $this->givenIsoResolver();
@@ -42,7 +40,7 @@ final class IsoResolverTest extends HolidayTestCase
         $this->thenTheExpectedResultShouldBeReturned($expectedResult);
     }
 
-    public function provideDataForResolveProviders(): array
+    public static function provideDataForResolveProviders(): array
     {
         return [
             'country' => [
@@ -76,9 +74,7 @@ final class IsoResolverTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_resolve_multiple_providers_consecutively(): void
     {
         $this->givenIsoResolver();

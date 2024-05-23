@@ -32,8 +32,6 @@ final class IncludeWeekdayFilter extends AbstractFilter
      * @param int|int[] $weekdays
      *
      * @throws \InvalidArgumentException
-     *
-     * @psalm-suppress RedundantConditionGivenDocblockType
      */
     public function __construct($weekdays)
     {

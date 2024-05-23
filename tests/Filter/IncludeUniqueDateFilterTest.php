@@ -28,11 +28,11 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getData
      *
      * @param string[] $holidays
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenAnIncludeUniqueDateFilter();
@@ -54,7 +54,7 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
         $this->actualResult = $holidayList->filter($this->filter);
     }
 
-    private function thenACorrectlyFilteredResultShouldBeReturned($expectedResult): void
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
     {
         $resultDates = [];
         foreach ($this->actualResult as $result) {
@@ -63,7 +63,7 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $resultDates);
     }
 
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

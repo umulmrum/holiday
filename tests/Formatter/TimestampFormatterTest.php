@@ -26,7 +26,9 @@ final class TimestampFormatterTest extends HolidayTestCase
      * @var string|string[]
      */
     private $actualResult;
-
+    /**
+     * @var string
+     */
     private $originalTimeZone;
 
     protected function tearDown(): void
@@ -35,10 +37,8 @@ final class TimestampFormatterTest extends HolidayTestCase
         date_default_timezone_set($this->originalTimeZone);
     }
 
-    /**
-     * @test
-     * @dataProvider getFormatData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_single_values(string $date, string $timeZone, string $expectedResult): void
     {
         $this->givenTimeZone($timeZone);
@@ -72,7 +72,7 @@ final class TimestampFormatterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    public function getFormatData(): array
+    public static function getFormatData(): array
     {
         return [
             [
@@ -99,12 +99,11 @@ final class TimestampFormatterTest extends HolidayTestCase
     }
 
     /**
-     * @test
-     * @dataProvider getFormatListData
-     *
      * @param string[] $dates
      * @param string[] $expectedResult
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_list_values(array $dates, string $timeZone, array $expectedResult): void
     {
         $this->givenTimeZone($timeZone);
@@ -125,7 +124,7 @@ final class TimestampFormatterTest extends HolidayTestCase
         $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
-    public function getFormatListData(): array
+    public static function getFormatListData(): array
     {
         return [
             [

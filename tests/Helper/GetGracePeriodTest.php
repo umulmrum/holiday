@@ -25,14 +25,15 @@ final class GetGracePeriodTest extends HolidayTestCase
      */
     private $subject;
     /**
-     * @var int
+     * @var \DateTimeInterface
      */
     private $actualResult;
 
     /**
-     * @test
-     * @dataProvider getGetGracePeriodData
+     * @param string|string[] $holidayProviders
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getGetGracePeriodData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_calculate_correct_grace_period($holidayProviders, \DateTimeImmutable $firstDay, int $numberOfDays, \DateTimeInterface $expectedResult): void
     {
         $this->givenGetGracePeriod();
@@ -40,7 +41,7 @@ final class GetGracePeriodTest extends HolidayTestCase
         $this->thenItShouldReturnTheCorrectGracePeriod($expectedResult);
     }
 
-    public function getGetGracePeriodData(): array
+    public static function getGetGracePeriodData(): array
     {
         return [
             'no-holidays' => [
@@ -98,6 +99,9 @@ final class GetGracePeriodTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
+    /**
+     * @param string|string[] $holidayProviders
+     */
     private function whenGetGracePeriodIsCalled($holidayProviders, \DateTimeImmutable $firstDay, int $numberOfDays): void
     {
         $this->actualResult = ($this->subject)($holidayProviders, $firstDay, $numberOfDays);

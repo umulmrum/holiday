@@ -29,7 +29,7 @@ final class GetNoWorkDaysForTimeSpan
      */
     private $holidayCalculator;
 
-    public function __construct(HolidayCalculatorInterface $holidayCalculator = null)
+    public function __construct(?HolidayCalculatorInterface $holidayCalculator = null)
     {
         $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
     }

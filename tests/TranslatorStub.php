@@ -45,4 +45,9 @@ final class TranslatorStub implements TranslatorInterface, \Symfony\Contracts\Tr
             default: return $id;
         }
     }
+
+    public function getLocale(): string
+    {
+        return 'en_US';
+    }
 }

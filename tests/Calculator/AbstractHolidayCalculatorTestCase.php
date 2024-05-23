@@ -15,7 +15,7 @@ use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Test\HolidayTestCase;
 
-abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
+abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
 {
     /**
      * @var HolidayCalculator
@@ -26,10 +26,8 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
      */
     protected $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_computes_the_correct_holidays(int $year, array $expectedResult): void
     {
         $this->givenAHolidayCalculator();
@@ -44,7 +42,7 @@ abstract class AbstractHolidayCalculatorTest extends HolidayTestCase
         $this->holidayCalculator = new HolidayCalculator();
     }
 
-    abstract public function getData(): array;
+    abstract public static function getData(): array;
 
     protected function whenICallCalculate(int $year): void
     {

@@ -29,10 +29,8 @@ final class ClassNameResolverTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider provideDataForResolveProviders
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForResolveProviders')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_resolve_providers(string $identifier, HolidayProviderInterface $expectedResult = null): void
     {
         $this->givenClassNameResolver();
@@ -40,7 +38,7 @@ final class ClassNameResolverTest extends HolidayTestCase
         $this->thenTheExpectedResultShouldBeReturned($expectedResult);
     }
 
-    public function provideDataForResolveProviders(): array
+    public static function provideDataForResolveProviders(): array
     {
         return [
             [
@@ -58,9 +56,7 @@ final class ClassNameResolverTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_throw_exception_on_invalid_class(): void
     {
         $this->givenClassNameResolver();

@@ -16,14 +16,14 @@
         }
     ],
     "require": {
-        "php": ">=7.3"
+        "php": ">=8.2"
     },
     "require-dev": {
         "ext-json": "*",
         "chameleon-system/code-style-config": "dev-master@dev",
-        "phpunit/phpunit": "~9.4",
-        "symfony/translation": "~4.3|~5.0",
-        "psalm/phar": "^4.5"
+        "phpunit/phpunit": "~11.1",
+        "symfony/translation": "~5.4|~6.4|~7.0",
+        "phpstan/phpstan": "^1.11"
     },
     "autoload": {
         "psr-4": {
@@ -34,5 +34,9 @@
         "psr-4": {
             "Umulmrum\\Holiday\\Test\\": ["tests"]
         }
+    },
+    "scripts": {
+        "phpstan": "php -dmemory_limit=-1 vendor/bin/phpstan",
+        "functional-tests": "php vendor/bin/phpunit --coverage-text"
     }
 }

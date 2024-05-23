@@ -23,9 +23,7 @@ final class FilterInverterTest extends HolidayTestCase
      */
     private $filter;
 
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_invert_another_filter(): void
     {
         $this->givenHolidayList();

@@ -27,10 +27,8 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getTranslateNameData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getTranslateNameData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_return_symfony_translations(string $name): void
     {
         $this->givenASymfonyBridgeTranslator();
@@ -53,7 +51,7 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
         self::assertEquals('Such name', $this->actualResult);
     }
 
-    public function getTranslateNameData(): array
+    public static function getTranslateNameData(): array
     {
         return [
             [
@@ -62,10 +60,8 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider getTranslateData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getTranslateData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_send_arbitrary_strings_to_the_translator(string $name): void
     {
         $this->givenASymfonyBridgeTranslator();
@@ -78,7 +74,7 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
         $this->actualResult = $this->translator->translate($name);
     }
 
-    public function getTranslateData(): array
+    public static function getTranslateData(): array
     {
         return [
             [

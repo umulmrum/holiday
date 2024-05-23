@@ -25,14 +25,12 @@ final class ICalendarFormatterTest extends HolidayTestCase
      */
     private $subject;
     /**
-     * @var HolidayList
+     * @var string|string[]
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getFormatData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
     {
         $this->givenICalendarFormatter();
@@ -40,7 +38,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    public function getFormatData(): array
+    public static function getFormatData(): array
     {
         return [
             [
@@ -56,10 +54,8 @@ final class ICalendarFormatterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider getFormatListData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_list_values(HolidayList $holidayList, string $expectedResult): void
     {
         $this->givenICalendarFormatter();
@@ -67,7 +63,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
     }
 
-    public function getFormatListData(): array
+    public static function getFormatListData(): array
     {
         return [
             [
@@ -98,9 +94,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_use_defaults_if_no_constructor_arguments(): void
     {
         $this->givenICalendarFormatterWithoutArguments();
@@ -143,8 +137,10 @@ final class ICalendarFormatterTest extends HolidayTestCase
          * if the rest of the date is current. We already tested correctness of date formatting above.
          */
         $now = (new \DateTime('now'))->format('Ymd\TH');
-        self::assertStringContainsString('DTSTAMP:'.$now, $this->actualResult);
-        self::assertStringContainsString('CREATED:'.$now, $this->actualResult);
-        self::assertStringContainsString('SUMMARY:name', $this->actualResult);
+        /** @var string $actualResult */
+        $actualResult = $this->actualResult;
+        self::assertStringContainsString('DTSTAMP:'.$now, $actualResult);
+        self::assertStringContainsString('CREATED:'.$now, $actualResult);
+        self::assertStringContainsString('SUMMARY:name', $actualResult);
     }
 }

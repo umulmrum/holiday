@@ -12,9 +12,9 @@
 namespace Umulmrum\Holiday\Test\Provider\Weekday;
 
 use Umulmrum\Holiday\Provider\Weekday\Wednesdays;
-use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTest;
+use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
-final class WednesdaysTest extends AbstractHolidayCalculatorTest
+final class WednesdaysTest extends AbstractHolidayCalculatorTestCase
 {
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ final class WednesdaysTest extends AbstractHolidayCalculatorTest
     /**
      * {@inheritdoc}
      */
-    public function getData(): array
+    public static function getData(): array
     {
         return [
             [

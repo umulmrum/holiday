@@ -29,10 +29,8 @@ final class JsonFormatterTest extends HolidayTestCase
      */
     private $actualResult;
 
-    /**
-     * @test
-     * @dataProvider getFormatData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatter();
@@ -52,10 +50,10 @@ final class JsonFormatterTest extends HolidayTestCase
 
     private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
     {
-        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult);
+        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult); /** @phpstan-ignore-line */
     }
 
-    public function getFormatData(): array
+    public static function getFormatData(): array
     {
         return [
             [
@@ -88,10 +86,8 @@ final class JsonFormatterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider getFormatTranslatedData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatTranslatedData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_single_values_with_translation(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
@@ -104,7 +100,7 @@ final class JsonFormatterTest extends HolidayTestCase
         $this->formatter = new JsonFormatter(new TranslatorStub());
     }
 
-    public function getFormatTranslatedData(): array
+    public static function getFormatTranslatedData(): array
     {
         return [
             [
@@ -124,10 +120,8 @@ final class JsonFormatterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider getFormatListData
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_should_format_list_values(HolidayList $holidayList, string $expectedResult): void
     {
         $this->givenAFormatter();
@@ -140,7 +134,7 @@ final class JsonFormatterTest extends HolidayTestCase
         $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
-    public function getFormatListData(): array
+    public static function getFormatListData(): array
     {
         return [
             [
