@@ -16,9 +16,6 @@ use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
 final class AargauTest extends AbstractHolidayCalculatorTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getHolidayProviders(): array
     {
         return [
@@ -26,9 +23,6 @@ final class AargauTest extends AbstractHolidayCalculatorTestCase
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getData(): array
     {
         return [

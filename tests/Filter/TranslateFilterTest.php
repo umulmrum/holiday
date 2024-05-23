@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Filter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Filter\TranslateFilter;
 use Umulmrum\Holiday\Model\Holiday;
@@ -24,6 +26,7 @@ final class TranslateFilterTest extends HolidayTestCase
      * @var TranslateFilter
      */
     private $filter;
+
     /**
      * @var HolidayList
      */
@@ -33,8 +36,8 @@ final class TranslateFilterTest extends HolidayTestCase
      * @param Holiday[] $holidays
      * @param Holiday[] $expectedResult
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getData')]
+    #[Test]
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenTranslateFilter();

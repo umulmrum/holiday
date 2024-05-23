@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Luxembourg;
 
+use DateInterval;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -24,9 +25,6 @@ class Luxembourg implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -66,7 +64,7 @@ class Luxembourg implements HolidayProviderInterface
 
         return Holiday::createFromDateTime(
             HolidayName::WHIT_MONDAY,
-            $easterSunday->add(new \DateInterval('P51D')),
+            $easterSunday->add(new DateInterval('P51D')),
             HolidayType::TRADITIONAL | $additionalType
         );
     }

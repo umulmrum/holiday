@@ -2,6 +2,7 @@
 
 namespace Umulmrum\Holiday\Provider;
 
+use DateInterval;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -20,15 +21,15 @@ trait CompensatoryDaysTrait
         $date = $this->createDateFromString($holiday->getSimpleDate());
         $weekDay = $date->format('w');
         if ('6' === $weekDay) {
-            $date->add(new \DateInterval('P'.($daysToAdd ?? 2).'D'));
+            $date->add(new DateInterval('P' . ($daysToAdd ?? 2) . 'D'));
         } elseif ('0' === $weekDay) {
-            $date->add(new \DateInterval('P'.($daysToAdd ?? 1).'D'));
+            $date->add(new DateInterval('P' . ($daysToAdd ?? 1) . 'D'));
         } else {
             return;
         }
 
         $holidays->add(Holiday::create(
-            $holiday->getName().HolidayName::SUFFIX_COMPENSATORY,
+            $holiday->getName() . HolidayName::SUFFIX_COMPENSATORY,
             $date->format(Holiday::DISPLAY_DATE_FORMAT),
             ($type ?? $holiday->getType()) | HolidayType::COMPENSATORY
         ));
@@ -43,19 +44,19 @@ trait CompensatoryDaysTrait
         $date = $this->createDateFromString($holiday->getSimpleDate());
         $weekDay = $date->format('w');
         if ('6' === $weekDay) {
-            if ("$year-01-01" === $holiday->getSimpleDate()) {
+            if ("{$year}-01-01" === $holiday->getSimpleDate()) {
                 // Do not add compensatory date that falls on December 31st as that day does not belong to the requested year.
                 return;
             }
-            $date->sub(new \DateInterval('P1D'));
+            $date->sub(new DateInterval('P1D'));
         } elseif ('0' === $weekDay) {
-            $date->add(new \DateInterval('P1D'));
+            $date->add(new DateInterval('P1D'));
         } else {
             return;
         }
 
         $holidays->add(Holiday::create(
-            $holiday->getName().HolidayName::SUFFIX_COMPENSATORY,
+            $holiday->getName() . HolidayName::SUFFIX_COMPENSATORY,
             $date->format(Holiday::DISPLAY_DATE_FORMAT),
             $holiday->getType() | HolidayType::COMPENSATORY
         ));
@@ -66,9 +67,9 @@ trait CompensatoryDaysTrait
      */
     private function addCompensatoryNewYearForFollowingYear(HolidayList $holidays, int $year): void
     {
-        $date = $this->createDateFromString("$year-12-31");
+        $date = $this->createDateFromString("{$year}-12-31");
         if ('5' === $date->format('w')) {
-            $holidays->add(Holiday::create(HolidayName::NEW_YEAR_COMPENSATORY, "$year-12-31", HolidayType::COMPENSATORY));
+            $holidays->add(Holiday::create(HolidayName::NEW_YEAR_COMPENSATORY, "{$year}-12-31", HolidayType::COMPENSATORY));
         }
     }
 }

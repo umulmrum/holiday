@@ -24,9 +24,6 @@ class France implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();

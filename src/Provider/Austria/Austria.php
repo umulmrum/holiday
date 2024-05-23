@@ -24,9 +24,6 @@ class Austria implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -53,7 +50,7 @@ class Austria implements HolidayProviderInterface
             }
         }
         $holidays->add($this->getAllSaintsDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        if (($year >= 1919 && $year <= 1933)) {
+        if ($year >= 1919 && $year <= 1933) {
             $holidays->add($this->getAustrianStatesHolidayNovember($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         }
         $holidays->add($this->getImmaculateConception($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));

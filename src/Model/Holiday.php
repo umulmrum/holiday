@@ -11,6 +11,9 @@
 
 namespace Umulmrum\Holiday\Model;
 
+use DateTimeImmutable;
+use DateTimeInterface;
+use DateTimeZone;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Formatter\HolidayFormatterInterface;
 use Umulmrum\Holiday\Provider\DateCreatorTrait;
@@ -21,6 +24,7 @@ class Holiday
 
     /** @var string */
     public const DISPLAY_DATE_FORMAT = 'Y-m-d';
+
     /** @var string */
     public const CREATE_DATE_FORMAT = '!Y-m-d';
 
@@ -28,10 +32,12 @@ class Holiday
      * @var string
      */
     private $name;
+
     /**
      * @var string
      */
     private $simpleDate;
+
     /**
      * @var int
      */
@@ -49,7 +55,7 @@ class Holiday
         return new self($name, $date, $type);
     }
 
-    public static function createFromDateTime(string $name, \DateTimeInterface $date, int $type = HolidayType::OTHER): self
+    public static function createFromDateTime(string $name, DateTimeInterface $date, int $type = HolidayType::OTHER): self
     {
         return new self($name, $date->format((string) static::DISPLAY_DATE_FORMAT), $type);
     }
@@ -64,10 +70,10 @@ class Holiday
         return $this->simpleDate;
     }
 
-    public function getDate(?\DateTimeZone $dateTimeZone = null): \DateTimeImmutable
+    public function getDate(?DateTimeZone $dateTimeZone = null): DateTimeImmutable
     {
-        /** @phpstan-ignore-next-line */
-        return \DateTimeImmutable::createFromFormat((string) static::CREATE_DATE_FORMAT, $this->simpleDate, $dateTimeZone);
+        // @phpstan-ignore-next-line
+        return DateTimeImmutable::createFromFormat((string) static::CREATE_DATE_FORMAT, $this->simpleDate, $dateTimeZone);
     }
 
     public function getType(): int

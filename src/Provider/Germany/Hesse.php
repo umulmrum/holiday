@@ -24,9 +24,6 @@ class Hesse extends Germany
     use CommonHolidaysTrait;
     use WeekdayTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);

@@ -11,16 +11,17 @@
 
 namespace Umulmrum\Holiday\Resolver;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 interface ResolverHandlerInterface
 {
     /**
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $identifier
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $identifier
      *
      * @return HolidayProviderInterface[]
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function resolve($identifier): array;
 }

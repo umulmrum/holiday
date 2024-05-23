@@ -2,6 +2,7 @@
 
 namespace Umulmrum\Holiday\Provider\Brazil;
 
+use DateTime;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -15,9 +16,6 @@ class Brazil implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -69,14 +67,14 @@ class Brazil implements HolidayProviderInterface
 
     private function getElectoralDayRoundOne(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = (new \DateTime("First Sunday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
+        $date = (new DateTime("First Sunday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
 
         return Holiday::create(HolidayName::ELECTORAL_DAY_ROUND_ONE, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF | $additionalType);
     }
 
     private function getElectoralDayRoundTwo(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = (new \DateTime("Last Sunday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
+        $date = (new DateTime("Last Sunday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
 
         return Holiday::create(HolidayName::ELECTORAL_DAY_ROUND_TWO, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF | $additionalType);
     }

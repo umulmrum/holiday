@@ -23,9 +23,6 @@ class Jura extends Switzerland
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);

@@ -11,9 +11,13 @@
 
 namespace Umulmrum\Holiday\Test\Calculator;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Test\HolidayTestCase;
+
+use function sort;
 
 abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
 {
@@ -21,13 +25,14 @@ abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
      * @var HolidayCalculator
      */
     protected $holidayCalculator;
+
     /**
      * @var HolidayList
      */
     protected $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getData')]
+    #[Test]
     public function it_computes_the_correct_holidays(int $year, array $expectedResult): void
     {
         $this->givenAHolidayCalculator();
@@ -55,7 +60,7 @@ abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
         foreach ($this->actualResult as $actualHoliday) {
             $actualResult[] = $actualHoliday->getSimpleDate();
         }
-        \sort($actualResult);
+        sort($actualResult);
         self::assertEquals($expectedResult, $actualResult);
     }
 }

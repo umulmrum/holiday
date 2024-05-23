@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Helper;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
@@ -35,9 +36,9 @@ final class GetHolidaysForMonth
     /**
      * Returns all holidays for the given month.
      *
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $holidayProviders
      *
-     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given
+     * @throws InvalidArgumentException if an invalid value for $holidayProviders was given
      */
     public function __invoke($holidayProviders, int $year, int $month): HolidayList
     {

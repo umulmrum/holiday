@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Netherlands;
 
+use DateInterval;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -26,9 +27,6 @@ class Netherlands implements HolidayProviderInterface
     use CommonHolidaysTrait;
     use DateCreatorTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -61,9 +59,9 @@ class Netherlands implements HolidayProviderInterface
         $weekDay = $date->format('w');
         if ('0' === $weekDay) {
             if ($year < 1980) {
-                $date->add(new \DateInterval('P1D'));
+                $date->add(new DateInterval('P1D'));
             } else {
-                $date->sub(new \DateInterval('P1D'));
+                $date->sub(new DateInterval('P1D'));
             }
         }
 
@@ -75,7 +73,7 @@ class Netherlands implements HolidayProviderInterface
         $date = $this->createDateFromString("{$year}-04-27");
         $weekDay = $date->format('w');
         if ('0' === $weekDay) {
-            $date->sub(new \DateInterval('P1D')); // Move to Saturday
+            $date->sub(new DateInterval('P1D')); // Move to Saturday
         }
 
         return Holiday::create(HolidayName::KINGS_DAY, $date->format(Holiday::DISPLAY_DATE_FORMAT), $additionalType | HolidayType::TRADITIONAL | HolidayType::GOVERNMENT_AGENCIES_CLOSED);
@@ -88,7 +86,7 @@ class Netherlands implements HolidayProviderInterface
 
         if ($year < 1968) {
             if ('0' === $weekDay) {
-                $date->add(new \DateInterval('P1D')); // Move to Monday
+                $date->add(new DateInterval('P1D')); // Move to Monday
             }
         }
 

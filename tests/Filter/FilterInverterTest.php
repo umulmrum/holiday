@@ -2,6 +2,7 @@
 
 namespace Umulmrum\Holiday\Test\Filter;
 
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Filter\AbstractFilter;
 use Umulmrum\Holiday\Filter\FilterInverter;
 use Umulmrum\Holiday\Model\Holiday;
@@ -14,16 +15,18 @@ final class FilterInverterTest extends HolidayTestCase
      * @var HolidayList
      */
     private $holidayList;
+
     /**
      * @var AbstractFilter
      */
     private $innerFilter;
+
     /**
      * @var FilterInverter
      */
     private $filter;
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_should_invert_another_filter(): void
     {
         $this->givenHolidayList();

@@ -13,6 +13,9 @@ namespace Umulmrum\Holiday\Resolver;
 
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
+use function preg_match;
+use function strlen;
+
 /**
  * IsoResolver resolves holiday providers that are given by their ISO-3166-1 ALPHA-2 or ISO-3166-2 code, see isoData.php
  * for the list of supported countries and regions. If an ISO-3166-2 region (code with a dash) that is not implemented
@@ -32,12 +35,9 @@ final class IsoResolver implements ProviderResolverInterface
     /** @var bool */
     private $initialized = false;
 
-    /**
-     * {@inheritdoc}
-     */
     public function resolveHolidayProvider(string $identifier): ?HolidayProviderInterface
     {
-        if (\strlen($identifier) > self::MAX_CODE_LENGTH) {
+        if (strlen($identifier) > self::MAX_CODE_LENGTH) {
             return null;
         }
         $this->init();
@@ -48,7 +48,7 @@ final class IsoResolver implements ProviderResolverInterface
             return $provider;
         }
 
-        if (\preg_match('#^([A-Z]{2})-#', $identifier, $matches)) {
+        if (preg_match('#^([A-Z]{2})-#', $identifier, $matches)) {
             return $this->resolveHolidayProvider($matches[1]);
         }
 
@@ -65,6 +65,6 @@ final class IsoResolver implements ProviderResolverInterface
         }
         $this->initialized = true;
 
-        self::$MAP = include __DIR__.'/isoData.php';
+        self::$MAP = include __DIR__ . '/isoData.php';
     }
 }

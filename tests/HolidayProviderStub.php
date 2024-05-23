@@ -17,14 +17,11 @@ use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 final class HolidayProviderStub implements HolidayProviderInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         return new HolidayList([
-            Holiday::create('name1', "$year-01-01"),
-            Holiday::create('name2', "$year-07-07"),
+            Holiday::create('name1', "{$year}-01-01"),
+            Holiday::create('name2', "{$year}-07-07"),
         ]);
     }
 }

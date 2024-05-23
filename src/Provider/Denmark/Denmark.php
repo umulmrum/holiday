@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Denmark;
 
+use DateInterval;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -24,9 +25,6 @@ class Denmark implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -66,7 +64,7 @@ class Denmark implements HolidayProviderInterface
 
         return Holiday::createFromDateTime(
             HolidayName::GENERAL_PRAYER_DAY,
-            $easterSundayDate->add(new \DateInterval('P26D')),
+            $easterSundayDate->add(new DateInterval('P26D')),
             HolidayType::OFFICIAL | HolidayType::RELIGIOUS | $additionalType
         );
     }

@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Filter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Filter\SortByNameFilter;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -22,6 +24,7 @@ final class SortByNameFilterTest extends HolidayTestCase
      * @var SortByNameFilter
      */
     private $filter;
+
     /**
      * @var HolidayList
      */
@@ -31,8 +34,8 @@ final class SortByNameFilterTest extends HolidayTestCase
      * @param string[] $holidays
      * @param string[] $expectedResult
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getData')]
+    #[Test]
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenASortByNameFilter();

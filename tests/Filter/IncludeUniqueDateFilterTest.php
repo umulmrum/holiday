@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Filter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Filter\IncludeUniqueDateFilter;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -22,17 +24,17 @@ final class IncludeUniqueDateFilterTest extends HolidayTestCase
      * @var IncludeUniqueDateFilter
      */
     private $filter;
+
     /**
      * @var HolidayList
      */
     private $actualResult;
 
     /**
-     *
      * @param string[] $holidays
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getData')]
+    #[Test]
     public function it_should_filter_holidays(array $holidays, array $expectedResult): void
     {
         $this->givenAnIncludeUniqueDateFilter();

@@ -11,7 +11,12 @@
 
 namespace Umulmrum\Holiday\Filter;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Model\Holiday;
+
+use function array_flip;
+use function is_array;
+use function is_string;
 
 /**
  * IncludeHolidayNameFilter retains all holidays with the name or names passed as constructor arguments.
@@ -26,30 +31,27 @@ final class IncludeHolidayNameFilter extends AbstractFilter
     /**
      * @param string|string[] $holidayNames
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __construct($holidayNames)
     {
-        if (true === \is_string($holidayNames)) {
+        if (true === is_string($holidayNames)) {
             $tempHolidayNames = [
                 $holidayNames,
             ];
-        } elseif (\is_array($holidayNames)) {
+        } elseif (is_array($holidayNames)) {
             foreach ($holidayNames as $holidayName) {
-                if (false === \is_string($holidayName)) {
-                    throw new \InvalidArgumentException('Argument must be either a string or an array of strings.');
+                if (false === is_string($holidayName)) {
+                    throw new InvalidArgumentException('Argument must be either a string or an array of strings.');
                 }
             }
             $tempHolidayNames = $holidayNames;
         } else {
-            throw new \InvalidArgumentException('Argument must be either a string or an array of strings.');
+            throw new InvalidArgumentException('Argument must be either a string or an array of strings.');
         }
-        $this->holidayNames = \array_flip($tempHolidayNames);
+        $this->holidayNames = array_flip($tempHolidayNames);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function isIncluded(Holiday $holiday): bool
     {
         return true === isset($this->holidayNames[$holiday->getName()]);

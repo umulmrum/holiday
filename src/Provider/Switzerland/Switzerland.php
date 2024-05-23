@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Provider\Switzerland;
 
+use DateInterval;
+use DateTime;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -24,9 +26,6 @@ class Switzerland implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -55,9 +54,9 @@ class Switzerland implements HolidayProviderInterface
         return Holiday::create(HolidayName::SWISS_NATIONAL_DAY, "{$year}-08-01", HolidayType::OFFICIAL | $additionalType);
     }
 
-    protected function getDateForFederalDayofThanksgivingRepentanceAndPrayer(int $year): \DateTime
+    protected function getDateForFederalDayofThanksgivingRepentanceAndPrayer(int $year): DateTime
     {
-        $dateTime = new \DateTime("First Sunday of {$year}-09");
+        $dateTime = new DateTime("First Sunday of {$year}-09");
         $dateTime->setTime(0, 0, 0);
 
         return $dateTime;
@@ -71,7 +70,7 @@ class Switzerland implements HolidayProviderInterface
     protected function getBettagsmontag(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year);
-        $date->add(new \DateInterval('P1D'));
+        $date->add(new DateInterval('P1D'));
 
         return Holiday::createFromDateTime(HolidayName::BETTAGSMONTAG, $date, HolidayType::RELIGIOUS | $additionalType);
     }

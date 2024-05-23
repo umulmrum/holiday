@@ -15,9 +15,6 @@ use Umulmrum\Holiday\Resolver\ResolverHandlerInterface;
 
 final class ResolverHandlerStub implements ResolverHandlerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolve($identifier): array
     {
         return [new HolidayProviderStub()];

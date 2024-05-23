@@ -13,15 +13,14 @@ namespace Umulmrum\Holiday\Filter;
 
 use Umulmrum\Holiday\Model\HolidayList;
 
+use function usort;
+
 abstract class AbstractSortFilter implements HolidayFilterInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function filter(HolidayList $holidayList): void
     {
         $sorted = $holidayList->getList();
-        \usort($sorted, $this->getCompareFunction());
+        usort($sorted, $this->getCompareFunction());
         foreach ($sorted as $index => $holiday) {
             $holidayList->replaceByIndex($index, $holiday);
         }

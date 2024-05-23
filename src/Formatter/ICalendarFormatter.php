@@ -18,6 +18,8 @@ use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Translator\NullTranslator;
 use Umulmrum\Holiday\Translator\TranslatorInterface;
 
+use function implode;
+
 final class ICalendarFormatter implements HolidayFormatterInterface
 {
     public const LINE_ENDING = "\r\n";
@@ -26,6 +28,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
      * @var TranslatorInterface
      */
     private $translator;
+
     /**
      * @var DateProviderInterface
      */
@@ -37,17 +40,11 @@ final class ICalendarFormatter implements HolidayFormatterInterface
         $this->dateProvider = $dateProvider ?? new DateProvider();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function format(Holiday $holiday): string
     {
         return $this->getEvent($holiday);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function formatList(HolidayList $holidayList)
     {
         $result = [];
@@ -58,7 +55,7 @@ final class ICalendarFormatter implements HolidayFormatterInterface
         }
         $result[] = $this->getFooter();
 
-        return \implode(self::LINE_ENDING, $result).self::LINE_ENDING;
+        return implode(self::LINE_ENDING, $result) . self::LINE_ENDING;
     }
 
     public function getHeader(): string
@@ -80,8 +77,8 @@ final class ICalendarFormatter implements HolidayFormatterInterface
             sprintf('UID:%s-%s', $holiday->getName(), $holiday->getSimpleDate()),
             sprintf('DTSTAMP:%s', $dtstamp->format('Ymd\THis\ZO')),
             sprintf('CREATED:%s', $dtstamp->format('Ymd\THis\ZO')),
-            'SUMMARY:'.$this->translator->translateName($holiday),
-            'DTSTART;VALUE=DATE:'.$holiday->getDate()->format('Ymd'),
+            'SUMMARY:' . $this->translator->translateName($holiday),
+            'DTSTART;VALUE=DATE:' . $holiday->getDate()->format('Ymd'),
             'END:VEVENT',
         ]);
     }

@@ -2,6 +2,10 @@
 
 namespace Umulmrum\Holiday\Helper;
 
+use DateInterval;
+use DateTimeImmutable;
+use DateTimeInterface;
+use InvalidArgumentException;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
@@ -22,17 +26,17 @@ final class GetGracePeriod
      * Returns the date that lies $numberOfDays in the future of $firstDay, prolonged by all holidays generated from
      * $holidayProviders.
      *
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $holidayProviders
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
-    public function __invoke($holidayProviders, \DateTimeImmutable $firstDay, int $numberOfDays): \DateTimeInterface
+    public function __invoke($holidayProviders, DateTimeImmutable $firstDay, int $numberOfDays): DateTimeInterface
     {
         $workingDate = clone $firstDay;
         $year = (int) $workingDate->format('Y');
         $holidays = $this->holidayCalculator->calculate($holidayProviders, $year);
         $remainingDays = $numberOfDays;
-        $interval = new \DateInterval('P1D');
+        $interval = new DateInterval('P1D');
         do {
             if ($holidays->isHoliday($workingDate)) {
                 ++$numberOfDays;
@@ -49,6 +53,6 @@ final class GetGracePeriod
             }
         } while ($remainingDays > 0);
 
-        return $firstDay->add(new \DateInterval('P'.$numberOfDays.'D'));
+        return $firstDay->add(new DateInterval('P' . $numberOfDays . 'D'));
     }
 }

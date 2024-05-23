@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Formatter;
 
+use DateTimeZone;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 
@@ -20,20 +21,18 @@ final class DateFormatter implements HolidayFormatterInterface
      * @var string
      */
     private $format;
+
     /**
-     * @var \DateTimeZone|null
+     * @var DateTimeZone|null
      */
     private $dateTimeZone;
 
-    public function __construct(string $format = Holiday::DISPLAY_DATE_FORMAT, ?\DateTimeZone $dateTimeZone = null)
+    public function __construct(string $format = Holiday::DISPLAY_DATE_FORMAT, ?DateTimeZone $dateTimeZone = null)
     {
         $this->format = $format;
         $this->dateTimeZone = $dateTimeZone;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function format(Holiday $holiday): string
     {
         if (Holiday::DISPLAY_DATE_FORMAT === $this->format) {
@@ -43,9 +42,6 @@ final class DateFormatter implements HolidayFormatterInterface
         return $holiday->getDate($this->dateTimeZone)->format($this->format);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function formatList(HolidayList $holidayList)
     {
         $result = [];

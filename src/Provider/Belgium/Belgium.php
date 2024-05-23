@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Belgium;
 
+use DateTime;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -24,9 +25,6 @@ class Belgium implements HolidayProviderInterface
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -86,7 +84,7 @@ class Belgium implements HolidayProviderInterface
     {
         return Holiday::createFromDateTime(
             HolidayName::DAY_OF_THE_WALLOON_REGION,
-            new \DateTime("Third Sunday of {$year}-09"),
+            new DateTime("Third Sunday of {$year}-09"),
             $additionalType | HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY
         );
     }

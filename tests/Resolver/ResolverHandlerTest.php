@@ -11,6 +11,9 @@
 
 namespace Umulmrum\Holiday\Test\Resolver;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\Provider\Austria\Vienna;
@@ -32,19 +35,19 @@ final class ResolverHandlerTest extends HolidayTestCase
      * @var ResolverHandler
      */
     private $subject;
+
     /**
      * @var HolidayProviderInterface[]
      */
     private $actualResult;
 
     /**
-     *
      * @param ProviderResolverInterface[]                                         $providers
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $identifier
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $identifier
      * @param HolidayProviderInterface[]                                          $expectedResult
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForResolveHolidayProviders')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('provideDataForResolveHolidayProviders')]
+    #[Test]
     public function it_resolves_holiday_providers(array $providers, $identifier, array $expectedResult): void
     {
         $this->givenResolverHandler($providers);
@@ -74,11 +77,10 @@ final class ResolverHandlerTest extends HolidayTestCase
     }
 
     /**
-     *
      * @param mixed $identifier
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForThrowException')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('provideDataForThrowException')]
+    #[Test]
     public function it_throws_exception_for_invalid_identifier($identifier): void
     {
         $this->givenResolverHandler([new ClassNameResolver()]);
@@ -107,7 +109,7 @@ final class ResolverHandlerTest extends HolidayTestCase
     }
 
     /**
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $identifier
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $identifier
      */
     private function whenResolveIsCalled($identifier): void
     {
@@ -124,6 +126,6 @@ final class ResolverHandlerTest extends HolidayTestCase
 
     private function thenExpectInvalidArgumentException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
     }
 }

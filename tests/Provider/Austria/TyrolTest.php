@@ -16,17 +16,11 @@ use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
 final class TyrolTest extends AbstractHolidayCalculatorTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getHolidayProviders(): array
     {
         return [Tyrol::class];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getData(): array
     {
         return [

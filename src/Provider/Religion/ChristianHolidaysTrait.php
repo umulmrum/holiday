@@ -11,20 +11,24 @@
 
 namespace Umulmrum\Holiday\Provider\Religion;
 
+use DateInterval;
+use DateTimeImmutable;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 
+use function intdiv;
+
 trait ChristianHolidaysTrait
 {
-    /** @var \DateTimeImmutable[] */
+    /** @var DateTimeImmutable[] */
     private $easterCache = [];
 
-    private function getEasterSundayDate(int $year): \DateTimeImmutable
+    private function getEasterSundayDate(int $year): DateTimeImmutable
     {
         if (false === isset($this->easterCache[$year])) {
-            /** @var \DateTimeImmutable $easterDate Variable cannot be false here */
-            $easterDate = \DateTimeImmutable::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, $this->calculateEasterSunday($year));
+            /** @var DateTimeImmutable $easterDate Variable cannot be false here */
+            $easterDate = DateTimeImmutable::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, $this->calculateEasterSunday($year));
             $this->easterCache[$year] = $easterDate;
         }
 
@@ -62,20 +66,20 @@ trait ChristianHolidaysTrait
     private function calculateEasterSunday(int $year): string
     {
         $a = $year % 19;
-        $b = \intdiv($year, 100);
+        $b = intdiv($year, 100);
         $c = $year % 100;
-        $d = \intdiv($b, 4);
+        $d = intdiv($b, 4);
         $e = $b % 4;
-        $g = \intdiv(8 * $b + 13, 25);
+        $g = intdiv(8 * $b + 13, 25);
         $h = (19 * $a + $b - $d - $g + 15) % 30;
-        $j = \intdiv($c, 4);
+        $j = intdiv($c, 4);
         $k = $c % 4;
-        $m = \intdiv($a + 11 * $h, 319);
+        $m = intdiv($a + 11 * $h, 319);
         $l = (2 * $e + 2 * $j - $h - $k + $m + 32) % 7;
-        $n = \intdiv($h - $m + $l + 90, 25);
+        $n = intdiv($h - $m + $l + 90, 25);
         $p = ($h - $m + $l + $n + 19) % 32;
 
-        return "$year-$n-$p";
+        return "{$year}-{$n}-{$p}";
     }
 
     private function getEpiphany(int $year, int $additionalType = HolidayType::OTHER): Holiday
@@ -102,28 +106,28 @@ trait ChristianHolidaysTrait
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::FAT_TUESDAY, $easterSunday->sub(new \DateInterval('P47D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::FAT_TUESDAY, $easterSunday->sub(new DateInterval('P47D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAshWednesday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::ASH_WEDNESDAY, $easterSunday->sub(new \DateInterval('P46D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::ASH_WEDNESDAY, $easterSunday->sub(new DateInterval('P46D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getMaundyThursday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::MAUNDY_THURSDAY, $easterSunday->sub(new \DateInterval('P3D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::MAUNDY_THURSDAY, $easterSunday->sub(new DateInterval('P3D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getGoodFriday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::GOOD_FRIDAY, $easterSunday->sub(new \DateInterval('P2D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::GOOD_FRIDAY, $easterSunday->sub(new DateInterval('P2D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getEasterSunday(int $year, int $additionalType = HolidayType::OTHER): Holiday
@@ -137,35 +141,35 @@ trait ChristianHolidaysTrait
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::EASTER_MONDAY, $easterSunday->add(new \DateInterval('P1D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::EASTER_MONDAY, $easterSunday->add(new DateInterval('P1D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAscension(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::ASCENSION, $easterSunday->add(new \DateInterval('P39D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::ASCENSION, $easterSunday->add(new DateInterval('P39D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getWhitSunday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::WHIT_SUNDAY, $easterSunday->add(new \DateInterval('P49D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::WHIT_SUNDAY, $easterSunday->add(new DateInterval('P49D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getWhitMonday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::WHIT_MONDAY, $easterSunday->add(new \DateInterval('P50D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::WHIT_MONDAY, $easterSunday->add(new DateInterval('P50D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getCorpusChristi(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
 
-        return Holiday::createFromDateTime(HolidayName::CORPUS_CHRISTI, $easterSunday->add(new \DateInterval('P60D')), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::CORPUS_CHRISTI, $easterSunday->add(new DateInterval('P60D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getSaintFloriansDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
@@ -225,11 +229,11 @@ trait ChristianHolidaysTrait
 
     private function getRepentanceAndPrayerDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        /** @var \DateTimeImmutable $christmasEve Variable cannot be false here */
-        $christmasEve = \DateTimeImmutable::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, "{$year}-12-24");
+        /** @var DateTimeImmutable $christmasEve Variable cannot be false here */
+        $christmasEve = DateTimeImmutable::createFromFormat(Holiday::DISPLAY_DATE_FORMAT, "{$year}-12-24");
         $changeBy = 32 + ((int) date('w', $christmasEve->getTimestamp()));
 
-        return Holiday::createFromDateTime(HolidayName::REPENTANCE_AND_PRAYER_DAY, $christmasEve->sub(new \DateInterval("P{$changeBy}D")), HolidayType::RELIGIOUS | $additionalType);
+        return Holiday::createFromDateTime(HolidayName::REPENTANCE_AND_PRAYER_DAY, $christmasEve->sub(new DateInterval("P{$changeBy}D")), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getImmaculateConception(int $year, int $additionalType = HolidayType::OTHER): Holiday

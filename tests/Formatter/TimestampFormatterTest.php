@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Formatter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Formatter\TimestampFormatter;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -22,10 +24,12 @@ final class TimestampFormatterTest extends HolidayTestCase
      * @var TimestampFormatter
      */
     private $formatter;
+
     /**
      * @var string|string[]
      */
     private $actualResult;
+
     /**
      * @var string
      */
@@ -37,8 +41,8 @@ final class TimestampFormatterTest extends HolidayTestCase
         date_default_timezone_set($this->originalTimeZone);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getFormatData')]
+    #[Test]
     public function it_should_format_single_values(string $date, string $timeZone, string $expectedResult): void
     {
         $this->givenTimeZone($timeZone);
@@ -102,8 +106,8 @@ final class TimestampFormatterTest extends HolidayTestCase
      * @param string[] $dates
      * @param string[] $expectedResult
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getFormatListData')]
+    #[Test]
     public function it_should_format_list_values(array $dates, string $timeZone, array $expectedResult): void
     {
         $this->givenTimeZone($timeZone);

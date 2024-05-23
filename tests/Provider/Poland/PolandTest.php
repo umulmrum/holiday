@@ -16,17 +16,11 @@ use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
 final class PolandTest extends AbstractHolidayCalculatorTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getHolidayProviders(): array
     {
         return [Poland::class];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getData(): array
     {
         return [

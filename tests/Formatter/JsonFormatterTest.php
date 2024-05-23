@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Formatter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Formatter\JsonFormatter;
 use Umulmrum\Holiday\Model\Holiday;
@@ -24,13 +26,14 @@ final class JsonFormatterTest extends HolidayTestCase
      * @var JsonFormatter
      */
     private $formatter;
+
     /**
      * @var string|string[]
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getFormatData')]
+    #[Test]
     public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatter();
@@ -50,7 +53,7 @@ final class JsonFormatterTest extends HolidayTestCase
 
     private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
     {
-        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult); /** @phpstan-ignore-line */
+        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult); // @phpstan-ignore-line
     }
 
     public static function getFormatData(): array
@@ -86,8 +89,8 @@ final class JsonFormatterTest extends HolidayTestCase
         ];
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatTranslatedData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getFormatTranslatedData')]
+    #[Test]
     public function it_should_format_single_values_with_translation(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
@@ -120,8 +123,8 @@ final class JsonFormatterTest extends HolidayTestCase
         ];
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getFormatListData')]
+    #[Test]
     public function it_should_format_list_values(HolidayList $holidayList, string $expectedResult): void
     {
         $this->givenAFormatter();

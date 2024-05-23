@@ -11,6 +11,9 @@
 
 namespace Umulmrum\Holiday\Test\Filter;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\Weekday;
 use Umulmrum\Holiday\Filter\IncludeWeekdayFilter;
 use Umulmrum\Holiday\Model\Holiday;
@@ -23,6 +26,7 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
      * @var IncludeWeekdayFilter
      */
     private $filter;
+
     /**
      * @var HolidayList
      */
@@ -32,8 +36,8 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
      * @param string[]  $holidays
      * @param int|int[] $weekday
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getData')]
+    #[Test]
     public function it_should_filter_holidays(array $holidays, $weekday, array $expectedResult): void
     {
         $this->givenAnIncludeWeekDayFilter($weekday);
@@ -233,11 +237,10 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
     }
 
     /**
-     *
      * @param mixed $weekdays
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getDataForException')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getDataForException')]
+    #[Test]
     public function it_should_throw_exception_on_invalid_weekdays($weekdays): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
@@ -261,7 +264,7 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
 
     private function thenInvalidArgumentExceptionIsExpected(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
     }
 
     /**

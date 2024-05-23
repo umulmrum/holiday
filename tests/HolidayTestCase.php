@@ -13,6 +13,4 @@ namespace Umulmrum\Holiday\Test;
 
 use PHPUnit\Framework\TestCase;
 
-abstract class HolidayTestCase extends TestCase
-{
-}
+abstract class HolidayTestCase extends TestCase {}

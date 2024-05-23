@@ -21,9 +21,6 @@ class RhinelandPalatinate extends Germany
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);

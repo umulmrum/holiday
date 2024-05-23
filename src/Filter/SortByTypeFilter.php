@@ -18,9 +18,6 @@ use Umulmrum\Holiday\Model\Holiday;
  */
 final class SortByTypeFilter extends AbstractSortFilter
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getCompareFunction(): callable
     {
         return static function (Holiday $o1, Holiday $o2) {

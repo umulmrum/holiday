@@ -32,17 +32,11 @@ final class NameFormatter implements HolidayFormatterInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function format(Holiday $holiday): string
     {
         return $this->translator->translateName($holiday);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function formatList(HolidayList $holidayList)
     {
         $result = [];
