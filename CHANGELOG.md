@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- International Children's Day for Germany/Thuringia.
+
 ### Changed
 - [BC Break] DateFormatter no longer uses options for format and timezone. Instead, it receives these options
   as constructor arguments. 
