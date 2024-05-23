@@ -26,7 +26,9 @@ class Thuringia extends Germany
         $holidays = parent::calculateHolidaysForYear($year);
         $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
         $holidays->add($this->getReformationDay($year, HolidayType::DAY_OFF));
-        $holidays->add($this->getInternationalChildrensDay($year, '09', '20', HolidayType::DAY_OFF));
+        if ($year >= 2019) {
+            $holidays->add($this->getInternationalChildrensDay($year, '09', '20', HolidayType::DAY_OFF));
+        }
 
         return $holidays;
     }
