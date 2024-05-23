@@ -16,17 +16,11 @@ use Umulmrum\Holiday\Test\Calculator\AbstractHolidayCalculatorTestCase;
 
 final class UsaTest extends AbstractHolidayCalculatorTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getHolidayProviders(): array
     {
         return [Usa::class];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getData(): array
     {
         return [
@@ -156,7 +150,7 @@ final class UsaTest extends AbstractHolidayCalculatorTestCase
             [
                 2011,
                 [
-                    //'2010-12-31', // no out-of-scope compensatory day
+                    // '2010-12-31', // no out-of-scope compensatory day
                     '2011-01-01',
                     '2011-01-17',
                     '2011-02-21',

@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Formatter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Formatter\DateFormatter;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -22,13 +24,14 @@ final class DateFormatterTest extends HolidayTestCase
      * @var DateFormatter
      */
     private $formatter;
+
     /**
      * @var string|string[]
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getFormatData')]
+    #[Test]
     public function it_should_format_single_values(string $date, string $format, string $expectedResult): void
     {
         $this->givenAFormatter($format);
@@ -90,8 +93,8 @@ final class DateFormatterTest extends HolidayTestCase
      * @param string[]        $dates
      * @param string|string[] $expectedResult
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getFormatListData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getFormatListData')]
+    #[Test]
     public function it_should_format_list_values(array $dates, string $format, $expectedResult): void
     {
         $this->givenAFormatter($format);

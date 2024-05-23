@@ -29,9 +29,6 @@ final class FilterInverter extends AbstractFilter
         $this->inner = $inner;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function isIncluded(Holiday $holiday): bool
     {
         return !$this->inner->isIncluded($holiday);

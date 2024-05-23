@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Helper;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Filter\IncludeHolidayNameFilter;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
@@ -33,11 +34,11 @@ final class GetHolidaysByName
      * Returns all holidays with the given name for the given years. Note that holiday names are
      * not necessarily unique, which is why a HolidayList object is returned.
      *
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $holidayProviders
      * @param int|int[]                                                           $years
      * @param string                                                              $holidayName      most likely on of the constants in \Umulmrum\Holiday\Constant\HolidayName
      *
-     * @throws \InvalidArgumentException if an invalid value for $holidayProviders or $years was given
+     * @throws InvalidArgumentException if an invalid value for $holidayProviders or $years was given
      */
     public function __invoke($holidayProviders, $years, string $holidayName): HolidayList
     {

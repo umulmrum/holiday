@@ -18,9 +18,6 @@ class ChristianHolidays implements HolidayProviderInterface
 {
     use ChristianHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidayList = new HolidayList();

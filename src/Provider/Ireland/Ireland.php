@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Ireland;
 
+use DateTime;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -26,9 +27,6 @@ class Ireland implements HolidayProviderInterface
     use CommonHolidaysTrait;
     use CompensatoryDaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -73,28 +71,28 @@ class Ireland implements HolidayProviderInterface
 
     private function getMayDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = (new \DateTime("First Monday of {$year}-05"))->format(Holiday::DISPLAY_DATE_FORMAT);
+        $date = (new DateTime("First Monday of {$year}-05"))->format(Holiday::DISPLAY_DATE_FORMAT);
 
         return Holiday::create(HolidayName::MAY_DAY, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getJuneHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = (new \DateTime("First Monday of {$year}-06"))->format(Holiday::DISPLAY_DATE_FORMAT);
+        $date = (new DateTime("First Monday of {$year}-06"))->format(Holiday::DISPLAY_DATE_FORMAT);
 
         return Holiday::create(HolidayName::JUNE_HOLIDAY, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getAugustHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = (new \DateTime("First Monday of {$year}-08"))->format(Holiday::DISPLAY_DATE_FORMAT);
+        $date = (new DateTime("First Monday of {$year}-08"))->format(Holiday::DISPLAY_DATE_FORMAT);
 
         return Holiday::create(HolidayName::AUGUST_HOLIDAY, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
     private function getOctoberHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $date = (new \DateTime("Last Monday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
+        $date = (new DateTime("Last Monday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
 
         return Holiday::create(HolidayName::OCTOBER_HOLIDAY, $date, HolidayType::OFFICIAL | $additionalType);
     }

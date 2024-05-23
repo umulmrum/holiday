@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Translator;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Test\HolidayTestCase;
 use Umulmrum\Holiday\Test\TranslatorStub;
@@ -22,13 +24,14 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
      * @var SymfonyBridgeTranslator
      */
     private $translator;
+
     /**
      * @var string
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getTranslateNameData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getTranslateNameData')]
+    #[Test]
     public function it_should_return_symfony_translations(string $name): void
     {
         $this->givenASymfonyBridgeTranslator();
@@ -60,8 +63,8 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
         ];
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getTranslateData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getTranslateData')]
+    #[Test]
     public function it_should_send_arbitrary_strings_to_the_translator(string $name): void
     {
         $this->givenASymfonyBridgeTranslator();

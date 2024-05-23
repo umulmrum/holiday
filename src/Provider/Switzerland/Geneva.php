@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Switzerland;
 
+use DateInterval;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -23,9 +24,6 @@ class Geneva extends Switzerland
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);
@@ -45,7 +43,7 @@ class Geneva extends Switzerland
     private function getGenferBettag(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $date = $this->getDateForFederalDayofThanksgivingRepentanceAndPrayer($year);
-        $date->add(new \DateInterval('P4D'));
+        $date->add(new DateInterval('P4D'));
 
         return Holiday::createFromDateTime(HolidayName::GENFER_BETTAG, $date, HolidayType::OFFICIAL | $additionalType);
     }

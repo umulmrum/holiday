@@ -11,11 +11,15 @@
 
 namespace Umulmrum\Holiday\Formatter;
 
+use DateTimeZone;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Translator\NullTranslator;
 use Umulmrum\Holiday\Translator\TranslatorInterface;
+
+use function count;
+use function json_encode;
 
 final class JsonFormatter implements HolidayFormatterInterface
 {
@@ -23,16 +27,18 @@ final class JsonFormatter implements HolidayFormatterInterface
      * @var TranslatorInterface
      */
     private $translator;
+
     /**
      * @var int
      */
     private $jsonOptions;
+
     /**
-     * @var \DateTimeZone|null
+     * @var DateTimeZone|null
      */
     private $dateTimeZone;
 
-    public function __construct(?TranslatorInterface $translator = null, int $jsonOptions = 0, ?\DateTimeZone $dateTimeZone = null)
+    public function __construct(?TranslatorInterface $translator = null, int $jsonOptions = 0, ?DateTimeZone $dateTimeZone = null)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();
@@ -43,17 +49,11 @@ final class JsonFormatter implements HolidayFormatterInterface
         $this->dateTimeZone = $dateTimeZone;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function format(Holiday $holiday): string
     {
-        return \json_encode($this->getEvent($holiday), $this->jsonOptions) ?: '';
+        return json_encode($this->getEvent($holiday), $this->jsonOptions) ?: '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function formatList(HolidayList $holidayList)
     {
         $result = [];
@@ -62,7 +62,7 @@ final class JsonFormatter implements HolidayFormatterInterface
             $result[] = $this->getEvent($holiday);
         }
 
-        return \json_encode($result, $this->jsonOptions) ?: '';
+        return json_encode($result, $this->jsonOptions) ?: '';
     }
 
     /**
@@ -97,7 +97,7 @@ final class JsonFormatter implements HolidayFormatterInterface
             $type &= ~$counter;
             $counter <<= 1;
         }
-        if (0 === \count($typeList)) {
+        if (0 === count($typeList)) {
             $typeList[] = HolidayType::OTHER;
         }
 

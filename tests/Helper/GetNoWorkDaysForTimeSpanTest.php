@@ -11,6 +11,10 @@
 
 namespace Umulmrum\Holiday\Test\Helper;
 
+use DateTime;
+use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Helper\GetNoWorkDaysForTimeSpan;
 use Umulmrum\Holiday\HolidayCalculator;
@@ -29,13 +33,14 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
      * @var GetNoWorkDaysForTimeSpan
      */
     private $subject;
+
     /**
      * @var HolidayList
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getGetNoWorkdaysForTimespanData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getGetNoWorkdaysForTimespanData')]
+    #[Test]
     public function it_should_calculate_correct_no_work_days_for_a_timespan(string $firstDay, string $lastDay, array $noWorkWeekdaysProviders, array $expectedResult): void
     {
         $this->givenGetNoWorkDaysForTimeSpan();
@@ -223,7 +228,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
         ];
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_should_throw_exception_on_invalid_timespan(): void
     {
         $this->givenGetNoWorkDaysForTimeSpan();
@@ -240,8 +245,8 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
     {
         $this->actualResult = ($this->subject)(
             $holidayProvider,
-            new \DateTime($firstDay),
-            new \DateTime($lastDay),
+            new DateTime($firstDay),
+            new DateTime($lastDay),
             $noWorkWeekdaysProvider
         );
     }
@@ -257,6 +262,6 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
 
     private function thenInvalidArgumentExceptionIsExpected(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
     }
 }

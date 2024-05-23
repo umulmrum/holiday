@@ -11,21 +11,22 @@
 
 namespace Umulmrum\Holiday\Test;
 
+use DateTime;
 use Umulmrum\Holiday\Helper\DateProviderInterface;
 
 final class DateProviderStub implements DateProviderInterface
 {
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $dateTime;
 
-    public function __construct(\DateTime $dateTime)
+    public function __construct(DateTime $dateTime)
     {
         $this->dateTime = $dateTime;
     }
 
-    public function getCurrentDate(): \DateTime
+    public function getCurrentDate(): DateTime
     {
         return $this->dateTime;
     }

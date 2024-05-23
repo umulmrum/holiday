@@ -11,12 +11,16 @@
 
 namespace Umulmrum\Holiday;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Assert\Assert;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Resolver\ClassNameResolver;
 use Umulmrum\Holiday\Resolver\IsoResolver;
 use Umulmrum\Holiday\Resolver\ResolverHandler;
 use Umulmrum\Holiday\Resolver\ResolverHandlerInterface;
+
+use function is_array;
+use function is_int;
 
 final class HolidayCalculator implements HolidayCalculatorInterface
 {
@@ -32,9 +36,6 @@ final class HolidayCalculator implements HolidayCalculatorInterface
         $this->resolverHandler = $resolverHandler ?? new ResolverHandler([new ClassNameResolver(), new IsoResolver()]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculate($holidayProviders, $years): HolidayList
     {
         $finalYears = $this->interpretYears($years);
@@ -54,20 +55,20 @@ final class HolidayCalculator implements HolidayCalculatorInterface
      *
      * @return int[]
      *
-     * * @throws \InvalidArgumentException
+     * * @throws InvalidArgumentException
      */
     private function interpretYears($years): array
     {
-        if (\is_int($years)) {
+        if (is_int($years)) {
             return [$years];
         }
 
-        if (\is_array($years)) {
+        if (is_array($years)) {
             $this->assertIntArray($years);
 
             return $years;
         }
 
-        throw new \InvalidArgumentException('Year needs to be either int or an array of int');
+        throw new InvalidArgumentException('Year needs to be either int or an array of int');
     }
 }

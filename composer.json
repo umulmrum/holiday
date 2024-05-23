@@ -20,7 +20,7 @@
     },
     "require-dev": {
         "ext-json": "*",
-        "chameleon-system/code-style-config": "dev-master@dev",
+        "friendsofphp/php-cs-fixer": "^3.57",
         "phpunit/phpunit": "~11.1",
         "symfony/translation": "~5.4|~6.4|~7.0",
         "phpstan/phpstan": "^1.11"
@@ -36,7 +36,8 @@
         }
     },
     "scripts": {
-        "phpstan": "php -dmemory_limit=-1 vendor/bin/phpstan",
-        "functional-tests": "php vendor/bin/phpunit --coverage-text"
+        "cs": "php vendor/bin/php-cs-fixer fix --verbose",
+        "functional-tests": "php vendor/bin/phpunit --coverage-text",
+        "phpstan": "php -dmemory_limit=-1 vendor/bin/phpstan"
     }
 }

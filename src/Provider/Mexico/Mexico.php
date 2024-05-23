@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Mexico;
 
+use DateTime;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -26,9 +27,6 @@ class Mexico implements HolidayProviderInterface
     use CommonHolidaysTrait;
     use CompensatoryDaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
@@ -57,7 +55,7 @@ class Mexico implements HolidayProviderInterface
     private function addConstitutionDay(HolidayList $holidays, int $year): void
     {
         if ($year >= 2006) {
-            $date = (new \DateTime("First Monday of {$year}-02"))->format(Holiday::DISPLAY_DATE_FORMAT);
+            $date = (new DateTime("First Monday of {$year}-02"))->format(Holiday::DISPLAY_DATE_FORMAT);
         } elseif ($year >= 1918) {
             $date = "{$year}-02-05";
         } else {
@@ -71,7 +69,7 @@ class Mexico implements HolidayProviderInterface
     private function addBirthdayOfBenitoJuarez(HolidayList $holidays, int $year): void
     {
         if ($year >= 2006) {
-            $date = (new \DateTime("Third Monday of {$year}-03"))->format(Holiday::DISPLAY_DATE_FORMAT);
+            $date = (new DateTime("Third Monday of {$year}-03"))->format(Holiday::DISPLAY_DATE_FORMAT);
         } else {
             $date = "{$year}-02-05";
         }
@@ -97,7 +95,7 @@ class Mexico implements HolidayProviderInterface
     private function addRevolutionDay(HolidayList $holidays, int $year): void
     {
         if ($year >= 2006) {
-            $date = (new \DateTime("Third Monday of {$year}-11"))->format(Holiday::DISPLAY_DATE_FORMAT);
+            $date = (new DateTime("Third Monday of {$year}-11"))->format(Holiday::DISPLAY_DATE_FORMAT);
         } elseif ($year >= 1911) {
             $date = "{$year}-11-20";
         } else {

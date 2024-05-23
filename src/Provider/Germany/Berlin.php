@@ -19,9 +19,6 @@ class Berlin extends Germany
 {
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);

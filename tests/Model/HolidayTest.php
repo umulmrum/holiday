@@ -11,6 +11,11 @@
 
 namespace Umulmrum\Holiday\Test\Model;
 
+use DateTime;
+use DateTimeImmutable;
+use DateTimeZone;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Test\FormatterStub;
@@ -22,13 +27,14 @@ final class HolidayTest extends HolidayTestCase
      * @var Holiday
      */
     private $holiday;
+
     /**
      * @var mixed
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getDateTimeData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getDateTimeData')]
+    #[Test]
     public function it_builds_correctly_from_constructor(string $name, string $date, int $type): void
     {
         $this->whenHolidayIsCreatedFromConstructor($name, $date, $type);
@@ -57,8 +63,8 @@ final class HolidayTest extends HolidayTestCase
         self::assertEquals($type, $this->holiday->getType());
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getDateTimeData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getDateTimeData')]
+    #[Test]
     public function it_builds_correctly_from_create(string $name, string $date, int $type): void
     {
         $this->whenHolidayIsCreatedFromCreate($name, $date, $type);
@@ -72,8 +78,8 @@ final class HolidayTest extends HolidayTestCase
         $this->holiday = Holiday::create($name, $date, $type);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getDateTimeData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getDateTimeData')]
+    #[Test]
     public function it_builds_correctly_from_createFromDateTime(string $name, string $date, int $type): void
     {
         $this->whenHolidayIsCreatedFromCreateFromDateTime($name, $date, $type);
@@ -84,12 +90,12 @@ final class HolidayTest extends HolidayTestCase
 
     private function whenHolidayIsCreatedFromCreateFromDateTime(string $name, string $date, int $type): void
     {
-        $this->holiday = Holiday::createFromDateTime($name, new \DateTime($date), $type);
+        $this->holiday = Holiday::createFromDateTime($name, new DateTime($date), $type);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getDetailedDateTimeData')]
-    #[\PHPUnit\Framework\Attributes\Test]
-    public function it_should_return_date_time(string $date, string $timezone, \DateTimeImmutable $expectedResult): void
+    #[DataProvider('getDetailedDateTimeData')]
+    #[Test]
+    public function it_should_return_date_time(string $date, string $timezone, DateTimeImmutable $expectedResult): void
     {
         $this->givenHolidayWithDate($date);
         $this->whenGetDateIsCalled($timezone);
@@ -103,10 +109,10 @@ final class HolidayTest extends HolidayTestCase
 
     private function whenGetDateIsCalled(string $timezone): void
     {
-        $this->actualResult = $this->holiday->getDate(new \DateTimeZone($timezone));
+        $this->actualResult = $this->holiday->getDate(new DateTimeZone($timezone));
     }
 
-    private function thenThisDateShouldBeReturned(\DateTimeImmutable $expectedResult): void
+    private function thenThisDateShouldBeReturned(DateTimeImmutable $expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
     }
@@ -123,14 +129,14 @@ final class HolidayTest extends HolidayTestCase
     public static function getDetailedDateTimeData(): array
     {
         return [
-            ['1917-01-01', 'Europe/Berlin', new \DateTimeImmutable('1917-01-01T00:00:00+0100')],
-            ['1970-01-01', 'America/Argentina/Cordoba', new \DateTimeImmutable('1970-01-01T00:00:00-0300')],
-            ['2020-10-31', 'Asia/Manila', new \DateTimeImmutable('2020-10-31T00:00:00+0800')],
+            ['1917-01-01', 'Europe/Berlin', new DateTimeImmutable('1917-01-01T00:00:00+0100')],
+            ['1970-01-01', 'America/Argentina/Cordoba', new DateTimeImmutable('1970-01-01T00:00:00-0300')],
+            ['2020-10-31', 'Asia/Manila', new DateTimeImmutable('2020-10-31T00:00:00+0800')],
         ];
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getTypeData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getTypeData')]
+    #[Test]
     public function it_should_return_if_it_has_type(int $typeToSet, int $checkedType, bool $expectedResult): void
     {
         $this->givenHolidayWithType($typeToSet);
@@ -166,7 +172,7 @@ final class HolidayTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_should_format_self(): void
     {
         $this->givenHoliday('name', '2019-06-30', HolidayType::DAY_OFF);

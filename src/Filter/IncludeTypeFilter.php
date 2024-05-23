@@ -11,9 +11,13 @@
 
 namespace Umulmrum\Holiday\Filter;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Assert\Assert;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
+
+use function is_array;
+use function is_int;
 
 /**
  * IncludeTypeFilter retains all holidays with one or more types passed as constructor argument.
@@ -31,25 +35,22 @@ final class IncludeTypeFilter extends AbstractFilter
     /**
      * @param int|int[] $holidayTypes
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __construct($holidayTypes)
     {
-        if (\is_int($holidayTypes)) {
+        if (is_int($holidayTypes)) {
             $this->holidayTypes = $holidayTypes;
-        } elseif (\is_array($holidayTypes)) {
+        } elseif (is_array($holidayTypes)) {
             foreach ($holidayTypes as $holidayType) {
                 $this->assertInt($holidayType);
                 $this->holidayTypes |= $holidayType;
             }
         } else {
-            throw new \InvalidArgumentException('Argument must be either an integer or an array of integers.');
+            throw new InvalidArgumentException('Argument must be either an integer or an array of integers.');
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function isIncluded(Holiday $holiday): bool
     {
         return $holiday->hasType($this->holidayTypes);

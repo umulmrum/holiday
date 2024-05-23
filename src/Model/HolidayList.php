@@ -11,13 +11,21 @@
 
 namespace Umulmrum\Holiday\Model;
 
+use ArrayIterator;
+use Countable;
+use DateTimeInterface;
+use IteratorAggregate;
+use Traversable;
 use Umulmrum\Holiday\Filter\HolidayFilterInterface;
 use Umulmrum\Holiday\Formatter\HolidayFormatterInterface;
+
+use function array_splice;
+use function count;
 
 /**
  * @implements \IteratorAggregate<int, Holiday>
  */
-class HolidayList implements \Countable, \IteratorAggregate
+class HolidayList implements Countable, IteratorAggregate
 {
     /**
      * @var array<int, Holiday>
@@ -56,7 +64,7 @@ class HolidayList implements \Countable, \IteratorAggregate
 
     public function removeByIndex(int $index): void
     {
-        \array_splice($this->holidayList, $index, 1);
+        array_splice($this->holidayList, $index, 1);
     }
 
     public function replaceByIndex(int $index, Holiday $holiday): void
@@ -83,15 +91,12 @@ class HolidayList implements \Countable, \IteratorAggregate
         return $this->holidayList;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function count(): int
     {
-        return \count($this->holidayList);
+        return count($this->holidayList);
     }
 
-    public function isHoliday(\DateTimeInterface $date): bool
+    public function isHoliday(DateTimeInterface $date): bool
     {
         $formatted = $date->format(Holiday::DISPLAY_DATE_FORMAT);
 
@@ -119,8 +124,8 @@ class HolidayList implements \Countable, \IteratorAggregate
         return $formatter->formatList($this);
     }
 
-    public function getIterator(): \Traversable
+    public function getIterator(): Traversable
     {
-        return new \ArrayIterator($this->holidayList);
+        return new ArrayIterator($this->holidayList);
     }
 }

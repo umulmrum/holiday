@@ -16,17 +16,11 @@ use Umulmrum\Holiday\Model\HolidayList;
 
 final class TimestampFormatter implements HolidayFormatterInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function format(Holiday $holiday): string
     {
         return (string) $holiday->getDate()->getTimestamp();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function formatList(HolidayList $holidayList)
     {
         $result = [];

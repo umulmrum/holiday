@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Resolver;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
 interface ProviderResolverInterface
@@ -19,7 +20,7 @@ interface ProviderResolverInterface
      * Returns an object implementing HolidayProviderInterface for the given $identifer, or null if no provider can be
      * found.
      *
-     * @throws \InvalidArgumentException if the identifier can be handled by the resolver but is invalid
+     * @throws InvalidArgumentException if the identifier can be handled by the resolver but is invalid
      */
     public function resolveHolidayProvider(string $identifier): ?HolidayProviderInterface;
 }

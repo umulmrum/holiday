@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Resolver;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Provider\Belgium\Belgium;
 use Umulmrum\Holiday\Provider\France\BasRhin;
 use Umulmrum\Holiday\Provider\Germany\BadenWuerttemberg;
@@ -26,14 +28,15 @@ final class IsoResolverTest extends HolidayTestCase
      * @var IsoResolver
      */
     private $subject;
+
     /**
      * @var HolidayProviderInterface|null
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForResolveProviders')]
-    #[\PHPUnit\Framework\Attributes\Test]
-    public function it_should_resolve_providers(string $identifier, HolidayProviderInterface $expectedResult = null): void
+    #[DataProvider('provideDataForResolveProviders')]
+    #[Test]
+    public function it_should_resolve_providers(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
     {
         $this->givenIsoResolver();
         $this->whenResolveHolidayProviderIsCalled($identifier);
@@ -74,7 +77,7 @@ final class IsoResolverTest extends HolidayTestCase
         ];
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_should_resolve_multiple_providers_consecutively(): void
     {
         $this->givenIsoResolver();

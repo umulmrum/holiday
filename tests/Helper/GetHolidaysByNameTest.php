@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Test\Helper;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Helper\GetHolidaysByName;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
@@ -20,23 +22,27 @@ use Umulmrum\Holiday\Provider\Germany\Germany;
 use Umulmrum\Holiday\Test\HolidayCalculatorStub;
 use Umulmrum\Holiday\Test\HolidayTestCase;
 
+use function is_string;
+
 final class GetHolidaysByNameTest extends HolidayTestCase
 {
     /**
      * @var HolidayCalculatorInterface
      */
     private $holidayCalculatorStub;
+
     /**
      * @var GetHolidaysByName
      */
     private $subject;
+
     /**
      * @var HolidayList
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('getGetHolidaysByNameData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getGetHolidaysByNameData')]
+    #[Test]
     public function it_should_calculate_correct_holidays_for_a_holiday_name(int $year, array $existingHolidays, string $holidayName, array $expectedResult): void
     {
         $this->givenHolidayCalculatorReturningHolidays($year, $existingHolidays);
@@ -100,7 +106,7 @@ final class GetHolidaysByNameTest extends HolidayTestCase
     {
         $holidayList = new HolidayList();
         foreach ($data as $element) {
-            if (true === \is_string($element)) {
+            if (true === is_string($element)) {
                 $holidayList->add(Holiday::create('foo', $element));
             } else {
                 $holidayList->add($element);

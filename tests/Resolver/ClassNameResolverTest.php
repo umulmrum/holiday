@@ -11,6 +11,9 @@
 
 namespace Umulmrum\Holiday\Test\Resolver;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Italy\Italy;
@@ -24,14 +27,15 @@ final class ClassNameResolverTest extends HolidayTestCase
      * @var ClassNameResolver
      */
     private $subject;
+
     /**
      * @var HolidayProviderInterface|null
      */
     private $actualResult;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForResolveProviders')]
-    #[\PHPUnit\Framework\Attributes\Test]
-    public function it_should_resolve_providers(string $identifier, HolidayProviderInterface $expectedResult = null): void
+    #[DataProvider('provideDataForResolveProviders')]
+    #[Test]
+    public function it_should_resolve_providers(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
     {
         $this->givenClassNameResolver();
         $this->whenResolveHolidayProviderIsCalled($identifier);
@@ -56,7 +60,7 @@ final class ClassNameResolverTest extends HolidayTestCase
         ];
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_should_throw_exception_on_invalid_class(): void
     {
         $this->givenClassNameResolver();
@@ -81,6 +85,6 @@ final class ClassNameResolverTest extends HolidayTestCase
 
     private function thenExpectInvalidArgumentException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
     }
 }

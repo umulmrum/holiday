@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Italy;
 
+use DateTime;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Constant\Weekday;
@@ -21,15 +22,14 @@ use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 use Umulmrum\Holiday\Provider\Weekday\WeekdayTrait;
 
+use function in_array;
+
 class Italy implements HolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
     use WeekdayTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList($this->getWeekdays($year, Weekday::SUNDAY, HolidayType::DAY_OFF));
@@ -43,7 +43,7 @@ class Italy implements HolidayProviderInterface
         if ($year >= 2001) {
             $holidays->add($this->getInternationalHolocaustRemembranceDay($year));
         }
-        if (\in_array($year, [1911, 1961, 2011], true)) {
+        if (in_array($year, [1911, 1961, 2011], true)) {
             $holidays->add($this->getAnniversaryOfTheUnificationOfItaly($year, HolidayType::DAY_OFF));
         }
         if ($year <= 1976) {
@@ -96,7 +96,7 @@ class Italy implements HolidayProviderInterface
     private function getRepublicDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         if ($year >= 1977 && $year <= 2000) {
-            $date = (new \DateTime("First Sunday of {$year}-06"))->format(Holiday::DISPLAY_DATE_FORMAT);
+            $date = (new DateTime("First Sunday of {$year}-06"))->format(Holiday::DISPLAY_DATE_FORMAT);
         } else {
             $date = "{$year}-06-02";
         }

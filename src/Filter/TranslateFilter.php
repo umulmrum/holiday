@@ -31,9 +31,6 @@ final class TranslateFilter implements HolidayFilterInterface
         $this->translator = $translator;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function filter(HolidayList $holidayList): void
     {
         foreach ($holidayList->getList() as $index => $holiday) {

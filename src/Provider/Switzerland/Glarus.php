@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Provider\Switzerland;
 
+use DateTime;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
@@ -23,9 +24,6 @@ class Glarus extends Switzerland
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);
@@ -44,7 +42,7 @@ class Glarus extends Switzerland
     {
         return Holiday::createFromDateTime(
             HolidayName::NAEFELSER_FAHRT,
-            new \DateTime("First Thursday of {$year}-04"),
+            new DateTime("First Thursday of {$year}-04"),
             HolidayType::OFFICIAL | $additionalType
         );
     }

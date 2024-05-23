@@ -11,8 +11,13 @@
 
 namespace Umulmrum\Holiday\Filter;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Assert\Assert;
 use Umulmrum\Holiday\Model\Holiday;
+
+use function array_flip;
+use function is_array;
+use function is_int;
 
 /**
  * IncludeWeekdayFilter retains all holidays that are on a weekday passed as constructor argument.
@@ -31,30 +36,27 @@ final class IncludeWeekdayFilter extends AbstractFilter
     /**
      * @param int|int[] $weekdays
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __construct($weekdays)
     {
-        if (\is_int($weekdays)) {
+        if (is_int($weekdays)) {
             $this->assertWeekday($weekdays);
             $tempWeekdays = [
                 $weekdays,
             ];
-        } elseif (\is_array($weekdays)) {
+        } elseif (is_array($weekdays)) {
             $this->assertArrayNotEmpty($weekdays);
             foreach ($weekdays as $weekday) {
                 $this->assertWeekday($weekday);
             }
             $tempWeekdays = $weekdays;
         } else {
-            throw new \InvalidArgumentException('Argument must be either an integer or an array of integers.');
+            throw new InvalidArgumentException('Argument must be either an integer or an array of integers.');
         }
-        $this->weekdays = \array_flip($tempWeekdays);
+        $this->weekdays = array_flip($tempWeekdays);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function isIncluded(Holiday $holiday): bool
     {
         return true === isset($this->weekdays[(int) $holiday->getDate()->format('w')]);

@@ -24,18 +24,12 @@ final class IncludeUniqueDateFilter extends AbstractFilter
     /** @var bool[] */
     private $foundTimestamps = [];
 
-    /**
-     * {@inheritdoc}
-     */
     public function filter(HolidayList $holidayList): void
     {
         parent::filter($holidayList);
         $this->foundTimestamps = [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function isIncluded(Holiday $holiday): bool
     {
         $found = isset($this->foundTimestamps[$holiday->getSimpleDate()]);

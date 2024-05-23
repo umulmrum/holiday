@@ -11,10 +11,12 @@
 
 namespace Umulmrum\Holiday\Helper;
 
+use DateTime;
+
 final class DateProvider implements DateProviderInterface
 {
-    public function getCurrentDate(): \DateTime
+    public function getCurrentDate(): DateTime
     {
-        return new \DateTime('now');
+        return new DateTime('now');
     }
 }

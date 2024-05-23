@@ -19,9 +19,6 @@ class LowerSaxony extends Germany
 {
     use ChristianHolidaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);

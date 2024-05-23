@@ -11,6 +11,7 @@
 
 namespace Umulmrum\Holiday\Filter;
 
+use DateTimeInterface;
 use Umulmrum\Holiday\Model\Holiday;
 
 /**
@@ -23,20 +24,18 @@ final class IncludeTimespanFilter extends AbstractFilter
      * @var string
      */
     private $firstIncludedDay;
+
     /**
      * @var string
      */
     private $lastIncludedDay;
 
-    public function __construct(\DateTimeInterface $firstIncludedDay, \DateTimeInterface $lastIncludedDay)
+    public function __construct(DateTimeInterface $firstIncludedDay, DateTimeInterface $lastIncludedDay)
     {
         $this->firstIncludedDay = $firstIncludedDay->format(Holiday::DISPLAY_DATE_FORMAT);
         $this->lastIncludedDay = $lastIncludedDay->format(Holiday::DISPLAY_DATE_FORMAT);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function isIncluded(Holiday $holiday): bool
     {
         $date = $holiday->getSimpleDate();

@@ -11,6 +11,8 @@
 
 namespace Umulmrum\Holiday\Helper;
 
+use DateTime;
+use InvalidArgumentException;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use Umulmrum\Holiday\Filter\IncludeTypeFilter;
@@ -21,6 +23,10 @@ use Umulmrum\Holiday\HolidayCalculatorInterface;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Weekday\Sundays;
+
+use function array_merge;
+use function count;
+use function is_array;
 
 final class GetNoWorkDaysForTimeSpan
 {
@@ -37,28 +43,28 @@ final class GetNoWorkDaysForTimeSpan
     /**
      * Returns all days in the given time span in which normally employees do not need to work.
      *
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $holidayProviders
      * @param HolidayProviderInterface[]                                          $noWorkWeekdayProviders
      *
-     * @throws \InvalidArgumentException if an invalid value for $holidayProviders was given or $lastDay is before $firstDay
+     * @throws InvalidArgumentException if an invalid value for $holidayProviders was given or $lastDay is before $firstDay
      */
-    public function __invoke($holidayProviders, \DateTime $firstDay, \DateTime $lastDay, array $noWorkWeekdayProviders = []): HolidayList
+    public function __invoke($holidayProviders, DateTime $firstDay, DateTime $lastDay, array $noWorkWeekdayProviders = []): HolidayList
     {
         if ($lastDay < $firstDay) {
-            throw new \InvalidArgumentException('lastDay must not be before firstDay');
+            throw new InvalidArgumentException('lastDay must not be before firstDay');
         }
 
-        if (\count($noWorkWeekdayProviders) > 0) {
+        if (count($noWorkWeekdayProviders) > 0) {
             $noWork = $noWorkWeekdayProviders;
         } else {
             $noWork = [
                 new Sundays(HolidayType::DAY_OFF),
             ];
         }
-        if (false === \is_array($holidayProviders)) {
+        if (false === is_array($holidayProviders)) {
             $holidayProviders = [$holidayProviders];
         }
-        $holidayProviders = \array_merge($holidayProviders, $noWork);
+        $holidayProviders = array_merge($holidayProviders, $noWork);
 
         $startYear = (int) $firstDay->format('Y');
         $endYear = (int) $lastDay->format('Y');

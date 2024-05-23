@@ -11,6 +11,9 @@
 
 namespace Umulmrum\Holiday\Test\Filter;
 
+use DateTime;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Filter\IncludeTimespanFilter;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -22,17 +25,17 @@ final class IncludeTimespanFilterTest extends HolidayTestCase
      * @var IncludeTimespanFilter
      */
     private $filter;
+
     /**
      * @var HolidayList
      */
     private $actualResult;
 
     /**
-     *
      * @param string[] $holidays
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getData')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('getData')]
+    #[Test]
     public function it_should_filter_holidays(array $holidays, string $firstDay, string $lastDay, array $expectedResult): void
     {
         $this->givenAnIncludeTimespanFilter($firstDay, $lastDay);
@@ -42,7 +45,7 @@ final class IncludeTimespanFilterTest extends HolidayTestCase
 
     private function givenAnIncludeTimespanFilter(string $firstDay, string $lastDay): void
     {
-        $this->filter = new IncludeTimespanFilter(new \DateTime($firstDay), new \DateTime($lastDay));
+        $this->filter = new IncludeTimespanFilter(new DateTime($firstDay), new DateTime($lastDay));
     }
 
     private function whenFilterIsCalled(array $holidays): void

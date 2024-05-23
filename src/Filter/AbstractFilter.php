@@ -21,9 +21,6 @@ use Umulmrum\Holiday\Model\HolidayList;
  */
 abstract class AbstractFilter implements HolidayFilterInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function filter(HolidayList $holidayList): void
     {
         $count = $holidayList->count();

@@ -23,6 +23,7 @@ abstract class Weekdays implements HolidayProviderInterface
      * @var int
      */
     private $weekday;
+
     /**
      * @var int
      */
@@ -34,9 +35,6 @@ abstract class Weekdays implements HolidayProviderInterface
         $this->additionalType = $additionalType;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         return new HolidayList($this->getWeekdays($year, $this->weekday, $this->additionalType));

@@ -11,6 +11,10 @@
 
 namespace Umulmrum\Holiday\Test\Calculator;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
+use stdClass;
 use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
@@ -25,23 +29,26 @@ use Umulmrum\Holiday\Resolver\ResolverHandlerInterface;
 use Umulmrum\Holiday\Test\HolidayTestCase;
 use Umulmrum\Holiday\Test\ResolverHandlerStub;
 
+use function array_map;
+
 final class HolidayCalculatorTest extends HolidayTestCase
 {
     /**
      * @var HolidayCalculator
      */
     private $holidayCalculator;
+
     /**
      * @var HolidayList
      */
     private $actualResult;
 
     /**
-     * @param string|HolidayProviderInterface[] $holidayProviders
+     * @param HolidayProviderInterface[]|string $holidayProviders
      * @param int|int[]                         $years
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForTestDefaultResolver')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('provideDataForTestDefaultResolver')]
+    #[Test]
     public function it_calculates_with_default_resolver($holidayProviders, $years): void
     {
         $this->givenHolidayCalculator();
@@ -76,14 +83,14 @@ final class HolidayCalculatorTest extends HolidayTestCase
         ];
     }
 
-    private function givenHolidayCalculator(ResolverHandlerInterface $resolverHandler = null): void
+    private function givenHolidayCalculator(?ResolverHandlerInterface $resolverHandler = null): void
     {
         $this->holidayCalculator = new HolidayCalculator($resolverHandler);
     }
 
     /**
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $holidayProviders
-     * @param int|int[] $years
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $holidayProviders
+     * @param int|int[]                                                           $years
      */
     private function whenCalculateIsCalled($holidayProviders, $years): void
     {
@@ -99,8 +106,8 @@ final class HolidayCalculatorTest extends HolidayTestCase
      * @param mixed $holidayProviders
      * @param mixed $years
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('provideDataForTestThrowExceptionOnInvalidArgument')]
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[DataProvider('provideDataForTestThrowExceptionOnInvalidArgument')]
+    #[Test]
     public function it_throws_exception_on_invalid_arguments($holidayProviders, $years): void
     {
         $this->givenHolidayCalculator();
@@ -128,13 +135,13 @@ final class HolidayCalculatorTest extends HolidayTestCase
                 2020,
             ],
             [
-                new \stdClass(),
+                new stdClass(),
                 2020,
             ],
             [
                 [
                     Germany::class,
-                    new \stdClass(),
+                    new stdClass(),
                 ],
                 2020,
             ],
@@ -159,10 +166,10 @@ final class HolidayCalculatorTest extends HolidayTestCase
 
     private function thenExpectInvalidArgumentException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
     }
 
-    #[\PHPUnit\Framework\Attributes\Test]
+    #[Test]
     public function it_uses_passed_resolver_handler(): void
     {
         $this->givenHolidayCalculator(new ResolverHandlerStub());
@@ -175,7 +182,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
      */
     private function thenExpectedHolidaysShouldBeReturned(array $expectedHolidays): void
     {
-        self::assertEquals($expectedHolidays, \array_map(static function (Holiday $holiday) {
+        self::assertEquals($expectedHolidays, array_map(static function (Holiday $holiday) {
             return $holiday->getSimpleDate();
         }, $this->actualResult->getList()));
     }

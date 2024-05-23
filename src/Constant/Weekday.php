@@ -18,16 +18,22 @@ final class Weekday
 {
     /** @var int */
     public const SUNDAY = 0;
+
     /** @var int */
     public const MONDAY = 1;
+
     /** @var int */
     public const TUESDAY = 2;
+
     /** @var int */
     public const WEDNESDAY = 3;
+
     /** @var int */
     public const THURSDAY = 4;
+
     /** @var int */
     public const FRIDAY = 5;
+
     /** @var int */
     public const SATURDAY = 6;
 

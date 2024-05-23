@@ -26,9 +26,6 @@ class Russia implements HolidayProviderInterface
     use CommonHolidaysTrait;
     use CompensatoryDaysTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();

@@ -11,7 +11,12 @@
 
 namespace Umulmrum\Holiday\Resolver;
 
+use InvalidArgumentException;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+
+use function is_array;
+use function is_string;
+use function print_r;
 
 final class ResolverHandler implements ResolverHandlerInterface
 {
@@ -36,15 +41,15 @@ final class ResolverHandler implements ResolverHandlerInterface
     }
 
     /**
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $identifier
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $identifier
      *
      * @return HolidayProviderInterface[]
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function resolve($identifier): array
     {
-        if (\is_array($identifier)) {
+        if (is_array($identifier)) {
             $resolved = [];
             foreach ($identifier as $id) {
                 $resolved[] = $this->doResolve($id);
@@ -57,9 +62,9 @@ final class ResolverHandler implements ResolverHandlerInterface
     }
 
     /**
-     * @param string|HolidayProviderInterface|string[]|HolidayProviderInterface[] $identifier
+     * @param HolidayProviderInterface|HolidayProviderInterface[]|string|string[] $identifier
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     private function doResolve($identifier): HolidayProviderInterface
     {
@@ -67,9 +72,9 @@ final class ResolverHandler implements ResolverHandlerInterface
             return $identifier;
         }
 
-        if (false === \is_string($identifier)) {
-            throw new \InvalidArgumentException('Argument must either be an instance of HolidayProviderInterface,
-                a string containing a class name or an array of these types. Got: '.\print_r($identifier, true));
+        if (false === is_string($identifier)) {
+            throw new InvalidArgumentException('Argument must either be an instance of HolidayProviderInterface,
+                a string containing a class name or an array of these types. Got: ' . print_r($identifier, true));
         }
 
         foreach ($this->resolvers as $resolver) {
@@ -79,6 +84,6 @@ final class ResolverHandler implements ResolverHandlerInterface
             }
         }
 
-        throw new \InvalidArgumentException('Could not resolve holiday provider for: '.$identifier);
+        throw new InvalidArgumentException('Could not resolve holiday provider for: ' . $identifier);
     }
 }
