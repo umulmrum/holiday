@@ -266,6 +266,10 @@
         <source>international_womens_day</source>
         <target>Internatonal Women's Day</target>
       </trans-unit>
+      <trans-unit id="international_childrens_day">
+        <source>international_childrens_day</source>
+        <target>International Children's Day</target>
+      </trans-unit>
       <trans-unit id="jahrestag_ausrufung_republik_neuenburg">
         <source>jahrestag_ausrufung_republik_neuenburg</source>
         <target>Jahrestag Ausrufung Republik Neuenburg</target>

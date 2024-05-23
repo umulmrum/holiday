@@ -37,6 +37,7 @@ final class ThuringiaTest extends AbstractHolidayCalculatorTestCase
                     '2025-06-08',
                     '2025-06-09',
                     '2025-06-19',
+                    '2025-09-20',
                     '2025-10-03',
                     '2025-10-31',
                     '2025-11-19',
