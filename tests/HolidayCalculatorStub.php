@@ -5,17 +5,9 @@ namespace Umulmrum\Holiday\Test;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
 use Umulmrum\Holiday\Model\HolidayList;
 
-final class HolidayCalculatorStub implements HolidayCalculatorInterface
+final readonly class HolidayCalculatorStub implements HolidayCalculatorInterface
 {
-    /**
-     * @var HolidayList
-     */
-    private $holidayList;
-
-    public function __construct(HolidayList $holidayList)
-    {
-        $this->holidayList = $holidayList;
-    }
+    public function __construct(private HolidayList $holidayList) {}
 
     public function calculate($holidayProviders, $years): HolidayList
     {

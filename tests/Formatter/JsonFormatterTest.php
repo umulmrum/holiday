@@ -22,15 +22,12 @@ use Umulmrum\Holiday\Test\TranslatorStub;
 
 final class JsonFormatterTest extends HolidayTestCase
 {
-    /**
-     * @var JsonFormatter
-     */
-    private $formatter;
+    private JsonFormatter $formatter;
 
     /**
      * @var string|string[]
      */
-    private $actualResult;
+    private array|string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]

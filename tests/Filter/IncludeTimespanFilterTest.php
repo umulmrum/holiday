@@ -21,15 +21,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class IncludeTimespanFilterTest extends HolidayTestCase
 {
-    /**
-     * @var IncludeTimespanFilter
-     */
-    private $filter;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private IncludeTimespanFilter $filter;
+    private HolidayList $actualResult;
 
     /**
      * @param string[] $holidays

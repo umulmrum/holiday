@@ -22,15 +22,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class IncludeTypeFilterTest extends HolidayTestCase
 {
-    /**
-     * @var IncludeTypeFilter
-     */
-    private $filter;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private IncludeTypeFilter $filter;
+    private HolidayList $actualResult;
 
     /**
      * @param int|int[] $filterType
@@ -153,12 +146,9 @@ final class IncludeTypeFilterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @param mixed $filterType
-     */
     #[DataProvider('getDataForException')]
     #[Test]
-    public function it_should_throw_exception_on_invalid_holiday_types($filterType): void
+    public function it_should_throw_exception_on_invalid_holiday_types(mixed $filterType): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidTypeIsInstantiated($filterType);

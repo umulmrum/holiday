@@ -26,14 +26,14 @@ final class IncludeHolidayNameFilter extends AbstractFilter
     /**
      * @var array<string, array-key>
      */
-    private $holidayNames;
+    private array $holidayNames;
 
     /**
      * @param string|string[] $holidayNames
      *
      * @throws InvalidArgumentException
      */
-    public function __construct($holidayNames)
+    public function __construct(mixed $holidayNames)
     {
         if (true === is_string($holidayNames)) {
             $tempHolidayNames = [

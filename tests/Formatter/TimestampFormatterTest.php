@@ -20,20 +20,13 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class TimestampFormatterTest extends HolidayTestCase
 {
-    /**
-     * @var TimestampFormatter
-     */
-    private $formatter;
+    private TimestampFormatter $formatter;
 
     /**
      * @var string|string[]
      */
-    private $actualResult;
-
-    /**
-     * @var string
-     */
-    private $originalTimeZone;
+    private array|string $actualResult;
+    private string $originalTimeZone;
 
     protected function tearDown(): void
     {

@@ -28,27 +28,7 @@ class Holiday
     /** @var string */
     public const CREATE_DATE_FORMAT = '!Y-m-d';
 
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $simpleDate;
-
-    /**
-     * @var int
-     */
-    private $type;
-
-    public function __construct(string $name, string $date, int $type = HolidayType::OTHER)
-    {
-        $this->name = $name;
-        $this->simpleDate = $date;
-        $this->type = $type;
-    }
+    public function __construct(private string $name, private string $simpleDate, private int $type = HolidayType::OTHER) {}
 
     public static function create(string $name, string $date, int $type = HolidayType::OTHER): self
     {

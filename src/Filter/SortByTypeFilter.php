@@ -20,8 +20,6 @@ final class SortByTypeFilter extends AbstractSortFilter
 {
     protected function getCompareFunction(): callable
     {
-        return static function (Holiday $o1, Holiday $o2) {
-            return $o1->getType() <=> $o2->getType();
-        };
+        return static fn (Holiday $o1, Holiday $o2) => $o1->getType() <=> $o2->getType();
     }
 }

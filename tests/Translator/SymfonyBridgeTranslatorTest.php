@@ -20,15 +20,8 @@ use Umulmrum\Holiday\Translator\SymfonyBridgeTranslator;
 
 final class SymfonyBridgeTranslatorTest extends HolidayTestCase
 {
-    /**
-     * @var SymfonyBridgeTranslator
-     */
-    private $translator;
-
-    /**
-     * @var string
-     */
-    private $actualResult;
+    private SymfonyBridgeTranslator $translator;
+    private string $actualResult;
 
     #[DataProvider('getTranslateNameData')]
     #[Test]

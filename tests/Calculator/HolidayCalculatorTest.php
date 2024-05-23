@@ -33,15 +33,8 @@ use function array_map;
 
 final class HolidayCalculatorTest extends HolidayTestCase
 {
-    /**
-     * @var HolidayCalculator
-     */
-    private $holidayCalculator;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private HolidayCalculator $holidayCalculator;
+    private HolidayList $actualResult;
 
     /**
      * @param HolidayProviderInterface[]|string $holidayProviders
@@ -102,13 +95,9 @@ final class HolidayCalculatorTest extends HolidayTestCase
         self::assertTrue(true);
     }
 
-    /**
-     * @param mixed $holidayProviders
-     * @param mixed $years
-     */
     #[DataProvider('provideDataForTestThrowExceptionOnInvalidArgument')]
     #[Test]
-    public function it_throws_exception_on_invalid_arguments($holidayProviders, $years): void
+    public function it_throws_exception_on_invalid_arguments(mixed $holidayProviders, mixed $years): void
     {
         $this->givenHolidayCalculator();
         $this->thenExpectInvalidArgumentException();
@@ -182,8 +171,6 @@ final class HolidayCalculatorTest extends HolidayTestCase
      */
     private function thenExpectedHolidaysShouldBeReturned(array $expectedHolidays): void
     {
-        self::assertEquals($expectedHolidays, array_map(static function (Holiday $holiday) {
-            return $holiday->getSimpleDate();
-        }, $this->actualResult->getList()));
+        self::assertEquals($expectedHolidays, array_map(static fn (Holiday $holiday) => $holiday->getSimpleDate(), $this->actualResult->getList()));
     }
 }

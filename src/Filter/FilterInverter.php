@@ -19,15 +19,7 @@ use Umulmrum\Holiday\Model\Holiday;
  */
 final class FilterInverter extends AbstractFilter
 {
-    /**
-     * @var AbstractFilter
-     */
-    private $inner;
-
-    public function __construct(AbstractFilter $inner)
-    {
-        $this->inner = $inner;
-    }
+    public function __construct(private readonly AbstractFilter $inner) {}
 
     protected function isIncluded(Holiday $holiday): bool
     {

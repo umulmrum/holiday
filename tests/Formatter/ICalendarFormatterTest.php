@@ -26,15 +26,12 @@ use function date_default_timezone_set;
 
 final class ICalendarFormatterTest extends HolidayTestCase
 {
-    /**
-     * @var ICalendarFormatter
-     */
-    private $subject;
+    private ICalendarFormatter $subject;
 
     /**
      * @var string|string[]
      */
-    private $actualResult;
+    private array|string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]

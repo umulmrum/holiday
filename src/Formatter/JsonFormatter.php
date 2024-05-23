@@ -23,30 +23,15 @@ use function json_encode;
 
 final class JsonFormatter implements HolidayFormatterInterface
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
-    /**
-     * @var int
-     */
-    private $jsonOptions;
-
-    /**
-     * @var DateTimeZone|null
-     */
-    private $dateTimeZone;
-
-    public function __construct(?TranslatorInterface $translator = null, int $jsonOptions = 0, ?DateTimeZone $dateTimeZone = null)
+    public function __construct(?TranslatorInterface $translator = null, private readonly int $jsonOptions = 0, private readonly ?DateTimeZone $dateTimeZone = null)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();
         } else {
             $this->translator = $translator;
         }
-        $this->jsonOptions = $jsonOptions;
-        $this->dateTimeZone = $dateTimeZone;
     }
 
     public function format(Holiday $holiday): string
@@ -54,7 +39,7 @@ final class JsonFormatter implements HolidayFormatterInterface
         return json_encode($this->getEvent($holiday), $this->jsonOptions) ?: '';
     }
 
-    public function formatList(HolidayList $holidayList)
+    public function formatList(HolidayList $holidayList): array|string
     {
         $result = [];
 

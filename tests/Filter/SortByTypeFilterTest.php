@@ -20,15 +20,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class SortByTypeFilterTest extends HolidayTestCase
 {
-    /**
-     * @var SortByTypeFilter
-     */
-    private $filter;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private SortByTypeFilter $filter;
+    private HolidayList $actualResult;
 
     /**
      * @param int[] $holidays

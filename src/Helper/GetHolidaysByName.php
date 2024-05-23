@@ -18,17 +18,9 @@ use Umulmrum\Holiday\HolidayCalculatorInterface;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-final class GetHolidaysByName
+final readonly class GetHolidaysByName
 {
-    /**
-     * @var HolidayCalculatorInterface
-     */
-    private $holidayCalculator;
-
-    public function __construct(?HolidayCalculatorInterface $holidayCalculator = null)
-    {
-        $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
-    }
+    public function __construct(private HolidayCalculatorInterface $holidayCalculator = new HolidayCalculator()) {}
 
     /**
      * Returns all holidays with the given name for the given years. Note that holiday names are

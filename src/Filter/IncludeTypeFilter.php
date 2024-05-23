@@ -27,10 +27,7 @@ final class IncludeTypeFilter extends AbstractFilter
 {
     use Assert;
 
-    /**
-     * @var int
-     */
-    private $holidayTypes = HolidayType::OTHER;
+    private int $holidayTypes = HolidayType::OTHER;
 
     /**
      * @param int|int[] $holidayTypes

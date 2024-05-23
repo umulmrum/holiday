@@ -22,15 +22,8 @@ use Umulmrum\Holiday\Test\TranslatorStub;
 
 final class TranslateFilterTest extends HolidayTestCase
 {
-    /**
-     * @var TranslateFilter
-     */
-    private $filter;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private TranslateFilter $filter;
+    private HolidayList $actualResult;
 
     /**
      * @param Holiday[] $holidays

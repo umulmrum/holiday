@@ -20,15 +20,9 @@ use Umulmrum\Holiday\Model\Holiday;
  */
 final class IncludeTimespanFilter extends AbstractFilter
 {
-    /**
-     * @var string
-     */
-    private $firstIncludedDay;
+    private readonly string $firstIncludedDay;
 
-    /**
-     * @var string
-     */
-    private $lastIncludedDay;
+    private readonly string $lastIncludedDay;
 
     public function __construct(DateTimeInterface $firstIncludedDay, DateTimeInterface $lastIncludedDay)
     {

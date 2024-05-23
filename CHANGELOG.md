@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- [BC Break] DateFormatter no longer uses options for format and timezone. Instead it receives these options
+- [BC Break] DateFormatter no longer uses options for format and timezone. Instead, it receives these options
   as constructor arguments. 
-- Bump minimum PHP version to 8.2
+- Bump minimum PHP version to 8.2.
+- [BC Break] HolidayFormatterInterface::formatList now enforces its return value `array|string`. Custom implementations
+  need to add the return value.
 
 ### Removed
 - [BC Break] Remove second argument `$options` from `\Umulmrum\Holiday\Formatter\HolidayFormatterInterface::format`

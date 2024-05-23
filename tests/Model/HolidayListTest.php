@@ -22,15 +22,12 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayListTest extends HolidayTestCase
 {
-    /**
-     * @var HolidayList
-     */
-    private $holidayList;
+    private HolidayList $holidayList;
 
     /**
      * @var bool|string|string[]
      */
-    private $actualResult;
+    private array|bool|string $actualResult;
 
     /**
      * @param Holiday[] $presetHolidays

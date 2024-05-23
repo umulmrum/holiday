@@ -22,15 +22,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class IncludeWeekdayFilterTest extends HolidayTestCase
 {
-    /**
-     * @var IncludeWeekdayFilter
-     */
-    private $filter;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private IncludeWeekdayFilter $filter;
+    private HolidayList $actualResult;
 
     /**
      * @param string[]  $holidays
@@ -236,12 +229,9 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @param mixed $weekdays
-     */
     #[DataProvider('getDataForException')]
     #[Test]
-    public function it_should_throw_exception_on_invalid_weekdays($weekdays): void
+    public function it_should_throw_exception_on_invalid_weekdays(mixed $weekdays): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidWeekdayIsInstantiated($weekdays);

@@ -18,10 +18,7 @@ use Umulmrum\Holiday\Translator\TranslatorInterface;
 
 final class NameFormatter implements HolidayFormatterInterface
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
     public function __construct(?TranslatorInterface $translator = null)
     {
@@ -37,7 +34,7 @@ final class NameFormatter implements HolidayFormatterInterface
         return $this->translator->translateName($holiday);
     }
 
-    public function formatList(HolidayList $holidayList)
+    public function formatList(HolidayList $holidayList): array|string
     {
         $result = [];
 

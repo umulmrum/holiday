@@ -23,14 +23,14 @@ use function array_splice;
 use function count;
 
 /**
- * @implements \IteratorAggregate<int, Holiday>
+ * @implements IteratorAggregate<int, Holiday>
  */
 class HolidayList implements Countable, IteratorAggregate
 {
     /**
      * @var array<int, Holiday>
      */
-    private $holidayList = [];
+    private array $holidayList = [];
 
     /**
      * @param Holiday[] $holidays
@@ -119,7 +119,7 @@ class HolidayList implements Countable, IteratorAggregate
     /**
      * @return string|string[]
      */
-    public function format(HolidayFormatterInterface $formatter)
+    public function format(HolidayFormatterInterface $formatter): array|string
     {
         return $formatter->formatList($this);
     }

@@ -26,20 +26,9 @@ use function is_string;
 
 final class GetHolidaysByNameTest extends HolidayTestCase
 {
-    /**
-     * @var HolidayCalculatorInterface
-     */
-    private $holidayCalculatorStub;
-
-    /**
-     * @var GetHolidaysByName
-     */
-    private $subject;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private HolidayCalculatorInterface $holidayCalculatorStub;
+    private GetHolidaysByName $subject;
+    private HolidayList $actualResult;
 
     #[DataProvider('getGetHolidaysByNameData')]
     #[Test]

@@ -20,32 +20,18 @@ use Umulmrum\Holiday\Translator\TranslatorInterface;
 
 use function implode;
 
-final class ICalendarFormatter implements HolidayFormatterInterface
+final readonly class ICalendarFormatter implements HolidayFormatterInterface
 {
     public const LINE_ENDING = "\r\n";
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    /**
-     * @var DateProviderInterface
-     */
-    private $dateProvider;
-
-    public function __construct(?TranslatorInterface $translator = null, ?DateProviderInterface $dateProvider = null)
-    {
-        $this->translator = $translator ?? new NullTranslator();
-        $this->dateProvider = $dateProvider ?? new DateProvider();
-    }
+    public function __construct(private TranslatorInterface $translator = new NullTranslator(), private DateProviderInterface $dateProvider = new DateProvider()) {}
 
     public function format(Holiday $holiday): string
     {
         return $this->getEvent($holiday);
     }
 
-    public function formatList(HolidayList $holidayList)
+    public function formatList(HolidayList $holidayList): array|string
     {
         $result = [];
 

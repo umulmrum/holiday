@@ -31,14 +31,14 @@ final class IncludeWeekdayFilter extends AbstractFilter
     /**
      * @var array<int, array-key>
      */
-    private $weekdays;
+    private readonly array $weekdays;
 
     /**
      * @param int|int[] $weekdays
      *
      * @throws InvalidArgumentException
      */
-    public function __construct($weekdays)
+    public function __construct(mixed $weekdays)
     {
         if (is_int($weekdays)) {
             $this->assertWeekday($weekdays);

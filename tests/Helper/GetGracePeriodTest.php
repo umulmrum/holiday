@@ -24,15 +24,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class GetGracePeriodTest extends HolidayTestCase
 {
-    /**
-     * @var GetGracePeriod
-     */
-    private $subject;
-
-    /**
-     * @var DateTimeInterface
-     */
-    private $actualResult;
+    private GetGracePeriod $subject;
+    private DateTimeInterface $actualResult;
 
     /**
      * @param string|string[] $holidayProviders

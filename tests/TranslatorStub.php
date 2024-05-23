@@ -23,26 +23,21 @@ final class TranslatorStub implements TranslatorInterface, \Symfony\Contracts\Tr
 
     public function translate(string $string, ?string $locale = null): string
     {
-        switch ($string) {
-            case 'name': return 'Very name';
-
-            case 'day_off': return 'Day off';
-
-            case 'religious': return 'Religious';
-
-            default: return $string;
-        }
+        return match ($string) {
+            'name' => 'Very name',
+            'day_off' => 'Day off',
+            'religious' => 'Religious',
+            default => $string,
+        };
     }
 
     public function trans(string $id, array $parameters = [], ?string $domain = null, ?string $locale = null): string
     {
-        switch ($id) {
-            case 'name': return 'Such name';
-
-            case 'foo': return 'Bar';
-
-            default: return $id;
-        }
+        return match ($id) {
+            'name' => 'Such name',
+            'foo' => 'Bar',
+            default => $id,
+        };
     }
 
     public function getLocale(): string

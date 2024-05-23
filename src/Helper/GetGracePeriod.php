@@ -10,17 +10,9 @@ use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\HolidayCalculatorInterface;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-final class GetGracePeriod
+final readonly class GetGracePeriod
 {
-    /**
-     * @var HolidayCalculatorInterface
-     */
-    private $holidayCalculator;
-
-    public function __construct(?HolidayCalculatorInterface $holidayCalculator = null)
-    {
-        $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
-    }
+    public function __construct(private HolidayCalculatorInterface $holidayCalculator = new HolidayCalculator()) {}
 
     /**
      * Returns the date that lies $numberOfDays in the future of $firstDay, prolonged by all holidays generated from
