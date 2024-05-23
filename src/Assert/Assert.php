@@ -22,11 +22,9 @@ use function sprintf;
 trait Assert
 {
     /**
-     * @param mixed $value
-     *
      * @throws InvalidArgumentException
      */
-    private function assertInt($value): void
+    private function assertInt(mixed $value): void
     {
         if (false === is_int($value)) {
             throw new InvalidArgumentException('int expected, got: ' . (string) $value);
@@ -58,11 +56,9 @@ trait Assert
     }
 
     /**
-     * @param mixed $value
-     *
      * @throws InvalidArgumentException
      */
-    private function assertWeekday($value): void
+    private function assertWeekday(mixed $value): void
     {
         $this->assertInt($value);
         if ($value < Weekday::SUNDAY || $value > Weekday::SATURDAY) {

@@ -19,21 +19,7 @@ abstract class Weekdays implements HolidayProviderInterface
 {
     use WeekdayTrait;
 
-    /**
-     * @var int
-     */
-    private $weekday;
-
-    /**
-     * @var int
-     */
-    private $additionalType;
-
-    public function __construct(int $weekday, int $additionalType = HolidayType::OTHER)
-    {
-        $this->weekday = $weekday;
-        $this->additionalType = $additionalType;
-    }
+    public function __construct(private int $weekday, private int $additionalType = HolidayType::OTHER) {}
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {

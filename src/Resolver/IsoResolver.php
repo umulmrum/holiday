@@ -32,8 +32,7 @@ final class IsoResolver implements ProviderResolverInterface
     /** @var string[] */
     private static $MAP;
 
-    /** @var bool */
-    private $initialized = false;
+    private bool $initialized = false;
 
     public function resolveHolidayProvider(string $identifier): ?HolidayProviderInterface
     {

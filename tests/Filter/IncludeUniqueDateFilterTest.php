@@ -20,15 +20,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class IncludeUniqueDateFilterTest extends HolidayTestCase
 {
-    /**
-     * @var IncludeUniqueDateFilter
-     */
-    private $filter;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private IncludeUniqueDateFilter $filter;
+    private HolidayList $actualResult;
 
     /**
      * @param string[] $holidays

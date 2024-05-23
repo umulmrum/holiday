@@ -28,5 +28,5 @@ interface HolidayFormatterInterface
      *
      * @return string|string[]
      */
-    public function formatList(HolidayList $holidayList);
+    public function formatList(HolidayList $holidayList): array|string;
 }

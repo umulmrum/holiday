@@ -23,15 +23,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class ClassNameResolverTest extends HolidayTestCase
 {
-    /**
-     * @var ClassNameResolver
-     */
-    private $subject;
-
-    /**
-     * @var HolidayProviderInterface|null
-     */
-    private $actualResult;
+    private ClassNameResolver $subject;
+    private ?HolidayProviderInterface $actualResult;
 
     #[DataProvider('provideDataForResolveProviders')]
     #[Test]
@@ -50,7 +43,7 @@ final class ClassNameResolverTest extends HolidayTestCase
                 new Italy(),
             ],
             [
-                '\Umulmrum\Holiday\Provider\Switzerland\Bern',
+                Bern::class,
                 new Bern(),
             ],
             [

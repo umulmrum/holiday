@@ -28,17 +28,9 @@ use function array_merge;
 use function count;
 use function is_array;
 
-final class GetNoWorkDaysForTimeSpan
+final readonly class GetNoWorkDaysForTimeSpan
 {
-    /**
-     * @var HolidayCalculatorInterface
-     */
-    private $holidayCalculator;
-
-    public function __construct(?HolidayCalculatorInterface $holidayCalculator = null)
-    {
-        $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
-    }
+    public function __construct(private HolidayCalculatorInterface $holidayCalculator = new HolidayCalculator()) {}
 
     /**
      * Returns all days in the given time span in which normally employees do not need to work.

@@ -29,15 +29,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
 {
-    /**
-     * @var GetNoWorkDaysForTimeSpan
-     */
-    private $subject;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private GetNoWorkDaysForTimeSpan $subject;
+    private HolidayList $actualResult;
 
     #[DataProvider('getGetNoWorkdaysForTimespanData')]
     #[Test]

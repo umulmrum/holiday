@@ -14,17 +14,9 @@ namespace Umulmrum\Holiday\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface as SymfonyTranslatorInterface;
 use Umulmrum\Holiday\Model\Holiday;
 
-final class SymfonyBridgeTranslator implements TranslatorInterface
+final readonly class SymfonyBridgeTranslator implements TranslatorInterface
 {
-    /**
-     * @var SymfonyTranslatorInterface
-     */
-    private $translator;
-
-    public function __construct(SymfonyTranslatorInterface $translator)
-    {
-        $this->translator = $translator;
-    }
+    public function __construct(private SymfonyTranslatorInterface $translator) {}
 
     public function translateName(Holiday $holiday, ?string $locale = null): string
     {

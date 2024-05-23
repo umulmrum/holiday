@@ -23,7 +23,7 @@ final class ResolverHandler implements ResolverHandlerInterface
     /**
      * @var ProviderResolverInterface[]
      */
-    private $resolvers = [];
+    private array $resolvers = [];
 
     /**
      * @param ProviderResolverInterface[] $resolvers

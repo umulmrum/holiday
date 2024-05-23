@@ -11,20 +11,9 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class FilterInverterTest extends HolidayTestCase
 {
-    /**
-     * @var HolidayList
-     */
-    private $holidayList;
-
-    /**
-     * @var AbstractFilter
-     */
-    private $innerFilter;
-
-    /**
-     * @var FilterInverter
-     */
-    private $filter;
+    private HolidayList $holidayList;
+    private AbstractFilter $innerFilter;
+    private FilterInverter $filter;
 
     #[Test]
     public function it_should_invert_another_filter(): void

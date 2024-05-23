@@ -25,20 +25,9 @@ use function is_string;
 
 final class GetHolidaysForMonthTest extends HolidayTestCase
 {
-    /**
-     * @var HolidayCalculatorInterface
-     */
-    private $holidayCalculatorStub;
-
-    /**
-     * @var GetHolidaysForMonth
-     */
-    private $subject;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private HolidayCalculatorInterface $holidayCalculatorStub;
+    private GetHolidaysForMonth $subject;
+    private HolidayList $actualResult;
 
     #[DataProvider('getGetHolidaysForMonthData')]
     #[Test]

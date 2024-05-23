@@ -23,15 +23,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class HolidayTest extends HolidayTestCase
 {
-    /**
-     * @var Holiday
-     */
-    private $holiday;
-
-    /**
-     * @var mixed
-     */
-    private $actualResult;
+    private Holiday $holiday;
+    private mixed $actualResult;
 
     #[DataProvider('getDateTimeData')]
     #[Test]

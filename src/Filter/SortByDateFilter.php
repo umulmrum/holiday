@@ -20,8 +20,6 @@ final class SortByDateFilter extends AbstractSortFilter
 {
     protected function getCompareFunction(): callable
     {
-        return static function (Holiday $o1, Holiday $o2) {
-            return $o1->getSimpleDate() <=> $o2->getSimpleDate();
-        };
+        return static fn (Holiday $o1, Holiday $o2) => $o1->getSimpleDate() <=> $o2->getSimpleDate();
     }
 }

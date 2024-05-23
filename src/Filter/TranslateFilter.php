@@ -19,17 +19,9 @@ use Umulmrum\Holiday\Translator\TranslatorInterface;
  * TranslateFilter translates the names of all elements in the filtered HolidayList by using the translator passed as
  * constructor argument.
  */
-final class TranslateFilter implements HolidayFilterInterface
+final readonly class TranslateFilter implements HolidayFilterInterface
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    public function __construct(TranslatorInterface $translator)
-    {
-        $this->translator = $translator;
-    }
+    public function __construct(private TranslatorInterface $translator) {}
 
     public function filter(HolidayList $holidayList): void
     {

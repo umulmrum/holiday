@@ -24,15 +24,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class IsoResolverTest extends HolidayTestCase
 {
-    /**
-     * @var IsoResolver
-     */
-    private $subject;
-
-    /**
-     * @var HolidayProviderInterface|null
-     */
-    private $actualResult;
+    private IsoResolver $subject;
+    private ?HolidayProviderInterface $actualResult;
 
     #[DataProvider('provideDataForResolveProviders')]
     #[Test]

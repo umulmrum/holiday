@@ -20,15 +20,12 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class DateFormatterTest extends HolidayTestCase
 {
-    /**
-     * @var DateFormatter
-     */
-    private $formatter;
+    private DateFormatter $formatter;
 
     /**
      * @var string|string[]
      */
-    private $actualResult;
+    private array|string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]

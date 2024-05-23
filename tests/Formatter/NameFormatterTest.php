@@ -21,15 +21,12 @@ use Umulmrum\Holiday\Test\TranslatorStub;
 
 final class NameFormatterTest extends HolidayTestCase
 {
-    /**
-     * @var NameFormatter
-     */
-    private $formatter;
+    private NameFormatter $formatter;
 
     /**
      * @var int|int[]|string|string[]
      */
-    private $actualResult;
+    private array|int|string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]

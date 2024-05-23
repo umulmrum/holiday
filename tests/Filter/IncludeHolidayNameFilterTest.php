@@ -21,15 +21,8 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class IncludeHolidayNameFilterTest extends HolidayTestCase
 {
-    /**
-     * @var IncludeHolidayNameFilter
-     */
-    private $filter;
-
-    /**
-     * @var HolidayList
-     */
-    private $actualResult;
+    private IncludeHolidayNameFilter $filter;
+    private HolidayList $actualResult;
 
     /**
      * @param string|string[] $holidayNames
@@ -116,12 +109,9 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @param mixed $holidayName
-     */
     #[DataProvider('getDataForException')]
     #[Test]
-    public function it_should_throw_exception_on_invalid_holiday_names($holidayName): void
+    public function it_should_throw_exception_on_invalid_holiday_names(mixed $holidayName): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidHolidayNameIsInstantiated($holidayName);

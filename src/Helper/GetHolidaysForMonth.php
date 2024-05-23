@@ -19,19 +19,11 @@ use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\DateCreatorTrait;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-final class GetHolidaysForMonth
+final readonly class GetHolidaysForMonth
 {
     use DateCreatorTrait;
 
-    /**
-     * @var HolidayCalculatorInterface
-     */
-    private $holidayCalculator;
-
-    public function __construct(?HolidayCalculatorInterface $holidayCalculator = null)
-    {
-        $this->holidayCalculator = $holidayCalculator ?? new HolidayCalculator();
-    }
+    public function __construct(private HolidayCalculatorInterface $holidayCalculator = new HolidayCalculator()) {}
 
     /**
      * Returns all holidays for the given month.

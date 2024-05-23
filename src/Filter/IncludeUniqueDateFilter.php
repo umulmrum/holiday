@@ -22,7 +22,7 @@ use Umulmrum\Holiday\Model\HolidayList;
 final class IncludeUniqueDateFilter extends AbstractFilter
 {
     /** @var bool[] */
-    private $foundTimestamps = [];
+    private array $foundTimestamps = [];
 
     public function filter(HolidayList $holidayList): void
     {

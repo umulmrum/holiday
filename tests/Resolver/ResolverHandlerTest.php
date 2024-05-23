@@ -31,15 +31,12 @@ use Umulmrum\Holiday\Test\HolidayTestCase;
 
 final class ResolverHandlerTest extends HolidayTestCase
 {
-    /**
-     * @var ResolverHandler
-     */
-    private $subject;
+    private ResolverHandler $subject;
 
     /**
      * @var HolidayProviderInterface[]
      */
-    private $actualResult;
+    private array $actualResult;
 
     /**
      * @param ProviderResolverInterface[]                                         $providers
@@ -76,12 +73,9 @@ final class ResolverHandlerTest extends HolidayTestCase
         ];
     }
 
-    /**
-     * @param mixed $identifier
-     */
     #[DataProvider('provideDataForThrowException')]
     #[Test]
-    public function it_throws_exception_for_invalid_identifier($identifier): void
+    public function it_throws_exception_for_invalid_identifier(mixed $identifier): void
     {
         $this->givenResolverHandler([new ClassNameResolver()]);
         $this->thenExpectInvalidArgumentException();

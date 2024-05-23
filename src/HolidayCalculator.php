@@ -26,10 +26,7 @@ final class HolidayCalculator implements HolidayCalculatorInterface
 {
     use Assert;
 
-    /**
-     * @var ResolverHandlerInterface
-     */
-    private $resolverHandler;
+    private ResolverHandlerInterface $resolverHandler;
 
     public function __construct(?ResolverHandlerInterface $resolverHandler = null)
     {
