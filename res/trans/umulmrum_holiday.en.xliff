@@ -270,6 +270,10 @@
         <source>grand_dukes_official_birthday</source>
         <target>Grand Duke's Official Birthday</target>
       </trans-unit>
+      <trans-unit id="greenland_national_holiday">
+        <source>greenland_national_holiday</source>
+        <target>National Holiday</target>
+      </trans-unit>
       <trans-unit id="halloween">
         <source>halloween</source>
         <target>Halloween</target>

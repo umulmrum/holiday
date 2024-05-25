@@ -63,6 +63,9 @@ return [
     'DE-ST' => \Umulmrum\Holiday\Provider\Germany\SaxonyAnhalt::class,
     'DE-TH' => \Umulmrum\Holiday\Provider\Germany\Thuringia::class,
 
+    // Greenland
+    'GL' => \Umulmrum\Holiday\Provider\Greenland\Greenland::class,
+
     // Ireland
     'IE' => \Umulmrum\Holiday\Provider\Ireland\Ireland::class,
 

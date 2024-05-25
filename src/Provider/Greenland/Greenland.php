@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Umulmrum\Holiday\Provider\Denmark;
+namespace Umulmrum\Holiday\Provider\Greenland;
 
 use DateInterval;
 use Umulmrum\Holiday\Constant\HolidayName;
@@ -20,7 +20,7 @@ use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class Denmark implements HolidayProviderInterface
+class Greenland implements HolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
@@ -33,19 +33,14 @@ class Denmark implements HolidayProviderInterface
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
         $holidays->add($this->getEasterSunday($year));
         $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        if ($year >= 1686 && $year <= 2023) {
-            $holidays->add($this->getGeneralPrayerDay($year, HolidayType::DAY_OFF));
-        }
+        $holidays->add($this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getWhitSunday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        if ($year >= 1849) {
-            if ($year >= 1891 && $year <= 1975) {
-                $holidays->add($this->getDanishNationalHoliday($year, HolidayType::HALF_DAY_OFF));
-            } else {
-                $holidays->add($this->getDanishNationalHoliday($year));
-            }
+        if ($year >= 1985) {
+            $holidays->add($this->getNationalHoliday($year, HolidayType::DAY_OFF));
         }
-        $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getChristmasEve($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getNewYearsEve($year, HolidayType::OFFICIAL));
@@ -53,19 +48,8 @@ class Denmark implements HolidayProviderInterface
         return $holidays;
     }
 
-    private function getDanishNationalHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    private function getNationalHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        return Holiday::create(HolidayName::DANISH_NATIONAL_HOLIDAY, "{$year}-06-05", HolidayType::OFFICIAL | $additionalType);
-    }
-
-    private function getGeneralPrayerDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
-    {
-        $easterSundayDate = $this->getEasterSundayDate($year);
-
-        return Holiday::createFromDateTime(
-            HolidayName::GENERAL_PRAYER_DAY,
-            $easterSundayDate->add(new DateInterval('P26D')),
-            HolidayType::OFFICIAL | HolidayType::RELIGIOUS | $additionalType
-        );
+        return Holiday::create(HolidayName::GREENLAND_NATIONAL_HOLIDAY, "{$year}-06-21", HolidayType::OFFICIAL | $additionalType);
     }
 }
