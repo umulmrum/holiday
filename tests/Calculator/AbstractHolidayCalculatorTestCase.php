@@ -21,15 +21,8 @@ use function sort;
 
 abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
 {
-    /**
-     * @var HolidayCalculator
-     */
-    protected $holidayCalculator;
-
-    /**
-     * @var HolidayList
-     */
-    protected $actualResult;
+    protected HolidayCalculator $holidayCalculator;
+    protected HolidayList $actualResult;
 
     #[DataProvider('getData')]
     #[Test]

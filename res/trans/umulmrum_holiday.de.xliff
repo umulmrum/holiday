@@ -70,6 +70,14 @@
         <source>bastille_day</source>
         <target>Französischer Nationalfeiertag</target>
       </trans-unit>
+      <trans-unit id="battle_of_the_boyne">
+        <source>battle_of_the_boyne</source>
+        <target>Battle of the Boyne</target>
+      </trans-unit>
+      <trans-unit id="battle_of_the_boyne_compensatory">
+        <source>battle_of_the_boyne_compensatory</source>
+        <target>Battle of the Boyne (Ausgleich)</target>
+      </trans-unit>
       <trans-unit id="belgian_kings_feast">
         <source>belgian_kings_feast</source>
         <target>Festtag des Königs</target>
@@ -89,6 +97,14 @@
       <trans-unit id="birthday_of_benito_juarez">
         <source>birthday_of_benito_juarez</source>
         <target>Geburtstag von Benito Juárez</target>
+      </trans-unit>
+      <trans-unit id="boxing_day">
+        <source>boxing_day</source>
+        <target>Zweiter Weihnachtsfeiertag</target>
+      </trans-unit>
+      <trans-unit id="boxing_day_compensatory">
+        <source>boxing_day_compensatory</source>
+        <target>Zweiter Weihnachtsfeiertag (Ausgleich)</target>
       </trans-unit>
       <trans-unit id="candlemas">
         <source>candlemas</source>
@@ -121,6 +137,10 @@
       <trans-unit id="constitution_day">
         <source>constitution_day</source>
         <target>Verfassungstag</target>
+      </trans-unit>
+      <trans-unit id="coronation_of_charles_and_camilla">
+        <source>coronation_of_charles_and_camilla</source>
+        <target>Krönung von König Charles III und Königin Camilla</target>
       </trans-unit>
       <trans-unit id="corpus_christi">
         <source>corpus_christi</source>
@@ -165,6 +185,10 @@
       <trans-unit id="defender_of_the_fatherland_day_compensatory">
         <source>defender_of_the_fatherland_day_compensatory</source>
         <target>Tag des Verteidigers des Vaterlandes (Ausgleich)</target>
+      </trans-unit>
+      <trans-unit id="diamond_jubilee_bank_holiday">
+        <source>diamond_jubilee_bank_holiday</source>
+        <target>Diamantenes Jubiläum der Königin</target>
       </trans-unit>
       <trans-unit id="dutch_liberation_day">
         <source>dutch_liberation_day</source>
@@ -229,6 +253,10 @@
       <trans-unit id="german_unity_day">
         <source>german_unity_day</source>
         <target>Tag der Deutschen Einheit</target>
+      </trans-unit>
+      <trans-unit id="golden_jubilee_bank_holiday">
+        <source>golden_jubilee_bank_holiday</source>
+        <target>Goldenes Jubiläum der Königin</target>
       </trans-unit>
       <trans-unit id="good_friday">
         <source>good_friday</source>
@@ -370,6 +398,10 @@
         <source>partial_only</source>
         <target>Nur teilweise</target>
       </trans-unit>
+      <trans-unit id="platinum_jubilee_bank_holiday">
+        <source>platinum_jubilee_bank_holiday</source>
+        <target>Platin-Jubiläum der Königin</target>
+      </trans-unit>
       <trans-unit id="polish_armed_forces_day">
         <source>polish_armed_forces_day</source>
         <target>Tag der polnischen Armee</target>
@@ -409,6 +441,14 @@
       <trans-unit id="russia_day_compensatory">
         <source>russia_day_compensatory</source>
         <target>Tag Russlands (Ausgleich)</target>
+      </trans-unit>
+      <trans-unit id="saint_andrews_day">
+        <source>saint_andrews_day</source>
+        <target>Andreastag</target>
+      </trans-unit>
+      <trans-unit id="saint_andrews_day_compensatory">
+        <source>saint_andrews_day_compensatory</source>
+        <target>Andreastag (Ausgleich)</target>
       </trans-unit>
       <trans-unit id="saint_florians_day">
         <source>saint_florians_day</source>
@@ -454,6 +494,10 @@
         <source>second_christmas_day_compensatory</source>
         <target>Zweiter Weihnachtsfeiertag (Ausgleich)</target>
       </trans-unit>
+      <trans-unit id="silver_jubilee_bank_holiday">
+        <source>silver_jubilee_bank_holiday</source>
+        <target>Silbernes Jubiläum der Königin</target>
+      </trans-unit>
       <trans-unit id="spanish_national_day">
         <source>spanish_national_day</source>
         <target>Spanischer Nationalfeiertag</target>
@@ -465,6 +509,22 @@
       <trans-unit id="spring_and_labour_day_compensatory">
         <source>spring_and_labour_day_compensatory</source>
         <target>Tag des Frühlings und der Arbeit (Ausgleich)</target>
+      </trans-unit>
+      <trans-unit id="spring_bank_holiday">
+        <source>spring_bank_holiday</source>
+        <target>Spring Bank Holiday</target>
+      </trans-unit>
+      <trans-unit id="state_funeral_of_queen_elizabeth">
+        <source>state_funeral_of_queen_elizabeth</source>
+        <target>Staatsbegräbnis von Queen Elizabeth II</target>
+      </trans-unit>
+      <trans-unit id="sterling_crisis">
+        <source>sterling_crisis</source>
+        <target>Sterling-Krise</target>
+      </trans-unit>
+      <trans-unit id="summer_bank_holiday">
+        <source>summer_bank_holiday</source>
+        <target>Summer Bank Holiday</target>
       </trans-unit>
       <trans-unit id="sunday">
         <source>sunday</source>
@@ -530,6 +590,18 @@
         <source>washingtons_birthday</source>
         <target>Washington's Birthday</target>
       </trans-unit>
+      <trans-unit id="wedding_of_anne_and_mark">
+        <source>wedding_of_anne_and_mark</source>
+        <target>Hochzeit von Prinzessin Anne und Mark Phillips</target>
+      </trans-unit>
+      <trans-unit id="wedding_of_charles_and_diana">
+        <source>wedding_of_charles_and_diana</source>
+        <target>Hochzeit von Prinz Charles und Lady Diana Spencer</target>
+      </trans-unit>
+      <trans-unit id="wedding_of_william_and_catherine">
+        <source>wedding_of_william_and_catherine</source>
+        <target>Hochzeit von Prinz William und Catherine Middleton</target>
+      </trans-unit>
       <trans-unit id="wednesday">
         <source>wednesday</source>
         <target>Mittwoch</target>
@@ -541,6 +613,10 @@
       <trans-unit id="whit_sunday">
         <source>whit_sunday</source>
         <target>Pfingstsonntag</target>
+      </trans-unit>
+      <trans-unit id="year_2k_celebration">
+        <source>year_2k_celebration</source>
+        <target>Tag zur Vorbereitung der Feierlichkeiten zum Jahr 2000</target>
       </trans-unit>
     </body>
   </file>

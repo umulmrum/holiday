@@ -301,6 +301,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Russia
 - Spain (common holidays only yet)
 - Switzerland (incl. Aargau, Appenzell-Ausserrhoden, Appenzell-Innerrhoden, Basel Landschaft, Basel Stadt, Bern, Fribourg, Geneva, Glarus, Grisons, Jura, Lucerne, Neuchatel, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St Gallen, Thurgau, Ticino, Uri, Valais, Vaud, Zuerich, Zug)
+- United Kingdom (incl. England, Northern Ireland, Scotland (without local holidays), Wales; mainland only yet)
 - USA (federal holidays only yet)
 
 To create your own holiday providers have a look at the existing code, it should be self-explanatory. I will happily

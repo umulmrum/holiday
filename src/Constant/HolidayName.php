@@ -11,9 +11,6 @@
 
 namespace Umulmrum\Holiday\Constant;
 
-/**
- * @codeCoverageIgnore
- */
 final class HolidayName
 {
     public const SUFFIX_COMPENSATORY = '_compensatory';
@@ -158,6 +155,24 @@ final class HolidayName
     public const NAEFELSER_FAHRT = 'naefelser_fahrt';
     public const SAINT_NICHOLAS_DAY = 'saint_nicholas_day';
     public const SWISS_NATIONAL_DAY = 'swiss_national_day';
+
+    // United Kingdom
+    public const BATTLE_OF_THE_BOYNE = 'battle_of_the_boyne';
+    public const BOXING_DAY = 'boxing_day';
+    public const CORONATION_OF_CHARLES_AND_CAMILLA = 'coronation_of_charles_and_camilla';
+    public const DIAMOND_JUBILEE_BANK_HOLIDAY = 'diamond_jubilee_bank_holiday';
+    public const GOLDEN_JUBILEE_BANK_HOLIDAY = 'golden_jubilee_bank_holiday';
+    public const PLATINUM_JUBILEE_BANK_HOLIDAY = 'platinum_jubilee_bank_holiday';
+    public const SAINT_ANDREWS_DAY = 'saint_andrews_day';
+    public const SILVER_JUBILEE_BANK_HOLIDAY = 'silver_jubilee_bank_holiday';
+    public const SPRING_BANK_HOLIDAY = 'spring_bank_holiday';
+    public const STATE_FUNERAL_OF_QUEEN_ELIZABETH = 'state_funeral_of_queen_elizabeth';
+    public const STERLING_CRISIS = 'sterling_crisis';
+    public const SUMMER_BANK_HOLIDAY = 'summer_bank_holiday';
+    public const WEDDING_OF_ANNE_AND_MARK = 'wedding_of_anne_and_mark';
+    public const WEDDING_OF_CHARLES_AND_DIANA = 'wedding_of_charles_and_diana';
+    public const WEDDING_OF_WILLIAM_AND_CATHERINE = 'wedding_of_william_and_catherine';
+    public const YEAR_2K_CELEBRATION = 'year_2k_celebration';
 
     // USA
     public const COLUMBUS_DAY = 'columbus_day';
