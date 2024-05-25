@@ -159,6 +159,14 @@ final class HolidayName
     public const SAINT_NICHOLAS_DAY = 'saint_nicholas_day';
     public const SWISS_NATIONAL_DAY = 'swiss_national_day';
 
+    // Turkey
+    public const COMMEMORATION_OF_ATATUERK_DAY = 'commemoration_of_atatuerk_day';
+    public const DEMOCRACY_AND_NATIONAL_UNITY_DAY = 'democracy_and_national_unity_day';
+    public const FREEDOM_AND_CONSTITUTION_DAY = 'freedom_and_constitution_day';
+    public const NATIONAL_SOVEREIGNTY_AND_CHILDRENS_DAY = 'national_sovereignty_and_childrens_day';
+    public const TURKISH_REPUBLIC_DAY = 'turkish_republic_day';
+    public const TURKISH_VICTORY_DAY = 'turkish_victory_day';
+
     // United Kingdom
     public const BATTLE_OF_THE_BOYNE = 'battle_of_the_boyne';
     public const BOXING_DAY = 'boxing_day';

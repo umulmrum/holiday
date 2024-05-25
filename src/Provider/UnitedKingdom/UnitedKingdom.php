@@ -148,12 +148,13 @@ class UnitedKingdom implements HolidayProviderInterface
         } else {
             $date = (new DateTime("First Monday of {$year}-08"))->format(Holiday::DISPLAY_DATE_FORMAT);
         }
+
         return Holiday::create(HolidayName::SUMMER_BANK_HOLIDAY, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
     protected function getStateFuneralOfQueenElizabeth(): Holiday
     {
-        return Holiday::create(HolidayName::STATE_FUNERAL_OF_QUEEN_ELIZABETH, "2022-09-19", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return Holiday::create(HolidayName::STATE_FUNERAL_OF_QUEEN_ELIZABETH, '2022-09-19', HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
     protected function getWeddingOfAnneAndMark(): Holiday
@@ -177,6 +178,6 @@ class UnitedKingdom implements HolidayProviderInterface
 
     protected function getYear2kCelebration(): Holiday
     {
-        return Holiday::create(HolidayName::YEAR_2K_CELEBRATION, "1999-12-31", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return Holiday::create(HolidayName::YEAR_2K_CELEBRATION, '1999-12-31', HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 }

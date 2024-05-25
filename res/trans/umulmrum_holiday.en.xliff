@@ -130,6 +130,10 @@
         <source>columbus_day</source>
         <target>Columbus Day</target>
       </trans-unit>
+      <trans-unit id="commemoration_of_atatuerk_day">
+        <source>commemoration_of_atatuerk_day</source>
+        <target>Commemoration of Atatürk, Youth and Sports Day</target>
+      </trans-unit>
       <trans-unit id="compensatory">
         <source>compensatory</source>
         <target>Compensatory Day</target>
@@ -186,6 +190,10 @@
         <source>defender_of_the_fatherland_day_compensatory</source>
         <target>Defender of the Fatherland Day (compensatory)</target>
       </trans-unit>
+      <trans-unit id="democracy_and_national_unity_day">
+        <source>democracy_and_national_unity_day</source>
+        <target>Democracy and National Unity Day</target>
+      </trans-unit>
       <trans-unit id="diamond_jubilee_bank_holiday">
         <source>diamond_jubilee_bank_holiday</source>
         <target>Diamond Jubilee bank holiday</target>
@@ -229,6 +237,10 @@
       <trans-unit id="fest_der_unabhaengigkeit_jura">
         <source>fest_der_unabhaengigkeit_jura</source>
         <target>Fest der Unabhängigkeit Jura</target>
+      </trans-unit>
+      <trans-unit id="freedom_and_constitution_day">
+        <source>freedom_and_constitution_day</source>
+        <target>Freedom and Constitution Day</target>
       </trans-unit>
       <trans-unit id="french_community_day">
         <source>french_community_day</source>
@@ -349,6 +361,10 @@
       <trans-unit id="naefelser_fahrt">
         <source>naefelser_fahrt</source>
         <target>Näfelser Fahrt</target>
+      </trans-unit>
+      <trans-unit id="national_sovereignty_and_childrens_day">
+        <source>national_sovereignty_and_childrens_day</source>
+        <target>National Sovereignty and Children's Day</target>
       </trans-unit>
       <trans-unit id="nativity_of_mary">
         <source>nativity_of_mary</source>
@@ -561,6 +577,14 @@
       <trans-unit id="tuesday">
         <source>tuesday</source>
         <target>Tuesday</target>
+      </trans-unit>
+      <trans-unit id="turkish_republic_day">
+        <source>turkish_republic_day</source>
+        <target>Republic Day</target>
+      </trans-unit>
+      <trans-unit id="turkish_victory_day">
+        <source>turkish_victory_day</source>
+        <target>Victory Day</target>
       </trans-unit>
       <trans-unit id="unity_day">
         <source>unity_day</source>

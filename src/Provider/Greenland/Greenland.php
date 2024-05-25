@@ -11,7 +11,6 @@
 
 namespace Umulmrum\Holiday\Provider\Greenland;
 
-use DateInterval;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
