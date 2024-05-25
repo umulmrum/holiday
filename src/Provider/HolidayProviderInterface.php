@@ -17,8 +17,6 @@ use Umulmrum\Holiday\Model\HolidayList;
  * Defines a service that provides holidays for a certain scope, e.g. for one country.
  *
  * Implementations must be immutable after initialization (apart from caches).
- *
- * @codeCoverageIgnore
  */
 interface HolidayProviderInterface
 {

@@ -119,6 +119,11 @@ return [
     'CH-ZG' => \Umulmrum\Holiday\Provider\Switzerland\Zug::class,
     'CH-ZH' => \Umulmrum\Holiday\Provider\Switzerland\Zuerich::class,
 
+    // United Kingdom
+    'GB' => \Umulmrum\Holiday\Provider\UnitedKingdom\UnitedKingdom::class,
+    'GB-NIR' => \Umulmrum\Holiday\Provider\UnitedKingdom\NorthernIreland::class,
+    'GB-SCT' => \Umulmrum\Holiday\Provider\UnitedKingdom\Scotland::class,
+
     // USA
     'US' => \Umulmrum\Holiday\Provider\Usa\Usa::class,
 ];

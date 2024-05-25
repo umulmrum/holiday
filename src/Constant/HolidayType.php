@@ -14,8 +14,6 @@ namespace Umulmrum\Holiday\Constant;
 /**
  * HolidayType defines constants for different types of holidays. These can be combined to describe a holiday that
  * fulfills multiple criteria (e.g. for holidays that are both religious and days off).
- *
- * @codeCoverageIgnore
  */
 final class HolidayType
 {
@@ -61,7 +59,7 @@ final class HolidayType
 
     /**
      * On a holiday of type GOVERNMENT_AGENCIES_CLOSED, well, government agencies are closed. If the holiday is also a
-     * DAY_OFF, the NO_SCHOOL type is not applied separately.
+     * DAY_OFF, the GOVERNMENT_AGENCIES_CLOSED type is not applied separately.
      */
     public const GOVERNMENT_AGENCIES_CLOSED = 64;
 
@@ -70,6 +68,10 @@ final class HolidayType
      */
     public const HALF_DAY_OFF = 128;
 
+    /**
+     * On a holiday of type BANK, banks are usually closed. Other regulations or traditions depend on the country or
+     * region, and on the holiday itself.
+     */
     public const BANK = 256;
 
     /**
@@ -90,7 +92,7 @@ final class HolidayType
     public const RESERVED6 = 16384;
 
     /** @var string[] */
-    public static $NAME = [
+    public static array $NAME = [
         self::OTHER => 'other',
         self::OFFICIAL => 'official',
         self::DAY_OFF => 'day_off',

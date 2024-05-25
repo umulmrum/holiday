@@ -255,4 +255,9 @@ trait ChristianHolidaysTrait
     {
         return Holiday::create(HolidayName::SECOND_CHRISTMAS_DAY, "{$year}-12-26", HolidayType::RELIGIOUS | $additionalType);
     }
+
+    private function getBoxingDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::BOXING_DAY, "{$year}-12-26", HolidayType::RELIGIOUS | $additionalType);
+    }
 }

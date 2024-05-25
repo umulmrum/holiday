@@ -11,9 +11,6 @@
 
 namespace Umulmrum\Holiday\Constant;
 
-/**
- * @codeCoverageIgnore
- */
 final class Weekday
 {
     /** @var int */

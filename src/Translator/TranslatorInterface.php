@@ -13,9 +13,6 @@ namespace Umulmrum\Holiday\Translator;
 
 use Umulmrum\Holiday\Model\Holiday;
 
-/**
- * @codeCoverageIgnore
- */
 interface TranslatorInterface
 {
     /**

@@ -15,9 +15,6 @@ use InvalidArgumentException;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 
-/**
- * @codeCoverageIgnore
- */
 interface HolidayCalculatorInterface
 {
     /**
