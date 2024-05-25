@@ -126,6 +126,9 @@ final class HolidayName
     public const QUEENS_DAY = 'queens_day';
     public const KINGS_DAY = 'kings_day';
 
+    // Norway
+    public const NORWAY_CONSTITUTION_DAY = 'norway_constitution_day';
+
     // Poland
     public const CONSTITUTION_DAY = 'constitution_day';
     public const POLISH_ARMED_FORCES_DAY = 'polish_armed_forces_day';
