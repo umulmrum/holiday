@@ -8,8 +8,8 @@ if this library does not perfectly fit your needs, you can simply extend it.
 
 ## Requirements
 
-- PHP >= 7.3
-- Symfony translator is recommended for translations (built-in translator requires version 4.3+, but can be trivially
+- PHP >= 8.2
+- Symfony translator is recommended for translations (built-in translator requires version 5.4+, but can be trivially
   reimplemented for older versions).
 
 That's it really.
@@ -291,6 +291,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Denmark
 - France (incl. Bas-Rhin, French Guiana, Guadeloupe, Haut-Rhin, Martinique, Moselle, Reunion)
 - Germany (incl. Baden-Wuerttemberg, Bavaria, Berlin, Brandenburg, Bremen, Hamburg, Hesse, Lower Saxony, Mecklenburg-Vorpommern, North-rhine Westphalia, Rhineland Palatinate, Saarland, Saxony, Saxony-Anhalt, Schleswig-Holstein, Thuringia)
+- Greenland
 - Ireland
 - Italy (incl. South Tyrol)
 - Liechtenstein
