@@ -122,6 +122,9 @@ return [
     'CH-ZG' => \Umulmrum\Holiday\Provider\Switzerland\Zug::class,
     'CH-ZH' => \Umulmrum\Holiday\Provider\Switzerland\Zuerich::class,
 
+    // Turkey
+    'TR' => \Umulmrum\Holiday\Provider\Turkey\Turkey::class,
+
     // United Kingdom
     'GB' => \Umulmrum\Holiday\Provider\UnitedKingdom\UnitedKingdom::class,
     'GB-NIR' => \Umulmrum\Holiday\Provider\UnitedKingdom\NorthernIreland::class,
