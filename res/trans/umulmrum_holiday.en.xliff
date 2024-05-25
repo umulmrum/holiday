@@ -390,6 +390,10 @@
         <source>no_school</source>
         <target>No school</target>
       </trans-unit>
+      <trans-unit id="norway_constitution_day">
+        <source>norway_constitution_day</source>
+        <target>Constitution Day</target>
+      </trans-unit>
       <trans-unit id="october_holiday">
         <source>october_holiday</source>
         <target>October Holiday</target>
