@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Holidays for the United Kingdom.
+- Holidays for Greenland.
 - International Children's Day for Germany/Thuringia.
 
 ### Changed
@@ -17,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump minimum PHP version to 8.2.
 - [BC Break] HolidayFormatterInterface::formatList now enforces its return value `array|string`. Custom implementations
   need to add the return value.
+- General Prayer Day is no longer a holiday in Denmark after 2023.
 
 ### Removed
 - [BC Break] Remove second argument `$options` from `\Umulmrum\Holiday\Formatter\HolidayFormatterInterface::format`

@@ -95,6 +95,9 @@ final class HolidayName
     public const AUGSBURGER_FRIEDENSFEST = 'augsburger_friedensfest';
     public const GERMAN_UNITY_DAY = 'german_unity_day';
 
+    // Greenland
+    public const GREENLAND_NATIONAL_HOLIDAY = 'greenland_national_holiday';
+
     // Ireland
     public const AUGUST_HOLIDAY = 'august_holiday';
     public const MAY_DAY = 'may_day';

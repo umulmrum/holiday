@@ -270,6 +270,10 @@
         <source>grand_dukes_official_birthday</source>
         <target>Luxemburgischer Nationalfeiertag</target>
       </trans-unit>
+      <trans-unit id="greenland_national_holiday">
+        <source>greenland_national_holiday</source>
+        <target>Nationalfeiertag</target>
+      </trans-unit>
       <trans-unit id="halloween">
         <source>halloween</source>
         <target>Halloween</target>
