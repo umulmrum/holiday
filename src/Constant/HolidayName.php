@@ -87,6 +87,9 @@ final class HolidayName
     public const DANISH_NATIONAL_HOLIDAY = 'danish_national_holiday';
     public const GENERAL_PRAYER_DAY = 'general_prayer_day';
 
+    // Finland
+    public const FINLAND_INDEPENDENCE_DAY = 'finland_independence_day';
+
     // France
     public const ABOLITION_OF_SLAVERY = 'abolition_of_slavery';
     public const ARMISTICE_DAY_FRANCE = 'armistice_day_france';

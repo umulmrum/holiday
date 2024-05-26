@@ -34,6 +34,9 @@ return [
     // Denmark
     'DK' => \Umulmrum\Holiday\Provider\Denmark\Denmark::class,
 
+    // Finland
+    'FI' => \Umulmrum\Holiday\Provider\Finland\Finland::class,
+
     // France
     'FR' => \Umulmrum\Holiday\Provider\France\France::class,
     'FR-57' => \Umulmrum\Holiday\Provider\France\Moselle::class,
