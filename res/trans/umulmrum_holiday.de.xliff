@@ -242,6 +242,10 @@
         <source>fest_der_unabhaengigkeit_jura</source>
         <target>Fest der Unabhängigkeit Jura</target>
       </trans-unit>
+      <trans-unit id="finland_independence_day">
+        <source>finland_independence_day</source>
+        <target>Unabhängigkeitstag</target>
+      </trans-unit>
       <trans-unit id="freedom_and_constitution_day">
         <source>freedom_and_constitution_day</source>
         <target>Tag der Freiheit und der Verfassung</target>
