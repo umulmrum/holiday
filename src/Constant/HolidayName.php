@@ -27,6 +27,7 @@ final class HolidayName
     // Christian
     public const FAT_TUESDAY = 'fat_tuesday';
     public const ASH_WEDNESDAY = 'ash_wednesday';
+    public const TWELFTH_NIGHT = 'twelfth_night';
     public const EPIPHANY = 'epiphany';
     public const CANDLEMAS = 'candlemas';
     public const SAINT_JOSEPHS_DAY = 'saint_josephs_day';
@@ -45,6 +46,7 @@ final class HolidayName
     public const NATIVITY_OF_MARY = 'nativity_of_mary';
     public const REFORMATION_DAY = 'reformation_day';
     public const HALLOWEEN = 'halloween';
+    public const ALL_SAINTS_EVE = 'all_saints_eve';
     public const ALL_SAINTS_DAY = 'all_saints_day';
     public const ALL_SOULS_DAY = 'all_souls_day';
     public const SAINT_MARTINS_DAY = 'saint_martins_day';
@@ -154,6 +156,12 @@ final class HolidayName
 
     // Spain
     public const SPANISH_NATIONAL_DAY = 'spanish_national_day';
+
+    // Sweden
+    public const MIDSUMMER_EVE = 'midsummer_eve';
+    public const MIDSUMMERS_DAY = 'midsummers_day';
+    public const SWEDEN_NATIONAL_DAY = 'sweden_national_day';
+    public const WALPURGIS_NIGHT = 'walpurgis_night';
 
     // Switzerland
     public const BERCHTOLDSTAG = 'berchtoldstag';

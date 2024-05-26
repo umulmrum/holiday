@@ -18,6 +18,10 @@
         <source>all_saints_day</source>
         <target>Allerheiligen</target>
       </trans-unit>
+      <trans-unit id="all_saints_eve">
+        <source>all_saints_eve</source>
+        <target>Vorabend von Allerheiligen</target>
+      </trans-unit>
       <trans-unit id="all_souls_day">
         <source>all_souls_day</source>
         <target>Allerseelen</target>
@@ -366,6 +370,14 @@
         <source>memorial_day</source>
         <target>Memorial Day</target>
       </trans-unit>
+      <trans-unit id="midsummer_eve">
+        <source>midsummer_eve</source>
+        <target>Mittsommerabend</target>
+      </trans-unit>
+      <trans-unit id="midsummers_day">
+        <source>midsummers_day</source>
+        <target>Mittsommertag</target>
+      </trans-unit>
       <trans-unit id="monday">
         <source>monday</source>
         <target>Montag</target>
@@ -566,6 +578,10 @@
         <source>sunday</source>
         <target>Sonntag</target>
       </trans-unit>
+      <trans-unit id="sweden_national_day">
+        <source>sweden_national_day</source>
+        <target>Schwedischer Nationalfeiertag</target>
+      </trans-unit>
       <trans-unit id="swiss_national_day">
         <source>swiss_national_day</source>
         <target>Bundesfeier</target>
@@ -602,6 +618,10 @@
         <source>turkish_victory_day</source>
         <target>Tag des Sieges</target>
       </trans-unit>
+      <trans-unit id="twelfth_night">
+        <source>twelfth_night</source>
+        <target>Raunacht</target>
+      </trans-unit>
       <trans-unit id="unity_day">
         <source>unity_day</source>
         <target>Tag der Einheit des Volkes</target>
@@ -629,6 +649,10 @@
       <trans-unit id="victory_in_europe_day">
         <source>victory_in_europe_day</source>
         <target>Tag der Befreiung</target>
+      </trans-unit>
+      <trans-unit id="walpurgis_night">
+        <source>walpurgis_night</source>
+        <target>Walpurgisnacht</target>
       </trans-unit>
       <trans-unit id="washingtons_birthday">
         <source>washingtons_birthday</source>

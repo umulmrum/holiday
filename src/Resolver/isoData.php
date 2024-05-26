@@ -97,6 +97,9 @@ return [
     // Spain
     'ES' => \Umulmrum\Holiday\Provider\Spain\Spain::class,
 
+    // Sweden
+    'SE' => \Umulmrum\Holiday\Provider\Sweden\Sweden::class,
+
     // Switzerland
     'CH' => \Umulmrum\Holiday\Provider\Switzerland\Switzerland::class,
     'CH-AI' => \Umulmrum\Holiday\Provider\Switzerland\AppenzellInnerrhoden::class,

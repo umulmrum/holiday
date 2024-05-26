@@ -35,7 +35,7 @@ abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
 
     abstract protected function getHolidayProviders(): array;
 
-    private function givenAHolidayCalculator(): void
+    protected function givenAHolidayCalculator(): void
     {
         $this->holidayCalculator = new HolidayCalculator();
     }

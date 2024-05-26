@@ -47,7 +47,7 @@ class Greenland implements HolidayProviderInterface
         return $holidays;
     }
 
-    private function getNationalHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    protected function getNationalHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         return Holiday::create(HolidayName::GREENLAND_NATIONAL_HOLIDAY, "{$year}-06-21", HolidayType::OFFICIAL | $additionalType);
     }
