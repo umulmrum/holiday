@@ -66,6 +66,9 @@ return [
     // Greenland
     'GL' => \Umulmrum\Holiday\Provider\Greenland\Greenland::class,
 
+    // Iceland
+    'IS' => \Umulmrum\Holiday\Provider\Iceland\Iceland::class,
+
     // Ireland
     'IE' => \Umulmrum\Holiday\Provider\Ireland\Ireland::class,
 

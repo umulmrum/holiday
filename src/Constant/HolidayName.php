@@ -98,6 +98,10 @@ final class HolidayName
     // Greenland
     public const GREENLAND_NATIONAL_HOLIDAY = 'greenland_national_holiday';
 
+    // Iceland
+    public const ICELAND_FIRST_DAY_OF_SUMMER = 'iceland_first_day_of_summer';
+    public const ICELAND_NATIONAL_DAY = 'iceland_national_day';
+
     // Ireland
     public const AUGUST_HOLIDAY = 'august_holiday';
     public const MAY_DAY = 'may_day';
