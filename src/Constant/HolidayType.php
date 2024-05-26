@@ -100,6 +100,7 @@ final class HolidayType
         self::TRADITIONAL => 'traditional',
         self::PARTIAL_ONLY => 'partial_only',
         self::NO_SCHOOL => 'no_school',
+        self::HALF_DAY_OFF => 'half_day_off',
         self::GOVERNMENT_AGENCIES_CLOSED => 'government_agencies_closed',
         self::BANK => 'bank',
         self::COMPENSATORY => 'compensatory',

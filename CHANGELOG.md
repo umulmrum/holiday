@@ -8,14 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- Holidays for Iceland
 - Holidays for Norway
 - Holidays for Turkey
+
+### Changed
+- Made HALF_DAY_OFF translatable
 
 ## [0.7.0] - 2024-05-25
 
 ### Added
-
 - Holidays for the United Kingdom.
 - Holidays for Greenland.
 - International Children's Day for Germany/Thuringia.

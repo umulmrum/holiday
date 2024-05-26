@@ -286,9 +286,21 @@
         <source>greenland_national_holiday</source>
         <target>Nationalfeiertag</target>
       </trans-unit>
+      <trans-unit id="half_day_off">
+        <source>half_day_off</source>
+        <target>Halber arbeitsfreier Tag</target>
+      </trans-unit>
       <trans-unit id="halloween">
         <source>halloween</source>
         <target>Halloween</target>
+      </trans-unit>
+      <trans-unit id="iceland_first_day_of_summer">
+        <source>iceland_first_day_of_summer</source>
+        <target>Erster Sommertag</target>
+      </trans-unit>
+      <trans-unit id="iceland_national_day">
+        <source>iceland_national_day</source>
+        <target>Nationalfeiertag</target>
       </trans-unit>
       <trans-unit id="immaculate_conception">
         <source>immaculate_conception</source>
