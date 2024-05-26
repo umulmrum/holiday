@@ -303,6 +303,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Poland
 - Russia
 - Spain (common holidays only yet)
+- Sweden
 - Switzerland (incl. Aargau, Appenzell-Ausserrhoden, Appenzell-Innerrhoden, Basel Landschaft, Basel Stadt, Bern, Fribourg, Geneva, Glarus, Grisons, Jura, Lucerne, Neuchatel, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St Gallen, Thurgau, Ticino, Uri, Valais, Vaud, Zuerich, Zug)
 - Turkey (without Islamic holidays yet)
 - United Kingdom (incl. England, Northern Ireland, Scotland (without local holidays), Wales; mainland only yet)
