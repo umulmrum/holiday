@@ -142,6 +142,14 @@ final class HolidayName
     public const CONSTITUTION_DAY = 'constitution_day';
     public const POLISH_ARMED_FORCES_DAY = 'polish_armed_forces_day';
 
+    // Portugal
+    public const AZORES_DAY = 'azores_day';
+    public const MADEIRA_DAY = 'madeira_day';
+    public const PORTUGAL_DAY = 'portugal_day';
+    public const PORTUGAL_FREEDOM_DAY = 'portugal_freedom_day';
+    public const PORTUGAL_REPUBLIC_DAY = 'portugal_republic_day';
+    public const PORTUGAL_RESTORATION_OF_INDEPENDENCE = 'portugal_restoration_of_independence';
+
     // Russia
     public const DECLARATION_OF_SOVEREIGNTY_DAY = 'declaration_of_sovereignty_day';
     public const DECLARATION_OF_SOVEREIGNTY_DAY_COMPENSATORY = 'declaration_of_sovereignty_day_compensatory';

@@ -66,6 +66,10 @@
         <source>austrian_states_holiday</source>
         <target>Staatsfeiertag</target>
       </trans-unit>
+      <trans-unit id="azores_day">
+        <source>azores_day</source>
+        <target>Tag der Azoren</target>
+      </trans-unit>
       <trans-unit id="bank">
         <source>bank</source>
         <target>Bankfeiertag</target>
@@ -358,6 +362,10 @@
         <source>liberation_day</source>
         <target>Tag der Befreiung</target>
       </trans-unit>
+      <trans-unit id="madeira_day">
+        <source>madeira_day</source>
+        <target>Tag von Madeira</target>
+      </trans-unit>
       <trans-unit id="martin_luther_king_jr_day">
         <source>martin_luther_king_jr_day</source>
         <target>Martin Luther King Day</target>
@@ -457,6 +465,22 @@
       <trans-unit id="polish_armed_forces_day">
         <source>polish_armed_forces_day</source>
         <target>Tag der polnischen Armee</target>
+      </trans-unit>
+      <trans-unit id="portugal_day">
+        <source>portugal_day</source>
+        <target>Tag von Portugal</target>
+      </trans-unit>
+      <trans-unit id="portugal_freedom_day">
+        <source>portugal_freedom_day</source>
+        <target>Tag der Freiheit</target>
+      </trans-unit>
+      <trans-unit id="portugal_republic_day">
+        <source>portugal_republic_day</source>
+        <target>Tag der Republik</target>
+      </trans-unit>
+      <trans-unit id="portugal_restoration_of_independence">
+        <source>portugal_restoration_of_independence</source>
+        <target>Wiederherstellung der Unabhängigkeit</target>
       </trans-unit>
       <trans-unit id="queens_day">
         <source>queens_day</source>
