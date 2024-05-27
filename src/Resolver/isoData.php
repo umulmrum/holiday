@@ -94,6 +94,11 @@ return [
     // Poland
     'PL' => \Umulmrum\Holiday\Provider\Poland\Poland::class,
 
+    // Portugal
+    'PT' => \Umulmrum\Holiday\Provider\Portugal\Portugal::class,
+    'PT-20' => \Umulmrum\Holiday\Provider\Portugal\Azores::class,
+    'PT-30' => \Umulmrum\Holiday\Provider\Portugal\Madeira::class,
+
     // Russia
     'RU' => \Umulmrum\Holiday\Provider\Russia\Russia::class,
 

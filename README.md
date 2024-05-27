@@ -302,6 +302,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - The Netherlands
 - Norway
 - Poland
+- Portugal (incl. Azores, Madeira, without municipal holidays)
 - Russia
 - Spain (common holidays only yet)
 - Sweden
