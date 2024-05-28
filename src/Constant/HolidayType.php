@@ -11,6 +11,10 @@
 
 namespace Umulmrum\Holiday\Constant;
 
+use Umulmrum\Holiday\Translator\TranslatorInterface;
+
+use function count;
+
 /**
  * HolidayType defines constants for different types of holidays. These can be combined to describe a holiday that
  * fulfills multiple criteria (e.g. for holidays that are both religious and days off).
@@ -105,4 +109,40 @@ final class HolidayType
         self::BANK => 'bank',
         self::COMPENSATORY => 'compensatory',
     ];
+
+    /**
+     * @return string[]
+     */
+    public static function getTypeNames(TranslatorInterface $translator, int $holidayType): array
+    {
+        $typeList = self::getTypeList($holidayType);
+        $translatedList = [];
+        foreach ($typeList as $type) {
+            $translatedList[] = $translator->translate(self::$NAME[$type]);
+        }
+
+        return $translatedList;
+    }
+
+    /**
+     * @return int[]
+     */
+    public static function getTypeList(int $type): array
+    {
+        $typeList = [];
+
+        $counter = 1;
+        while (0 !== $type) {
+            if (0 !== ($type & $counter)) {
+                $typeList[] = $counter;
+            }
+            $type &= ~$counter;
+            $counter <<= 1;
+        }
+        if (0 === count($typeList)) {
+            $typeList[] = self::OTHER;
+        }
+
+        return $typeList;
+    }
 }

@@ -24,8 +24,13 @@ final class TranslatorStub implements TranslatorInterface, \Symfony\Contracts\Tr
     public function translate(string $string, ?string $locale = null): string
     {
         return match ($string) {
-            'name' => 'Very name',
+            'christmas_eve' => 'Christmas Eve',
             'day_off' => 'Day off',
+            'name' => 'Very name',
+            'new_year' => 'New Year',
+            'official' => 'Official',
+            'other' => 'Other',
+            'partial_only' => 'Partial only',
             'religious' => 'Religious',
             default => $string,
         };

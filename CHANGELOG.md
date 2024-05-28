@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Holidays for Portugal
+- ISO code for Switzerland/Aargau
+- ISO code for Norway
+- Markdown formatter
 - .gitattributes file to filter unnecessary files
+
+### Changed
+- Express most test expectations in markdown format
 
 ## [0.8.0] - 2024-05-26
 

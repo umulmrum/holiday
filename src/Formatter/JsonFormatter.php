@@ -18,7 +18,6 @@ use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Translator\NullTranslator;
 use Umulmrum\Holiday\Translator\TranslatorInterface;
 
-use function count;
 use function json_encode;
 
 final class JsonFormatter implements HolidayFormatterInterface
@@ -63,44 +62,7 @@ final class JsonFormatter implements HolidayFormatterInterface
             'timestamp' => $date->getTimestamp(),
             'formattedDate' => $date->format('Ymd\THis\ZO'),
             'type' => $holiday->getType(),
-            'formattedType' => $this->getTypeNames($this->getTypeList($holiday->getType())),
+            'formattedType' => HolidayType::getTypeNames($this->translator, $holiday->getType()),
         ];
-    }
-
-    /**
-     * @return int[]
-     */
-    private function getTypeList(int $type): array
-    {
-        $typeList = [];
-
-        $counter = 1;
-        while (0 !== $type) {
-            if (0 !== ($type & $counter)) {
-                $typeList[] = $counter;
-            }
-            $type &= ~$counter;
-            $counter <<= 1;
-        }
-        if (0 === count($typeList)) {
-            $typeList[] = HolidayType::OTHER;
-        }
-
-        return $typeList;
-    }
-
-    /**
-     * @param int[] $typeList
-     *
-     * @return string[]
-     */
-    private function getTypeNames(array $typeList): array
-    {
-        $translatedList = [];
-        foreach ($typeList as $type) {
-            $translatedList[] = $this->translator->translate(HolidayType::$NAME[$type]);
-        }
-
-        return $translatedList;
     }
 }
