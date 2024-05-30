@@ -2,6 +2,14 @@
 
 set -euxo pipefail
 
+tests/console test:generate Christian -y 1899 -y 2000 -y 2018
+tests/console test:generate Sun -y 2019
+tests/console test:generate Mon -y 2019
+tests/console test:generate Tue -y 2019
+tests/console test:generate Wed -y 2019
+tests/console test:generate Thu -y 2019
+tests/console test:generate Fri -y 2019
+tests/console test:generate Sat -y 2019
 tests/console test:generate AT -y 1918 -y 1919 -y 1934 -y 1960 -y 1965 -y 1967
 tests/console test:generate AT-1 -y 2020
 tests/console test:generate AT-2 -y 1929 -y 1921

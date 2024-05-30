@@ -25,6 +25,8 @@ use Umulmrum\Holiday\HolidayCalculator;
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Resolver\IsoResolver;
 
+use Umulmrum\Holiday\Resolver\MiscResolver;
+use Umulmrum\Holiday\Resolver\ResolverHandler;
 use function array_map;
 use function file_put_contents;
 
@@ -85,10 +87,9 @@ final class GenerateTestCommand extends Command
 
     private function outputFile(string $provider, string $data): void
     {
-        $isoResolver = new IsoResolver();
+        $resolver = new ResolverHandler([new IsoResolver(), new MiscResolver()]);
 
-        /** @var HolidayProviderInterface $resolvedProvider */
-        $resolvedProvider = $isoResolver->resolveHolidayProvider($provider);
+        $resolvedProvider = $resolver->resolve($provider)[0];
         $reflectionProvider = new ReflectionClass($resolvedProvider);
         $path = sprintf(
             '%s/Provider/Data/%s-%s.md',

@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ISO code for Switzerland/Aargau
 - ISO code for Norway
 - Markdown formatter
+- MiscResolver that allows to resolve various providers by short name
 - .gitattributes file to filter unnecessary files
 
 ### Changed
