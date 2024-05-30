@@ -31,6 +31,22 @@ return [
     // Brazil
     'BR' => \Umulmrum\Holiday\Provider\Brazil\Brazil::class,
 
+    // Canada
+    'CA' => \Umulmrum\Holiday\Provider\Canada\Canada::class,
+    'CA-AB' => \Umulmrum\Holiday\Provider\Canada\Alberta::class,
+    'CA-BC' => \Umulmrum\Holiday\Provider\Canada\BritishColumbia::class,
+    'CA-MB' => \Umulmrum\Holiday\Provider\Canada\Manitoba::class,
+    'CA-NB' => \Umulmrum\Holiday\Provider\Canada\NewBrunswick::class,
+    'CA-NL' => \Umulmrum\Holiday\Provider\Canada\NewFoundlandAndLabrador::class,
+    'CA-NT' => \Umulmrum\Holiday\Provider\Canada\NorthwestTerritories::class,
+    'CA-NS' => \Umulmrum\Holiday\Provider\Canada\NovaScotia::class,
+    'CA-NU' => \Umulmrum\Holiday\Provider\Canada\Nunavut::class,
+    'CA-ON' => \Umulmrum\Holiday\Provider\Canada\Ontario::class,
+    'CA-PE' => \Umulmrum\Holiday\Provider\Canada\PrinceEdwardIsland::class,
+    'CA-QC' => \Umulmrum\Holiday\Provider\Canada\Quebec::class,
+    'CA-SK' => \Umulmrum\Holiday\Provider\Canada\Saskatchewan::class,
+    'CA-YT' => \Umulmrum\Holiday\Provider\Canada\Yukon::class,
+
     // Denmark
     'DK' => \Umulmrum\Holiday\Provider\Denmark\Denmark::class,
 

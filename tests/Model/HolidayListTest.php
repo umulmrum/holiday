@@ -125,6 +125,130 @@ final class HolidayListTest extends HolidayTestCase
         ];
     }
 
+    /**
+     * @param Holiday[] $presetHolidays
+     * @param Holiday[] $expectedResult
+     */
+    #[Test]
+    #[DataProvider('provideDataForRemoveByName')]
+    public function it_should_remove_holidays_by_name(array $presetHolidays, string $nameToRemove, array $expectedResult): void
+    {
+        $this->givenAHolidayList($presetHolidays);
+        $this->whenRemoveByNameIsCalled($nameToRemove);
+        $this->thenTheListShouldBeAsExpected($expectedResult);
+    }
+
+    public static function provideDataForRemoveByName(): array
+    {
+        return [
+            'empty' => [
+                [],
+                'foo',
+                [],
+            ],
+            'result-will-be-empty' => [
+                [
+                    Holiday::create('name1', '2024-01-01'),
+                ],
+                'name1',
+                [],
+            ],
+            'unaffected' => [
+                [
+                    Holiday::create('name1', '2024-01-01'),
+                ],
+                'another-name',
+                [
+                    Holiday::create('name1', '2024-01-01'),
+                ],
+            ],
+            'retain-others' => [
+                [
+                    Holiday::create('name1', '2024-01-01'),
+                    Holiday::create('name2', '2024-01-01'),
+                    Holiday::create('name3', '2024-01-01'),
+                ],
+                'name1',
+                [
+                    Holiday::create('name2', '2024-01-01'),
+                    Holiday::create('name3', '2024-01-01'),
+                ],
+            ],
+            'remove-multiple' => [
+                [
+                    Holiday::create('name1', '2024-01-01'),
+                    Holiday::create('name1', '2024-01-01'),
+                    Holiday::create('name2', '2024-01-01'),
+                    Holiday::create('name1', '2024-01-01'),
+                ],
+                'name1',
+                [
+                    Holiday::create('name2', '2024-01-01'),
+                ],
+            ],
+        ];
+    }
+
+    private function whenRemoveByNameIsCalled(string $nameToRemove): void
+    {
+        $this->holidayList->removeByName($nameToRemove);
+    }
+
+    private function thenTheListShouldBeAsExpected(array $expectedResult): void
+    {
+        self::assertEquals($this->holidayList->getList(), $expectedResult);
+    }
+
+    #[DataProvider('provideDataForReplaceByNameAndDate')]
+    #[Test]
+    public function it_should_replace_by_name_and_date(array $presetHolidays, Holiday $holidayToReplace, array $expectedResult): void
+    {
+        $this->givenAHolidayList($presetHolidays);
+        $this->whenReplaceByNameAndDateIsCalled($holidayToReplace);
+        $this->thenTheListShouldBeAsExpected($expectedResult);
+    }
+
+    public static function provideDataForReplaceByNameAndDate(): array
+    {
+        return [
+            'empty' => [
+                [],
+                Holiday::create('name1', '2024-01-01'),
+                [
+                    Holiday::create('name1', '2024-01-01'),
+                ],
+            ],
+            'not-in-list' => [
+                [
+                    Holiday::create('foo', '2024-01-01'),
+                    Holiday::create('bar', '2024-01-01'),
+                    Holiday::create('name1', '2024-01-02'),
+                ],
+                Holiday::create('name1', '2024-01-01'),
+                [
+                    Holiday::create('foo', '2024-01-01'),
+                    Holiday::create('bar', '2024-01-01'),
+                    Holiday::create('name1', '2024-01-02'),
+                    Holiday::create('name1', '2024-01-01'),
+                ],
+            ],
+            'other-types' => [
+                [
+                    Holiday::create('name1', '2024-01-02', HolidayType::OFFICIAL | HolidayType::DAY_OFF),
+                ],
+                Holiday::create('name1', '2024-01-02', HolidayType::RELIGIOUS),
+                [
+                    Holiday::create('name1', '2024-01-02', HolidayType::RELIGIOUS),
+                ],
+            ],
+        ];
+    }
+
+    private function whenReplaceByNameAndDateIsCalled(Holiday $holiday): void
+    {
+        $this->holidayList->replaceByNameAndDate($holiday);
+    }
+
     #[DataProvider('provideDataForContainsDate')]
     #[Test]
     public function it_should_check_if_is_holiday(array $presetHolidays, string $date, bool $expectedResult): void

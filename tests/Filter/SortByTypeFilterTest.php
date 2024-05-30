@@ -45,7 +45,7 @@ final class SortByTypeFilterTest extends HolidayTestCase
     {
         $holidayList = new HolidayList();
         foreach ($holidays as $index => $type) {
-            $holidayList->add(Holiday::create("name{$index}", "2020-01-{$index}", $type));
+            $holidayList->add(Holiday::create("name{$index}", "2020-01-0{$index}", $type));
         }
         $this->actualResult = $holidayList->filter($this->filter);
     }

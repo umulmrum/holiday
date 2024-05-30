@@ -62,9 +62,34 @@ class HolidayList implements Countable, IteratorAggregate
         }
     }
 
+    public function removeByName(string $name): void
+    {
+        $count = $this->count();
+        for ($index = $count - 1; $index >= 0; --$index) {
+            if ($this->holidayList[$index]->getName() === $name) {
+                $this->removeByIndex($index);
+            }
+        }
+    }
+
     public function removeByIndex(int $index): void
     {
         array_splice($this->holidayList, $index, 1);
+    }
+
+    /**
+     * Replaces an existing holiday in the list, identifying it by name and date. If the holiday does not exist yet in
+     * the list, it will be added instead.
+     * Use this method to get rid of types, but use the add method if you only intend to add types, as it will retain
+     * existing ones.
+     */
+    public function replaceByNameAndDate(Holiday $holiday): void
+    {
+        if (-1 === $index = $this->getIndexByNameAndDate($holiday->getName(), $holiday->getSimpleDate())) {
+            $this->holidayList[] = $holiday;
+        } else {
+            $this->holidayList[$index] = $holiday;
+        }
     }
 
     public function replaceByIndex(int $index, Holiday $holiday): void

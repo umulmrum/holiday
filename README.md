@@ -297,6 +297,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Austria (incl. Burgenland, Carinthia, Lower Austria, Salzburg, Styria, Tyrol, UpperAustria, Vienna, Vorarlberg)
 - Belgium
 - Brazil
+- Canada
 - Denmark
 - Finland
 - France (incl. Bas-Rhin, French Guiana, Guadeloupe, Haut-Rhin, Martinique, Moselle, Reunion)
@@ -322,6 +323,12 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 
 To create your own holiday providers have a look at the existing code, it should be self-explanatory. I will happily
 merge pull requests to support more countries (see below).
+
+### Notes on Canadian Holidays
+
+- Holidays in Canada were hard to grasp while adding (for a non-Canadian). There are multiple levels of flexibility in
+  the holidays (differences betweeen provinces/territories, role of government/private sector, negotiatability of
+  substitue holidays). So the current state surely is not perfect and further proposals are highly welcome.
 
 ### Notes on German Holidays
 

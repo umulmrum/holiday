@@ -85,7 +85,11 @@ final class HolidayType
      */
     public const COMPENSATORY = 512;
 
-    public const RESERVED2 = 1024;
+    /**
+     * On a holiday of type SHOPS_CLOSED, retail stores and/or other businesses must stay closed. If the holiday is also a
+     * DAY_OFF, the SHOPS_CLOSED type is not applied separately.
+     */
+    public const SHOPS_CLOSED = 1024;
 
     public const RESERVED3 = 2048;
 
@@ -94,6 +98,20 @@ final class HolidayType
     public const RESERVED5 = 8192;
 
     public const RESERVED6 = 16384;
+
+    public const ALL =
+        self::OTHER
+        | self::OFFICIAL
+        | self::DAY_OFF
+        | self::RELIGIOUS
+        | self::TRADITIONAL
+        | self::PARTIAL_ONLY
+        | self::NO_SCHOOL
+        | self::GOVERNMENT_AGENCIES_CLOSED
+        | self::HALF_DAY_OFF
+        | self::BANK
+        | self::COMPENSATORY
+        | self::SHOPS_CLOSED;
 
     /** @var string[] */
     public static array $NAME = [
@@ -108,6 +126,7 @@ final class HolidayType
         self::GOVERNMENT_AGENCIES_CLOSED => 'government_agencies_closed',
         self::BANK => 'bank',
         self::COMPENSATORY => 'compensatory',
+        self::SHOPS_CLOSED => 'shops_closed',
     ];
 
     /**

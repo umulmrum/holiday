@@ -83,6 +83,27 @@ final class HolidayName
     public const REPUBLIC_PROCLAMATION_DAY = 'republic_proclamation_day';
     public const TIRADENTES = 'tiradentes';
 
+    // Canada
+    public const BRITISH_COLUMBIA_DAY = 'british_columbia_day';
+    public const CANADA_DAY = 'canada_day';
+    public const CANADA_MEMORIAL_DAY = 'canada_memorial_day';
+    public const CIVIC_HOLIDAY = 'civic_holiday';
+    public const DISCOVERY_DAY = 'discovery_day';
+    public const DOMINION_DAY = 'dominion_day';
+    public const FAMILY_DAY = 'family_day';
+    public const LOUIS_RIEL_DAY = 'louis_riel_day';
+    public const NATIONAL_DAY_FOR_TRUTH_AND_RECONCILIATION = 'national_day_for_truth_and_reconciliation';
+    public const NATIONAL_DAY_OF_MOURNING = 'national_day_of_mourning';
+    public const NATIONAL_INDIGENOUS_PEOPLE_DAY = 'national_indigenous_people_day';
+    public const NATIONAL_PATRIOTS_DAY = 'national_patriots_day';
+    public const NEW_BRUNSWICK_DAY = 'new_brunswick_day';
+    public const NOVA_SCOTIA_HERITAGE_DAY = 'nova_scotia_heritage_day';
+    public const NUNAVUT_DAY = 'nunavut_day';
+    public const REMEMBRANCE_DAY = 'remembrance_day';
+    public const SAINT_JEAN_BAPTISTE_DAY = 'saint_jean_baptiste_day';
+    public const SASKATCHEWAN_DAY = 'saskatchewan_day';
+    public const VICTORIA_DAY = 'victoria_day';
+
     // Denmark
     public const DANISH_NATIONAL_HOLIDAY = 'danish_national_holiday';
     public const GENERAL_PRAYER_DAY = 'general_prayer_day';
