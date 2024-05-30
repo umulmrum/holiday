@@ -91,6 +91,9 @@ return [
     // Netherlands
     'NL' => \Umulmrum\Holiday\Provider\Netherlands\Netherlands::class,
 
+    // Norway
+    'NO' => \Umulmrum\Holiday\Provider\Norway\Norway::class,
+
     // Poland
     'PL' => \Umulmrum\Holiday\Provider\Poland\Poland::class,
 
@@ -110,6 +113,7 @@ return [
 
     // Switzerland
     'CH' => \Umulmrum\Holiday\Provider\Switzerland\Switzerland::class,
+    'CH-AG' => \Umulmrum\Holiday\Provider\Switzerland\Aargau::class,
     'CH-AI' => \Umulmrum\Holiday\Provider\Switzerland\AppenzellInnerrhoden::class,
     'CH-AR' => \Umulmrum\Holiday\Provider\Switzerland\AppenzellAusserrhoden::class,
     'CH-BE' => \Umulmrum\Holiday\Provider\Switzerland\Bern::class,

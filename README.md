@@ -369,8 +369,9 @@ This library follows Semantic Versioning. Everything in the library can be consi
 Contributions are highly welcome. Please follow these rules when submitting a PR:
 
 - Mimic existing code for style and structure.
-- Add unit tests for all of your code.
-- Use the Symfony code style (call `php-cs-fixer fix` in the library root without further arguments).
+- Add unit tests for all of your code; run the tests locally by calling `composer test`.
+- Ideally, also run `composer analyze` and fix any reported errors.
+- At the end, fix the code style by calling `composer cs` (you can omit this if you're in a hurry).
 
 By submitting a PR you agree that all your contributed code may be used under the MIT license.
 
@@ -379,8 +380,16 @@ By submitting a PR you agree that all your contributed code may be used under th
 - Add a provider for that country or region inside `src/Provider/...`.
 - Should you need to add country-specific holiday names, add those to `Constant\HolidayName` and provide
   English translations inside `umulmrum_holiday.en.xliff`.
-- Lookup the ISO code for your country or region and add it to `Resolver\isoData`.
-- Provide tests inside `tests/Provider/...` that ideally cover all edge cases.
+- Lookup the ISO code for your country or region and add it to `Resolver\isoData.php`.
+- Provide tests inside `tests/Provider/...` that ideally cover all edge cases. This can be done as follows for countries:
+  - First write the holiday provider itself
+  - Then run a command that looks approximately like this: `tests/console test:generate DE-BY -y 2018 -y 2025`.
+    Replace `DE-BY` with the ISO code of your new provider.
+    Replace `-y 2018 -y 2025` with the years that make sense for your provider.
+  - The test will calculate holidays for the selected years and generate markdown tables that are saved in the
+    directory `tests/Provider/Data`. Find the file there and check if you are content with the result, but don't
+    change the format of the file, as the test runner will expect it exactly like this.
+  - If you need tests that can't be expressed like this (see e.g. Sweden), write those particular tests by hand.
 
 ## License
 

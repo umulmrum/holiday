@@ -20,10 +20,11 @@
     },
     "require-dev": {
         "ext-json": "*",
-        "friendsofphp/php-cs-fixer": "^3.57",
+        "friendsofphp/php-cs-fixer": "^3.58",
+        "phpstan/phpstan": "^1.11",
         "phpunit/phpunit": "~11.1",
-        "symfony/translation": "~5.4|~6.4|~7.0",
-        "phpstan/phpstan": "^1.11"
+        "symfony/console": "~5.4|~6.4|~7.0",
+        "symfony/translation": "~5.4|~6.4|~7.0"
     },
     "autoload": {
         "psr-4": {
@@ -37,7 +38,10 @@
     },
     "scripts": {
         "cs": "php vendor/bin/php-cs-fixer fix --verbose",
-        "functional-tests": "php vendor/bin/phpunit --coverage-text",
-        "phpstan": "php -dmemory_limit=-1 vendor/bin/phpstan"
+        "test": "php vendor/bin/phpunit --coverage-text --show-uncovered-for-coverage-text",
+        "analyze": "php -dmemory_limit=-1 vendor/bin/phpstan"
+    },
+    "config": {
+        "sort-packages": true
     }
 }
