@@ -66,7 +66,7 @@ final class ResolverHandler implements ResolverHandlerInterface
      *
      * @throws InvalidArgumentException
      */
-    private function doResolve($identifier): HolidayProviderInterface
+    private function doResolve(mixed $identifier): HolidayProviderInterface
     {
         if ($identifier instanceof HolidayProviderInterface) {
             return $identifier;

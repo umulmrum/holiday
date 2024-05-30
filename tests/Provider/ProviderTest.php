@@ -61,7 +61,7 @@ final class ProviderTest extends HolidayTestCase
             if ($file->isDot()) {
                 continue;
             }
-            preg_match('#([A-Z]{2}(-[A-Z0-9]+)?)-\w+.md#', $file->getBasename(), $matches);
+            preg_match('#(\w+(-[A-Z0-9]+)?)-\w+.md#', $file->getBasename(), $matches);
 
             yield ['providerCode' => $matches[1], 'fixturePath' => $file->getRealPath() ?: ''];
         }

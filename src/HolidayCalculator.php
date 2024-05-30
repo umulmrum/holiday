@@ -16,6 +16,7 @@ use Umulmrum\Holiday\Assert\Assert;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Resolver\ClassNameResolver;
 use Umulmrum\Holiday\Resolver\IsoResolver;
+use Umulmrum\Holiday\Resolver\MiscResolver;
 use Umulmrum\Holiday\Resolver\ResolverHandler;
 use Umulmrum\Holiday\Resolver\ResolverHandlerInterface;
 
@@ -30,7 +31,7 @@ final class HolidayCalculator implements HolidayCalculatorInterface
 
     public function __construct(?ResolverHandlerInterface $resolverHandler = null)
     {
-        $this->resolverHandler = $resolverHandler ?? new ResolverHandler([new ClassNameResolver(), new IsoResolver()]);
+        $this->resolverHandler = $resolverHandler ?? new ResolverHandler([new ClassNameResolver(), new IsoResolver(), new MiscResolver()]);
     }
 
     public function calculate($holidayProviders, $years): HolidayList

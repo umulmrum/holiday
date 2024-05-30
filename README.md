@@ -156,7 +156,7 @@ $holidays->isHoliday(new \DateTime('2020-12-01'));
 ### Resolving Holiday Providers
 
 The examples above already showed two different ways to specify for which region or other "entity" holidays should be
-calculated. There is also a third way, and complete customization is also possible - let's have a look at all of them:
+calculated. There are more ways, and complete customization is also possible - let's have a look at all of them:
 
 1. Fully qualified class name:
 
@@ -187,7 +187,16 @@ calculated. There is also a third way, and complete customization is also possib
     There is a fallback to the base country in case the region code is not found - see the comment in the `IsoResolver`
     class for details.
 
-4. Custom
+4. Misc abbreviations:
+
+    ```php
+    $calculator->calculate('Christian', 2020);
+    ```
+
+    Additional short strings are defined in the `MiscResolver` class. Those are `Christian` for Christian holidays, as
+    well as `Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, and `Sat` for the days of the week.
+
+5. Custom
 
     ```php
     $calculator = new \Umulmrum\Holiday\HolidayCalculator(new \Umulmrum\Holiday\Resolver\ResolverHandler([new MyCustomResolver()]));
@@ -380,8 +389,9 @@ By submitting a PR you agree that all your contributed code may be used under th
 - Add a provider for that country or region inside `src/Provider/...`.
 - Should you need to add country-specific holiday names, add those to `Constant\HolidayName` and provide
   English translations inside `umulmrum_holiday.en.xliff`.
-- Lookup the ISO code for your country or region and add it to `Resolver\isoData.php`.
-- Provide tests inside `tests/Provider/...` that ideally cover all edge cases. This can be done as follows for countries:
+- Lookup the ISO code for your country or region and add it to `Resolver\isoData.php`. If you add a provider that does
+  NOT add country data, please add it to the list in the `MiscResolver` class.
+- Provide tests inside `tests/Provider/...` that ideally cover all edge cases. This can be done as follows:
   - First write the holiday provider itself
   - Then run a command that looks approximately like this: `tests/console test:generate DE-BY -y 2018 -y 2025`.
     Replace `DE-BY` with the ISO code of your new provider.
