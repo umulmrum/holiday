@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Holidays for Canada
+- Holidays for the Czech Republic
 - Holidays for Portugal
 - ISO code for Switzerland/Aargau
 - ISO code for Norway
