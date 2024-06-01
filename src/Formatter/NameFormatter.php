@@ -20,8 +20,10 @@ final class NameFormatter implements HolidayFormatterInterface
 {
     private TranslatorInterface $translator;
 
-    public function __construct(?TranslatorInterface $translator = null)
-    {
+    public function __construct(
+        ?TranslatorInterface $translator = null,
+        private readonly ?string $locale = null
+    ) {
         if (null === $translator) {
             $this->translator = new NullTranslator();
         } else {
@@ -31,7 +33,7 @@ final class NameFormatter implements HolidayFormatterInterface
 
     public function format(Holiday $holiday): string
     {
-        return $this->translator->translateName($holiday);
+        return $this->translator->translateName($holiday, $this->locale);
     }
 
     public function formatList(HolidayList $holidayList): array|string

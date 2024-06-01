@@ -9,8 +9,6 @@ if this library does not perfectly fit your needs, you can simply extend it.
 ## Requirements
 
 - PHP >= 8.2
-- Symfony translator is recommended for translations (built-in translator requires version 5.4+, but can be trivially
-  reimplemented for older versions).
 
 That's it really.
 
@@ -276,8 +274,36 @@ Sundays from `Brandenburg` lists.
 
 ### Translations
 
-Some formatters can be initialized with an optional translator. See `TranslatorInterface` and the translation files 
-under `res/trans`.
+Each holiday will be provided with a technical name that resembles the English name, e.g. `new_year`. To translate these
+technical names into spoken languages, use the `Translator`. This class comes with English and German names for all
+holidays, but other languages can be added (contributions welcome, but translation files can also be outside this
+library).
+
+The `TranslateFilter` can replace the names of all holidays in a `HolidayList` at once. Use it like this:
+
+```php
+use \Umulmrum\Holiday\Filter\TranslateFilter;
+
+$holidayList->filter(new TranslateFilter(locale: 'en'));
+```
+
+The `TranslateFilter` uses the `Translator` with the built-in translations internally, but this can be customized - see
+the constructors of the used classes.
+
+Some formatters such as the `JsonFormatter` can also be initialized with an optional translator.
+
+The `Translator` uses two levels of fallback for the passed locale:
+
+- First, it tries to find the translation for the exact locale, e.g. `en_US`.
+- If it isn't found, it tries the base language, e.g. `en`.
+- If this is also not found, it tries the passed fallback language, which is configurable (default `en`).
+- If this is also not found, it returns the empty string.
+
+The translation files can be found under `res/trans`. They are written in PHP, compatible with the Symfony Translation
+component, so they can be directly loaded using Symfony's `PhpFileLoader`.
+
+There is also a `SymfonyBridgeTranslator` which enables usage of an existing Symfony translator (translation files need
+to be registered separately).
 
 ### Helpers
 

@@ -24,8 +24,12 @@ final class JsonFormatter implements HolidayFormatterInterface
 {
     private TranslatorInterface $translator;
 
-    public function __construct(?TranslatorInterface $translator = null, private readonly int $jsonOptions = 0, private readonly ?DateTimeZone $dateTimeZone = null)
-    {
+    public function __construct(
+        ?TranslatorInterface $translator = null,
+        private readonly int $jsonOptions = 0,
+        private readonly ?DateTimeZone $dateTimeZone = null,
+        private readonly ?string $locale = null
+    ) {
         if (null === $translator) {
             $this->translator = new NullTranslator();
         } else {
@@ -58,7 +62,7 @@ final class JsonFormatter implements HolidayFormatterInterface
 
         return [
             'name' => $holiday->getName(),
-            'translatedName' => $this->translator->translateName($holiday),
+            'translatedName' => $this->translator->translateName($holiday, $this->locale),
             'timestamp' => $date->getTimestamp(),
             'formattedDate' => $date->format('Ymd\THis\ZO'),
             'type' => $holiday->getType(),

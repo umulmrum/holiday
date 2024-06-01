@@ -24,7 +24,11 @@ final readonly class ICalendarFormatter implements HolidayFormatterInterface
 {
     public const LINE_ENDING = "\r\n";
 
-    public function __construct(private TranslatorInterface $translator = new NullTranslator(), private DateProviderInterface $dateProvider = new DateProvider()) {}
+    public function __construct(
+        private TranslatorInterface $translator = new NullTranslator(),
+        private DateProviderInterface $dateProvider = new DateProvider(),
+        private ?string $locale = null,
+    ) {}
 
     public function format(Holiday $holiday): string
     {
@@ -63,7 +67,7 @@ final readonly class ICalendarFormatter implements HolidayFormatterInterface
             sprintf('UID:%s-%s', $holiday->getName(), $holiday->getSimpleDate()),
             sprintf('DTSTAMP:%s', $dtstamp->format('Ymd\THis\ZO')),
             sprintf('CREATED:%s', $dtstamp->format('Ymd\THis\ZO')),
-            'SUMMARY:' . $this->translator->translateName($holiday),
+            'SUMMARY:' . $this->translator->translateName($holiday, $this->locale),
             'DTSTART;VALUE=DATE:' . $holiday->getDate()->format('Ymd'),
             'END:VEVENT',
         ]);

@@ -22,11 +22,11 @@ use function max;
 use function mb_str_pad;
 use function mb_strlen;
 
-final class MarkdownFormatter implements HolidayFormatterInterface
+final readonly class MarkdownFormatter implements HolidayFormatterInterface
 {
     private TranslatorInterface $translator;
 
-    public function __construct(?TranslatorInterface $translator = null)
+    public function __construct(?TranslatorInterface $translator = null, private ?string $locale = null)
     {
         if (null === $translator) {
             $this->translator = new NullTranslator();
@@ -47,7 +47,7 @@ final class MarkdownFormatter implements HolidayFormatterInterface
     {
         return [
             $holiday->getSimpleDate(),
-            $this->translator->translate($holiday->getName()),
+            $this->translator->translateName($holiday, $this->locale),
             implode(', ', HolidayType::getTypeNames($this->translator, $holiday->getType())),
         ];
     }

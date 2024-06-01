@@ -13,6 +13,7 @@ namespace Umulmrum\Holiday\Filter;
 
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Translator\Translator;
 use Umulmrum\Holiday\Translator\TranslatorInterface;
 
 /**
@@ -21,7 +22,10 @@ use Umulmrum\Holiday\Translator\TranslatorInterface;
  */
 final readonly class TranslateFilter implements HolidayFilterInterface
 {
-    public function __construct(private TranslatorInterface $translator) {}
+    public function __construct(
+        private TranslatorInterface $translator = new Translator(),
+        private ?string $locale = null,
+    ) {}
 
     public function filter(HolidayList $holidayList): void
     {
@@ -29,7 +33,7 @@ final readonly class TranslateFilter implements HolidayFilterInterface
             $holidayList->replaceByIndex(
                 $index,
                 Holiday::create(
-                    $this->translator->translate($holiday->getName()),
+                    $this->translator->translateName($holiday, $this->locale),
                     $holiday->getSimpleDate(),
                     $holiday->getType()
                 )

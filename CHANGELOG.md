@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Markdown formatter
 - MiscResolver that allows to resolve various providers by short name
 - New HolidayType::SHOPS_CLOSED
+- Translator class to avoid having to depend on external translators; see README.md for usage
+- Formatters that use a translator can now optionally be initialized with a locale (if not given, the fallback language
+  of the translator is used)
+- [BC Break] Translation files now use a PHP format instead of XLIFF (shorter, faster, no dependencies required)
 - .gitattributes file to filter unnecessary files
 
 ### Changed
