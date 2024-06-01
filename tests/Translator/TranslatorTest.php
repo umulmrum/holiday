@@ -13,6 +13,7 @@ namespace Umulmrum\Holiday\Test\Translator;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
+use ReflectionClass;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Test\HolidayTestCase;
@@ -24,6 +25,7 @@ final class TranslatorTest extends HolidayTestCase
 {
     private Translator $translator;
     private string $actualResult;
+
     /** @var string[] */
     private array $notFoundTranslations;
 
@@ -102,7 +104,7 @@ final class TranslatorTest extends HolidayTestCase
 
     private function whenTranslateIsCalledForAllKnownHolidayNames(): void
     {
-        $holidayNameClass = new \ReflectionClass(HolidayName::class);
+        $holidayNameClass = new ReflectionClass(HolidayName::class);
         $this->notFoundTranslations = [];
         foreach ($holidayNameClass->getConstants() as $name => $value) {
             if ($name === 'SUFFIX_COMPENSATORY') {
@@ -119,6 +121,7 @@ final class TranslatorTest extends HolidayTestCase
         self::assertEmpty(
             $this->notFoundTranslations,
             'Translations for the following holiday names not found. Please add them to res/trans/umulmrum_holiday.en.php: '
-            . implode(', ', $this->notFoundTranslations));
+            . implode(', ', $this->notFoundTranslations)
+        );
     }
 }
