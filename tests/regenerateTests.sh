@@ -36,6 +36,7 @@ tests/console test:generate CA-PE -y 1952 -y 1982 -y 1983 -y 2008 -y 2009 -y 201
 tests/console test:generate CA-QC -y 1924 -y 1925 -y 1952 -y 1982 -y 1983 -y 2002 -y 2003 -y 2022 -y 2024
 tests/console test:generate CA-SK -y 1952 -y 1982 -y 1983 -y 2006 -y 2007 -y 2022 -y 2024
 tests/console test:generate CA-YT -y 1952 -y 1982 -y 1983 -y 2016 -y 2017 -y 2022 -y 2023 -y 2024
+tests/console test:generate CZ -y 1950 -y 1951 -y 1987 -y 1988 -y 1989 -y 1990 -y 1991 -y 1992 -y 1999 -y 2000 -y 2015 -y 2016 -y 2024
 tests/console test:generate DK -y 1848 -y 1849 -y 1891 -y 2020 -y 2024
 tests/console test:generate FI -y 1950 -y 1955 -y 1991 -y 2024
 tests/console test:generate FR -y 2004 -y 2019

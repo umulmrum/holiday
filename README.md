@@ -324,6 +324,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Belgium
 - Brazil
 - Canada
+- Czech Republic
 - Denmark
 - Finland
 - France (incl. Bas-Rhin, French Guiana, Guadeloupe, Haut-Rhin, Martinique, Moselle, Reunion)

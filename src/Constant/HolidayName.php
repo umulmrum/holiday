@@ -104,6 +104,14 @@ final class HolidayName
     public const SASKATCHEWAN_DAY = 'saskatchewan_day';
     public const VICTORIA_DAY = 'victoria_day';
 
+    // Czech Republic
+    public const INDEPENDENT_CZECHOSLOVAK_STATE_DAY = 'independent_czechoslovak_day';
+    public const JAN_HUS_DAY = 'jan_hus_day';
+    public const RESTORATION_DAY_OF_THE_INDEPENDENT_CZECH_STATE = 'restoration_day_of_the_independent_czech_state';
+    public const SAINTS_CYRIL_AND_METHODIUS_DAY = 'saints_cyril_and_methodius_day';
+    public const STATEHOOD_DAY = 'statehood_day';
+    public const STRUGGLE_FOR_FREEDOM_DAY = 'struggle_for_freedom_day';
+
     // Denmark
     public const DANISH_NATIONAL_HOLIDAY = 'danish_national_holiday';
     public const GENERAL_PRAYER_DAY = 'general_prayer_day';

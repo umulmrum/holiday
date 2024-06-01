@@ -47,6 +47,9 @@ return [
     'CA-SK' => \Umulmrum\Holiday\Provider\Canada\Saskatchewan::class,
     'CA-YT' => \Umulmrum\Holiday\Provider\Canada\Yukon::class,
 
+    // Czech Republic
+    'CZ' => \Umulmrum\Holiday\Provider\CzechRepublic\CzechRepublic::class,
+
     // Denmark
     'DK' => \Umulmrum\Holiday\Provider\Denmark\Denmark::class,
 
