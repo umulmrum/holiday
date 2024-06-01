@@ -22,7 +22,7 @@ use function intdiv;
 trait ChristianHolidaysTrait
 {
     /** @var DateTimeImmutable[] */
-    private $easterCache = [];
+    private array $easterCache = [];
 
     private function getEasterSundayDate(int $year): DateTimeImmutable
     {
@@ -175,6 +175,11 @@ trait ChristianHolidaysTrait
     private function getSaintFloriansDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         return Holiday::create(HolidayName::SAINT_FLORIANS_DAY, "{$year}-05-04", HolidayType::RELIGIOUS | $additionalType);
+    }
+
+    protected function getSaintGeorgesDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        return Holiday::create(HolidayName::SAINT_GEORGES_DAY, "{$year}-05-06", HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getFeastofSaintsPeterAndPaul(int $year, int $additionalType = HolidayType::OTHER): Holiday

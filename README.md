@@ -323,6 +323,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Austria (incl. Burgenland, Carinthia, Lower Austria, Salzburg, Styria, Tyrol, UpperAustria, Vienna, Vorarlberg)
 - Belgium
 - Brazil
+- Bulgaria
 - Canada
 - Czech Republic
 - Denmark
@@ -382,9 +383,12 @@ merge pull requests to support more countries (see below).
 
 ### Notes on Christian Holidays
 
-- Only holidays of Western churches are taken into account.
 - Only the most important holidays are taken into account, as interpreted by me (which is most likely far from accurate; 
   please feel free to contribute changes).
+
+### Notes on Christian Orthodox Holiday
+
+- Calculation of the Orthodox Easter date is only exact for the years 1900 through 2099.
 
 ### Note on Holidays Way in the Past or Future
 

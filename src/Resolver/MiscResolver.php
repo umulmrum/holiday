@@ -13,6 +13,7 @@ namespace Umulmrum\Holiday\Resolver;
 
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidays;
+use Umulmrum\Holiday\Provider\Religion\ChristianOrthodoxHolidays;
 use Umulmrum\Holiday\Provider\Weekday\Fridays;
 use Umulmrum\Holiday\Provider\Weekday\Mondays;
 use Umulmrum\Holiday\Provider\Weekday\Saturdays;
@@ -26,6 +27,7 @@ final class MiscResolver implements ProviderResolverInterface
     /** @var class-string[] */
     private static array $MAP = [
         'Christian' => ChristianHolidays::class,
+        'ChristianOrthodox' => ChristianOrthodoxHolidays::class,
         'Sun' => Sundays::class,
         'Mon' => Mondays::class,
         'Tue' => Tuesdays::class,
