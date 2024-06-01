@@ -22,6 +22,20 @@ tests/console test:generate AT-8 -y 2020
 tests/console test:generate AT-9 -y 2020
 tests/console test:generate BE -y 1865 -y 1866 -y 1890 -y 1973 -y 1975 -y 1990 -y 1998 -y 2020
 tests/console test:generate BR -y 1889 -y 1890 -y 1949 -y 1980 -y 2020
+tests/console test:generate CA -y 1952 -y 1982 -y 1983 -y 2020 -y 2021 -y 2022 -y 2024
+tests/console test:generate CA-AB -y 1952 -y 1982 -y 1983 -y 1989 -y 1990 -y 2022 -y 2024
+tests/console test:generate CA-BC -y 1952 -y 1982 -y 1983 -y 2022 -y 2023 -y 2024
+tests/console test:generate CA-MB -y 1952 -y 1982 -y 1983 -y 2007 -y 2008 -y 2022 -y 2024
+tests/console test:generate CA-NB -y 1952 -y 1982 -y 1983 -y 2017 -y 2018 -y 2022 -y 2024
+tests/console test:generate CA-NL -y 1916 -y 1917 -y 1952 -y 1982 -y 1983 -y 2022 -y 2024
+tests/console test:generate CA-NT -y 1952 -y 1982 -y 1983 -y 2000 -y 2001 -y 2021 -y 2022 -y 2024
+tests/console test:generate CA-NS -y 1952 -y 1982 -y 1983 -y 2014 -y 2015 -y 2022 -y 2024
+tests/console test:generate CA-NU -y 1999 -y 2000 -y 2001 -y 2022 -y 2024
+tests/console test:generate CA-ON -y 1952 -y 1982 -y 1983 -y 2007 -y 2008 -y 2022 -y 2024
+tests/console test:generate CA-PE -y 1952 -y 1982 -y 1983 -y 2008 -y 2009 -y 2010 -y 2021 -y 2022 -y 2024
+tests/console test:generate CA-QC -y 1924 -y 1925 -y 1952 -y 1982 -y 1983 -y 2002 -y 2003 -y 2022 -y 2024
+tests/console test:generate CA-SK -y 1952 -y 1982 -y 1983 -y 2006 -y 2007 -y 2022 -y 2024
+tests/console test:generate CA-YT -y 1952 -y 1982 -y 1983 -y 2016 -y 2017 -y 2022 -y 2023 -y 2024
 tests/console test:generate DK -y 1848 -y 1849 -y 1891 -y 2020 -y 2024
 tests/console test:generate FI -y 1950 -y 1955 -y 1991 -y 2024
 tests/console test:generate FR -y 2004 -y 2019

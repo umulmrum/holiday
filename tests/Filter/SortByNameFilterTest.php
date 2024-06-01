@@ -45,7 +45,7 @@ final class SortByNameFilterTest extends HolidayTestCase
     {
         $holidayList = new HolidayList();
         foreach ($holidays as $index => $name) {
-            $holidayList->add(Holiday::create($name, "2020-01-{$index}"));
+            $holidayList->add(Holiday::create($name, "2020-01-0{$index}"));
         }
         $this->actualResult = $holidayList->filter($this->filter);
     }

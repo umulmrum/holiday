@@ -22,11 +22,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Umulmrum\Holiday\Filter\SortByDateFilter;
 use Umulmrum\Holiday\Formatter\MarkdownFormatter;
 use Umulmrum\Holiday\HolidayCalculator;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
 use Umulmrum\Holiday\Resolver\IsoResolver;
-
 use Umulmrum\Holiday\Resolver\MiscResolver;
 use Umulmrum\Holiday\Resolver\ResolverHandler;
+
 use function array_map;
 use function file_put_contents;
 

@@ -8,15 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Holidays for Canada
 - Holidays for Portugal
 - ISO code for Switzerland/Aargau
 - ISO code for Norway
+- [BC Break] Name for holidays must not be empty; date format YYYY-MM-DD is now enforced
 - Markdown formatter
 - MiscResolver that allows to resolve various providers by short name
+- New HolidayType::SHOPS_CLOSED
 - .gitattributes file to filter unnecessary files
 
 ### Changed
-- Express most test expectations in markdown format
+- Express most test expectations in Markdown format
 
 ## [0.8.0] - 2024-05-26
 

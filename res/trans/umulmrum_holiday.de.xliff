@@ -114,6 +114,18 @@
         <source>boxing_day_compensatory</source>
         <target>Zweiter Weihnachtsfeiertag (Ausgleich)</target>
       </trans-unit>
+      <trans-unit id="british_columbia_day">
+        <source>british_columbia_day</source>
+        <target>British Columbia Day</target>
+      </trans-unit>
+      <trans-unit id="canada_day">
+        <source>canada_day</source>
+        <target>Canada Day</target>
+      </trans-unit>
+      <trans-unit id="canada_memorial_day">
+        <source>canada_memorial_day</source>
+        <target>Memorial Day</target>
+      </trans-unit>
       <trans-unit id="candlemas">
         <source>candlemas</source>
         <target>Lichtmess</target>
@@ -133,6 +145,10 @@
       <trans-unit id="christmas_eve">
         <source>christmas_eve</source>
         <target>Heiliger Abend</target>
+      </trans-unit>
+      <trans-unit id="civic_holiday">
+        <source>civic_holiday</source>
+        <target>Civic Holiday</target>
       </trans-unit>
       <trans-unit id="columbus_day">
         <source>columbus_day</source>
@@ -206,6 +222,14 @@
         <source>diamond_jubilee_bank_holiday</source>
         <target>Diamantenes Jubiläum der Königin</target>
       </trans-unit>
+      <trans-unit id="discovery_day">
+        <source>discovery_day</source>
+        <target>Discovery Day</target>
+      </trans-unit>
+      <trans-unit id="dominion_day">
+        <source>dominion_day</source>
+        <target>Dominion Day</target>
+      </trans-unit>
       <trans-unit id="dutch_liberation_day">
         <source>dutch_liberation_day</source>
         <target>Befreiungstag</target>
@@ -233,6 +257,10 @@
       <trans-unit id="europe_day">
         <source>europe_day</source>
         <target>Europatag</target>
+      </trans-unit>
+      <trans-unit id="family_day">
+        <source>family_day</source>
+        <target>Tag der Familie</target>
       </trans-unit>
       <trans-unit id="fat_tuesday">
         <source>fat_tuesday</source>
@@ -362,6 +390,10 @@
         <source>liberation_day</source>
         <target>Tag der Befreiung</target>
       </trans-unit>
+      <trans-unit id="louis_riel_day">
+        <source>louis_riel_day</source>
+        <target>Louis Riel Day</target>
+      </trans-unit>
       <trans-unit id="madeira_day">
         <source>madeira_day</source>
         <target>Tag von Madeira</target>
@@ -398,6 +430,18 @@
         <source>naefelser_fahrt</source>
         <target>Näfelser Fahrt</target>
       </trans-unit>
+      <trans-unit id="national_day_for_truth_and_reconciliation">
+        <source>national_day_for_truth_and_reconciliation</source>
+        <target>National Day for Truth and Reconciliation</target>
+      </trans-unit>
+      <trans-unit id="national_day_of_mourning">
+        <source>national_day_of_mourning</source>
+        <target>Staatstrauertag</target>
+      </trans-unit>
+      <trans-unit id="national_patriots_day">
+        <source>national_patriots_day</source>
+        <target>National Patriots' Day</target>
+      </trans-unit>
       <trans-unit id="national_sovereignty_and_childrens_day">
         <source>national_sovereignty_and_childrens_day</source>
         <target>Feiertag der Nationalen Souveränität und des Kindes</target>
@@ -406,6 +450,10 @@
         <source>nativity_of_mary</source>
         <target>Mariä Geburt</target>
       </trans-unit>
+      <trans-unit id="new_brunswick_day">
+        <source>new_brunswick_day</source>
+        <target>New Brunswick Day</target>
+      </trans-unit>
       <trans-unit id="new_year">
         <source>new_year</source>
         <target>Neujahr</target>
@@ -413,6 +461,10 @@
       <trans-unit id="new_year_compensatory">
         <source>new_year_compensatory</source>
         <target>Neujahr (Ausgleich)</target>
+      </trans-unit>
+      <trans-unit id="new_brunswick_day">
+        <source>new_brunswick_day</source>
+        <target>New Brunswick Day</target>
       </trans-unit>
       <trans-unit id="new_year_holiday">
         <source>new_year_holiday</source>
@@ -429,6 +481,14 @@
       <trans-unit id="norway_constitution_day">
         <source>norway_constitution_day</source>
         <target>Verfassungstag</target>
+      </trans-unit>
+      <trans-unit id="nova_scotia_heritage_day">
+        <source>nova_scotia_heritage_day</source>
+        <target>Nova Scotia Heritage Day</target>
+      </trans-unit>
+      <trans-unit id="nunavut_day">
+        <source>nunavut_day</source>
+        <target>Nunavut Day</target>
       </trans-unit>
       <trans-unit id="october_holiday">
         <source>october_holiday</source>
@@ -494,6 +554,10 @@
         <source>religious</source>
         <target>Religiös</target>
       </trans-unit>
+      <trans-unit id="remembrance_day">
+        <source>remembrance_day</source>
+        <target>Remembrance Day</target>
+      </trans-unit>
       <trans-unit id="repentance_and_prayer_day">
         <source>repentance_and_prayer_day</source>
         <target>Buß- und Bettag</target>
@@ -530,6 +594,10 @@
         <source>saint_florians_day</source>
         <target>Florianstag</target>
       </trans-unit>
+      <trans-unit id="saint_jean_baptiste_day">
+        <source>saint_jean_baptiste_day</source>
+        <target>Saint-Jean-Baptiste Day</target>
+      </trans-unit>
       <trans-unit id="saint_josephs_day">
         <source>saint_josephs_day</source>
         <target>Josefstag</target>
@@ -558,6 +626,10 @@
         <source>saint_ruperts_day</source>
         <target>Rupertitag</target>
       </trans-unit>
+      <trans-unit id="saskatchewan_day">
+        <source>saskatchewan_day</source>
+        <target>Saskatchewan Day</target>
+      </trans-unit>
       <trans-unit id="saturday">
         <source>saturday</source>
         <target>Samstag</target>
@@ -569,6 +641,10 @@
       <trans-unit id="second_christmas_day_compensatory">
         <source>second_christmas_day_compensatory</source>
         <target>Zweiter Weihnachtsfeiertag (Ausgleich)</target>
+      </trans-unit>
+      <trans-unit id="shops_closed">
+        <source>shops_closed</source>
+        <target>Geschäfte geschlossen</target>
       </trans-unit>
       <trans-unit id="silver_jubilee_bank_holiday">
         <source>silver_jubilee_bank_holiday</source>
@@ -673,6 +749,10 @@
       <trans-unit id="veterans_day_compensatory">
         <source>veterans_day_compensatory</source>
         <target>Veterans Day (Ausgleich)</target>
+      </trans-unit>
+      <trans-unit id="victoria_day">
+        <source>victoria_day</source>
+        <target>Victoria Day</target>
       </trans-unit>
       <trans-unit id="victory_in_europe_day">
         <source>victory_in_europe_day</source>

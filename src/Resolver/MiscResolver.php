@@ -12,7 +12,6 @@
 namespace Umulmrum\Holiday\Resolver;
 
 use Umulmrum\Holiday\Provider\HolidayProviderInterface;
-
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidays;
 use Umulmrum\Holiday\Provider\Weekday\Fridays;
 use Umulmrum\Holiday\Provider\Weekday\Mondays;

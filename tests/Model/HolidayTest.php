@@ -14,6 +14,7 @@ namespace Umulmrum\Holiday\Test\Model;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
+use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Umulmrum\Holiday\Constant\HolidayType;
@@ -54,6 +55,50 @@ final class HolidayTest extends HolidayTestCase
     private function thenThisTypeShouldBeSet(int $type): void
     {
         self::assertEquals($type, $this->holiday->getType());
+    }
+
+    #[DataProvider('provideDataForInvalidConstructorData')]
+    #[Test]
+    public function it_fails_on_invalid_constructor_data(string $name, string $date, int $type): void
+    {
+        $this->thenInvalidArgumentExceptionShouldBeThrown();
+        $this->whenHolidayIsCreatedFromConstructor($name, $date, $type);
+    }
+
+    private function thenInvalidArgumentExceptionShouldBeThrown(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+    }
+
+    public static function provideDataForInvalidConstructorData(): array
+    {
+        return [
+            'empty-name' => [
+                '',
+                '2024-01-01',
+                HolidayType::OTHER,
+            ],
+            'long-date' => [
+                'new_year',
+                '2024-01-01xyz',
+                HolidayType::OTHER,
+            ],
+            'invalid-date' => [
+                'new_year',
+                '2024-x1-01',
+                HolidayType::OTHER,
+            ],
+            'type-less-than-zero' => [
+                'new_year',
+                '2024-01-01',
+                -1,
+            ],
+            'type-too-big' => [
+                'new_year',
+                '2024-01-01',
+                5682052057,
+            ],
+        ];
     }
 
     #[DataProvider('getDateTimeData')]
