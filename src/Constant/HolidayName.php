@@ -49,6 +49,8 @@ final class HolidayName
     public const ALL_SAINTS_EVE = 'all_saints_eve';
     public const ALL_SAINTS_DAY = 'all_saints_day';
     public const ALL_SOULS_DAY = 'all_souls_day';
+    public const SAINT_GEORGES_DAY = 'saint_georges_day';
+    public const SAINT_GEORGES_DAY_COMPENSATORY = 'saint_georges_day_compensatory';
     public const SAINT_MARTINS_DAY = 'saint_martins_day';
     public const SAINT_RUPERTS_DAY = 'saint_ruperts_day';
     public const LEOPOLDS_DAY = 'leopolds_day';
@@ -82,6 +84,14 @@ final class HolidayName
     public const OUR_LADY_OF_APARECIDA = 'our_lady_of_aparecida';
     public const REPUBLIC_PROCLAMATION_DAY = 'republic_proclamation_day';
     public const TIRADENTES = 'tiradentes';
+
+    // Bulgaria
+    public const EDUCATION_DAY = 'education_day';
+    public const EDUCATION_DAY_COMPENSATORY = 'education_day_compensatory';
+    public const NATIONAL_AWAKENING_DAY = 'national_awakening_day';
+    public const NATIONAL_AWAKENING_DAY_COMPENSATORY = 'national_awakening_day_compensatory';
+    public const UNIFICATION_DAY = 'unification_day';
+    public const UNIFICATION_DAY_COMPENSATORY = 'unification_day_compensatory';
 
     // Canada
     public const BRITISH_COLUMBIA_DAY = 'british_columbia_day';

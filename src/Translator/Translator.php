@@ -38,7 +38,7 @@ final class Translator implements TranslatorInterface
     }
 
     /**
-     * @param array<string, string>  $translations
+     * @param array<string, string> $translations
      */
     public function addTranslations(string $locale, array $translations): void
     {

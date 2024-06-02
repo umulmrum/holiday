@@ -3,6 +3,7 @@
 set -euxo pipefail
 
 tests/console test:generate Christian -y 1899 -y 2000 -y 2018
+tests/console test:generate ChristianOrthodox -y 1907 -y 2000 -y 2005 -y 2018 -y 2024
 tests/console test:generate Sun -y 2019
 tests/console test:generate Mon -y 2019
 tests/console test:generate Tue -y 2019
@@ -21,6 +22,7 @@ tests/console test:generate AT-7 -y 2020
 tests/console test:generate AT-8 -y 2020
 tests/console test:generate AT-9 -y 2020
 tests/console test:generate BE -y 1865 -y 1866 -y 1890 -y 1973 -y 1975 -y 1990 -y 1998 -y 2020
+tests/console test:generate BG -y 2016 -y 2017 -y 2020 -y 2021 -y 2022 -y 2023 -y 2024
 tests/console test:generate BR -y 1889 -y 1890 -y 1949 -y 1980 -y 2020
 tests/console test:generate CA -y 1952 -y 1982 -y 1983 -y 2020 -y 2021 -y 2022 -y 2024
 tests/console test:generate CA-AB -y 1952 -y 1982 -y 1983 -y 1989 -y 1990 -y 2022 -y 2024

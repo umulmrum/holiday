@@ -13,6 +13,7 @@
 | 1899-04-02 | easter_sunday                  | religious |
 | 1899-04-03 | easter_monday                  | religious |
 | 1899-05-04 | saint_florians_day             | religious |
+| 1899-05-06 | saint_georges_day              | religious |
 | 1899-05-11 | ascension                      | religious |
 | 1899-05-21 | whit_sunday                    | religious |
 | 1899-05-22 | whit_monday                    | religious |
@@ -48,6 +49,7 @@
 | 2000-04-23 | easter_sunday                  | religious |
 | 2000-04-24 | easter_monday                  | religious |
 | 2000-05-04 | saint_florians_day             | religious |
+| 2000-05-06 | saint_georges_day              | religious |
 | 2000-06-01 | ascension                      | religious |
 | 2000-06-11 | whit_sunday                    | religious |
 | 2000-06-12 | whit_monday                    | religious |
@@ -83,6 +85,7 @@
 | 2018-04-01 | easter_sunday                  | religious |
 | 2018-04-02 | easter_monday                  | religious |
 | 2018-05-04 | saint_florians_day             | religious |
+| 2018-05-06 | saint_georges_day              | religious |
 | 2018-05-10 | ascension                      | religious |
 | 2018-05-20 | whit_sunday                    | religious |
 | 2018-05-21 | whit_monday                    | religious |
