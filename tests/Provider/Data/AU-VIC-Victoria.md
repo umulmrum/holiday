@@ -1,3 +1,18 @@
+# 1936
+
+| Date       | Name            | Types                           |
+|------------|-----------------|---------------------------------|
+| 1936-01-01 | new_year        | official, day_off               |
+| 1936-03-09 | labor_day       | official, day_off               |
+| 1936-04-10 | good_friday     | official, day_off, religious    |
+| 1936-04-11 | easter_saturday | official, day_off, religious    |
+| 1936-04-13 | easter_monday   | official, day_off, religious    |
+| 1936-04-14 | easter_monday   | official, religious, bank       |
+| 1936-04-25 | anzac_day       | official, day_off               |
+| 1936-11-03 | melbourne_cup   | official, day_off, partial_only |
+| 1936-12-25 | christmas_day   | official, day_off, religious    |
+| 1936-12-26 | boxing_day      | official, day_off, religious    |
+
 # 1937
 
 | Date       | Name                    | Types                                      |

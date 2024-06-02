@@ -1,3 +1,19 @@
+# 1926
+
+| Date       | Name                       | Types                                      |
+|------------|----------------------------|--------------------------------------------|
+| 1926-01-01 | new_year                   | official, day_off                          |
+| 1926-03-01 | labor_day                  | official, day_off                          |
+| 1926-04-02 | good_friday                | official, day_off, religious               |
+| 1926-04-04 | easter_sunday              | official, day_off, religious               |
+| 1926-04-05 | easter_monday              | official, day_off, religious               |
+| 1926-06-07 | foundation_day             | official, day_off                          |
+| 1926-09-27 | kings_birthday             | official, day_off                          |
+| 1926-12-25 | christmas_day              | official, day_off, religious               |
+| 1926-12-26 | boxing_day                 | official, day_off, religious               |
+| 1926-12-27 | christmas_day_compensatory | official, day_off, religious, compensatory |
+| 1926-12-28 | boxing_day_compensatory    | official, day_off, religious, compensatory |
+
 # 2010
 
 | Date       | Name                       | Types                                      |
