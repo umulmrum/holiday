@@ -33,8 +33,10 @@ final class HolidayName
     public const SAINT_JOSEPHS_DAY = 'saint_josephs_day';
     public const MAUNDY_THURSDAY = 'maundy_thursday';
     public const GOOD_FRIDAY = 'good_friday';
+    public const EASTER_SATURDAY = 'easter_saturday';
     public const EASTER_SUNDAY = 'easter_sunday';
     public const EASTER_MONDAY = 'easter_monday';
+    public const EASTER_TUESDAY = 'easter_tuesday';
     public const FEAST_OF_SAINTS_PETER_AND_PAUL = 'feast_of_saints_peter_and_paul';
     public const ASCENSION = 'ascension';
     public const WHIT_SUNDAY = 'whit_sunday';
@@ -62,6 +64,26 @@ final class HolidayName
     public const SECOND_CHRISTMAS_DAY = 'second_christmas_day';
     public const SECOND_CHRISTMAS_DAY_COMPENSATORY = self::SECOND_CHRISTMAS_DAY . self::SUFFIX_COMPENSATORY;
     public const VALENTINES_DAY = 'valentines_day';
+
+    // Australia
+    public const ADELAIDE_CUP_DAY = 'adelaide_cup_day';
+    public const ANZAC_DAY = 'anzac_day';
+    public const AUSTRALIA_DAY = 'australia_day';
+    public const BANK_HOLIDAY = 'bank_holiday';
+    public const CANBERRA_DAY = 'canberra_day';
+    public const EIGHT_HOURS_DAY = 'eight_hours_day';
+    public const FIRST_MONDAY_IN_NOVEMBER = 'first_monday_in_november';
+    public const FOUNDATION_DAY = 'foundation_day';
+    public const FRIDAY_AUSTRALIAN_FOOTBALL = 'friday_australian_football';
+    public const KINGS_BIRTHDAY = 'kings_birthday';
+    public const MELBOURNE_CUP = 'melbourne_cup';
+    public const PEOPLES_DAY = 'peoples_day';
+    public const PICNIC_DAY = 'picnic_day';
+    public const PROCLAMATION_DAY = 'proclamation_day';
+    public const RECONCILIATION_DAY = 'reconciliation_day';
+    public const RECREATION_DAY = 'recreation_day';
+    public const ROYAL_HOBART_REGATTA = 'royal_hobart_regatta';
+    public const WESTERN_AUSTRALIA_DAY = 'western_australia_day';
 
     // Austria
     public const AUSTRIAN_NATIONAL_HOLIDAY = 'austrian_national_holiday';

@@ -11,6 +11,15 @@ tests/console test:generate Wed -y 2019
 tests/console test:generate Thu -y 2019
 tests/console test:generate Fri -y 2019
 tests/console test:generate Sat -y 2019
+tests/console test:generate AU -y 1926 -y 1927 -y 1936 -y 1937 -y 1945 -y 1946 -y 2022 -y 2024
+tests/console test:generate AU-ACT -y 2007 -y 2008 -y 2017 -y 2018 -y 2020 -y 2021 -y 2024
+tests/console test:generate AU-NSW -y 2024
+tests/console test:generate AU-NT -y 2020 -y 2021 -y 2024
+tests/console test:generate AU-QLD -y 2011 -y 2012 -y 2013 -y 2015 -y 2016 -y 2024
+tests/console test:generate AU-SA -y 1909 -y 1910 -y 1972 -y 1973 -y 1992 -y 1993 -y 2005 -y 2006 -y 2024
+tests/console test:generate AU-TAS -y 1918 -y 1919 -y 1989 -y 1990 -y 1991 -y 1992 -y 2024
+tests/console test:generate AU-VIC -vvv -y 1937 -y 1946 -y 1994 -y 1995 -y 2015 -y 2016 -y 2019 -y 2020 -y 2021 -y 2024
+tests/console test:generate AU-WA -y 2010 -y 2011 -y 2012 -y 2013 -y 2024
 tests/console test:generate AT -y 1918 -y 1919 -y 1934 -y 1960 -y 1965 -y 1967
 tests/console test:generate AT-1 -y 2020
 tests/console test:generate AT-2 -y 1929 -y 1921

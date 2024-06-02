@@ -112,11 +112,4 @@ class Scotland extends UnitedKingdom
         $holidays->add($holiday);
         $this->addLaterCompensatoryDay($holidays, $holiday);
     }
-
-    private function addBoxingDay(HolidayList $holidays, int $year): void
-    {
-        $holiday = Holiday::create(HolidayName::BOXING_DAY, "{$year}-12-26", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, null, 2);
-    }
 }

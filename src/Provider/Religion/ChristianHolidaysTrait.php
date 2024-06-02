@@ -130,6 +130,13 @@ trait ChristianHolidaysTrait
         return Holiday::createFromDateTime(HolidayName::GOOD_FRIDAY, $easterSunday->sub(new DateInterval('P2D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
+    private function getEasterSaturday(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $easterSunday = $this->getEasterSundayDate($year);
+
+        return Holiday::createFromDateTime(HolidayName::EASTER_SATURDAY, $easterSunday->sub(new DateInterval('P1D')), HolidayType::RELIGIOUS | $additionalType);
+    }
+
     private function getEasterSunday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
@@ -142,6 +149,13 @@ trait ChristianHolidaysTrait
         $easterSunday = $this->getEasterSundayDate($year);
 
         return Holiday::createFromDateTime(HolidayName::EASTER_MONDAY, $easterSunday->add(new DateInterval('P1D')), HolidayType::RELIGIOUS | $additionalType);
+    }
+
+    private function getEasterTuesday(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $easterSunday = $this->getEasterSundayDate($year);
+
+        return Holiday::createFromDateTime(HolidayName::EASTER_MONDAY, $easterSunday->add(new DateInterval('P2D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getAscension(int $year, int $additionalType = HolidayType::OTHER): Holiday

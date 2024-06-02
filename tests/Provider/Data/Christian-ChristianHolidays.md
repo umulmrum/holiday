@@ -10,8 +10,10 @@
 | 1899-03-19 | saint_josephs_day              | religious |
 | 1899-03-30 | maundy_thursday                | religious |
 | 1899-03-31 | good_friday                    | religious |
+| 1899-04-01 | easter_saturday                | religious |
 | 1899-04-02 | easter_sunday                  | religious |
 | 1899-04-03 | easter_monday                  | religious |
+| 1899-04-04 | easter_monday                  | religious |
 | 1899-05-04 | saint_florians_day             | religious |
 | 1899-05-06 | saint_georges_day              | religious |
 | 1899-05-11 | ascension                      | religious |
@@ -46,8 +48,10 @@
 | 2000-03-19 | saint_josephs_day              | religious |
 | 2000-04-20 | maundy_thursday                | religious |
 | 2000-04-21 | good_friday                    | religious |
+| 2000-04-22 | easter_saturday                | religious |
 | 2000-04-23 | easter_sunday                  | religious |
 | 2000-04-24 | easter_monday                  | religious |
+| 2000-04-25 | easter_monday                  | religious |
 | 2000-05-04 | saint_florians_day             | religious |
 | 2000-05-06 | saint_georges_day              | religious |
 | 2000-06-01 | ascension                      | religious |
@@ -82,8 +86,10 @@
 | 2018-03-19 | saint_josephs_day              | religious |
 | 2018-03-29 | maundy_thursday                | religious |
 | 2018-03-30 | good_friday                    | religious |
+| 2018-03-31 | easter_saturday                | religious |
 | 2018-04-01 | easter_sunday                  | religious |
 | 2018-04-02 | easter_monday                  | religious |
+| 2018-04-03 | easter_monday                  | religious |
 | 2018-05-04 | saint_florians_day             | religious |
 | 2018-05-06 | saint_georges_day              | religious |
 | 2018-05-10 | ascension                      | religious |
