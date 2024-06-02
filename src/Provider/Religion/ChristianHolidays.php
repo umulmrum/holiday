@@ -29,8 +29,10 @@ class ChristianHolidays implements HolidayProviderInterface
         $holidayList->add($this->getAshWednesday($year));
         $holidayList->add($this->getMaundyThursday($year));
         $holidayList->add($this->getGoodFriday($year));
+        $holidayList->add($this->getEasterSaturday($year));
         $holidayList->add($this->getEasterSunday($year));
         $holidayList->add($this->getEasterMonday($year));
+        $holidayList->add($this->getEasterTuesday($year));
         $holidayList->add($this->getAscension($year));
         $holidayList->add($this->getWhitSunday($year));
         $holidayList->add($this->getWhitMonday($year));

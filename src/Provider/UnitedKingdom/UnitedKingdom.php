@@ -162,14 +162,14 @@ class UnitedKingdom implements HolidayProviderInterface
         return Holiday::create(HolidayName::WEDDING_OF_ANNE_AND_MARK, '1973-11-14', HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
-    private function addChristmasDay(HolidayList $holidays, int $year): void
+    protected function addChristmasDay(HolidayList $holidays, int $year): void
     {
         $holiday = $this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
         $this->addLaterCompensatoryDay($holidays, $holiday, null, 2);
     }
 
-    private function addBoxingDay(HolidayList $holidays, int $year): void
+    protected function addBoxingDay(HolidayList $holidays, int $year): void
     {
         $holiday = $this->getBoxingDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);

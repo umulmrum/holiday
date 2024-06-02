@@ -121,6 +121,21 @@ class HolidayList implements Countable, IteratorAggregate
         return count($this->holidayList);
     }
 
+    /**
+     * @return array<int, Holiday>
+     */
+    public function getByName(string $name): array
+    {
+        $result = [];
+        foreach ($this->holidayList as $holiday) {
+            if ($holiday->getName() === $name) {
+                $result[] = $holiday;
+            }
+        }
+
+        return $result;
+    }
+
     public function isHoliday(DateTimeInterface $date): bool
     {
         $formatted = $date->format(Holiday::DISPLAY_DATE_FORMAT);

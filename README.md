@@ -320,6 +320,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 
 (map created by simplemaps.com - licensed under MIT)
 
+- Australia
 - Austria (incl. Burgenland, Carinthia, Lower Austria, Salzburg, Styria, Tyrol, UpperAustria, Vienna, Vorarlberg)
 - Belgium
 - Brazil

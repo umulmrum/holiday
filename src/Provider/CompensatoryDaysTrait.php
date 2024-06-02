@@ -36,6 +36,26 @@ trait CompensatoryDaysTrait
     }
 
     /**
+     * If $holiday falls on a Saturday or a Sunday, add the follwing Monday as holiday.
+     * If $holiday falls on a Sunday and has a preceding, add the following Monday as holiday.
+     */
+    private function addLaterCompensatoryDaySundayOnly(HolidayList $holidays, Holiday $holiday, ?int $type = null, ?int $daysToAdd = null): void
+    {
+        $date = $this->createDateFromString($holiday->getSimpleDate());
+        $weekDay = $date->format('w');
+        if ('0' !== $weekDay) {
+            return;
+        }
+        $date->add(new DateInterval('P' . ($daysToAdd ?? 1) . 'D'));
+
+        $holidays->add(Holiday::create(
+            $holiday->getName() . HolidayName::SUFFIX_COMPENSATORY,
+            $date->format(Holiday::DISPLAY_DATE_FORMAT),
+            ($type ?? $holiday->getType()) | HolidayType::COMPENSATORY
+        ));
+    }
+
+    /**
      * If $holiday falls on a Saturday, add the preceding Friday as holiday.
      * If $holiday falls on a Sunday, add the following Monday as holiday.
      */

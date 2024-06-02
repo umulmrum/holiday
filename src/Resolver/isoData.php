@@ -13,6 +13,17 @@
  * See https://www.iso.org/obp/ui/#search for country and region data
  */
 return [
+    // Australia
+    'AU' => \Umulmrum\Holiday\Provider\Australia\Australia::class,
+    'AU-ACT' => \Umulmrum\Holiday\Provider\Australia\AustralianCapitalTerritory::class,
+    'AU-NSW' => \Umulmrum\Holiday\Provider\Australia\NewSouthWales::class,
+    'AU-NT' => \Umulmrum\Holiday\Provider\Australia\NorthernTerritory::class,
+    'AU-QLD' => \Umulmrum\Holiday\Provider\Australia\Queensland::class,
+    'AU-SA' => \Umulmrum\Holiday\Provider\Australia\SouthAustralia::class,
+    'AU-TAS' => \Umulmrum\Holiday\Provider\Australia\Tasmania::class,
+    'AU-VIC' => \Umulmrum\Holiday\Provider\Australia\Victoria::class,
+    'AU-WA' => \Umulmrum\Holiday\Provider\Australia\WesternAustralia::class,
+
     // Austria
     'AT' => \Umulmrum\Holiday\Provider\Austria\Austria::class,
     'AT-1' => \Umulmrum\Holiday\Provider\Austria\Burgenland::class,
