@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2024-06-03
+
 ### Added
 - Holidays for Australia
 - Holidays for Bulgaria
@@ -180,7 +182,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.9.0...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/0.10.0...master
+[0.10.0]: https://github.com/umulmrum/holiday/compare/0.9.0...0.10.0
 [0.9.0]: https://github.com/umulmrum/holiday/compare/0.8.0...0.9.0
 [0.8.0]: https://github.com/umulmrum/holiday/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/umulmrum/holiday/compare/0.6.0...0.7.0
