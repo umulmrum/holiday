@@ -32,6 +32,7 @@ class Bulgaria implements HolidayProviderInterface
         ChristianOrthodoxHolidaysTrait::getGoodFriday insteadof ChristianHolidaysTrait;
         ChristianOrthodoxHolidaysTrait::getEasterSunday insteadof ChristianHolidaysTrait;
         ChristianOrthodoxHolidaysTrait::getEasterMonday insteadof ChristianHolidaysTrait;
+        ChristianOrthodoxHolidaysTrait::getWhitSunday insteadof ChristianHolidaysTrait;
     }
     use CommonHolidaysTrait;
     use CompensatoryDaysTrait;
@@ -55,7 +56,7 @@ class Bulgaria implements HolidayProviderInterface
         $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
         if ($year >= 2017) {
-            $this->addCompensatoryHolidays($holidays, $year);
+            $this->addCompensatoryHolidays($holidays);
         }
 
         return $holidays;
@@ -86,7 +87,7 @@ class Bulgaria implements HolidayProviderInterface
         return Holiday::create(HolidayName::NATIONAL_AWAKENING_DAY, "{$year}-11-01", HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function addCompensatoryHolidays(HolidayList $holidays, int $year): void
+    private function addCompensatoryHolidays(HolidayList $holidays): void
     {
         foreach ($holidays as $holiday) {
             if (in_array($holiday->getName(), [HolidayName::GOOD_FRIDAY, HolidayName::EASTER_SUNDAY, HolidayName::EASTER_MONDAY], true)) {

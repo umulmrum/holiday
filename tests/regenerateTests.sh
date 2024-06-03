@@ -120,6 +120,7 @@ tests/console test:generate CH-VS -y 2020
 tests/console test:generate CH-ZG -y 2020
 tests/console test:generate CH-ZH -y 2020
 tests/console test:generate TR -y 1962 -y 1963 -y 1981 -y 2016 -y 2017 -y 2014
+tests/console test:generate UA -y 1897 -y 1898 -y 1917 -y 1918 -y 1927 -y 1928 -y 1929 -y 1930 -y 1944 -y 1945 -y 1947 -y 1948 -y 1965 -y 1966 -y 1990 -y 1991 -y 1992 -y 1993 -y 1994 -y 1996 -y 1997 -y 1998 -y 1999 -y 2000 -y 2014 -y 2015 -y 2016 -y 2017 -y 2018 -y 2022 -y 2023 -y 2024
 tests/console test:generate GB -y 1964 -y 1968 -y 1969 -y 1973 -y 1977 -y 1981 -y 1995 -y 1999 -y 2002 -y 2011 -y 2012 -y 2020 -y 2022 -y 2023 -y 2024
 tests/console test:generate GB-NIR -y 2014 -y 2018 -y 2020 -y 2024
 tests/console test:generate GB-SCT -y 1967 -y 1968 -y 1973 -y 1977 -y 1981 -y 1995 -y 1999 -y 2006 -y 2011 -y 2012 -y 2020 -y 2021 -y 2022 -y 2023 -y 2024

@@ -254,6 +254,15 @@ final class HolidayName
     public const TURKISH_REPUBLIC_DAY = 'turkish_republic_day';
     public const TURKISH_VICTORY_DAY = 'turkish_victory_day';
 
+    // Ukraine
+    public const DAY_OF_INTERNATIONAL_SOLIDARITY_OF_WORKERS = 'day_of_international_solidarity_of_workers';
+    public const DAY_OF_REMEMBRANCE_AND_VICTORY_OVER_NAZISM = 'day_of_remembrance_and_victory_over_nazism';
+    public const DAY_OF_VICTORY_OVER_NAZISM = 'day_of_victory_over_nazism';
+    public const DEFENDERS_OF_UKRAINE_DAY = 'defenders_of_ukraine_day';
+    public const UKRAINE_CONSTITUTION_DAY = 'ukraine_constitution_day';
+    public const UKRAINE_INDEPENDENCE_DAY = 'ukraine_independence_day';
+    public const UKRAINE_STATEHOOD_DAY = 'ukraine_statehood_day';
+
     // United Kingdom
     public const BATTLE_OF_THE_BOYNE = 'battle_of_the_boyne';
     public const BOXING_DAY = 'boxing_day';
