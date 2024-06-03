@@ -31,7 +31,7 @@ class Hesse extends Germany
         foreach ($sundays as $sunday) {
             $holidays->add($sunday);
         }
-        $holidays->add($this->getCorpusChristi($year, HolidayType::OTHER));
+        $holidays->add($this->getCorpusChristi($year, HolidayType::DAY_OFF));
 
         return $holidays;
     }
