@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
 - Holidays for Australia
 - Holidays for Bulgaria
 - Holidays for Ukraine
+
+### Changed
+- Corpus Christi in Germany/Hesse is a DAY_OFF now
 
 ## [0.9.0] - 2024-06-01
 

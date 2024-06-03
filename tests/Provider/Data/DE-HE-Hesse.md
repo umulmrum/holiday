@@ -30,7 +30,7 @@
 | 2016-05-15 | sunday                    | day_off                      |
 | 2016-05-16 | whit_monday               | official, day_off, religious |
 | 2016-05-22 | sunday                    | day_off                      |
-| 2016-05-26 | corpus_christi            | religious                    |
+| 2016-05-26 | corpus_christi            | day_off, religious           |
 | 2016-05-29 | sunday                    | day_off                      |
 | 2016-06-05 | sunday                    | day_off                      |
 | 2016-06-12 | sunday                    | day_off                      |
