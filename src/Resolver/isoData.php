@@ -176,6 +176,9 @@ return [
     // Turkey
     'TR' => \Umulmrum\Holiday\Provider\Turkey\Turkey::class,
 
+    // Ukraine
+    'UA' => \Umulmrum\Holiday\Provider\Ukraine\Ukraine::class,
+
     // United Kingdom
     'GB' => \Umulmrum\Holiday\Provider\UnitedKingdom\UnitedKingdom::class,
     'GB-NIR' => \Umulmrum\Holiday\Provider\UnitedKingdom\NorthernIreland::class,

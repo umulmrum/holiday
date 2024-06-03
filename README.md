@@ -347,6 +347,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Sweden
 - Switzerland (incl. Aargau, Appenzell-Ausserrhoden, Appenzell-Innerrhoden, Basel Landschaft, Basel Stadt, Bern, Fribourg, Geneva, Glarus, Grisons, Jura, Lucerne, Neuchatel, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St Gallen, Thurgau, Ticino, Uri, Valais, Vaud, Zuerich, Zug)
 - Turkey (without Islamic holidays yet)
+- Ukraine
 - United Kingdom (incl. England, Northern Ireland, Scotland (without local holidays), Wales; mainland only yet)
 - USA (federal holidays only yet)
 
@@ -381,6 +382,13 @@ merge pull requests to support more countries (see below).
 - Holidays in Switzerland are really complicated as there is wide fragmentation on if or how holidays are celebrated.
   The implemented rules are a best guess of what makes sense in the scope of this library (written by someone who isn't
   from Switzerland). I'm open for improvements.
+
+### Notes on Ukrainian Holidays
+
+- Ukraine has been using the Revised Julian calendar in recent years. This calendar is not directly supported, but it is
+  identical to the Gregorian calendar up to the year 2800.
+- Years in which Easter falls on Sunday, May 1st (e.g. 2016) seem to be unclear regarding compensatory holidays. Treat
+  those years with a grain of salt.
 
 ### Notes on Christian Holidays
 
