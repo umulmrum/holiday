@@ -136,13 +136,16 @@ $holidays->count();
 // Get the list of holidays as array. HolidayList also implements \IteratorAggregate
 $holidays->getList();
 $holidays->getIterator();
+$holidays->getByName($holidayName)
 ```
 
 ```php
 // Modify the list.
 $holidays->add($anotherHoliday);
 $holidays->addAll($anotherHolidayList);
+$holidays->removeByName($holidayName);
 $holidays->removeByIndex(3);
+$holidays->replaceByNameAndDate($anotherHoliday);
 $holidays->replaceByIndex(0, $anotherHoliday);
 ```
 
@@ -435,9 +438,18 @@ By submitting a PR you agree that all your contributed code may be used under th
 
 - Add a provider for that country or region inside `src/Provider/...`.
 - Should you need to add country-specific holiday names, add those to `Constant\HolidayName` and provide
-  English translations inside `umulmrum_holiday.en.xliff`.
+  English translations inside `umulmrum_holiday.en.php`.
 - Lookup the ISO code for your country or region and add it to `Resolver\isoData.php`. If you add a provider that does
   NOT add country data, please add it to the list in the `MiscResolver` class.
+- If the country provides any form of substitute/compensatory holidays in case a holiday occurs on a weekend, proceed as
+  follows:
+  - Let the provider class implement `CompensatoryHolidayProviderInterface` instead of the default
+    `HolidayProviderInterface`. Apart from that, add holidays without covering compensatory days at first.
+  - Implement the method `getCompensatoryDaysCalculators` that should return an array of `CompensatoryDayCalculator`
+    objects. These objects handle the compensatory days for the finished holiday list automatically. By default,
+    compensatory days are calculated for all holidays, and assume the holidays are moved to Monday if they occur on
+    Saturday or Sunday. This behavior can be adjusted by passing constructor arguments to `CompensatoryDayCalculator`.
+    See e.g. the holiday providers for the United Kingdom or the USA for examples.
 - Provide tests inside `tests/Provider/...` that ideally cover all edge cases. This can be done as follows:
   - First write the holiday provider itself
   - Then run a command that looks approximately like this: `tests/console test:generate DE-BY -y 2018 -y 2025`.

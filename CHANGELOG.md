@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Compensatory days can now be calculated automatically (providers only provide configuration). See the section on adding
+  a new country or region in README.md for details.
+
+### Changed
+- Fixed some compensatory holiday calculations
+- Compensatory holidays now always have the same type as the original holiday (+ HolidayType::COMPENSATORY as before).
+
+### Removed
+- [BC Break] Removed CompensatoryDaysTrait. Use automatic compensatory day calculation instead.
+
 ## [0.10.0] - 2024-06-03
 
 ### Added

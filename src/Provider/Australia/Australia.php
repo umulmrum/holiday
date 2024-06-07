@@ -12,27 +12,26 @@
 namespace Umulmrum\Holiday\Provider\Australia;
 
 use DateTimeImmutable;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class Australia implements HolidayProviderInterface
+class Australia implements CompensatoryHolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
-        $this->addNewYear($holidays, $year, HolidayType::DAY_OFF);
+        $holidays->add($this->getNewYear($year, HolidayType::DAY_OFF));
         if ($year >= 1946) {
-            $this->addAustraliaDay($holidays, $year, HolidayType::DAY_OFF);
+            $holidays->add($this->getAustraliaDay($year, HolidayType::DAY_OFF));
         }
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
@@ -45,24 +44,15 @@ class Australia implements HolidayProviderInterface
         if ($year === 2022) {
             $holidays->add($this->getNationalDayOfMourningElizabethII(HolidayType::DAY_OFF));
         }
-        $this->addChristmasDay($holidays, $year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $this->addBoxingDay($holidays, $year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getBoxingDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
         return $holidays;
     }
 
-    protected function addNewYear(HolidayList $holidays, int $year, int $additionalType = HolidayType::OTHER): void
+    protected function getAustraliaDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
-        $holiday = $this->getNewYear($year, $additionalType);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday);
-    }
-
-    protected function addAustraliaDay(HolidayList $holidays, int $year, int $additionalType = HolidayType::OTHER): void
-    {
-        $holiday = Holiday::create(HolidayName::AUSTRALIA_DAY, "{$year}-01-26", HolidayType::OFFICIAL | $additionalType);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday);
+        return Holiday::create(HolidayName::AUSTRALIA_DAY, "{$year}-01-26", HolidayType::OFFICIAL | $additionalType);
     }
 
     protected function getAnzacDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
@@ -80,17 +70,17 @@ class Australia implements HolidayProviderInterface
         return Holiday::create(HolidayName::NATIONAL_DAY_OF_MOURNING, '2022-09-22', HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function addChristmasDay(HolidayList $holidays, int $year, int $additionalType = HolidayType::OTHER): void
+    public function getCompensatoryDaysCalculators(int $year): array
     {
-        $holiday = $this->getChristmasDay($year, $additionalType);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, null, 2);
-    }
-
-    private function addBoxingDay(HolidayList $holidays, int $year, int $additionalType = HolidayType::OTHER): void
-    {
-        $holiday = $this->getBoxingDay($year, $additionalType);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, null, 2);
+        return [
+            new CompensatoryDaysCalculator(
+                [
+                    HolidayName::NEW_YEAR,
+                    HolidayName::AUSTRALIA_DAY,
+                    HolidayName::CHRISTMAS_DAY,
+                    HolidayName::BOXING_DAY,
+                ],
+            ),
+        ];
     }
 }

@@ -11,36 +11,43 @@
 
 namespace Umulmrum\Holiday\Provider\UnitedKingdom;
 
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
 
 class NorthernIreland extends UnitedKingdom
 {
-    use CompensatoryDaysTrait;
-
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = parent::calculateHolidaysForYear($year);
-        $this->addSaintPatricksDay($holidays, $year);
-        $this->addBattleOfTheBoyne($holidays, $year);
+        $holidays->add($this->getSaintPatricksDay($year));
+        $holidays->add($this->getBattleOfTheBoyne($year));
 
         return $holidays;
     }
 
-    private function addSaintPatricksDay(HolidayList $holidays, int $year): void
+    private function getSaintPatricksDay(int $year): Holiday
     {
-        $holiday = Holiday::create(HolidayName::SAINT_PATRICKS_DAY, "{$year}-03-17", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday);
+        return Holiday::create(HolidayName::SAINT_PATRICKS_DAY, "{$year}-03-17", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
-    private function addBattleOfTheBoyne(HolidayList $holidays, int $year): void
+    private function getBattleOfTheBoyne(int $year): Holiday
     {
-        $holiday = Holiday::create(HolidayName::BATTLE_OF_THE_BOYNE, "{$year}-07-12", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday);
+        return Holiday::create(HolidayName::BATTLE_OF_THE_BOYNE, "{$year}-07-12", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+    }
+
+    public function getCompensatoryDaysCalculators(int $year): array
+    {
+        return [
+            ...parent::getCompensatoryDaysCalculators($year),
+            new CompensatoryDaysCalculator(
+                [
+                    HolidayName::SAINT_PATRICKS_DAY,
+                    HolidayName::BATTLE_OF_THE_BOYNE,
+                ]
+            ),
+        ];
     }
 }

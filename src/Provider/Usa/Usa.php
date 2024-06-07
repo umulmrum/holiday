@@ -12,25 +12,25 @@
 namespace Umulmrum\Holiday\Provider\Usa;
 
 use DateTime;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Constant\Weekday;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class Usa implements HolidayProviderInterface
+class Usa implements CompensatoryHolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
-        $this->addNewYear($holidays, $year);
+        $holidays->add($this->getNewYear($year, HolidayType::DAY_OFF));
         if ($year >= 1986) {
             $holidays->add($this->getMartinLutherKingJrDay($year));
         }
@@ -57,16 +57,8 @@ class Usa implements HolidayProviderInterface
             $holidays->add($this->getThanksgivingDay($year));
         }
         $this->addChristmasDay($holidays, $year);
-        $this->addCompensatoryNewYearForFollowingYear($holidays, $year);
 
         return $holidays;
-    }
-
-    private function addNewYear(HolidayList $holidays, int $year): void
-    {
-        $holiday = $this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
     private function getMartinLutherKingJrDay(int $year): Holiday
@@ -102,7 +94,6 @@ class Usa implements HolidayProviderInterface
     {
         $holiday = Holiday::create(HolidayName::INDEPENDENCE_DAY, "{$year}-07-04", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
     private function getLaborDayUsa(int $year): Holiday
@@ -138,9 +129,6 @@ class Usa implements HolidayProviderInterface
 
         $holiday = Holiday::create(HolidayName::VETERANS_DAY, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        if ($year >= 1978) {
-            $this->addNearestCompensatoryDay($holidays, $holiday, $year);
-        }
     }
 
     private function getThanksgivingDay(int $year): Holiday
@@ -154,6 +142,25 @@ class Usa implements HolidayProviderInterface
     {
         $holiday = $this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
+    }
+
+    public function getCompensatoryDaysCalculators(int $year): array
+    {
+        $holidayNames = [
+            HolidayName::NEW_YEAR,
+            HolidayName::INDEPENDENCE_DAY,
+            HolidayName::CHRISTMAS_DAY,
+        ];
+        if ($year >= 1978) {
+            $holidayNames[] = HolidayName::VETERANS_DAY;
+        }
+
+        return [
+            new CompensatoryDaysCalculator(
+                $holidayNames,
+                weekDaysToStepBackward: [Weekday::SATURDAY],
+                weekDaysToStepForward: [Weekday::SUNDAY],
+            ),
+        ];
     }
 }

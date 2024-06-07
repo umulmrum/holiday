@@ -12,19 +12,18 @@
 namespace Umulmrum\Holiday\Provider\Australia;
 
 use DateTimeImmutable;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class SouthAustralia extends Australia
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
@@ -77,7 +76,6 @@ class SouthAustralia extends Australia
                 HolidayType::OFFICIAL | $additionalType,
             );
             $holidays->add($holiday);
-            $this->addLaterCompensatoryDay($holidays, $holiday);
 
             return;
         }
@@ -87,5 +85,17 @@ class SouthAustralia extends Australia
             "{$year}-12-26",
             HolidayType::OFFICIAL | $additionalType,
         ));
+    }
+
+    public function getCompensatoryDaysCalculators(int $year): array
+    {
+        if ($year >= 1993) {
+            return parent::getCompensatoryDaysCalculators($year);
+        }
+
+        return [
+            ...parent::getCompensatoryDaysCalculators($year),
+            new CompensatoryDaysCalculator([HolidayName::PROCLAMATION_DAY]),
+        ];
     }
 }

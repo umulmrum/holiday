@@ -14,6 +14,7 @@ namespace Umulmrum\Holiday;
 use InvalidArgumentException;
 use Umulmrum\Holiday\Assert\Assert;
 use Umulmrum\Holiday\Model\HolidayList;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Resolver\ClassNameResolver;
 use Umulmrum\Holiday\Resolver\IsoResolver;
 use Umulmrum\Holiday\Resolver\MiscResolver;
@@ -41,7 +42,13 @@ final class HolidayCalculator implements HolidayCalculatorInterface
         $holidays = new HolidayList();
         foreach ($this->resolverHandler->resolve($holidayProviders) as $holidayProvider) {
             foreach ($finalYears as $year) {
-                $holidays->addAll($holidayProvider->calculateHolidaysForYear($year));
+                $subHolidays = $holidayProvider->calculateHolidaysForYear($year);
+                if ($holidayProvider instanceof CompensatoryHolidayProviderInterface) {
+                    foreach ($holidayProvider->getCompensatoryDaysCalculators($year) as $strategy) {
+                        $strategy->addAll($subHolidays, $holidayProvider, $year);
+                    }
+                }
+                $holidays->addAll($subHolidays);
             }
         }
 

@@ -73,6 +73,28 @@
 | 1973-12-28 | proclamation_day | official, day_off                 |
 | 1973-12-31 | new_years_eve    | official, half_day_off            |
 
+# 1991
+
+| Date       | Name                          | Types                             |
+|------------|-------------------------------|-----------------------------------|
+| 1991-01-01 | new_year                      | official, day_off                 |
+| 1991-01-26 | australia_day                 | official, day_off                 |
+| 1991-01-28 | australia_day_compensatory    | official, day_off, compensatory   |
+| 1991-03-29 | good_friday                   | official, day_off, religious      |
+| 1991-03-30 | easter_saturday               | official, day_off, religious      |
+| 1991-03-31 | easter_sunday                 | official, day_off, religious      |
+| 1991-04-01 | easter_monday                 | official, day_off, religious      |
+| 1991-04-25 | anzac_day                     | official, day_off                 |
+| 1991-05-20 | adelaide_cup_day              | official, day_off                 |
+| 1991-06-10 | kings_birthday                | official, day_off                 |
+| 1991-10-07 | labor_day                     | official, day_off                 |
+| 1991-12-24 | christmas_eve                 | official, religious, half_day_off |
+| 1991-12-25 | christmas_day                 | official, day_off, religious      |
+| 1991-12-26 | boxing_day                    | official, day_off, religious      |
+| 1991-12-28 | proclamation_day              | official, day_off                 |
+| 1991-12-30 | proclamation_day_compensatory | official, day_off, compensatory   |
+| 1991-12-31 | new_years_eve                 | official, half_day_off            |
+
 # 1992
 
 | Date       | Name                       | Types                                      |
@@ -91,8 +113,8 @@
 | 1992-12-24 | christmas_eve              | official, religious, half_day_off          |
 | 1992-12-25 | christmas_day              | official, day_off, religious               |
 | 1992-12-26 | boxing_day                 | official, day_off, religious               |
-| 1992-12-28 | boxing_day_compensatory    | official, day_off, religious, compensatory |
 | 1992-12-28 | proclamation_day           | official, day_off                          |
+| 1992-12-29 | boxing_day_compensatory    | official, day_off, religious, compensatory |
 | 1992-12-31 | new_years_eve              | official, half_day_off                     |
 
 # 1993

@@ -12,19 +12,19 @@
 namespace Umulmrum\Holiday\Provider\Australia;
 
 use DateTimeImmutable;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Constant\Weekday;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class AustralianCapitalTerritory extends Australia
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
@@ -36,7 +36,6 @@ class AustralianCapitalTerritory extends Australia
             $holidays->add($this->getReconciliationDay($year, HolidayType::DAY_OFF));
         }
         $holidays->add($this->getLaborDayAct($year, HolidayType::DAY_OFF));
-        $this->addCompensatoryHolidayForAnzacDay($holidays);
 
         return $holidays;
     }
@@ -74,12 +73,14 @@ class AustralianCapitalTerritory extends Australia
         );
     }
 
-    protected function addCompensatoryHolidayForAnzacDay(HolidayList $holidays): void
+    public function getCompensatoryDaysCalculators(int $year): array
     {
-        $anzacDayList = $holidays->getByName(HolidayName::ANZAC_DAY);
-        if ($anzacDayList === []) {
-            return;
-        }
-        $this->addLaterCompensatoryDaySundayOnly($holidays, $anzacDayList[0]);
+        return [
+            ...parent::getCompensatoryDaysCalculators($year),
+            new CompensatoryDaysCalculator(
+                forTheseHolidayNamesOnly: [HolidayName::ANZAC_DAY],
+                weekDaysToStepForward: [Weekday::SUNDAY],
+            ),
+        ];
     }
 }

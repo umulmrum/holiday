@@ -52,12 +52,15 @@ final class GenerateTestCommand extends Command
         $provider = $input->getArgument('provider');
         $years = $input->getOption('years');
         if ($years === []) {
-            $years = [(int) (new DateTimeImmutable())->format('Y')];
+            $finalYears = [(int) (new DateTimeImmutable())->format('Y')];
         } else {
-            $years = array_map('intval', $years);
+            $finalYears = [];
+            foreach ($years as $yearEntry) {
+                $finalYears[] = array_map('intval', explode(',', $yearEntry));
+            }
         }
 
-        return [$provider, $years];
+        return [$provider, $finalYears];
     }
 
     private function calculateData(string $provider, array $years): string
@@ -66,15 +69,15 @@ final class GenerateTestCommand extends Command
         $sortFilter = new SortByDateFilter();
         $formatter = new MarkdownFormatter();
         $data = '';
-        foreach ($years as $index => $year) {
+        foreach ($years as $index => $yearList) {
             if ($index > 0) {
                 $data .= PHP_EOL;
             }
-            $data .= '# ' . $year . PHP_EOL . PHP_EOL;
+            $data .= '# ' . implode(',', $yearList) . PHP_EOL . PHP_EOL;
 
             /** @var string $formattedHolidays */
             $formattedHolidays = $calculator
-                ->calculate($provider, $year)
+                ->calculate($provider, $yearList)
                 ->filter($sortFilter)
                 ->format($formatter)
             ;
