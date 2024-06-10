@@ -189,6 +189,12 @@ final class HolidayName
     public const REPUBLIC_DAY = 'republic_day';
     public const TRICOLOUR_DAY = 'tricolour_day';
 
+    // Latvia
+    public const PROCLAMATION_DAY_OF_THE_REPUBLIC_OF_LATVIA = 'proclamation_day_of_the_republic_of_latvia';
+    public const PROCLAMATION_DAY_OF_THE_REPUBLIC_OF_LATVIA_COMPENSATORY = 'proclamation_day_of_the_republic_of_latvia_compensatory';
+    public const RESTORATION_OF_INDEPENDENCE_DAY = 'restoration_of_independence_day';
+    public const RESTORATION_OF_INDEPENDENCE_DAY_COMPENSATORY = 'restoration_of_independence_day_compensatory';
+
     // Luxembourg
     public const EUROPE_DAY = 'europe_day';
     public const GRAND_DUKES_OFFICIAL_BIRTHDAY = 'grand_dukes_official_birthday';
