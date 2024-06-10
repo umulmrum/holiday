@@ -115,6 +115,9 @@ return [
     'IT' => \Umulmrum\Holiday\Provider\Italy\Italy::class,
     'IT-32' => \Umulmrum\Holiday\Provider\Italy\SouthTyrol::class,
 
+    // Latvia
+    'LV' => \Umulmrum\Holiday\Provider\Latvia\Latvia::class,
+
     // Liechtenstein
     'FL' => \Umulmrum\Holiday\Provider\Liechtenstein\Liechtenstein::class,
 
