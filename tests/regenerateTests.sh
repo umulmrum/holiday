@@ -83,6 +83,7 @@ tests/console test:generate IT -y 1911 -y 1945 -y 1946 -y 1950 -y 1961 -y 1977 -
 tests/console test:generate IT-32 -y 2020
 tests/console test:generate LV -y 1989 -y 1990 -y 2024
 tests/console test:generate FL -y 2020
+tests/console test:generate LT -y 1989 -y 1990 -y 1991 -y 2019 -y 2020 -y 2024
 tests/console test:generate LU -y 1961 -y 2018 -y 2020
 tests/console test:generate MX -y 1825 -y 1826 -y 1911 -y 1918 -y 1923 -y 2006 -y 2010 -y 2020 -y 2021 -y 2022 -y 2021,2022
 tests/console test:generate NL -y 1948 -y 1963 -y 1967 -y 1975 -y 1989 -y 1990 -y 2014 -y 2020
