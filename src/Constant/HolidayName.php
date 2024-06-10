@@ -58,6 +58,7 @@ final class HolidayName
     public const SAINT_MARTINS_DAY = 'saint_martins_day';
     public const SAINT_RUPERTS_DAY = 'saint_ruperts_day';
     public const LEOPOLDS_DAY = 'leopolds_day';
+    public const RADONITSA = 'radonitsa';
     public const REPENTANCE_AND_PRAYER_DAY = 'repentance_and_prayer_day';
     public const IMMACULATE_CONCEPTION = 'immaculate_conception';
     public const CHRISTMAS_EVE = 'christmas_eve';
@@ -91,6 +92,9 @@ final class HolidayName
     public const AUSTRIAN_NATIONAL_HOLIDAY = 'austrian_national_holiday';
     public const AUSTRIAN_STATES_HOLIDAY = 'austrian_states_holiday';
     public const CARINTHIAN_PLEBISCITE_DAY = 'carinthian_plebiscite_day';
+
+    // Belarus
+    public const BELARUS_INDEPENDENCE_DAY = 'belarus_independence_day';
 
     // Belgium
     public const ARMISTICE_DAY = 'armistice_day';

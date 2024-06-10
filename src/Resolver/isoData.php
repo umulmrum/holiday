@@ -36,6 +36,9 @@ return [
     'AT-8' => \Umulmrum\Holiday\Provider\Austria\Vorarlberg::class,
     'AT-9' => \Umulmrum\Holiday\Provider\Austria\Vienna::class,
 
+    // Belarus
+    'BY' => \Umulmrum\Holiday\Provider\Belarus\Belarus::class,
+
     // Belgium
     'BE' => \Umulmrum\Holiday\Provider\Belgium\Belgium::class,
 
