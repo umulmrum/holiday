@@ -67,6 +67,9 @@ return [
     // Denmark
     'DK' => \Umulmrum\Holiday\Provider\Denmark\Denmark::class,
 
+    // Estonia
+    'EE' => \Umulmrum\Holiday\Provider\Estonia\Estonia::class,
+
     // Finland
     'FI' => \Umulmrum\Holiday\Provider\Finland\Finland::class,
 

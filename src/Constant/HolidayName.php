@@ -148,6 +148,12 @@ final class HolidayName
     public const DANISH_NATIONAL_HOLIDAY = 'danish_national_holiday';
     public const GENERAL_PRAYER_DAY = 'general_prayer_day';
 
+    // Estonia
+    public const ESTONIA_INDEPENDENCE_DAY = 'estonia_independence_day';
+    public const ESTONIA_VICTORY_DAY = 'estonia_victory_day';
+    public const INDEPENDENCE_RESTORATION_DAY = 'independence_restoration_day';
+    public const SPRING_DAY = 'spring_day';
+
     // Finland
     public const FINLAND_INDEPENDENCE_DAY = 'finland_independence_day';
 
