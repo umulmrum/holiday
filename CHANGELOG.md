@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Holidays for Estonia
 - Holidays for Latvia
+- Holidays for Lithuania
 - Compensatory days can now be calculated automatically (providers only provide configuration). See the section on adding
   a new country or region in README.md for details.
 

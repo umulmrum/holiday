@@ -341,6 +341,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 - Italy (incl. South Tyrol)
 - Latvia
 - Liechtenstein
+- Lithuania
 - Luxembourg
 - Mexico
 - The Netherlands

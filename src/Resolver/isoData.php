@@ -121,6 +121,9 @@ return [
     // Liechtenstein
     'FL' => \Umulmrum\Holiday\Provider\Liechtenstein\Liechtenstein::class,
 
+    // Lithuania
+    'LT' => \Umulmrum\Holiday\Provider\Lithuania\Lithuania::class,
+
     // Luxembourg
     'LU' => \Umulmrum\Holiday\Provider\Luxembourg\Luxembourg::class,
 

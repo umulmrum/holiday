@@ -16,11 +16,13 @@ final class HolidayName
     public const SUFFIX_COMPENSATORY = '_compensatory';
 
     // Common
+    public const FATHERS_DAY = 'fathers_day';
     public const NEW_YEAR = 'new_year';
     public const NEW_YEAR_COMPENSATORY = self::NEW_YEAR . self::SUFFIX_COMPENSATORY;
     public const INTERNATIONAL_WOMENS_DAY = 'international_womens_day';
     public const INTERNATIONAL_CHILDRENS_DAY = 'international_childrens_day';
     public const LABOR_DAY = 'labor_day';
+    public const MOTHERS_DAY = 'mothers_day';
     public const NEW_YEARS_EVE = 'new_years_eve';
     public const VICTORY_IN_EUROPE_DAY = 'victory_in_europe_day';
 
@@ -194,6 +196,11 @@ final class HolidayName
     public const PROCLAMATION_DAY_OF_THE_REPUBLIC_OF_LATVIA_COMPENSATORY = 'proclamation_day_of_the_republic_of_latvia_compensatory';
     public const RESTORATION_OF_INDEPENDENCE_DAY = 'restoration_of_independence_day';
     public const RESTORATION_OF_INDEPENDENCE_DAY_COMPENSATORY = 'restoration_of_independence_day_compensatory';
+
+    // Lithuania
+    public const DAY_OF_RESTORATION_OF_THE_STATE_OF_LITHUANIA = 'day_of_restoration_of_the_state_of_lithuania';
+    public const DAY_OF_RESTORATION_OF_INDEPENDENCE_OF_LITHUANIA = 'day_of_restoration_of_independence_of_lithuania';
+    public const LITHUANIA_STATEHOOD_DAY = 'lithuania_statehood_day';
 
     // Luxembourg
     public const EUROPE_DAY = 'europe_day';
