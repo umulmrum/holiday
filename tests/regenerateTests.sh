@@ -30,6 +30,7 @@ tests/console test:generate AT-6 -y 2020
 tests/console test:generate AT-7 -y 2020
 tests/console test:generate AT-8 -y 2020
 tests/console test:generate AT-9 -y 2020
+tests/console test:generate BY -y 1944 -y 1945 -y 1990 -y 1991 -y 1994 -y 1995 -y 2019 -y 2020 -y 2024
 tests/console test:generate BE -y 1865 -y 1866 -y 1890 -y 1973 -y 1975 -y 1990 -y 1998 -y 2020
 tests/console test:generate BG -y 2016 -y 2017 -y 2020 -y 2021 -y 2022 -y 2023 -y 2024
 tests/console test:generate BR -y 1889 -y 1890 -y 1949 -y 1980 -y 2020

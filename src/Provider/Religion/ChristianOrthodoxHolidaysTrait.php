@@ -75,6 +75,13 @@ trait ChristianOrthodoxHolidaysTrait
         return Holiday::createFromDateTime(HolidayName::EASTER_MONDAY, $easterSunday->add(new DateInterval('P1D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
+    private function getRadonitsa(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $easterSunday = $this->getEasterSundayDate($year);
+
+        return Holiday::createFromDateTime(HolidayName::RADONITSA, $easterSunday->add(new DateInterval('P9D')), HolidayType::RELIGIOUS | $additionalType);
+    }
+
     private function getWhitSunday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);

@@ -325,6 +325,7 @@ Currently only the Gregorian calendar is supported, for years < 10000.
 
 - Australia
 - Austria (incl. Burgenland, Carinthia, Lower Austria, Salzburg, Styria, Tyrol, UpperAustria, Vienna, Vorarlberg)
+- Belarus
 - Belgium
 - Brazil
 - Bulgaria
