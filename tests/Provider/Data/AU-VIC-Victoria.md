@@ -28,7 +28,7 @@
 | 1937-11-02 | melbourne_cup           | official, day_off, partial_only            |
 | 1937-12-25 | christmas_day           | official, day_off, religious               |
 | 1937-12-26 | boxing_day              | official, day_off, religious               |
-| 1937-12-28 | boxing_day_compensatory | official, day_off, religious, compensatory |
+| 1937-12-27 | boxing_day_compensatory | official, day_off, religious, compensatory |
 
 # 1946
 

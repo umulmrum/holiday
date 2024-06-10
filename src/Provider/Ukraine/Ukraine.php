@@ -11,17 +11,17 @@
 
 namespace Umulmrum\Holiday\Provider\Ukraine;
 
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 use Umulmrum\Holiday\Provider\Religion\ChristianOrthodoxHolidaysTrait;
 
-class Ukraine implements HolidayProviderInterface
+class Ukraine implements CompensatoryHolidayProviderInterface
 {
     use ChristianHolidaysTrait, ChristianOrthodoxHolidaysTrait {
         ChristianOrthodoxHolidaysTrait::getGoodFriday insteadof ChristianHolidaysTrait;
@@ -35,7 +35,6 @@ class Ukraine implements HolidayProviderInterface
         ChristianOrthodoxHolidaysTrait::getChristmasDay as getEasternChristmasDay;
     }
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
@@ -85,7 +84,6 @@ class Ukraine implements HolidayProviderInterface
         if ($year >= 2017) {
             $holidays->add($this->getWesternChristmasDay($year, $year === 2018 ? HolidayType::OFFICIAL : $holidayType));
         }
-        $this->addCompensatoryHolidays($holidays, $year);
 
         return $holidays;
     }
@@ -148,13 +146,12 @@ class Ukraine implements HolidayProviderInterface
         return Holiday::create(HolidayName::DEFENDERS_OF_UKRAINE_DAY, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
-    protected function addCompensatoryHolidays(HolidayList $holidays, int $year): void
+    public function getCompensatoryDaysCalculators(int $year): array
     {
         if ($year <= 1994 || $year === 1998 || $year === 1999) {
-            return;
+            return [];
         }
-        foreach ($holidays as $holiday) {
-            $this->addLaterCompensatoryDay($holidays, $holiday);
-        }
+
+        return [new CompensatoryDaysCalculator()];
     }
 }

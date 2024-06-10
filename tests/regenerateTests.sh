@@ -16,7 +16,7 @@ tests/console test:generate AU-ACT -y 1926 -y 2007 -y 2008 -y 2017 -y 2018 -y 20
 tests/console test:generate AU-NSW -y 2024
 tests/console test:generate AU-NT -y 1926 -y 2020 -y 2021 -y 2024
 tests/console test:generate AU-QLD -y 2011 -y 2012 -y 2013 -y 2015 -y 2016 -y 2024
-tests/console test:generate AU-SA -y 1909 -y 1910 -y 1972 -y 1973 -y 1992 -y 1993 -y 2005 -y 2006 -y 2024
+tests/console test:generate AU-SA -y 1909 -y 1910 -y 1972 -y 1973 -y 1991 -y 1992 -y 1993 -y 2005 -y 2006 -y 2024
 tests/console test:generate AU-TAS -y 1918 -y 1919 -y 1989 -y 1990 -y 1991 -y 1992 -y 2024
 tests/console test:generate AU-VIC -y 1936 -y 1937 -y 1946 -y 1994 -y 1995 -y 2015 -y 2016 -y 2019 -y 2020 -y 2021 -y 2024
 tests/console test:generate AU-WA -y 1926 -y 2010 -y 2011 -y 2012 -y 2013 -y 2024
@@ -82,7 +82,7 @@ tests/console test:generate IT -y 1911 -y 1945 -y 1946 -y 1950 -y 1961 -y 1977 -
 tests/console test:generate IT-32 -y 2020
 tests/console test:generate FL -y 2020
 tests/console test:generate LU -y 1961 -y 2018 -y 2020
-tests/console test:generate MX -y 1825 -y 1826 -y 1911 -y 1918 -y 1923 -y 2006 -y 2020
+tests/console test:generate MX -y 1825 -y 1826 -y 1911 -y 1918 -y 1923 -y 2006 -y 2010 -y 2020 -y 2021 -y 2022 -y 2021,2022
 tests/console test:generate NL -y 1948 -y 1963 -y 1967 -y 1975 -y 1989 -y 1990 -y 2014 -y 2020
 tests/console test:generate NO -y 2024
 tests/console test:generate PL -y 1918 -y 1919 -y 1945 -y 1947 -y 2011 -y 2020
@@ -124,4 +124,4 @@ tests/console test:generate UA -y 1897 -y 1898 -y 1917 -y 1918 -y 1927 -y 1928 -
 tests/console test:generate GB -y 1964 -y 1968 -y 1969 -y 1973 -y 1977 -y 1981 -y 1995 -y 1999 -y 2002 -y 2011 -y 2012 -y 2020 -y 2022 -y 2023 -y 2024
 tests/console test:generate GB-NIR -y 2014 -y 2018 -y 2020 -y 2024
 tests/console test:generate GB-SCT -y 1967 -y 1968 -y 1973 -y 1977 -y 1981 -y 1995 -y 1999 -y 2006 -y 2011 -y 2012 -y 2020 -y 2021 -y 2022 -y 2023 -y 2024
-tests/console test:generate US -y 1868 -y 1879 -y 1892 -y 1894 -y 1938 -y 1968 -y 1971 -y 1986 -y 2010 -y 2011
+tests/console test:generate US -y 1868 -y 1879 -y 1892 -y 1894 -y 1938 -y 1968 -y 1971 -y 1986 -y 2010 -y 2011 -y 2021 -y 2022 -y 2021,2022

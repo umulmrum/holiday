@@ -163,7 +163,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
     {
         $this->givenHolidayCalculator(new ResolverHandlerStub());
         $this->whenCalculateIsCalled('x', 2020);
-        $this->thenExpectedHolidaysShouldBeReturned(['2020-01-01', '2020-07-07']);
+        $this->thenExpectedHolidaysShouldBeReturned(['2020-01-02', '2020-07-07']);
     }
 
     /**

@@ -12,25 +12,24 @@
 namespace Umulmrum\Holiday\Provider\UnitedKingdom;
 
 use DateTime;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class UnitedKingdom implements HolidayProviderInterface
+class UnitedKingdom implements CompensatoryHolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
-        $this->addNewYear($holidays, $year);
+        $holidays->add($this->getNewYear($year, HolidayType::DAY_OFF));
         if ($year === 1968) {
             $holidays->add($this->getSterlingCrisis());
         }
@@ -62,20 +61,13 @@ class UnitedKingdom implements HolidayProviderInterface
         if ($year === 1973) {
             $holidays->add($this->getWeddingOfAnneAndMark());
         }
-        $this->addChristmasDay($holidays, $year);
-        $this->addBoxingDay($holidays, $year);
+        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getBoxingDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year === 1999) {
             $holidays->add($this->getYear2kCelebration());
         }
 
         return $holidays;
-    }
-
-    private function addNewYear(HolidayList $holidays, int $year): void
-    {
-        $holiday = $this->getNewYear($year, HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, HolidayType::OTHER);
     }
 
     protected function getSterlingCrisis(): Holiday
@@ -162,22 +154,21 @@ class UnitedKingdom implements HolidayProviderInterface
         return Holiday::create(HolidayName::WEDDING_OF_ANNE_AND_MARK, '1973-11-14', HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
-    protected function addChristmasDay(HolidayList $holidays, int $year): void
-    {
-        $holiday = $this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, null, 2);
-    }
-
-    protected function addBoxingDay(HolidayList $holidays, int $year): void
-    {
-        $holiday = $this->getBoxingDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, null, 2);
-    }
-
     protected function getYear2kCelebration(): Holiday
     {
         return Holiday::create(HolidayName::YEAR_2K_CELEBRATION, '1999-12-31', HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+    }
+
+    public function getCompensatoryDaysCalculators(int $year): array
+    {
+        return [
+            new CompensatoryDaysCalculator(
+                [
+                    HolidayName::NEW_YEAR,
+                    HolidayName::CHRISTMAS_DAY,
+                    HolidayName::BOXING_DAY,
+                ],
+            ),
+        ];
     }
 }

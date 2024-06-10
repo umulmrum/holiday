@@ -271,6 +271,7 @@ final class HolidayName
     public const GOLDEN_JUBILEE_BANK_HOLIDAY = 'golden_jubilee_bank_holiday';
     public const PLATINUM_JUBILEE_BANK_HOLIDAY = 'platinum_jubilee_bank_holiday';
     public const SAINT_ANDREWS_DAY = 'saint_andrews_day';
+    public const SAINT_ANDREWS_DAY_COMPENSATORY = 'saint_andrews_day_compensatory';
     public const SILVER_JUBILEE_BANK_HOLIDAY = 'silver_jubilee_bank_holiday';
     public const SPRING_BANK_HOLIDAY = 'spring_bank_holiday';
     public const STATE_FUNERAL_OF_QUEEN_ELIZABETH = 'state_funeral_of_queen_elizabeth';

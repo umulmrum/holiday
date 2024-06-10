@@ -12,17 +12,16 @@
 namespace Umulmrum\Holiday\Provider\UnitedKingdom;
 
 use DateTime;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
 class Scotland extends UnitedKingdom
 {
     use ChristianHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
@@ -58,10 +57,10 @@ class Scotland extends UnitedKingdom
             $holidays->add($this->getWeddingOfAnneAndMark());
         }
         if ($year >= 2007) {
-            $this->addSaintAndrewsDay($holidays, $year);
+            $holidays->add($this->getSaintAndrewsDay($year));
         }
         $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        $this->addBoxingDay($holidays, $year);
+        $holidays->add($this->getBoxingDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year === 1999) {
             $holidays->add($this->getYear2kCelebration());
         }
@@ -71,32 +70,12 @@ class Scotland extends UnitedKingdom
 
     private function getNewYear(int $year): Holiday
     {
-        $date = new DateTime("{$year}-01-01");
-        $weekday = $date->format('w');
-        if ($weekday === '0') {
-            $date = "{$year}-01-02";
-        } elseif ($weekday === '6') {
-            $date = "{$year}-01-04";
-        } else {
-            $date = "{$year}-01-01";
-        }
-
-        return Holiday::create(HolidayName::NEW_YEAR, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return Holiday::create(HolidayName::NEW_YEAR, "{$year}-01-01", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
     private function getNewYearHoliday(int $year): Holiday
     {
-        $date = new DateTime("{$year}-01-02");
-        $weekday = $date->format('w');
-        if ($weekday === '0' || $weekday === '1') {
-            $date = "{$year}-01-03";
-        } elseif ($weekday === '6') {
-            $date = "{$year}-01-04";
-        } else {
-            $date = "{$year}-01-02";
-        }
-
-        return Holiday::create(HolidayName::NEW_YEAR_HOLIDAY, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
+        return Holiday::create(HolidayName::NEW_YEAR_HOLIDAY, "{$year}-01-02", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
     private function getSummerBankHoliday(int $year): Holiday
@@ -106,10 +85,21 @@ class Scotland extends UnitedKingdom
         return Holiday::create(HolidayName::SUMMER_BANK_HOLIDAY, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
-    private function addSaintAndrewsDay(HolidayList $holidays, int $year): void
+    private function getSaintAndrewsDay(int $year): Holiday
     {
-        $holiday = Holiday::create(HolidayName::BOXING_DAY, "{$year}-11-30", HolidayType::OFFICIAL | HolidayType::BANK);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday);
+        return Holiday::create(HolidayName::SAINT_ANDREWS_DAY, "{$year}-11-30", HolidayType::OFFICIAL | HolidayType::BANK);
+    }
+
+    public function getCompensatoryDaysCalculators(int $year): array
+    {
+        return [
+            ...parent::getCompensatoryDaysCalculators($year),
+            new CompensatoryDaysCalculator(
+                [
+                    HolidayName::NEW_YEAR_HOLIDAY,
+                    HolidayName::SAINT_ANDREWS_DAY,
+                ]
+            ),
+        ];
     }
 }

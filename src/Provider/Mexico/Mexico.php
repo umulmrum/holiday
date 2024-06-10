@@ -12,44 +12,37 @@
 namespace Umulmrum\Holiday\Provider\Mexico;
 
 use DateTime;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Constant\Weekday;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class Mexico implements HolidayProviderInterface
+class Mexico implements CompensatoryHolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
-        $this->addNewYear($holidays, $year);
+        $holidays->add($this->getNewYear($year, HolidayType::DAY_OFF));
         $this->addConstitutionDay($holidays, $year);
-        $this->addBirthdayOfBenitoJuarez($holidays, $year);
+        $holidays->add($this->getBirthdayOfBenitoJuarez($holidays, $year));
         if ($year >= 1923) {
-            $this->addLaborDay($holidays, $year);
+            $holidays->add($this->getLaborDay($year, HolidayType::DAY_OFF));
         }
         if ($year >= 1826) {
-            $this->addIndependenceDay($holidays, $year);
+            $holidays->add($this->getIndependenceDay($year));
         }
         $this->addRevolutionDay($holidays, $year);
-        $this->addChristmasDay($holidays, $year);
+        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
         return $holidays;
-    }
-
-    private function addNewYear(HolidayList $holidays, int $year): void
-    {
-        $holiday = $this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
     private function addConstitutionDay(HolidayList $holidays, int $year): void
@@ -63,33 +56,22 @@ class Mexico implements HolidayProviderInterface
         }
         $holiday = Holiday::create(HolidayName::CONSTITUTION_DAY, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
-    private function addBirthdayOfBenitoJuarez(HolidayList $holidays, int $year): void
+    private function getBirthdayOfBenitoJuarez(HolidayList $holidays, int $year): Holiday
     {
         if ($year >= 2006) {
             $date = (new DateTime("Third Monday of {$year}-03"))->format(Holiday::DISPLAY_DATE_FORMAT);
         } else {
             $date = "{$year}-02-05";
         }
-        $holiday = Holiday::create(HolidayName::BIRTHDAY_OF_BENITO_JUAREZ, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
+
+        return Holiday::create(HolidayName::BIRTHDAY_OF_BENITO_JUAREZ, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
-    private function addLaborDay(HolidayList $holidays, int $year): void
+    private function getIndependenceDay(int $year): Holiday
     {
-        $holiday = $this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
-    }
-
-    private function addIndependenceDay(HolidayList $holidays, int $year): void
-    {
-        $holiday = Holiday::create(HolidayName::INDEPENDENCE_DAY, "{$year}-09-16", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
+        return Holiday::create(HolidayName::INDEPENDENCE_DAY, "{$year}-09-16", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
     }
 
     private function addRevolutionDay(HolidayList $holidays, int $year): void
@@ -103,13 +85,15 @@ class Mexico implements HolidayProviderInterface
         }
         $holiday = Holiday::create(HolidayName::REVOLUTION_DAY, $date, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
         $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
     }
 
-    private function addChristmasDay(HolidayList $holidays, int $year): void
+    public function getCompensatoryDaysCalculators(int $year): array
     {
-        $holiday = $this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addNearestCompensatoryDay($holidays, $holiday, $year);
+        return [
+            new CompensatoryDaysCalculator(
+                weekDaysToStepBackward: [Weekday::SATURDAY],
+                weekDaysToStepForward: [Weekday::SUNDAY],
+            ),
+        ];
     }
 }

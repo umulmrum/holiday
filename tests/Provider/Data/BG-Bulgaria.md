@@ -60,7 +60,7 @@
 | 2020-12-24 | christmas_eve                       | official, day_off, religious               |
 | 2020-12-25 | christmas_day                       | official, day_off, religious               |
 | 2020-12-26 | second_christmas_day                | official, day_off, religious               |
-| 2020-12-29 | second_christmas_day_compensatory   | official, day_off, religious, compensatory |
+| 2020-12-28 | second_christmas_day_compensatory   | official, day_off, religious, compensatory |
 
 # 2021
 
@@ -72,7 +72,7 @@
 | 2021-05-01 | labor_day                         | official, day_off                          |
 | 2021-05-02 | easter_sunday                     | official, day_off, religious               |
 | 2021-05-03 | easter_monday                     | official, day_off, religious               |
-| 2021-05-03 | labor_day_compensatory            | official, day_off, compensatory            |
+| 2021-05-04 | labor_day_compensatory            | official, day_off, compensatory            |
 | 2021-05-06 | saint_georges_day                 | official, day_off, religious               |
 | 2021-05-24 | education_day                     | official, day_off                          |
 | 2021-09-06 | unification_day                   | official, day_off                          |
@@ -81,8 +81,8 @@
 | 2021-12-24 | christmas_eve                     | official, day_off, religious               |
 | 2021-12-25 | christmas_day                     | official, day_off, religious               |
 | 2021-12-26 | second_christmas_day              | official, day_off, religious               |
-| 2021-12-28 | christmas_day_compensatory        | official, day_off, religious, compensatory |
-| 2021-12-29 | second_christmas_day_compensatory | official, day_off, religious, compensatory |
+| 2021-12-27 | christmas_day_compensatory        | official, day_off, religious, compensatory |
+| 2021-12-28 | second_christmas_day_compensatory | official, day_off, religious, compensatory |
 
 # 2022
 

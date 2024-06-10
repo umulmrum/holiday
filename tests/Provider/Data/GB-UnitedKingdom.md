@@ -55,7 +55,7 @@
 | Date       | Name                        | Types                                      |
 |------------|-----------------------------|--------------------------------------------|
 | 1977-01-01 | new_year                    | official, day_off                          |
-| 1977-01-03 | new_year_compensatory       | compensatory                               |
+| 1977-01-03 | new_year_compensatory       | official, day_off, compensatory            |
 | 1977-04-08 | good_friday                 | official, day_off, religious               |
 | 1977-04-11 | easter_monday               | official, day_off, religious               |
 | 1977-05-30 | spring_bank_holiday         | official, day_off                          |
@@ -82,17 +82,17 @@
 
 # 1995
 
-| Date       | Name                  | Types                        |
-|------------|-----------------------|------------------------------|
-| 1995-01-01 | new_year              | official, day_off            |
-| 1995-01-02 | new_year_compensatory | compensatory                 |
-| 1995-04-14 | good_friday           | official, day_off, religious |
-| 1995-04-17 | easter_monday         | official, day_off, religious |
-| 1995-05-08 | may_day               | official, day_off            |
-| 1995-05-29 | spring_bank_holiday   | official, day_off            |
-| 1995-08-28 | summer_bank_holiday   | official, day_off            |
-| 1995-12-25 | christmas_day         | official, day_off, religious |
-| 1995-12-26 | boxing_day            | official, day_off, religious |
+| Date       | Name                  | Types                           |
+|------------|-----------------------|---------------------------------|
+| 1995-01-01 | new_year              | official, day_off               |
+| 1995-01-02 | new_year_compensatory | official, day_off, compensatory |
+| 1995-04-14 | good_friday           | official, day_off, religious    |
+| 1995-04-17 | easter_monday         | official, day_off, religious    |
+| 1995-05-08 | may_day               | official, day_off               |
+| 1995-05-29 | spring_bank_holiday   | official, day_off               |
+| 1995-08-28 | summer_bank_holiday   | official, day_off               |
+| 1995-12-25 | christmas_day         | official, day_off, religious    |
+| 1995-12-26 | boxing_day            | official, day_off, religious    |
 
 # 1999
 
@@ -129,7 +129,7 @@
 | Date       | Name                             | Types                                      |
 |------------|----------------------------------|--------------------------------------------|
 | 2011-01-01 | new_year                         | official, day_off                          |
-| 2011-01-03 | new_year_compensatory            | compensatory                               |
+| 2011-01-03 | new_year_compensatory            | official, day_off, compensatory            |
 | 2011-04-22 | good_friday                      | official, day_off, religious               |
 | 2011-04-25 | easter_monday                    | official, day_off, religious               |
 | 2011-04-29 | wedding_of_william_and_catherine | official, day_off                          |
@@ -142,18 +142,18 @@
 
 # 2012
 
-| Date       | Name                         | Types                        |
-|------------|------------------------------|------------------------------|
-| 2012-01-01 | new_year                     | official, day_off            |
-| 2012-01-02 | new_year_compensatory        | compensatory                 |
-| 2012-04-06 | good_friday                  | official, day_off, religious |
-| 2012-04-09 | easter_monday                | official, day_off, religious |
-| 2012-05-07 | may_day                      | official, day_off            |
-| 2012-06-04 | spring_bank_holiday          | official, day_off            |
-| 2012-06-05 | diamond_jubilee_bank_holiday | official, day_off            |
-| 2012-08-27 | summer_bank_holiday          | official, day_off            |
-| 2012-12-25 | christmas_day                | official, day_off, religious |
-| 2012-12-26 | boxing_day                   | official, day_off, religious |
+| Date       | Name                         | Types                           |
+|------------|------------------------------|---------------------------------|
+| 2012-01-01 | new_year                     | official, day_off               |
+| 2012-01-02 | new_year_compensatory        | official, day_off, compensatory |
+| 2012-04-06 | good_friday                  | official, day_off, religious    |
+| 2012-04-09 | easter_monday                | official, day_off, religious    |
+| 2012-05-07 | may_day                      | official, day_off               |
+| 2012-06-04 | spring_bank_holiday          | official, day_off               |
+| 2012-06-05 | diamond_jubilee_bank_holiday | official, day_off               |
+| 2012-08-27 | summer_bank_holiday          | official, day_off               |
+| 2012-12-25 | christmas_day                | official, day_off, religious    |
+| 2012-12-26 | boxing_day                   | official, day_off, religious    |
 
 # 2020
 
@@ -174,7 +174,7 @@
 | Date       | Name                             | Types                                      |
 |------------|----------------------------------|--------------------------------------------|
 | 2022-01-01 | new_year                         | official, day_off                          |
-| 2022-01-03 | new_year_compensatory            | compensatory                               |
+| 2022-01-03 | new_year_compensatory            | official, day_off, compensatory            |
 | 2022-04-15 | good_friday                      | official, day_off, religious               |
 | 2022-04-18 | easter_monday                    | official, day_off, religious               |
 | 2022-05-02 | may_day                          | official, day_off                          |
@@ -188,18 +188,18 @@
 
 # 2023
 
-| Date       | Name                              | Types                        |
-|------------|-----------------------------------|------------------------------|
-| 2023-01-01 | new_year                          | official, day_off            |
-| 2023-01-02 | new_year_compensatory             | compensatory                 |
-| 2023-04-07 | good_friday                       | official, day_off, religious |
-| 2023-04-10 | easter_monday                     | official, day_off, religious |
-| 2023-05-01 | may_day                           | official, day_off            |
-| 2023-05-08 | coronation_of_charles_and_camilla | official, day_off            |
-| 2023-05-29 | spring_bank_holiday               | official, day_off            |
-| 2023-08-28 | summer_bank_holiday               | official, day_off            |
-| 2023-12-25 | christmas_day                     | official, day_off, religious |
-| 2023-12-26 | boxing_day                        | official, day_off, religious |
+| Date       | Name                              | Types                           |
+|------------|-----------------------------------|---------------------------------|
+| 2023-01-01 | new_year                          | official, day_off               |
+| 2023-01-02 | new_year_compensatory             | official, day_off, compensatory |
+| 2023-04-07 | good_friday                       | official, day_off, religious    |
+| 2023-04-10 | easter_monday                     | official, day_off, religious    |
+| 2023-05-01 | may_day                           | official, day_off               |
+| 2023-05-08 | coronation_of_charles_and_camilla | official, day_off               |
+| 2023-05-29 | spring_bank_holiday               | official, day_off               |
+| 2023-08-28 | summer_bank_holiday               | official, day_off               |
+| 2023-12-25 | christmas_day                     | official, day_off, religious    |
+| 2023-12-26 | boxing_day                        | official, day_off, religious    |
 
 # 2024
 

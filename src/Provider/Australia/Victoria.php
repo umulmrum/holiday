@@ -12,8 +12,10 @@
 namespace Umulmrum\Holiday\Provider\Australia;
 
 use DateTimeImmutable;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
+use Umulmrum\Holiday\Constant\Weekday;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
@@ -37,7 +39,6 @@ class Victoria extends Australia
             $holidays->add($this->getEasterTuesday($year, HolidayType::OFFICIAL | HolidayType::BANK));
         }
         $holidays->add($this->getMelbourneCup($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF | HolidayType::PARTIAL_ONLY));
-        $this->removeCompensatoryDays($holidays, $year);
 
         return $holidays;
     }
@@ -73,23 +74,19 @@ class Victoria extends Australia
         );
     }
 
-    protected function removeCompensatoryDays(HolidayList $holidays, int $year): void
+    public function getCompensatoryDaysCalculators(int $year): array
     {
         if ($year >= 2008) {
-            return;
+            return parent::getCompensatoryDaysCalculators($year);
         }
 
-        $holidays->removeByName(HolidayName::AUSTRALIA_DAY . HolidayName::SUFFIX_COMPENSATORY);
-        $holidays->removeByName(HolidayName::CHRISTMAS_DAY . HolidayName::SUFFIX_COMPENSATORY);
-
-        $holiday = $holidays->getByName(HolidayName::NEW_YEAR)[0];
-        if ($holiday->getDate()->format('w') === '6') {
-            $holidays->removeByName(HolidayName::NEW_YEAR . HolidayName::SUFFIX_COMPENSATORY);
-        }
-
-        $holiday = $holidays->getByName(HolidayName::BOXING_DAY)[0];
-        if ($holiday->getDate()->format('w') === '6') {
-            $holidays->removeByName(HolidayName::BOXING_DAY . HolidayName::SUFFIX_COMPENSATORY);
-        }
+        return [new CompensatoryDaysCalculator(
+            [
+                HolidayName::NEW_YEAR,
+                HolidayName::BOXING_DAY,
+            ],
+            [],
+            [Weekday::SUNDAY],
+        )];
     }
 }

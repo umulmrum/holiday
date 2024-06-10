@@ -20,7 +20,7 @@ final class HolidayProviderStub implements HolidayProviderInterface
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         return new HolidayList([
-            Holiday::create('name1', "{$year}-01-01"),
+            Holiday::create('name1', "{$year}-01-02"),
             Holiday::create('name2', "{$year}-07-07"),
         ]);
     }

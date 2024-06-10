@@ -11,19 +11,17 @@
 
 namespace Umulmrum\Holiday\Provider\Bulgaria;
 
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 use Umulmrum\Holiday\Provider\Religion\ChristianOrthodoxHolidaysTrait;
 
-use function in_array;
-
-class Bulgaria implements HolidayProviderInterface
+class Bulgaria implements CompensatoryHolidayProviderInterface
 {
     use ChristianHolidaysTrait, ChristianOrthodoxHolidaysTrait {
         ChristianHolidaysTrait::getChristmasDay insteadof ChristianOrthodoxHolidaysTrait;
@@ -35,7 +33,6 @@ class Bulgaria implements HolidayProviderInterface
         ChristianOrthodoxHolidaysTrait::getWhitSunday insteadof ChristianHolidaysTrait;
     }
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
@@ -54,10 +51,6 @@ class Bulgaria implements HolidayProviderInterface
         $holidays->add($this->getChristmasEve($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-
-        if ($year >= 2017) {
-            $this->addCompensatoryHolidays($holidays);
-        }
 
         return $holidays;
     }
@@ -87,17 +80,28 @@ class Bulgaria implements HolidayProviderInterface
         return Holiday::create(HolidayName::NATIONAL_AWAKENING_DAY, "{$year}-11-01", HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function addCompensatoryHolidays(HolidayList $holidays): void
+    public function getCompensatoryDaysCalculators(int $year): array
     {
-        foreach ($holidays as $holiday) {
-            if (in_array($holiday->getName(), [HolidayName::GOOD_FRIDAY, HolidayName::EASTER_SUNDAY, HolidayName::EASTER_MONDAY], true)) {
-                continue;
-            }
-            if (in_array($holiday->getName(), [HolidayName::CHRISTMAS_EVE, HolidayName::CHRISTMAS_DAY, HolidayName::SECOND_CHRISTMAS_DAY], true)) {
-                $this->addLaterCompensatoryDay($holidays, $holiday, daysToAdd: 3);
-            } else {
-                $this->addLaterCompensatoryDay($holidays, $holiday);
-            }
+        if ($year <= 2016) {
+            return [];
         }
+
+        return [
+            new CompensatoryDaysCalculator(
+                [
+                    HolidayName::NEW_YEAR,
+                    HolidayName::LIBERATION_DAY,
+                    HolidayName::LABOR_DAY,
+                    HolidayName::SAINT_GEORGES_DAY,
+                    HolidayName::EDUCATION_DAY,
+                    HolidayName::UNIFICATION_DAY,
+                    HolidayName::INDEPENDENCE_DAY,
+                    HolidayName::NATIONAL_AWAKENING_DAY,
+                    HolidayName::CHRISTMAS_EVE,
+                    HolidayName::CHRISTMAS_DAY,
+                    HolidayName::SECOND_CHRISTMAS_DAY,
+                ],
+            ),
+        ];
     }
 }

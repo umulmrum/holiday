@@ -12,27 +12,26 @@
 namespace Umulmrum\Holiday\Provider\Ireland;
 
 use DateTime;
+use Umulmrum\Holiday\Compensatory\CompensatoryDaysCalculator;
 use Umulmrum\Holiday\Constant\HolidayName;
 use Umulmrum\Holiday\Constant\HolidayType;
 use Umulmrum\Holiday\Model\Holiday;
 use Umulmrum\Holiday\Model\HolidayList;
 use Umulmrum\Holiday\Provider\CommonHolidaysTrait;
-use Umulmrum\Holiday\Provider\CompensatoryDaysTrait;
-use Umulmrum\Holiday\Provider\HolidayProviderInterface;
+use Umulmrum\Holiday\Provider\CompensatoryHolidayProviderInterface;
 use Umulmrum\Holiday\Provider\Religion\ChristianHolidaysTrait;
 
-class Ireland implements HolidayProviderInterface
+class Ireland implements CompensatoryHolidayProviderInterface
 {
     use ChristianHolidaysTrait;
     use CommonHolidaysTrait;
-    use CompensatoryDaysTrait;
 
     public function calculateHolidaysForYear(int $year): HolidayList
     {
         $holidays = new HolidayList();
-        $this->addNewYear($holidays, $year);
+        $holidays->add($this->getNewYear($year, HolidayType::DAY_OFF));
         if ($year >= 1903) {
-            $this->addSaintPatricksDay($holidays, $year);
+            $holidays->add($this->getSaintPatricksDay($year));
         }
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::BANK | HolidayType::NO_SCHOOL));
         if ($year >= 1994) {
@@ -49,24 +48,15 @@ class Ireland implements HolidayProviderInterface
         if ($year >= 1977) {
             $holidays->add($this->getOctoberHoliday($year, HolidayType::DAY_OFF));
         }
-        $this->addChristmasDay($holidays, $year);
-        $this->addSecondChristmasDay($holidays, $year);
+        $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
 
         return $holidays;
     }
 
-    private function addNewYear(HolidayList $holidays, int $year): void
+    private function getSaintPatricksDay(int $year, int $additionalTyoe = HolidayType::OTHER): Holiday
     {
-        $holiday = $this->getNewYear($year, HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, HolidayType::OTHER);
-    }
-
-    private function addSaintPatricksDay(HolidayList $holidays, int $year): void
-    {
-        $holiday = Holiday::create(HolidayName::SAINT_PATRICKS_DAY, "{$year}-03-17", HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, HolidayType::OTHER);
+        return Holiday::create(HolidayName::SAINT_PATRICKS_DAY, "{$year}-03-17", HolidayType::OFFICIAL | HolidayType::DAY_OFF | $additionalTyoe);
     }
 
     private function getMayDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
@@ -97,17 +87,17 @@ class Ireland implements HolidayProviderInterface
         return Holiday::create(HolidayName::OCTOBER_HOLIDAY, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
-    private function addChristmasDay(HolidayList $holidays, int $year): void
+    public function getCompensatoryDaysCalculators(int $year): array
     {
-        $holiday = $this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, HolidayType::OTHER, 2);
-    }
-
-    private function addSecondChristmasDay(HolidayList $holidays, int $year): void
-    {
-        $holiday = $this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF);
-        $holidays->add($holiday);
-        $this->addLaterCompensatoryDay($holidays, $holiday, HolidayType::OTHER, 2);
+        return [
+            new CompensatoryDaysCalculator(
+                [
+                    HolidayName::NEW_YEAR,
+                    HolidayName::SAINT_PATRICKS_DAY,
+                    HolidayName::CHRISTMAS_DAY,
+                    HolidayName::SECOND_CHRISTMAS_DAY,
+                ],
+            ),
+        ];
     }
 }

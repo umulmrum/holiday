@@ -261,8 +261,8 @@
 | 2000-03-08 | international_womens_day                   | official, day_off                          |
 | 2000-04-30 | easter_sunday                              | official, day_off, religious               |
 | 2000-05-01 | day_of_international_solidarity_of_workers | official, day_off                          |
-| 2000-05-01 | easter_sunday_compensatory                 | official, day_off, religious, compensatory |
 | 2000-05-02 | labor_day                                  | official, day_off                          |
+| 2000-05-03 | easter_sunday_compensatory                 | official, day_off, religious, compensatory |
 | 2000-05-09 | victory_day                                | official, day_off                          |
 | 2000-06-18 | whit_sunday                                | official, day_off, religious               |
 | 2000-06-19 | whit_sunday_compensatory                   | official, day_off, religious, compensatory |
@@ -321,8 +321,8 @@
 | 2016-05-01 | easter_sunday                                           | official, day_off, religious               |
 | 2016-05-01 | day_of_international_solidarity_of_workers              | official, day_off                          |
 | 2016-05-02 | labor_day                                               | official, day_off                          |
-| 2016-05-02 | easter_sunday_compensatory                              | official, day_off, religious, compensatory |
-| 2016-05-02 | day_of_international_solidarity_of_workers_compensatory | official, day_off, compensatory            |
+| 2016-05-03 | easter_sunday_compensatory                              | official, day_off, religious, compensatory |
+| 2016-05-04 | day_of_international_solidarity_of_workers_compensatory | official, day_off, compensatory            |
 | 2016-05-09 | day_of_victory_over_nazism                              | official, day_off                          |
 | 2016-06-19 | whit_sunday                                             | official, day_off, religious               |
 | 2016-06-20 | whit_sunday_compensatory                                | official, day_off, religious, compensatory |

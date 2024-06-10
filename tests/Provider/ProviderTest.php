@@ -40,13 +40,18 @@ final class ProviderTest extends HolidayTestCase
     }
 
     /**
-     * @return int[]
+     * @return int[][]
      */
     private function parseYears(string $content): array
     {
         preg_match_all('/# (.*)/', $content, $matches);
 
-        return array_map('intval', $matches[1]);
+        $years = [];
+        foreach ($matches[1] as $yearList) {
+            $years[] = array_map('intval', explode(',', $yearList));
+        }
+
+        return $years;
     }
 
     /**
@@ -81,12 +86,12 @@ final class ProviderTest extends HolidayTestCase
     {
         $years = $this->parseYears($this->fixtureContent);
         $this->actualResult = '';
-        foreach ($years as $index => $year) {
+        foreach ($years as $index => $yearList) {
             if ($index > 0) {
                 $this->actualResult .= PHP_EOL;
             }
-            $this->actualResult .= '# ' . $year . PHP_EOL . PHP_EOL;
-            $holidays = $this->calculator->calculate($providerCode, $year);
+            $this->actualResult .= '# ' . implode(',', $yearList) . PHP_EOL . PHP_EOL;
+            $holidays = $this->calculator->calculate($providerCode, $yearList);
 
             /** @var string $resultPart */
             $resultPart = $holidays
