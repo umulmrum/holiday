@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.0] - 2024-06-11
+
 ### Added
 - Holidays for Belarus
 - Holidays for Estonia
@@ -197,7 +199,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.10.0...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/0.11.0...master
+[0.11.0]: https://github.com/umulmrum/holiday/compare/0.10.0...0.11.0
 [0.10.0]: https://github.com/umulmrum/holiday/compare/0.9.0...0.10.0
 [0.9.0]: https://github.com/umulmrum/holiday/compare/0.8.0...0.9.0
 [0.8.0]: https://github.com/umulmrum/holiday/compare/0.7.0...0.8.0
