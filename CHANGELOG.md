@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.1] - 2024-11-27
+
+### Added
+
+- Official support for PHP 8.4 (by @DannyvdSluijs)
+
 ## [0.11.0] - 2024-06-11
 
 ### Added
@@ -199,7 +205,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.11.0...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/0.11.1...master
+[0.11.1]: https://github.com/umulmrum/holiday/compare/0.11.0...0.11.1
 [0.11.0]: https://github.com/umulmrum/holiday/compare/0.10.0...0.11.0
 [0.10.0]: https://github.com/umulmrum/holiday/compare/0.9.0...0.10.0
 [0.9.0]: https://github.com/umulmrum/holiday/compare/0.8.0...0.9.0
