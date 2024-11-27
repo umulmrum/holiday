@@ -41,7 +41,7 @@ final class FilterInverterTest extends HolidayTestCase
 
     private function givenInnerFilter(): void
     {
-        $this->innerFilter = new class() extends AbstractFilter {
+        $this->innerFilter = new class extends AbstractFilter {
             protected function isIncluded(Holiday $holiday): bool
             {
                 return 'included-in-inner-filter' === $holiday->getName();
