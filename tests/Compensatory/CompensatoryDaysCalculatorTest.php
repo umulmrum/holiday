@@ -361,7 +361,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
                 [Weekday::SATURDAY],
                 [Weekday::SUNDAY],
                 2024,
-                new class() implements HolidayProviderInterface {
+                new class implements HolidayProviderInterface {
                     public function calculateHolidaysForYear(int $year): HolidayList
                     {
                         return new HolidayList([
@@ -385,7 +385,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
                 [Weekday::SATURDAY],
                 [Weekday::SUNDAY],
                 2024,
-                new class() implements HolidayProviderInterface {
+                new class implements HolidayProviderInterface {
                     public function calculateHolidaysForYear(int $year): HolidayList
                     {
                         return new HolidayList([
@@ -410,7 +410,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
                 [Weekday::SATURDAY],
                 [Weekday::SUNDAY],
                 2027,
-                new class() implements HolidayProviderInterface {
+                new class implements HolidayProviderInterface {
                     public function calculateHolidaysForYear(int $year): HolidayList
                     {
                         return new HolidayList([
@@ -434,7 +434,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
                 [Weekday::SATURDAY],
                 [Weekday::SUNDAY],
                 2027,
-                new class() implements HolidayProviderInterface {
+                new class implements HolidayProviderInterface {
                     public function calculateHolidaysForYear(int $year): HolidayList
                     {
                         return new HolidayList([
