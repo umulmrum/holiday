@@ -28,10 +28,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
 {
     private ICalendarFormatter $subject;
 
-    /**
-     * @var string|string[]
-     */
-    private array|string $actualResult;
+    private string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]
