@@ -21,7 +21,10 @@ final class TimestampFormatter implements HolidayFormatterInterface
         return (string) $holiday->getDate()->getTimestamp();
     }
 
-    public function formatList(HolidayList $holidayList): array|string
+    /**
+     * @return string[]
+     */
+    public function formatList(HolidayList $holidayList): array
     {
         $result = [];
         foreach ($holidayList->getList() as $holiday) {

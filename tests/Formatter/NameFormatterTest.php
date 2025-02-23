@@ -24,9 +24,9 @@ final class NameFormatterTest extends HolidayTestCase
     private NameFormatter $formatter;
 
     /**
-     * @var int|int[]|string|string[]
+     * @var int[]|string|string[]
      */
-    private array|int|string $actualResult;
+    private array|string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]

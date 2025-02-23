@@ -42,7 +42,7 @@ final class JsonFormatter implements HolidayFormatterInterface
         return json_encode($this->getEvent($holiday), $this->jsonOptions) ?: '';
     }
 
-    public function formatList(HolidayList $holidayList): array|string
+    public function formatList(HolidayList $holidayList): string
     {
         $result = [];
 

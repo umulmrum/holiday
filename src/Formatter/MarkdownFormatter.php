@@ -52,7 +52,7 @@ final readonly class MarkdownFormatter implements HolidayFormatterInterface
         ];
     }
 
-    public function formatList(HolidayList $holidayList): array|string
+    public function formatList(HolidayList $holidayList): string
     {
         $lines = [];
         foreach ($holidayList->getList() as $holiday) {

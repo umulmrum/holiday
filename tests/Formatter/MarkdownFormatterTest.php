@@ -25,10 +25,7 @@ final class MarkdownFormatterTest extends HolidayTestCase
 {
     private MarkdownFormatter $formatter;
 
-    /**
-     * @var string|string[]
-     */
-    private array|string $actualResult;
+    private string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]

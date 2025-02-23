@@ -35,7 +35,7 @@ final readonly class ICalendarFormatter implements HolidayFormatterInterface
         return $this->getEvent($holiday);
     }
 
-    public function formatList(HolidayList $holidayList): array|string
+    public function formatList(HolidayList $holidayList): string
     {
         $result = [];
 
