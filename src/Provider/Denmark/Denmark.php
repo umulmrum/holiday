@@ -37,6 +37,7 @@ class Denmark implements HolidayProviderInterface
             $holidays->add($this->getGeneralPrayerDay($year, HolidayType::DAY_OFF));
         }
         $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getWhitSunday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year >= 1849) {
             if ($year >= 1891 && $year <= 1975) {
@@ -45,10 +46,8 @@ class Denmark implements HolidayProviderInterface
                 $holidays->add($this->getDanishNationalHoliday($year));
             }
         }
-        $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        $holidays->add($this->getNewYearsEve($year, HolidayType::OFFICIAL));
 
         return $holidays;
     }
