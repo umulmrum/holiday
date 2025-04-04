@@ -33,6 +33,7 @@ final class HolidayName
     public const EPIPHANY = 'epiphany';
     public const CANDLEMAS = 'candlemas';
     public const SAINT_JOSEPHS_DAY = 'saint_josephs_day';
+    public const PALM_SUNDAY = 'palm_sunday';
     public const MAUNDY_THURSDAY = 'maundy_thursday';
     public const GOOD_FRIDAY = 'good_friday';
     public const EASTER_SATURDAY = 'easter_saturday';
@@ -221,7 +222,19 @@ final class HolidayName
 
     // Norway
     public const NORWAY_CONSTITUTION_DAY = 'norway_constitution_day';
-
+    public const NORWAY_SAMI_DAY = 'norway_sami_day';
+    public const ADVENT_SUNDAY_1 = 'advent_sunday_1';
+    public const ADVENT_SUNDAY_2 = 'advent_sunday_2';
+    public const ADVENT_SUNDAY_3 = 'advent_sunday_3';
+    public const ADVENT_SUNDAY_4 = 'advent_sunday_4';
+    public const PRINSESS_INGRID_ALEXANDRAS_BIRTHDAY = 'prinsess_ingrid_alexandras_birthday';
+    public const KING_HARALD_VS_BIRTHDAY = 'king_harald_vs_birthday';
+    public const UNION_DISSOLUTION = 'union_dissolution';
+    public const QUEEN_SONJAS_BIRTHDAY = 'queen_sonjas_birthday';
+    public const CROWN_PRINCE_HAAKON_MAGNUS_BIRTHDAY = 'crown_prince_haakon_magnus_birthday';
+    public const OLSOK_DAY = 'olsok_day';
+    public const CROWN_PRINCESS_METTE_MARITS_BIRTHDAY = 'crown_princess_mette_marits_birthday';
+	
     // Poland
     public const CONSTITUTION_DAY = 'constitution_day';
     public const POLISH_ARMED_FORCES_DAY = 'polish_armed_forces_day';
