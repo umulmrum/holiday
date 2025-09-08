@@ -79,7 +79,7 @@ tests/console test:generate DE-ST -y 2025
 tests/console test:generate DE-TH -y 2018 -y 2025
 tests/console test:generate GL -y 1984 -y 2020
 tests/console test:generate IS -y 2024 -y 2025
-tests/console test:generate IE -y 1870 -y 1902 -y 1974 -y 2011 -y 2019 -y 2020 -y 2025
+tests/console test:generate IE -y 1870 -y 1902 -y 1974 -y 2011 -y 2019 -y 2020 -y 2025 -y 2030
 tests/console test:generate IT -y 1911 -y 1945 -y 1946 -y 1950 -y 1961 -y 1977 -y 1985 -y 2001 -y 2011 -y 2020
 tests/console test:generate IT-32 -y 2020
 tests/console test:generate LV -y 1989 -y 1990 -y 2024
