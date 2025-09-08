@@ -79,3 +79,18 @@
 | 2020-12-25 | christmas_day                     | official, day_off, religious               |
 | 2020-12-26 | second_christmas_day              | official, day_off, religious               |
 | 2020-12-28 | second_christmas_day_compensatory | official, day_off, religious, compensatory |
+
+# 2025
+
+| Date       | Name                 | Types                                |
+|------------|----------------------|--------------------------------------|
+| 2025-01-01 | new_year             | official, day_off                    |
+| 2025-02-03 | saint_brigids_day    | official, day_off                    |
+| 2025-03-17 | saint_patricks_day   | official, day_off                    |
+| 2025-04-18 | good_friday          | official, religious, no_school, bank |
+| 2025-05-05 | may_day              | official, day_off                    |
+| 2025-06-02 | june_holiday         | official, day_off                    |
+| 2025-08-04 | august_holiday       | official, day_off                    |
+| 2025-10-27 | october_holiday      | official, day_off                    |
+| 2025-12-25 | christmas_day        | official, day_off, religious         |
+| 2025-12-26 | second_christmas_day | official, day_off, religious         |
