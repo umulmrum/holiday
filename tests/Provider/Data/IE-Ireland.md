@@ -94,3 +94,19 @@
 | 2025-10-27 | october_holiday      | official, day_off                    |
 | 2025-12-25 | christmas_day        | official, day_off, religious         |
 | 2025-12-26 | second_christmas_day | official, day_off, religious         |
+
+# 2030
+
+| Date       | Name                            | Types                                |
+|------------|---------------------------------|--------------------------------------|
+| 2030-01-01 | new_year                        | official, day_off                    |
+| 2030-02-01 | saint_brigids_day               | official, day_off                    |
+| 2030-03-17 | saint_patricks_day              | official, day_off                    |
+| 2030-03-18 | saint_patricks_day_compensatory | official, day_off, compensatory      |
+| 2030-04-19 | good_friday                     | official, religious, no_school, bank |
+| 2030-05-06 | may_day                         | official, day_off                    |
+| 2030-06-03 | june_holiday                    | official, day_off                    |
+| 2030-08-05 | august_holiday                  | official, day_off                    |
+| 2030-10-28 | october_holiday                 | official, day_off                    |
+| 2030-12-25 | christmas_day                   | official, day_off, religious         |
+| 2030-12-26 | second_christmas_day            | official, day_off, religious         |
