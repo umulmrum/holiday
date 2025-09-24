@@ -438,7 +438,7 @@ Contributions are highly welcome. Please follow these rules when submitting a PR
 
 By submitting a PR you agree that all your contributed code may be used under the MIT license.
 
-### Adding Tests 
+### Adding Tests
 
   - Provide tests inside `tests/Provider/...` that ideally cover all edge cases. This can be done as follows:
   - First write the changes to the holiday provider itself
