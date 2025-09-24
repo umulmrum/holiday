@@ -35,7 +35,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
 
     #[DataProvider('getFormatData')]
     #[Test]
-    public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
+    public function itShouldFormatSingleValues(Holiday $holiday, string $expectedResult): void
     {
         $this->givenICalendarFormatter();
         $this->whenFormatIsCalled($holiday);
@@ -60,7 +60,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
 
     #[DataProvider('getFormatListData')]
     #[Test]
-    public function it_should_format_list_values(HolidayList $holidayList, string $expectedResult): void
+    public function itShouldFormatListValues(HolidayList $holidayList, string $expectedResult): void
     {
         $this->givenICalendarFormatter();
         $this->whenFormatListIsCalled($holidayList);
@@ -99,7 +99,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_should_use_defaults_if_no_constructor_arguments(): void
+    public function itShouldUseDefaultsIfNoConstructorArguments(): void
     {
         $this->givenICalendarFormatterWithoutArguments();
         $this->whenFormatIsCalled(Holiday::create('name', '2020-01-01'));

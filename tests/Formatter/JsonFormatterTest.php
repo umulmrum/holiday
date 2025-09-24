@@ -31,26 +31,11 @@ final class JsonFormatterTest extends HolidayTestCase
 
     #[DataProvider('getFormatData')]
     #[Test]
-    public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
+    public function itShouldFormatSingleValues(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatter();
         $this->whenFormatIsCalled($holiday);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenAFormatter(): void
-    {
-        $this->formatter = new JsonFormatter();
-    }
-
-    private function whenFormatIsCalled(Holiday $holiday): void
-    {
-        $this->actualResult = $this->formatter->format($holiday);
-    }
-
-    private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
-    {
-        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult); // @phpstan-ignore-line
     }
 
     public static function getFormatData(): array
@@ -86,18 +71,28 @@ final class JsonFormatterTest extends HolidayTestCase
         ];
     }
 
+    private function givenAFormatter(): void
+    {
+        $this->formatter = new JsonFormatter();
+    }
+
+    private function whenFormatIsCalled(Holiday $holiday): void
+    {
+        $this->actualResult = $this->formatter->format($holiday);
+    }
+
+    private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
+    {
+        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult); // @phpstan-ignore-line
+    }
+
     #[DataProvider('getFormatTranslatedData')]
     #[Test]
-    public function it_should_format_single_values_with_translation(Holiday $holiday, string $expectedResult): void
+    public function itShouldFormatSingleValuesWithTranslation(Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
         $this->whenFormatIsCalled($holiday);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenAFormatterWithTranslator(): void
-    {
-        $this->formatter = new JsonFormatter(new TranslatorStub());
     }
 
     public static function getFormatTranslatedData(): array
@@ -120,18 +115,18 @@ final class JsonFormatterTest extends HolidayTestCase
         ];
     }
 
+    private function givenAFormatterWithTranslator(): void
+    {
+        $this->formatter = new JsonFormatter(new TranslatorStub());
+    }
+
     #[DataProvider('getFormatListData')]
     #[Test]
-    public function it_should_format_list_values(HolidayList $holidayList, string $expectedResult): void
+    public function itShouldFormatListValues(HolidayList $holidayList, string $expectedResult): void
     {
         $this->givenAFormatter();
         $this->whenFormatListIsCalled($holidayList);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    private function whenFormatListIsCalled(HolidayList $holidayList): void
-    {
-        $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
     public static function getFormatListData(): array
@@ -169,5 +164,10 @@ final class JsonFormatterTest extends HolidayTestCase
                 }]',
             ],
         ];
+    }
+
+    private function whenFormatListIsCalled(HolidayList $holidayList): void
+    {
+        $this->actualResult = $this->formatter->formatList($holidayList);
     }
 }

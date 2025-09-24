@@ -31,11 +31,27 @@ final class TranslateFilterTest extends HolidayTestCase
      */
     #[DataProvider('getData')]
     #[Test]
-    public function it_should_filter_holidays(array $holidays, array $expectedResult): void
+    public function itShouldFilterHolidays(array $holidays, array $expectedResult): void
     {
         $this->givenTranslateFilter();
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
+    }
+
+    public static function getData(): array
+    {
+        return [
+            [
+                [
+                    Holiday::create('name', '2020-02-03', HolidayType::BANK),
+                    Holiday::create('day_off', '2020-05-23', HolidayType::DAY_OFF),
+                ],
+                [
+                    Holiday::create('Very name', '2020-02-03', HolidayType::BANK),
+                    Holiday::create('Day off', '2020-05-23', HolidayType::DAY_OFF),
+                ],
+            ],
+        ];
     }
 
     private function givenTranslateFilter(): void
@@ -54,21 +70,5 @@ final class TranslateFilterTest extends HolidayTestCase
     private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
     {
         self::assertEquals(new HolidayList($expectedResult), $this->actualResult);
-    }
-
-    public static function getData(): array
-    {
-        return [
-            [
-                [
-                    Holiday::create('name', '2020-02-03', HolidayType::BANK),
-                    Holiday::create('day_off', '2020-05-23', HolidayType::DAY_OFF),
-                ],
-                [
-                    Holiday::create('Very name', '2020-02-03', HolidayType::BANK),
-                    Holiday::create('Day off', '2020-05-23', HolidayType::DAY_OFF),
-                ],
-            ],
-        ];
     }
 }

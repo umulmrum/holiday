@@ -25,11 +25,20 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
 
     #[DataProvider('getTranslateNameData')]
     #[Test]
-    public function it_should_return_symfony_translations(string $name): void
+    public function itShouldReturnSymfonyTranslations(string $name): void
     {
         $this->givenASymfonyBridgeTranslator();
         $this->whenTranslateNameIsCalled($name);
         $this->thenTheStringTranslatedBySymfonyShouldBeReturned();
+    }
+
+    public static function getTranslateNameData(): array
+    {
+        return [
+            [
+                'name',
+            ],
+        ];
     }
 
     private function givenASymfonyBridgeTranslator(): void
@@ -47,27 +56,13 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
         self::assertEquals('Such name', $this->actualResult);
     }
 
-    public static function getTranslateNameData(): array
-    {
-        return [
-            [
-                'name',
-            ],
-        ];
-    }
-
     #[DataProvider('getTranslateData')]
     #[Test]
-    public function it_should_send_arbitrary_strings_to_the_translator(string $name): void
+    public function itShouldSendArbitraryStringsToTheTranslator(string $name): void
     {
         $this->givenASymfonyBridgeTranslator();
         $this->whenTranslateIsCalled($name);
         $this->thenTheStringTranslatedBySymfonyShouldBeReturned();
-    }
-
-    private function whenTranslateIsCalled(string $name): void
-    {
-        $this->actualResult = $this->translator->translate($name);
     }
 
     public static function getTranslateData(): array
@@ -77,5 +72,10 @@ final class SymfonyBridgeTranslatorTest extends HolidayTestCase
                 'name',
             ],
         ];
+    }
+
+    private function whenTranslateIsCalled(string $name): void
+    {
+        $this->actualResult = $this->translator->translate($name);
     }
 }

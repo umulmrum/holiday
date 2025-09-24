@@ -32,29 +32,11 @@ final class MarkdownFormatterTest extends HolidayTestCase
 
     #[DataProvider('getFormatData')]
     #[Test]
-    public function it_should_format_single_values(?TranslatorInterface $translator, Holiday $holiday, string $expectedResult): void
+    public function itShouldFormatSingleValues(?TranslatorInterface $translator, Holiday $holiday, string $expectedResult): void
     {
         $this->givenAFormatter($translator);
         $this->whenFormatIsCalled($holiday);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenAFormatter(?TranslatorInterface $translator): void
-    {
-        $this->formatter = new MarkdownFormatter($translator);
-    }
-
-    private function whenFormatIsCalled(Holiday $holiday): void
-    {
-        $this->actualResult = $this->formatter->format($holiday);
-    }
-
-    /**
-     * @param string|string[] $expectedResult
-     */
-    private function thenAFormattedResultShouldBeReturned(array|string $expectedResult): void
-    {
-        self::assertEquals($expectedResult, $this->actualResult);
     }
 
     public static function getFormatData(): array
@@ -93,18 +75,31 @@ final class MarkdownFormatterTest extends HolidayTestCase
         ];
     }
 
+    private function givenAFormatter(?TranslatorInterface $translator): void
+    {
+        $this->formatter = new MarkdownFormatter($translator);
+    }
+
+    private function whenFormatIsCalled(Holiday $holiday): void
+    {
+        $this->actualResult = $this->formatter->format($holiday);
+    }
+
+    /**
+     * @param string|string[] $expectedResult
+     */
+    private function thenAFormattedResultShouldBeReturned(array|string $expectedResult): void
+    {
+        self::assertEquals($expectedResult, $this->actualResult);
+    }
+
     #[DataProvider('getFormatListData')]
     #[Test]
-    public function it_should_format_list_values(?TranslatorInterface $translator, HolidayList $holidays, string $expectedResult): void
+    public function itShouldFormatListValues(?TranslatorInterface $translator, HolidayList $holidays, string $expectedResult): void
     {
         $this->givenAFormatter($translator);
         $this->whenFormatListIsCalled($holidays);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    private function whenFormatListIsCalled(HolidayList $holidays): void
-    {
-        $this->actualResult = $this->formatter->formatList($holidays);
     }
 
     public static function getFormatListData(): array
@@ -148,5 +143,10 @@ final class MarkdownFormatterTest extends HolidayTestCase
                     EOF,
             ],
         ];
+    }
+
+    private function whenFormatListIsCalled(HolidayList $holidays): void
+    {
+        $this->actualResult = $this->formatter->formatList($holidays);
     }
 }

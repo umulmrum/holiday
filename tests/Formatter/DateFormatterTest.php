@@ -29,30 +29,11 @@ final class DateFormatterTest extends HolidayTestCase
 
     #[DataProvider('getFormatData')]
     #[Test]
-    public function it_should_format_single_values(string $date, string $format, string $expectedResult): void
+    public function itShouldFormatSingleValues(string $date, string $format, string $expectedResult): void
     {
         $this->givenAFormatter($format);
         $this->whenFormatIsCalled($date);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenAFormatter(string $format): void
-    {
-        $this->formatter = new DateFormatter($format);
-    }
-
-    private function whenFormatIsCalled(string $dateString): void
-    {
-        $holiday = Holiday::create('name', $dateString);
-        $this->actualResult = $this->formatter->format($holiday);
-    }
-
-    /**
-     * @param string|string[] $expectedResult
-     */
-    private function thenAFormattedResultShouldBeReturned($expectedResult): void
-    {
-        self::assertEquals($expectedResult, $this->actualResult);
     }
 
     public static function getFormatData(): array
@@ -86,29 +67,36 @@ final class DateFormatterTest extends HolidayTestCase
         ];
     }
 
+    private function givenAFormatter(string $format): void
+    {
+        $this->formatter = new DateFormatter($format);
+    }
+
+    private function whenFormatIsCalled(string $dateString): void
+    {
+        $holiday = Holiday::create('name', $dateString);
+        $this->actualResult = $this->formatter->format($holiday);
+    }
+
+    /**
+     * @param string|string[] $expectedResult
+     */
+    private function thenAFormattedResultShouldBeReturned($expectedResult): void
+    {
+        self::assertEquals($expectedResult, $this->actualResult);
+    }
+
     /**
      * @param string[]        $dates
      * @param string|string[] $expectedResult
      */
     #[DataProvider('getFormatListData')]
     #[Test]
-    public function it_should_format_list_values(array $dates, string $format, $expectedResult): void
+    public function itShouldFormatListValues(array $dates, string $format, $expectedResult): void
     {
         $this->givenAFormatter($format);
         $this->whenFormatListIsCalled($dates);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    /**
-     * @param string[] $dates
-     */
-    private function whenFormatListIsCalled(array $dates): void
-    {
-        $holidayList = new HolidayList();
-        foreach ($dates as $date) {
-            $holidayList->add(Holiday::create('name', $date));
-        }
-        $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
     public static function getFormatListData(): array
@@ -161,5 +149,17 @@ final class DateFormatterTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    /**
+     * @param string[] $dates
+     */
+    private function whenFormatListIsCalled(array $dates): void
+    {
+        $holidayList = new HolidayList();
+        foreach ($dates as $date) {
+            $holidayList->add(Holiday::create('name', $date));
+        }
+        $this->actualResult = $this->formatter->formatList($holidayList);
     }
 }

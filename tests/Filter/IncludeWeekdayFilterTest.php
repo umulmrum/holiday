@@ -31,37 +31,11 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
      */
     #[DataProvider('getData')]
     #[Test]
-    public function it_should_filter_holidays(array $holidays, $weekday, array $expectedResult): void
+    public function itShouldFilterHolidays(array $holidays, $weekday, array $expectedResult): void
     {
         $this->givenAnIncludeWeekDayFilter($weekday);
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
-    }
-
-    /**
-     * @param int|int[] $weekday
-     */
-    private function givenAnIncludeWeekDayFilter($weekday): void
-    {
-        $this->filter = new IncludeWeekdayFilter($weekday);
-    }
-
-    private function whenFilterIsCalled(array $holidays): void
-    {
-        $holidayList = new HolidayList();
-        foreach ($holidays as $date) {
-            $holidayList->add(Holiday::create('name', $date));
-        }
-        $this->actualResult = $holidayList->filter($this->filter);
-    }
-
-    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
-    {
-        $resultDates = [];
-        foreach ($this->actualResult as $result) {
-            $resultDates[] = $result->getSimpleDate();
-        }
-        self::assertEquals($expectedResult, $resultDates);
     }
 
     public static function getData(): array
@@ -229,9 +203,35 @@ final class IncludeWeekdayFilterTest extends HolidayTestCase
         ];
     }
 
+    /**
+     * @param int|int[] $weekday
+     */
+    private function givenAnIncludeWeekDayFilter($weekday): void
+    {
+        $this->filter = new IncludeWeekdayFilter($weekday);
+    }
+
+    private function whenFilterIsCalled(array $holidays): void
+    {
+        $holidayList = new HolidayList();
+        foreach ($holidays as $date) {
+            $holidayList->add(Holiday::create('name', $date));
+        }
+        $this->actualResult = $holidayList->filter($this->filter);
+    }
+
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
+    {
+        $resultDates = [];
+        foreach ($this->actualResult as $result) {
+            $resultDates[] = $result->getSimpleDate();
+        }
+        self::assertEquals($expectedResult, $resultDates);
+    }
+
     #[DataProvider('getDataForException')]
     #[Test]
-    public function it_should_throw_exception_on_invalid_weekdays(mixed $weekdays): void
+    public function itShouldThrowExceptionOnInvalidWeekdays(mixed $weekdays): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidWeekdayIsInstantiated($weekdays);

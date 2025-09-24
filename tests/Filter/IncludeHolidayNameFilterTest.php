@@ -30,7 +30,7 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
      */
     #[DataProvider('getData')]
     #[Test]
-    public function it_should_filter_holidays(HolidayList $holidayList, $holidayNames, array $expectedResult): void
+    public function itShouldFilterHolidays(HolidayList $holidayList, $holidayNames, array $expectedResult): void
     {
         $this->givenAFilter($holidayNames);
         $this->whenFilterIsCalled($holidayList);
@@ -111,7 +111,7 @@ final class IncludeHolidayNameFilterTest extends HolidayTestCase
 
     #[DataProvider('getDataForException')]
     #[Test]
-    public function it_should_throw_exception_on_invalid_holiday_names(mixed $holidayName): void
+    public function itShouldThrowExceptionOnInvalidHolidayNames(mixed $holidayName): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidHolidayNameIsInstantiated($holidayName);

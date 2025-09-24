@@ -30,11 +30,21 @@ final class NameFormatterTest extends HolidayTestCase
 
     #[DataProvider('getFormatData')]
     #[Test]
-    public function it_should_format_single_values(string $name, string $expectedResult): void
+    public function itShouldFormatSingleValues(string $name, string $expectedResult): void
     {
         $this->givenAFormatter();
         $this->whenFormatIsCalled($name);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
+    }
+
+    public static function getFormatData(): array
+    {
+        return [
+            [
+                'foo',
+                'foo',
+            ],
+        ];
     }
 
     private function givenAFormatter(): void
@@ -56,28 +66,13 @@ final class NameFormatterTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    public static function getFormatData(): array
-    {
-        return [
-            [
-                'foo',
-                'foo',
-            ],
-        ];
-    }
-
     #[DataProvider('getFormatTranslatedData')]
     #[Test]
-    public function it_should_format_single_values_with_translation(string $name, string $expectedResult): void
+    public function itShouldFormatSingleValuesWithTranslation(string $name, string $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
         $this->whenFormatIsCalled($name);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenAFormatterWithTranslator(): void
-    {
-        $this->formatter = new NameFormatter(new TranslatorStub());
     }
 
     public static function getFormatTranslatedData(): array
@@ -90,29 +85,22 @@ final class NameFormatterTest extends HolidayTestCase
         ];
     }
 
+    private function givenAFormatterWithTranslator(): void
+    {
+        $this->formatter = new NameFormatter(new TranslatorStub());
+    }
+
     /**
      * @param string[]        $names
      * @param string|string[] $expectedResult
      */
     #[DataProvider('getFormatListData')]
     #[Test]
-    public function it_should_format_list_values(array $names, $expectedResult): void
+    public function itShouldFormatListValues(array $names, $expectedResult): void
     {
         $this->givenAFormatterWithTranslator();
         $this->whenFormatListIsCalled($names);
         $this->thenAFormattedResultShouldBeReturned($expectedResult);
-    }
-
-    /**
-     * @param string[] $names
-     */
-    private function whenFormatListIsCalled(array $names): void
-    {
-        $holidayList = new HolidayList();
-        foreach ($names as $name) {
-            $holidayList->add(Holiday::create($name, '2016-01-01'));
-        }
-        $this->actualResult = $this->formatter->formatList($holidayList);
     }
 
     public static function getFormatListData(): array
@@ -129,5 +117,17 @@ final class NameFormatterTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    /**
+     * @param string[] $names
+     */
+    private function whenFormatListIsCalled(array $names): void
+    {
+        $holidayList = new HolidayList();
+        foreach ($names as $name) {
+            $holidayList->add(Holiday::create($name, '2016-01-01'));
+        }
+        $this->actualResult = $this->formatter->formatList($holidayList);
     }
 }

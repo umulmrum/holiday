@@ -99,8 +99,8 @@ final class HolidayType
 
     public const RESERVED6 = 16384;
 
-    public const ALL =
-        self::OTHER
+    public const ALL
+        = self::OTHER
         | self::OFFICIAL
         | self::DAY_OFF
         | self::RELIGIOUS

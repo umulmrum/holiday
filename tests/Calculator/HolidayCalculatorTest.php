@@ -42,7 +42,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
      */
     #[DataProvider('provideDataForTestDefaultResolver')]
     #[Test]
-    public function it_calculates_with_default_resolver($holidayProviders, $years): void
+    public function itCalculatesWithDefaultResolver($holidayProviders, $years): void
     {
         $this->givenHolidayCalculator();
         $this->whenCalculateIsCalled($holidayProviders, $years);
@@ -97,7 +97,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
 
     #[DataProvider('provideDataForTestThrowExceptionOnInvalidArgument')]
     #[Test]
-    public function it_throws_exception_on_invalid_arguments(mixed $holidayProviders, mixed $years): void
+    public function itThrowsExceptionOnInvalidArguments(mixed $holidayProviders, mixed $years): void
     {
         $this->givenHolidayCalculator();
         $this->thenExpectInvalidArgumentException();
@@ -159,7 +159,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_uses_passed_resolver_handler(): void
+    public function itUsesPassedResolverHandler(): void
     {
         $this->givenHolidayCalculator(new ResolverHandlerStub());
         $this->whenCalculateIsCalled('x', 2020);

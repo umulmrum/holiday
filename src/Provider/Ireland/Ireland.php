@@ -38,7 +38,7 @@ class Ireland implements CompensatoryHolidayProviderInterface
         }
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::BANK | HolidayType::NO_SCHOOL));
         $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        
+
         if ($year >= 1994) {
             $holidays->add($this->getMayDay($year, HolidayType::DAY_OFF));
         }
@@ -63,7 +63,6 @@ class Ireland implements CompensatoryHolidayProviderInterface
     {
         return Holiday::create(HolidayName::SAINT_PATRICKS_DAY, "{$year}-03-17", HolidayType::OFFICIAL | HolidayType::DAY_OFF | $additionalTyoe);
     }
-
 
     private function getMayDay(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
