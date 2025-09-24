@@ -206,6 +206,7 @@ return [
     'russia_day_compensatory' => 'Tag Russlands (Ausgleich)',
     'saint_andrews_day' => 'Andreastag',
     'saint_andrews_day_compensatory' => 'Andreastag (Ausgleich)',
+    'saint_brigids_day' => 'St. Brigid\'s Day',
     'saint_florians_day' => 'Florianstag',
     'saint_jean_baptiste_day' => 'Saint-Jean-Baptiste Day',
     'saint_georges_day' => 'Georgstag',
