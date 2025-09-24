@@ -24,11 +24,7 @@ use Umulmrum\Holiday\Translator\TranslatorInterface;
 final class MarkdownFormatterTest extends HolidayTestCase
 {
     private MarkdownFormatter $formatter;
-
-    /**
-     * @var string|string[]
-     */
-    private array|string $actualResult;
+    private string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]
@@ -85,10 +81,7 @@ final class MarkdownFormatterTest extends HolidayTestCase
         $this->actualResult = $this->formatter->format($holiday);
     }
 
-    /**
-     * @param string|string[] $expectedResult
-     */
-    private function thenAFormattedResultShouldBeReturned(array|string $expectedResult): void
+    private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
     }

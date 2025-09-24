@@ -27,11 +27,7 @@ use function date_default_timezone_set;
 final class ICalendarFormatterTest extends HolidayTestCase
 {
     private ICalendarFormatter $subject;
-
-    /**
-     * @var string|string[]
-     */
-    private array|string $actualResult;
+    private string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]
@@ -142,10 +138,8 @@ final class ICalendarFormatterTest extends HolidayTestCase
          */
         $now = (new DateTime('now'))->format('Ymd\TH');
 
-        /** @var string $actualResult */
-        $actualResult = $this->actualResult;
-        self::assertStringContainsString('DTSTAMP:' . $now, $actualResult);
-        self::assertStringContainsString('CREATED:' . $now, $actualResult);
-        self::assertStringContainsString('SUMMARY:name', $actualResult);
+        self::assertStringContainsString('DTSTAMP:' . $now, $this->actualResult);
+        self::assertStringContainsString('CREATED:' . $now, $this->actualResult);
+        self::assertStringContainsString('SUMMARY:name', $this->actualResult);
     }
 }

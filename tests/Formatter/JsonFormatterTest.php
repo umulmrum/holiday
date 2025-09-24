@@ -23,11 +23,7 @@ use Umulmrum\Holiday\Test\TranslatorStub;
 final class JsonFormatterTest extends HolidayTestCase
 {
     private JsonFormatter $formatter;
-
-    /**
-     * @var string|string[]
-     */
-    private array|string $actualResult;
+    private string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]
@@ -83,7 +79,7 @@ final class JsonFormatterTest extends HolidayTestCase
 
     private function thenAFormattedResultShouldBeReturned(string $expectedResult): void
     {
-        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult); // @phpstan-ignore-line
+        self::assertJsonStringEqualsJsonString($expectedResult, $this->actualResult);
     }
 
     #[DataProvider('getFormatTranslatedData')]

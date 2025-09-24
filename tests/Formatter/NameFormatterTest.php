@@ -24,9 +24,9 @@ final class NameFormatterTest extends HolidayTestCase
     private NameFormatter $formatter;
 
     /**
-     * @var int|int[]|string|string[]
+     * @var string|string[]
      */
-    private array|int|string $actualResult;
+    private array|string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]
@@ -61,7 +61,7 @@ final class NameFormatterTest extends HolidayTestCase
     /**
      * @param string|string[] $expectedResult
      */
-    private function thenAFormattedResultShouldBeReturned($expectedResult): void
+    private function thenAFormattedResultShouldBeReturned(array|string $expectedResult): void
     {
         self::assertEquals($expectedResult, $this->actualResult);
     }

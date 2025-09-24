@@ -36,7 +36,10 @@ final class NameFormatter implements HolidayFormatterInterface
         return $this->translator->translateName($holiday, $this->locale);
     }
 
-    public function formatList(HolidayList $holidayList): array|string
+    /**
+     * @return string[]
+     */
+    public function formatList(HolidayList $holidayList): array
     {
         $result = [];
 

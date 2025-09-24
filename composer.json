@@ -21,8 +21,8 @@
     "require-dev": {
         "ext-json": "*",
         "friendsofphp/php-cs-fixer": "^3.65",
-        "phpstan/phpstan": "~1.12.11",
-        "phpunit/phpunit": "~11.4",
+        "phpstan/phpstan": "~2.1",
+        "phpunit/phpunit": "~11.5|~12.3",
         "symfony/console": "~5.4|~6.4|~7.0",
         "symfony/translation": "~5.4|~6.4|~7.0"
     },

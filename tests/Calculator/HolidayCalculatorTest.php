@@ -92,7 +92,7 @@ final class HolidayCalculatorTest extends HolidayTestCase
 
     private function thenNoExceptionShouldBeThrown(): void
     {
-        self::assertTrue(true);
+        $this->expectNotToPerformAssertions();
     }
 
     #[DataProvider('provideDataForTestThrowExceptionOnInvalidArgument')]
