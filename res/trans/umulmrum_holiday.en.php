@@ -206,6 +206,7 @@ return [
     'russia_day_compensatory' => 'Russia Day (compensatory)',
     'saint_andrews_day' => 'St. Andrew\'s Day',
     'saint_andrews_day_compensatory' => 'St. Andrew\'s Day (compensatory)',
+    'saint_brigids_day' => 'St. Brigid\'s Day',
     'saint_florians_day' => 'St. Florian\'s Day',
     'saint_georges_day' => 'St. George\'s Day',
     'saint_georges_day_compensatory' => 'St. George\'s Day (compensatory)',
