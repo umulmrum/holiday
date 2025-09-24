@@ -100,9 +100,7 @@ class Ireland implements CompensatoryHolidayProviderInterface
     private function getStBrigidsDayHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $dateToCheck = new DateTime("{$year}-02-01");
-        $dateInfo = getdate($dateToCheck->getTimestamp());
-        // Check if Friday.
-        if ($dateInfo['wday'] != 5) {
+        if ($dateToCheck->format('w') !== '5') {
             $dateToCheck = new DateTime("First Monday of {$year}-2");
         }
         $date = $dateToCheck->format(Holiday::DISPLAY_DATE_FORMAT);
