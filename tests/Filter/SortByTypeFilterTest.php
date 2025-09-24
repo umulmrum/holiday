@@ -29,34 +29,11 @@ final class SortByTypeFilterTest extends HolidayTestCase
      */
     #[DataProvider('getData')]
     #[Test]
-    public function it_should_filter_holidays(array $holidays, array $expectedResult): void
+    public function itShouldFilterHolidays(array $holidays, array $expectedResult): void
     {
         $this->givenASortByTypeFilter();
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenASortByTypeFilter(): void
-    {
-        $this->filter = new SortByTypeFilter();
-    }
-
-    private function whenFilterIsCalled(array $holidays): void
-    {
-        $holidayList = new HolidayList();
-        foreach ($holidays as $index => $type) {
-            $holidayList->add(Holiday::create("name{$index}", "2020-01-0{$index}", $type));
-        }
-        $this->actualResult = $holidayList->filter($this->filter);
-    }
-
-    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
-    {
-        $resultTypes = [];
-        foreach ($this->actualResult->getList() as $result) {
-            $resultTypes[] = $result->getType();
-        }
-        self::assertEquals($expectedResult, $resultTypes);
     }
 
     public static function getData(): array
@@ -139,5 +116,28 @@ final class SortByTypeFilterTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    private function givenASortByTypeFilter(): void
+    {
+        $this->filter = new SortByTypeFilter();
+    }
+
+    private function whenFilterIsCalled(array $holidays): void
+    {
+        $holidayList = new HolidayList();
+        foreach ($holidays as $index => $type) {
+            $holidayList->add(Holiday::create("name{$index}", "2020-01-0{$index}", $type));
+        }
+        $this->actualResult = $holidayList->filter($this->filter);
+    }
+
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
+    {
+        $resultTypes = [];
+        foreach ($this->actualResult->getList() as $result) {
+            $resultTypes[] = $result->getType();
+        }
+        self::assertEquals($expectedResult, $resultTypes);
     }
 }

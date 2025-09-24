@@ -29,7 +29,7 @@ final class HolidayTest extends HolidayTestCase
 
     #[DataProvider('getDateTimeData')]
     #[Test]
-    public function it_builds_correctly_from_constructor(string $name, string $date, int $type): void
+    public function itBuildsCorrectlyFromConstructor(string $name, string $date, int $type): void
     {
         $this->whenHolidayIsCreatedFromConstructor($name, $date, $type);
         $this->thenThisNameShouldBeSet($name);
@@ -59,15 +59,10 @@ final class HolidayTest extends HolidayTestCase
 
     #[DataProvider('provideDataForInvalidConstructorData')]
     #[Test]
-    public function it_fails_on_invalid_constructor_data(string $name, string $date, int $type): void
+    public function itFailsOnInvalidConstructorData(string $name, string $date, int $type): void
     {
         $this->thenInvalidArgumentExceptionShouldBeThrown();
         $this->whenHolidayIsCreatedFromConstructor($name, $date, $type);
-    }
-
-    private function thenInvalidArgumentExceptionShouldBeThrown(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
     }
 
     public static function provideDataForInvalidConstructorData(): array
@@ -101,9 +96,14 @@ final class HolidayTest extends HolidayTestCase
         ];
     }
 
+    private function thenInvalidArgumentExceptionShouldBeThrown(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+    }
+
     #[DataProvider('getDateTimeData')]
     #[Test]
-    public function it_builds_correctly_from_create(string $name, string $date, int $type): void
+    public function itBuildsCorrectlyFromCreate(string $name, string $date, int $type): void
     {
         $this->whenHolidayIsCreatedFromCreate($name, $date, $type);
         $this->thenThisNameShouldBeSet($name);
@@ -118,12 +118,21 @@ final class HolidayTest extends HolidayTestCase
 
     #[DataProvider('getDateTimeData')]
     #[Test]
-    public function it_builds_correctly_from_createFromDateTime(string $name, string $date, int $type): void
+    public function itBuildsCorrectlyFromCreateFromDateTime(string $name, string $date, int $type): void
     {
         $this->whenHolidayIsCreatedFromCreateFromDateTime($name, $date, $type);
         $this->thenThisNameShouldBeSet($name);
         $this->thenThisSimpleDateShouldBeSet($date);
         $this->thenThisTypeShouldBeSet($type);
+    }
+
+    public static function getDateTimeData(): array
+    {
+        return [
+            ['foo', '1917-01-01', HolidayType::DAY_OFF],
+            ['bar', '1970-01-01', HolidayType::OTHER],
+            ['baz', '2000-02-29', HolidayType::BANK | HolidayType::NO_SCHOOL],
+        ];
     }
 
     private function whenHolidayIsCreatedFromCreateFromDateTime(string $name, string $date, int $type): void
@@ -133,11 +142,20 @@ final class HolidayTest extends HolidayTestCase
 
     #[DataProvider('getDetailedDateTimeData')]
     #[Test]
-    public function it_should_return_date_time(string $date, string $timezone, DateTimeImmutable $expectedResult): void
+    public function itShouldReturnDateTime(string $date, string $timezone, DateTimeImmutable $expectedResult): void
     {
         $this->givenHolidayWithDate($date);
         $this->whenGetDateIsCalled($timezone);
         $this->thenThisDateShouldBeReturned($expectedResult);
+    }
+
+    public static function getDetailedDateTimeData(): array
+    {
+        return [
+            ['1917-01-01', 'Europe/Berlin', new DateTimeImmutable('1917-01-01T00:00:00+0100')],
+            ['1970-01-01', 'America/Argentina/Cordoba', new DateTimeImmutable('1970-01-01T00:00:00-0300')],
+            ['2020-10-31', 'Asia/Manila', new DateTimeImmutable('2020-10-31T00:00:00+0800')],
+        ];
     }
 
     private function givenHolidayWithDate(string $date): void
@@ -155,27 +173,9 @@ final class HolidayTest extends HolidayTestCase
         self::assertEquals($expectedResult, $this->actualResult);
     }
 
-    public static function getDateTimeData(): array
-    {
-        return [
-            ['foo', '1917-01-01', HolidayType::DAY_OFF],
-            ['bar', '1970-01-01', HolidayType::OTHER],
-            ['baz', '2000-02-29', HolidayType::BANK | HolidayType::NO_SCHOOL],
-        ];
-    }
-
-    public static function getDetailedDateTimeData(): array
-    {
-        return [
-            ['1917-01-01', 'Europe/Berlin', new DateTimeImmutable('1917-01-01T00:00:00+0100')],
-            ['1970-01-01', 'America/Argentina/Cordoba', new DateTimeImmutable('1970-01-01T00:00:00-0300')],
-            ['2020-10-31', 'Asia/Manila', new DateTimeImmutable('2020-10-31T00:00:00+0800')],
-        ];
-    }
-
     #[DataProvider('getTypeData')]
     #[Test]
-    public function it_should_return_if_it_has_type(int $typeToSet, int $checkedType, bool $expectedResult): void
+    public function itShouldReturnIfItHasType(int $typeToSet, int $checkedType, bool $expectedResult): void
     {
         $this->givenHolidayWithType($typeToSet);
         $this->whenHasTypeIsCalled($checkedType);
@@ -211,7 +211,7 @@ final class HolidayTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_should_format_self(): void
+    public function itShouldFormatSelf(): void
     {
         $this->givenHoliday('name', '2019-06-30', HolidayType::DAY_OFF);
         $this->whenFormatIsCalledWithSomeFormatter();

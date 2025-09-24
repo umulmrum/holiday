@@ -28,7 +28,7 @@ final class ClassNameResolverTest extends HolidayTestCase
 
     #[DataProvider('provideDataForResolveProviders')]
     #[Test]
-    public function it_should_resolve_providers(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
+    public function itShouldResolveProviders(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
     {
         $this->givenClassNameResolver();
         $this->whenResolveHolidayProviderIsCalled($identifier);
@@ -54,7 +54,7 @@ final class ClassNameResolverTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_should_throw_exception_on_invalid_class(): void
+    public function itShouldThrowExceptionOnInvalidClass(): void
     {
         $this->givenClassNameResolver();
         $this->thenExpectInvalidArgumentException();

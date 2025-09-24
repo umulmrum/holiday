@@ -34,7 +34,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
 
     #[DataProvider('getGetNoWorkdaysForTimespanData')]
     #[Test]
-    public function it_should_calculate_correct_no_work_days_for_a_timespan(string $firstDay, string $lastDay, array $noWorkWeekdaysProviders, array $expectedResult): void
+    public function itShouldCalculateCorrectNoWorkDaysForATimespan(string $firstDay, string $lastDay, array $noWorkWeekdaysProviders, array $expectedResult): void
     {
         $this->givenGetNoWorkDaysForTimeSpan();
         $this->whenGetNoWorkdaysForTimespanIsCalled(BadenWuerttemberg::class, $firstDay, $lastDay, $noWorkWeekdaysProviders);
@@ -222,7 +222,7 @@ final class GetNoWorkDaysForTimeSpanTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_should_throw_exception_on_invalid_timespan(): void
+    public function itShouldThrowExceptionOnInvalidTimespan(): void
     {
         $this->givenGetNoWorkDaysForTimeSpan();
         $this->thenInvalidArgumentExceptionIsExpected();

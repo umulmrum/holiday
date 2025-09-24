@@ -29,7 +29,7 @@ final class IsoResolverTest extends HolidayTestCase
 
     #[DataProvider('provideDataForResolveProviders')]
     #[Test]
-    public function it_should_resolve_providers(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
+    public function itShouldResolveProviders(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
     {
         $this->givenIsoResolver();
         $this->whenResolveHolidayProviderIsCalled($identifier);
@@ -71,7 +71,7 @@ final class IsoResolverTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_should_resolve_multiple_providers_consecutively(): void
+    public function itShouldResolveMultipleProvidersConsecutively(): void
     {
         $this->givenIsoResolver();
         $this->whenResolveHolidayProviderIsCalled('FR-67');

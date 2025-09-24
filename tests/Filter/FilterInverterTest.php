@@ -16,7 +16,7 @@ final class FilterInverterTest extends HolidayTestCase
     private FilterInverter $filter;
 
     #[Test]
-    public function it_should_invert_another_filter(): void
+    public function itShouldInvertAnotherFilter(): void
     {
         $this->givenHolidayList();
         $this->givenInnerFilter();

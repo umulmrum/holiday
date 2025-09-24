@@ -45,7 +45,7 @@ final class ResolverHandlerTest extends HolidayTestCase
      */
     #[DataProvider('provideDataForResolveHolidayProviders')]
     #[Test]
-    public function it_resolves_holiday_providers(array $providers, $identifier, array $expectedResult): void
+    public function itResolvesHolidayProviders(array $providers, $identifier, array $expectedResult): void
     {
         $this->givenResolverHandler($providers);
         $this->whenResolveIsCalled($identifier);
@@ -75,7 +75,7 @@ final class ResolverHandlerTest extends HolidayTestCase
 
     #[DataProvider('provideDataForThrowException')]
     #[Test]
-    public function it_throws_exception_for_invalid_identifier(mixed $identifier): void
+    public function itThrowsExceptionForInvalidIdentifier(mixed $identifier): void
     {
         $this->givenResolverHandler([new ClassNameResolver()]);
         $this->thenExpectInvalidArgumentException();

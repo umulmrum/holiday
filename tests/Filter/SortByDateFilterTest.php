@@ -29,34 +29,11 @@ final class SortByDateFilterTest extends HolidayTestCase
      */
     #[DataProvider('getData')]
     #[Test]
-    public function it_should_filter_holidays(array $holidays, array $expectedResult): void
+    public function itShouldFilterHolidays(array $holidays, array $expectedResult): void
     {
         $this->givenASortByDateFilter();
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenASortByDateFilter(): void
-    {
-        $this->filter = new SortByDateFilter();
-    }
-
-    private function whenFilterIsCalled(array $holidays): void
-    {
-        $holidayList = new HolidayList();
-        foreach ($holidays as $index => $date) {
-            $holidayList->add(Holiday::create('name' . $index, $date));
-        }
-        $this->actualResult = $holidayList->filter($this->filter);
-    }
-
-    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
-    {
-        $resultDates = [];
-        foreach ($this->actualResult->getList() as $result) {
-            $resultDates[] = $result->getSimpleDate();
-        }
-        self::assertEquals($expectedResult, $resultDates);
     }
 
     public static function getData(): array
@@ -157,5 +134,28 @@ final class SortByDateFilterTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    private function givenASortByDateFilter(): void
+    {
+        $this->filter = new SortByDateFilter();
+    }
+
+    private function whenFilterIsCalled(array $holidays): void
+    {
+        $holidayList = new HolidayList();
+        foreach ($holidays as $index => $date) {
+            $holidayList->add(Holiday::create('name' . $index, $date));
+        }
+        $this->actualResult = $holidayList->filter($this->filter);
+    }
+
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
+    {
+        $resultDates = [];
+        foreach ($this->actualResult->getList() as $result) {
+            $resultDates[] = $result->getSimpleDate();
+        }
+        self::assertEquals($expectedResult, $resultDates);
     }
 }

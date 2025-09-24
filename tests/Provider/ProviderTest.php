@@ -40,21 +40,6 @@ final class ProviderTest extends HolidayTestCase
     }
 
     /**
-     * @return int[][]
-     */
-    private function parseYears(string $content): array
-    {
-        preg_match_all('/# (.*)/', $content, $matches);
-
-        $years = [];
-        foreach ($matches[1] as $yearList) {
-            $years[] = array_map('intval', explode(',', $yearList));
-        }
-
-        return $years;
-    }
-
-    /**
      * @return Generator<array{providerCode: string, fixturePath: string}>
      */
     public static function provideDataForTestProviders(): Generator
@@ -72,6 +57,21 @@ final class ProviderTest extends HolidayTestCase
                 throw new LogicException('Invalid file: ' . $file->getRealPath());
             }
         }
+    }
+
+    /**
+     * @return int[][]
+     */
+    private function parseYears(string $content): array
+    {
+        preg_match_all('/# (.*)/', $content, $matches);
+
+        $years = [];
+        foreach ($matches[1] as $yearList) {
+            $years[] = array_map('intval', explode(',', $yearList));
+        }
+
+        return $years;
     }
 
     private function givenCalculator(): void

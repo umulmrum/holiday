@@ -27,15 +27,11 @@ use function date_default_timezone_set;
 final class ICalendarFormatterTest extends HolidayTestCase
 {
     private ICalendarFormatter $subject;
-
-    /**
-     * @var string|string[]
-     */
-    private array|string $actualResult;
+    private string $actualResult;
 
     #[DataProvider('getFormatData')]
     #[Test]
-    public function it_should_format_single_values(Holiday $holiday, string $expectedResult): void
+    public function itShouldFormatSingleValues(Holiday $holiday, string $expectedResult): void
     {
         $this->givenICalendarFormatter();
         $this->whenFormatIsCalled($holiday);
@@ -60,7 +56,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
 
     #[DataProvider('getFormatListData')]
     #[Test]
-    public function it_should_format_list_values(HolidayList $holidayList, string $expectedResult): void
+    public function itShouldFormatListValues(HolidayList $holidayList, string $expectedResult): void
     {
         $this->givenICalendarFormatter();
         $this->whenFormatListIsCalled($holidayList);
@@ -99,7 +95,7 @@ final class ICalendarFormatterTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_should_use_defaults_if_no_constructor_arguments(): void
+    public function itShouldUseDefaultsIfNoConstructorArguments(): void
     {
         $this->givenICalendarFormatterWithoutArguments();
         $this->whenFormatIsCalled(Holiday::create('name', '2020-01-01'));
@@ -142,10 +138,8 @@ final class ICalendarFormatterTest extends HolidayTestCase
          */
         $now = (new DateTime('now'))->format('Ymd\TH');
 
-        /** @var string $actualResult */
-        $actualResult = $this->actualResult;
-        self::assertStringContainsString('DTSTAMP:' . $now, $actualResult);
-        self::assertStringContainsString('CREATED:' . $now, $actualResult);
-        self::assertStringContainsString('SUMMARY:name', $actualResult);
+        self::assertStringContainsString('DTSTAMP:' . $now, $this->actualResult);
+        self::assertStringContainsString('CREATED:' . $now, $this->actualResult);
+        self::assertStringContainsString('SUMMARY:name', $this->actualResult);
     }
 }

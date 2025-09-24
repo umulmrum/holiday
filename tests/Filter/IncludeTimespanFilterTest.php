@@ -29,34 +29,11 @@ final class IncludeTimespanFilterTest extends HolidayTestCase
      */
     #[DataProvider('getData')]
     #[Test]
-    public function it_should_filter_holidays(array $holidays, string $firstDay, string $lastDay, array $expectedResult): void
+    public function itShouldFilterHolidays(array $holidays, string $firstDay, string $lastDay, array $expectedResult): void
     {
         $this->givenAnIncludeTimespanFilter($firstDay, $lastDay);
         $this->whenFilterIsCalled($holidays);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
-    }
-
-    private function givenAnIncludeTimespanFilter(string $firstDay, string $lastDay): void
-    {
-        $this->filter = new IncludeTimespanFilter(new DateTime($firstDay), new DateTime($lastDay));
-    }
-
-    private function whenFilterIsCalled(array $holidays): void
-    {
-        $holidayList = new HolidayList();
-        foreach ($holidays as $date) {
-            $holidayList->add(Holiday::create('name', $date));
-        }
-        $this->actualResult = $holidayList->filter($this->filter);
-    }
-
-    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
-    {
-        $resultDates = [];
-        foreach ($this->actualResult as $result) {
-            $resultDates[] = $result->getSimpleDate();
-        }
-        self::assertEquals($expectedResult, $resultDates);
     }
 
     public static function getData(): array
@@ -186,5 +163,28 @@ final class IncludeTimespanFilterTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    private function givenAnIncludeTimespanFilter(string $firstDay, string $lastDay): void
+    {
+        $this->filter = new IncludeTimespanFilter(new DateTime($firstDay), new DateTime($lastDay));
+    }
+
+    private function whenFilterIsCalled(array $holidays): void
+    {
+        $holidayList = new HolidayList();
+        foreach ($holidays as $date) {
+            $holidayList->add(Holiday::create('name', $date));
+        }
+        $this->actualResult = $holidayList->filter($this->filter);
+    }
+
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
+    {
+        $resultDates = [];
+        foreach ($this->actualResult as $result) {
+            $resultDates[] = $result->getSimpleDate();
+        }
+        self::assertEquals($expectedResult, $resultDates);
     }
 }

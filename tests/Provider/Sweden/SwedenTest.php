@@ -25,21 +25,11 @@ final class SwedenTest extends HolidayTestCase
 
     #[DataProvider('getDataForCalculateWithDeFactoHolidays')]
     #[Test]
-    public function it_computes_the_correct_holidays_without_de_facto_holidays(int $year, array $expectedResult): void
+    public function itComputesTheCorrectHolidaysWithoutDeFactoHolidays(int $year, array $expectedResult): void
     {
         $this->givenAHolidayCalculator();
         $this->whenICallCalculateForSwedenWithoutDeFactoHolidays($year);
         $this->thenTheCorrectHolidaysShouldBeCalculated($expectedResult);
-    }
-
-    protected function givenAHolidayCalculator(): void
-    {
-        $this->holidayCalculator = new HolidayCalculator();
-    }
-
-    private function whenICallCalculateForSwedenWithoutDeFactoHolidays(int $year): void
-    {
-        $this->actualResult = $this->holidayCalculator->calculate([new Sweden(false, false)], $year);
     }
 
     public static function getDataForCalculateWithDeFactoHolidays(): array
@@ -82,6 +72,16 @@ final class SwedenTest extends HolidayTestCase
                 ],
             ],
         ];
+    }
+
+    protected function givenAHolidayCalculator(): void
+    {
+        $this->holidayCalculator = new HolidayCalculator();
+    }
+
+    private function whenICallCalculateForSwedenWithoutDeFactoHolidays(int $year): void
+    {
+        $this->actualResult = $this->holidayCalculator->calculate([new Sweden(false, false)], $year);
     }
 
     protected function thenTheCorrectHolidaysShouldBeCalculated(array $expectedResult): void
