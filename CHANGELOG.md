@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.3] - 2025-09-24
+
 ### Added
-- St Brigids Day Holiday for Ireland
-- Easter Monday added for Ireland
+- St Brigids Day Holiday for Ireland (by @tobya)
+- Easter Monday added for Ireland (by @tobya)
+- English translation for Labor Day
+- Official support for PHP 8.5
 
 ## [0.11.2] - 2025-02-23
 
@@ -215,7 +219,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.11.2...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/0.11.3...master
+[0.11.3]: https://github.com/umulmrum/holiday/compare/0.11.2...0.11.3
 [0.11.2]: https://github.com/umulmrum/holiday/compare/0.11.1...0.11.2
 [0.11.1]: https://github.com/umulmrum/holiday/compare/0.11.0...0.11.1
 [0.11.0]: https://github.com/umulmrum/holiday/compare/0.10.0...0.11.0
