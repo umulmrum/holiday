@@ -29,22 +29,22 @@ class Norway implements HolidayProviderInterface
     {
         $holidays = new HolidayList();
 
-        // Offisielle helligdager
+        // Public holidays (with a day off)
         $holidays->add($this->getNewYear($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        $holidays->add($this->getPalmSunday($year, HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
-        $holidays->add($this->getMaundyThursday($year, HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
-        $holidays->add($this->getGoodFriday($year, HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getPalmSunday($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getMaundyThursday($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidays->add($this->getEasterSunday($year, HolidayType::DAY_OFF | HolidayType::OFFICIAL | HolidayType::RELIGIOUS));
-        $holidays->add($this->getEasterMonday($year, HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidays->add($this->getLaborDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getConstitutionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
-        $holidays->add($this->getAscension($year, HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getAscension($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidays->add($this->getWhitSunday($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
-        $holidays->add($this->getWhitMonday($year, HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
         $holidays->add($this->getChristmasDay($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
-        $holidays->add($this->getSecondChristmasDay($year, HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
+        $holidays->add($this->getSecondChristmasDay($year, HolidayType::OFFICIAL | HolidayType::RELIGIOUS | HolidayType::DAY_OFF));
 
-        // Tradisjonelle dager og andre
+        // Traditional days as well as some other days
         $holidays->add($this->getSamiNationalDay($year, HolidayType::OFFICIAL));
         $holidays->add($this->getInternationalWomensDay($year, HolidayType::TRADITIONAL));
         $holidays->add($this->getMidsummersEve($year, HolidayType::TRADITIONAL));
@@ -53,7 +53,7 @@ class Norway implements HolidayProviderInterface
         $holidays->add($this->getChristmasEve($year, HolidayType::RELIGIOUS | HolidayType::PARTIAL_ONLY));
         $holidays->add($this->getNewYearsEve($year, HolidayType::TRADITIONAL | HolidayType::PARTIAL_ONLY));
 
-        // Adventssøndager
+        // Advent Sundays
         $holidays->add($this->getAdventSunday($year, 1, HolidayName::ADVENT_SUNDAY_1));
         $holidays->add($this->getAdventSunday($year, 2, HolidayName::ADVENT_SUNDAY_2));
         $holidays->add($this->getAdventSunday($year, 3, HolidayName::ADVENT_SUNDAY_3));
