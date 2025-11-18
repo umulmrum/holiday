@@ -438,6 +438,23 @@ Contributions are highly welcome. Please follow these rules when submitting a PR
 
 By submitting a PR you agree that all your contributed code may be used under the MIT license.
 
+### Adding Tests
+
+Provide tests inside `tests/Provider/...` that ideally cover all edge cases. This can be done as follows:
+
+- First write the changes to the holiday provider itself
+- Then run a command that looks approximately like this: `tests/console test:generate DE-BY -y 2018 -y 2025`.
+  Replace `DE-BY` with the ISO code of your new provider.
+  Replace `-y 2018 -y 2025` with the years that make sense for your provider.
+- The test will calculate holidays for the selected years and generate markdown tables that are saved in the
+  directory `tests/Provider/Data`. Find the file there and check if you are content with the result, but don't
+  change the format of the file, as the test runner will expect it exactly like this.
+- Before you push your changes, add a line to the `tests/regenerateTests.sh` script; this is the same line you used
+  for testing if you followed the steps above. This file allows rebuilding the tests on changes.
+- If you need tests that can't be expressed like this (see e.g. Sweden), write those particular tests by hand.
+- **Windows: Please note** On windows the generator must be run in a bash window.
+
+
 ### How To Add a New Country or Region
 
 - Add a provider for that country or region inside `src/Provider/...`.
@@ -454,15 +471,7 @@ By submitting a PR you agree that all your contributed code may be used under th
     compensatory days are calculated for all holidays, and assume the holidays are moved to Monday if they occur on
     Saturday or Sunday. This behavior can be adjusted by passing constructor arguments to `CompensatoryDayCalculator`.
     See e.g. the holiday providers for the United Kingdom or the USA for examples.
-- Provide tests inside `tests/Provider/...` that ideally cover all edge cases. This can be done as follows:
-  - First write the holiday provider itself
-  - Then run a command that looks approximately like this: `tests/console test:generate DE-BY -y 2018 -y 2025`.
-    Replace `DE-BY` with the ISO code of your new provider.
-    Replace `-y 2018 -y 2025` with the years that make sense for your provider.
-  - The test will calculate holidays for the selected years and generate markdown tables that are saved in the
-    directory `tests/Provider/Data`. Find the file there and check if you are content with the result, but don't
-    change the format of the file, as the test runner will expect it exactly like this.
-  - If you need tests that can't be expressed like this (see e.g. Sweden), write those particular tests by hand.
+- Provide tests as specified above in [Adding Tests](#adding-tests)
 
 ## License
 

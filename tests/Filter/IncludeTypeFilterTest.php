@@ -30,36 +30,11 @@ final class IncludeTypeFilterTest extends HolidayTestCase
      */
     #[DataProvider('getData')]
     #[Test]
-    public function it_should_filter_holidays(HolidayList $holidayList, $filterType, array $expectedResult): void
+    public function itShouldFilterHolidays(HolidayList $holidayList, $filterType, array $expectedResult): void
     {
         $this->givenAFilter($filterType);
         $this->whenFilterIsCalled($holidayList);
         $this->thenACorrectlyFilteredResultShouldBeReturned($expectedResult);
-    }
-
-    /**
-     * @param int|int[] $filterType
-     */
-    private function givenAFilter($filterType): void
-    {
-        $this->filter = new IncludeTypeFilter($filterType);
-    }
-
-    private function whenFilterIsCalled(HolidayList $holidayList): void
-    {
-        $this->actualResult = $holidayList->filter($this->filter);
-    }
-
-    /**
-     * @param string[] $expectedResult
-     */
-    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
-    {
-        $resultDates = [];
-        foreach ($this->actualResult as $result) {
-            $resultDates[] = $result->getSimpleDate();
-        }
-        self::assertEquals($expectedResult, $resultDates);
     }
 
     public static function getData(): array
@@ -146,9 +121,34 @@ final class IncludeTypeFilterTest extends HolidayTestCase
         ];
     }
 
+    /**
+     * @param int|int[] $filterType
+     */
+    private function givenAFilter($filterType): void
+    {
+        $this->filter = new IncludeTypeFilter($filterType);
+    }
+
+    private function whenFilterIsCalled(HolidayList $holidayList): void
+    {
+        $this->actualResult = $holidayList->filter($this->filter);
+    }
+
+    /**
+     * @param string[] $expectedResult
+     */
+    private function thenACorrectlyFilteredResultShouldBeReturned(array $expectedResult): void
+    {
+        $resultDates = [];
+        foreach ($this->actualResult as $result) {
+            $resultDates[] = $result->getSimpleDate();
+        }
+        self::assertEquals($expectedResult, $resultDates);
+    }
+
     #[DataProvider('getDataForException')]
     #[Test]
-    public function it_should_throw_exception_on_invalid_holiday_types(mixed $filterType): void
+    public function itShouldThrowExceptionOnInvalidHolidayTypes(mixed $filterType): void
     {
         $this->thenInvalidArgumentExceptionIsExpected();
         $this->whenFilterWithInvalidTypeIsInstantiated($filterType);

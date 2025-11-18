@@ -28,7 +28,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
 
     #[DataProvider('provideDataForAddAll')]
     #[Test]
-    public function it_should_calculate_compensatory_days_with_default_settings(HolidayList $initialHolidayList, int $year, HolidayList $expectedHolidayList): void
+    public function itShouldCalculateCompensatoryDaysWithDefaultSettings(HolidayList $initialHolidayList, int $year, HolidayList $expectedHolidayList): void
     {
         $this->givenCompensatoryDaysCalculator();
         $this->whenAddAllIsCalled($initialHolidayList, $year);
@@ -175,7 +175,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
      */
     #[DataProvider('provideDataForLimitToHolidays')]
     #[Test]
-    public function it_should_be_limitable_to_certain_holidays(
+    public function itShouldBeLimitableToCertainHolidays(
         array $forTheseHolidayNamesOnly,
         HolidayList $initialHolidayList,
         int $year,
@@ -221,7 +221,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
      */
     #[DataProvider('provideDataForSkipCustomWeekDays')]
     #[Test]
-    public function it_should_skip_custom_week_days(
+    public function itShouldSkipCustomWeekDays(
         array $weekDaysToStepBackward,
         array $weekDaysToStepForward,
         HolidayList $initialHolidayList,
@@ -337,7 +337,7 @@ final class CompensatoryDaysCalculatorTest extends HolidayTestCase
 
     #[Test]
     #[DataProvider('provideDataForAdjacentYears')]
-    public function it_should_calculate_days_for_adjacent_years(
+    public function itShouldCalculateDaysForAdjacentYears(
         HolidayList $initialHolidays,
         array $weekDaysToStepBackward,
         array $weekDaysToStepForward,

@@ -32,7 +32,7 @@ final class GetGracePeriodTest extends HolidayTestCase
      */
     #[DataProvider('getGetGracePeriodData')]
     #[Test]
-    public function it_should_calculate_correct_grace_period($holidayProviders, DateTimeImmutable $firstDay, int $numberOfDays, DateTimeInterface $expectedResult): void
+    public function itShouldCalculateCorrectGracePeriod($holidayProviders, DateTimeImmutable $firstDay, int $numberOfDays, DateTimeInterface $expectedResult): void
     {
         $this->givenGetGracePeriod();
         $this->whenGetGracePeriodIsCalled($holidayProviders, $firstDay, $numberOfDays);

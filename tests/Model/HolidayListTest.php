@@ -35,35 +35,11 @@ final class HolidayListTest extends HolidayTestCase
      */
     #[DataProvider('getAddHolidayData')]
     #[Test]
-    public function it_should_add_a_holiday(array $presetHolidays, Holiday $holiday, array $expectedHolidays): void
+    public function itShouldAddAHoliday(array $presetHolidays, Holiday $holiday, array $expectedHolidays): void
     {
         $this->givenAHolidayList($presetHolidays);
         $this->whenAddHolidayIsCalled($holiday);
         $this->thenTheListShouldContainCertainHolidays($expectedHolidays);
-    }
-
-    /**
-     * @param Holiday[] $presetHolidays
-     */
-    private function givenAHolidayList(array $presetHolidays): void
-    {
-        $this->holidayList = new HolidayList();
-        foreach ($presetHolidays as $holiday) {
-            $this->holidayList->add($holiday);
-        }
-    }
-
-    private function whenAddHolidayIsCalled(Holiday $holiday): void
-    {
-        $this->holidayList->add($holiday);
-    }
-
-    /**
-     * @param Holiday[] $expectedValue
-     */
-    private function thenTheListShouldContainCertainHolidays(array $expectedValue): void
-    {
-        self::assertEquals($expectedValue, $this->holidayList->getList());
     }
 
     public static function getAddHolidayData(): array
@@ -127,11 +103,35 @@ final class HolidayListTest extends HolidayTestCase
 
     /**
      * @param Holiday[] $presetHolidays
+     */
+    private function givenAHolidayList(array $presetHolidays): void
+    {
+        $this->holidayList = new HolidayList();
+        foreach ($presetHolidays as $holiday) {
+            $this->holidayList->add($holiday);
+        }
+    }
+
+    private function whenAddHolidayIsCalled(Holiday $holiday): void
+    {
+        $this->holidayList->add($holiday);
+    }
+
+    /**
+     * @param Holiday[] $expectedValue
+     */
+    private function thenTheListShouldContainCertainHolidays(array $expectedValue): void
+    {
+        self::assertEquals($expectedValue, $this->holidayList->getList());
+    }
+
+    /**
+     * @param Holiday[] $presetHolidays
      * @param Holiday[] $expectedResult
      */
     #[Test]
     #[DataProvider('provideDataForRemoveByName')]
-    public function it_should_remove_holidays_by_name(array $presetHolidays, string $nameToRemove, array $expectedResult): void
+    public function itShouldRemoveHolidaysByName(array $presetHolidays, string $nameToRemove, array $expectedResult): void
     {
         $this->givenAHolidayList($presetHolidays);
         $this->whenRemoveByNameIsCalled($nameToRemove);
@@ -201,7 +201,7 @@ final class HolidayListTest extends HolidayTestCase
 
     #[DataProvider('provideDataForReplaceByNameAndDate')]
     #[Test]
-    public function it_should_replace_by_name_and_date(array $presetHolidays, Holiday $holidayToReplace, array $expectedResult): void
+    public function itShouldReplaceByNameAndDate(array $presetHolidays, Holiday $holidayToReplace, array $expectedResult): void
     {
         $this->givenAHolidayList($presetHolidays);
         $this->whenReplaceByNameAndDateIsCalled($holidayToReplace);
@@ -251,7 +251,7 @@ final class HolidayListTest extends HolidayTestCase
 
     #[DataProvider('provideDataForContainsDate')]
     #[Test]
-    public function it_should_check_if_is_holiday(array $presetHolidays, string $date, bool $expectedResult): void
+    public function itShouldCheckIfIsHoliday(array $presetHolidays, string $date, bool $expectedResult): void
     {
         $this->givenAHolidayList($presetHolidays);
         $this->whenIsHolidayIsCalled($date);
@@ -307,7 +307,7 @@ final class HolidayListTest extends HolidayTestCase
     }
 
     #[Test]
-    public function it_should_format_lists(): void
+    public function itShouldFormatLists(): void
     {
         $this->givenSomeHolidayList();
         $this->whenFormatIsCalledWithAFormatter();

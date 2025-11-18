@@ -26,12 +26,14 @@ abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
 
     #[DataProvider('getData')]
     #[Test]
-    public function it_computes_the_correct_holidays(int $year, array $expectedResult): void
+    public function itComputesTheCorrectHolidays(int $year, array $expectedResult): void
     {
         $this->givenAHolidayCalculator();
         $this->whenICallCalculate($year);
         $this->thenTheCorrectHolidaysShouldBeCalculated($expectedResult);
     }
+
+    abstract public static function getData(): array;
 
     abstract protected function getHolidayProviders(): array;
 
@@ -39,8 +41,6 @@ abstract class AbstractHolidayCalculatorTestCase extends HolidayTestCase
     {
         $this->holidayCalculator = new HolidayCalculator();
     }
-
-    abstract public static function getData(): array;
 
     protected function whenICallCalculate(int $year): void
     {

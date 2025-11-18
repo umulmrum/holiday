@@ -188,6 +188,7 @@ final class HolidayName
     public const OCTOBER_HOLIDAY = 'october_holiday';
     public const SAINT_PATRICKS_DAY = 'saint_patricks_day';
     public const SAINT_PATRICKS_DAY_COMPENSATORY = self::SAINT_PATRICKS_DAY . self::SUFFIX_COMPENSATORY;
+    public const SAINT_BRIGIDS_DAY = 'saint_brigids_day';
 
     // Italy
     public const ANNIVERSARY_OF_THE_UNIFICATION_OF_ITALY = 'anniversary_of_the_unification_of_italy';

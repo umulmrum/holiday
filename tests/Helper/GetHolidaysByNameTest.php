@@ -32,7 +32,7 @@ final class GetHolidaysByNameTest extends HolidayTestCase
 
     #[DataProvider('getGetHolidaysByNameData')]
     #[Test]
-    public function it_should_calculate_correct_holidays_for_a_holiday_name(int $year, array $existingHolidays, string $holidayName, array $expectedResult): void
+    public function itShouldCalculateCorrectHolidaysForAHolidayName(int $year, array $existingHolidays, string $holidayName, array $expectedResult): void
     {
         $this->givenHolidayCalculatorReturningHolidays($year, $existingHolidays);
         $this->givenGetHolidaysByName();

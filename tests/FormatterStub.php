@@ -26,7 +26,7 @@ final class FormatterStub implements HolidayFormatterInterface
         return sprintf('%s|%s|%s', $holiday->getName(), $holiday->getSimpleDate(), $holiday->getType());
     }
 
-    public function formatList(HolidayList $holidayList): array|string
+    public function formatList(HolidayList $holidayList): string
     {
         return implode(';', array_map($this->format(...), $holidayList->getList()));
     }

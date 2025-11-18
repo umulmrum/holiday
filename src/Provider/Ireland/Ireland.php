@@ -30,10 +30,15 @@ class Ireland implements CompensatoryHolidayProviderInterface
     {
         $holidays = new HolidayList();
         $holidays->add($this->getNewYear($year, HolidayType::DAY_OFF));
+        if ($year >= 2023) {
+            $holidays->add($this->getStBrigidsDayHoliday($year, HolidayType::DAY_OFF));
+        }
         if ($year >= 1903) {
             $holidays->add($this->getSaintPatricksDay($year));
         }
         $holidays->add($this->getGoodFriday($year, HolidayType::OFFICIAL | HolidayType::BANK | HolidayType::NO_SCHOOL));
+        $holidays->add($this->getEasterMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+
         if ($year >= 1994) {
             $holidays->add($this->getMayDay($year, HolidayType::DAY_OFF));
         }
@@ -85,6 +90,21 @@ class Ireland implements CompensatoryHolidayProviderInterface
         $date = (new DateTime("Last Monday of {$year}-10"))->format(Holiday::DISPLAY_DATE_FORMAT);
 
         return Holiday::create(HolidayName::OCTOBER_HOLIDAY, $date, HolidayType::OFFICIAL | $additionalType);
+    }
+
+    /**
+     * St Brigids day is a new holiday (2023) that is celebrated on first monday of February unless Feb 1 falls on
+     * a friday then it is on that Friday.
+     */
+    private function getStBrigidsDayHoliday(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $dateToCheck = new DateTime("{$year}-02-01");
+        if ($dateToCheck->format('w') !== '5') {
+            $dateToCheck = new DateTime("First Monday of {$year}-2");
+        }
+        $date = $dateToCheck->format(Holiday::DISPLAY_DATE_FORMAT);
+
+        return Holiday::create(HolidayName::SAINT_BRIGIDS_DAY, $date, HolidayType::OFFICIAL | $additionalType);
     }
 
     public function getCompensatoryDaysCalculators(int $year): array

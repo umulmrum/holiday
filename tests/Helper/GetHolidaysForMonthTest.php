@@ -31,7 +31,7 @@ final class GetHolidaysForMonthTest extends HolidayTestCase
 
     #[DataProvider('getGetHolidaysForMonthData')]
     #[Test]
-    public function it_should_calculate_a_list_of_all_holidays_in_a_given_month(int $year, int $month, array $existingHolidays, array $expectedResult): void
+    public function itShouldCalculateAListOfAllHolidaysInAGivenMonth(int $year, int $month, array $existingHolidays, array $expectedResult): void
     {
         $this->givenHolidayCalculatorReturningHolidays($year, $existingHolidays);
         $this->givenGetHolidaysForMonth();

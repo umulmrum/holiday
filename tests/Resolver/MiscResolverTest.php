@@ -32,7 +32,7 @@ final class MiscResolverTest extends HolidayTestCase
 
     #[DataProvider('provideDataForResolveProviders')]
     #[Test]
-    public function it_should_resolve_providers(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
+    public function itShouldResolveProviders(string $identifier, ?HolidayProviderInterface $expectedResult = null): void
     {
         $this->givenMiscResolver();
         $this->whenResolveHolidayProviderIsCalled($identifier);

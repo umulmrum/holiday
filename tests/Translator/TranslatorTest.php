@@ -31,26 +31,11 @@ final class TranslatorTest extends HolidayTestCase
 
     #[DataProvider('getTranslateNameData')]
     #[Test]
-    public function it_should_translate(string $key, ?string $locale, string $expectedResult): void
+    public function itShouldTranslate(string $key, ?string $locale, string $expectedResult): void
     {
         $this->givenATranslator();
         $this->whenTranslateNameIsCalled($key, $locale);
         $this->thenTheTranslatedStringShouldBeReturned($expectedResult);
-    }
-
-    private function givenATranslator(): void
-    {
-        $this->translator = new Translator('en');
-    }
-
-    private function whenTranslateNameIsCalled(string $name, ?string $locale): void
-    {
-        $this->actualResult = $this->translator->translateName(Holiday::create($name, '2016-01-01'), $locale);
-    }
-
-    private function thenTheTranslatedStringShouldBeReturned(string $expectedResult): void
-    {
-        self::assertEquals($expectedResult, $this->actualResult);
     }
 
     public static function getTranslateNameData(): array
@@ -94,8 +79,23 @@ final class TranslatorTest extends HolidayTestCase
         ];
     }
 
+    private function givenATranslator(): void
+    {
+        $this->translator = new Translator('en');
+    }
+
+    private function whenTranslateNameIsCalled(string $name, ?string $locale): void
+    {
+        $this->actualResult = $this->translator->translateName(Holiday::create($name, '2016-01-01'), $locale);
+    }
+
+    private function thenTheTranslatedStringShouldBeReturned(string $expectedResult): void
+    {
+        self::assertEquals($expectedResult, $this->actualResult);
+    }
+
     #[Test]
-    public function it_should_be_able_to_translate_all_holiday_names(): void
+    public function itShouldBeAbleToTranslateAllHolidayNames(): void
     {
         $this->givenATranslator();
         $this->whenTranslateIsCalledForAllKnownHolidayNames();
