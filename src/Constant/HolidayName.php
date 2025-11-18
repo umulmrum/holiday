@@ -62,6 +62,10 @@ final class HolidayName
     public const RADONITSA = 'radonitsa';
     public const REPENTANCE_AND_PRAYER_DAY = 'repentance_and_prayer_day';
     public const IMMACULATE_CONCEPTION = 'immaculate_conception';
+    public const ADVENT_SUNDAY_1 = 'advent_sunday_1';
+    public const ADVENT_SUNDAY_2 = 'advent_sunday_2';
+    public const ADVENT_SUNDAY_3 = 'advent_sunday_3';
+    public const ADVENT_SUNDAY_4 = 'advent_sunday_4';
     public const CHRISTMAS_EVE = 'christmas_eve';
     public const CHRISTMAS_DAY = 'christmas_day';
     public const CHRISTMAS_DAY_COMPENSATORY = self::CHRISTMAS_DAY . self::SUFFIX_COMPENSATORY;
@@ -224,10 +228,7 @@ final class HolidayName
     // Norway
     public const NORWAY_CONSTITUTION_DAY = 'norway_constitution_day';
     public const NORWAY_SAMI_DAY = 'norway_sami_day';
-    public const ADVENT_SUNDAY_1 = 'advent_sunday_1';
-    public const ADVENT_SUNDAY_2 = 'advent_sunday_2';
-    public const ADVENT_SUNDAY_3 = 'advent_sunday_3';
-    public const ADVENT_SUNDAY_4 = 'advent_sunday_4';
+    public const NORWAY_LIBERATION_DAY = 'norway_liberation_day';
     public const PRINSESS_INGRID_ALEXANDRAS_BIRTHDAY = 'prinsess_ingrid_alexandras_birthday';
     public const KING_HARALD_VS_BIRTHDAY = 'king_harald_vs_birthday';
     public const UNION_DISSOLUTION = 'union_dissolution';
@@ -235,7 +236,7 @@ final class HolidayName
     public const CROWN_PRINCE_HAAKON_MAGNUS_BIRTHDAY = 'crown_prince_haakon_magnus_birthday';
     public const OLSOK_DAY = 'olsok_day';
     public const CROWN_PRINCESS_METTE_MARITS_BIRTHDAY = 'crown_princess_mette_marits_birthday';
-	
+
     // Poland
     public const CONSTITUTION_DAY = 'constitution_day';
     public const POLISH_ARMED_FORCES_DAY = 'polish_armed_forces_day';
