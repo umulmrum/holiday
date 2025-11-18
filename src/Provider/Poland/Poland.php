@@ -52,6 +52,9 @@ class Poland implements HolidayProviderInterface
             $holidays->add($this->getIndependenceDay($year, HolidayType::NO_SCHOOL));
         }
         $holidays->add($this->getChristmasDay($year, HolidayType::NO_SCHOOL));
+        if ($year >= 2025) {
+            $holidays->add($this->getChristmasEve($year, HolidayType::DAY_OFF | HolidayType::NO_SCHOOL));
+        }
         $holidays->add($this->getSecondChristmasDay($year, HolidayType::NO_SCHOOL));
 
         return $holidays;

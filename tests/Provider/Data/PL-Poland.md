@@ -108,3 +108,24 @@
 | 2020-11-11 | independence_day        | official, no_school          |
 | 2020-12-25 | christmas_day           | religious, no_school         |
 | 2020-12-26 | second_christmas_day    | religious, no_school         |
+
+# 2025
+
+| Date       | Name                    | Types                           |
+|------------|-------------------------|---------------------------------|
+| 2025-01-01 | new_year                | official, day_off               |
+| 2025-01-06 | epiphany                | official, day_off, religious    |
+| 2025-04-20 | easter_sunday           | official, day_off, religious    |
+| 2025-04-21 | easter_monday           | official, day_off, religious    |
+| 2025-05-01 | may_day                 | official, day_off               |
+| 2025-05-03 | constitution_day        | official, day_off               |
+| 2025-06-08 | whit_sunday             | day_off, religious              |
+| 2025-06-19 | corpus_christi          | day_off, religious              |
+| 2025-08-15 | assumption_day          | day_off, religious              |
+| 2025-08-15 | polish_armed_forces_day | official, day_off               |
+| 2025-11-01 | all_saints_day          | day_off, religious              |
+| 2025-11-02 | all_souls_day           | religious, no_school            |
+| 2025-11-11 | independence_day        | official, no_school             |
+| 2025-12-24 | christmas_eve           | day_off, religious, no_school   |
+| 2025-12-25 | christmas_day           | religious, no_school            |
+| 2025-12-26 | second_christmas_day    | religious, no_school            |
