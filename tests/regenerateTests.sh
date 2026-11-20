@@ -62,7 +62,7 @@ tests/console test:generate FR-LRE -y 2004 -y 2019
 tests/console test:generate FR-MQ -y 2004 -y 2019
 tests/console test:generate DE -y 1970 -y 2019
 tests/console test:generate DE-BB -y 2018
-tests/console test:generate DE-BE -y 2018 -y 2019 -y 2020
+tests/console test:generate DE-BE -y 2018 -y 2019 -y 2020 -y 2025 -y 2026
 tests/console test:generate DE-BW -y 2009 -y 2013 -y 2016
 tests/console test:generate DE-BY -y 1968 -y 2016
 tests/console test:generate DE-HB -y 2019
