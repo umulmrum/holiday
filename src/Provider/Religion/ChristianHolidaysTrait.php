@@ -116,6 +116,13 @@ trait ChristianHolidaysTrait
         return Holiday::createFromDateTime(HolidayName::ASH_WEDNESDAY, $easterSunday->sub(new DateInterval('P46D')), HolidayType::RELIGIOUS | $additionalType);
     }
 
+    private function getPalmSunday(int $year, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $easterSunday = $this->getEasterSundayDate($year);
+
+        return Holiday::createFromDateTime(HolidayName::PALM_SUNDAY, $easterSunday->sub(new DateInterval('P7D')), HolidayType::RELIGIOUS | $additionalType);
+    }
+
     private function getMaundyThursday(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         $easterSunday = $this->getEasterSundayDate($year);
@@ -258,6 +265,25 @@ trait ChristianHolidaysTrait
     private function getImmaculateConception(int $year, int $additionalType = HolidayType::OTHER): Holiday
     {
         return Holiday::create(HolidayName::IMMACULATE_CONCEPTION, "{$year}-12-08", HolidayType::RELIGIOUS | $additionalType);
+    }
+
+    /**
+     * @param int<1, 4> $adventNumber
+     */
+    private function getAdventSunday(int $year, int $adventNumber, int $additionalType = HolidayType::OTHER): Holiday
+    {
+        $christmasDay = new DateTimeImmutable("{$year}-12-25");
+        $weeksToSubtract = 4 - $adventNumber;
+        $adventSunday = $christmasDay->modify("-{$weeksToSubtract} weeks")->modify('last sunday');
+
+        $holidayName = match ($adventNumber) {
+            1 => HolidayName::ADVENT_SUNDAY_1,
+            2 => HolidayName::ADVENT_SUNDAY_2,
+            3 => HolidayName::ADVENT_SUNDAY_3,
+            4 => HolidayName::ADVENT_SUNDAY_4,
+        };
+
+        return Holiday::create($holidayName, $adventSunday->format('Y-m-d'), HolidayType::RELIGIOUS | $additionalType);
     }
 
     private function getChristmasEve(int $year, int $additionalType = HolidayType::OTHER): Holiday
