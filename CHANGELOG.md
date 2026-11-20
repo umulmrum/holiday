@@ -7,9 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for PHP 8.6
+
 ### Changed
 
 - Fixed Norway provider
+
+### Removed
+
+- Dropped support for PHP 8.2
 
 ## [0.11.3] - 2025-09-24
 
