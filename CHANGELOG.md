@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Fixed Norway provider
+- "Victory in Europe Day" is a holiday in Berlin in 2025; it's also now an "official" holiday
 
 ### Removed
 
