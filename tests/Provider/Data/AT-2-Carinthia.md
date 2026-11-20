@@ -12,6 +12,7 @@
 | 1929-05-09 | ascension                 | official, day_off, religious                               |
 | 1929-05-19 | whit_sunday               | religious                                                  |
 | 1929-05-20 | whit_monday               | official, day_off, religious                               |
+| 1929-05-30 | corpus_christi            | official, day_off, religious                               |
 | 1929-08-15 | assumption_day            | official, day_off, religious                               |
 | 1929-10-26 | carinthian_plebiscite_day | official, day_off, partial_only                            |
 | 1929-11-01 | all_saints_day            | official, day_off, religious                               |
@@ -36,6 +37,7 @@
 | 1921-05-05 | ascension                 | official, day_off, religious                               |
 | 1921-05-15 | whit_sunday               | religious                                                  |
 | 1921-05-16 | whit_monday               | official, day_off, religious                               |
+| 1921-05-26 | corpus_christi            | official, day_off, religious                               |
 | 1921-08-15 | assumption_day            | official, day_off, religious                               |
 | 1921-10-26 | carinthian_plebiscite_day | official, day_off, partial_only                            |
 | 1921-11-01 | all_saints_day            | official, day_off, religious                               |

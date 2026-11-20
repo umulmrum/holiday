@@ -41,6 +41,7 @@ class Austria implements HolidayProviderInterface
         }
         $holidays->add($this->getWhitSunday($year, HolidayType::OTHER));
         $holidays->add($this->getWhitMonday($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
+        $holidays->add($this->getCorpusChristi($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         $holidays->add($this->getAssumptionDay($year, HolidayType::OFFICIAL | HolidayType::DAY_OFF));
         if ($year >= 1965) {
             if ($year >= 1967) {
