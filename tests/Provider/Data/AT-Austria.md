@@ -10,6 +10,7 @@
 | 1918-05-09 | ascension             | official, day_off, religious               |
 | 1918-05-19 | whit_sunday           | religious                                  |
 | 1918-05-20 | whit_monday           | official, day_off, religious               |
+| 1918-05-30 | corpus_christi        | official, day_off, religious               |
 | 1918-08-15 | assumption_day        | official, day_off, religious               |
 | 1918-11-01 | all_saints_day        | official, day_off, religious               |
 | 1918-12-08 | immaculate_conception | official, day_off, religious               |
@@ -31,6 +32,7 @@
 | 1919-05-29 | ascension               | official, day_off, religious               |
 | 1919-06-08 | whit_sunday             | religious                                  |
 | 1919-06-09 | whit_monday             | official, day_off, religious               |
+| 1919-06-19 | corpus_christi          | official, day_off, religious               |
 | 1919-08-15 | assumption_day          | official, day_off, religious               |
 | 1919-11-01 | all_saints_day          | official, day_off, religious               |
 | 1919-11-12 | austrian_states_holiday | official, day_off                          |
@@ -53,6 +55,7 @@
 | 1934-05-10 | ascension             | official, day_off, religious               |
 | 1934-05-20 | whit_sunday           | religious                                  |
 | 1934-05-21 | whit_monday           | official, day_off, religious               |
+| 1934-05-31 | corpus_christi        | official, day_off, religious               |
 | 1934-08-15 | assumption_day        | official, day_off, religious               |
 | 1934-11-01 | all_saints_day        | official, day_off, religious               |
 | 1934-12-08 | immaculate_conception | official, day_off, religious               |
@@ -74,6 +77,7 @@
 | 1960-05-26 | ascension               | official, day_off, religious               |
 | 1960-06-05 | whit_sunday             | religious                                  |
 | 1960-06-06 | whit_monday             | official, day_off, religious               |
+| 1960-06-16 | corpus_christi          | official, day_off, religious               |
 | 1960-08-15 | assumption_day          | official, day_off, religious               |
 | 1960-11-01 | all_saints_day          | official, day_off, religious               |
 | 1960-12-08 | immaculate_conception   | official, day_off, religious               |
@@ -95,6 +99,7 @@
 | 1965-05-27 | ascension                 | official, day_off, religious               |
 | 1965-06-06 | whit_sunday               | religious                                  |
 | 1965-06-07 | whit_monday               | official, day_off, religious               |
+| 1965-06-17 | corpus_christi            | official, day_off, religious               |
 | 1965-08-15 | assumption_day            | official, day_off, religious               |
 | 1965-10-26 | austrian_national_holiday | official                                   |
 | 1965-11-01 | all_saints_day            | official, day_off, religious               |
@@ -117,6 +122,7 @@
 | 1967-05-04 | ascension                 | official, day_off, religious               |
 | 1967-05-14 | whit_sunday               | religious                                  |
 | 1967-05-15 | whit_monday               | official, day_off, religious               |
+| 1967-05-25 | corpus_christi            | official, day_off, religious               |
 | 1967-08-15 | assumption_day            | official, day_off, religious               |
 | 1967-10-26 | austrian_national_holiday | official, day_off                          |
 | 1967-11-01 | all_saints_day            | official, day_off, religious               |

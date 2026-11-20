@@ -12,6 +12,7 @@
 | 2020-05-21 | ascension                 | official, day_off, religious                               |
 | 2020-05-31 | whit_sunday               | religious                                                  |
 | 2020-06-01 | whit_monday               | official, day_off, religious                               |
+| 2020-06-11 | corpus_christi            | official, day_off, religious                               |
 | 2020-08-15 | assumption_day            | official, day_off, religious                               |
 | 2020-10-26 | austrian_national_holiday | official, day_off                                          |
 | 2020-11-01 | all_saints_day            | official, day_off, religious                               |
