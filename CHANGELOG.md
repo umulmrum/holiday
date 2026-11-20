@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-20
+
+This release isn't as special as the version number might imply - I just thought after 10 years it's about time :-)
+
 ### Added
 
 - Added Corpus Christi to Austria
@@ -233,7 +237,8 @@ get stuck when upgrading, please open an issue and I will try to help.
 
 (see linked diff)
 
-[Unreleased]: https://github.com/umulmrum/holiday/compare/0.11.3...master
+[Unreleased]: https://github.com/umulmrum/holiday/compare/1.0.0...master
+[1.0.0]: https://github.com/umulmrum/holiday/compare/0.11.3...1.0.0
 [0.11.3]: https://github.com/umulmrum/holiday/compare/0.11.2...0.11.3
 [0.11.2]: https://github.com/umulmrum/holiday/compare/0.11.1...0.11.2
 [0.11.1]: https://github.com/umulmrum/holiday/compare/0.11.0...0.11.1
